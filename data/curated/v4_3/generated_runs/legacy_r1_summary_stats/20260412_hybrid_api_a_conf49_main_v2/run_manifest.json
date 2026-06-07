@@ -1,0 +1,27 @@
+{
+  "test_id": "legacy_r1_summary_stats",
+  "run_id": "20260412_hybrid_api_a_conf49_main_v2",
+  "created_at_utc": "2026-04-13T03:26:04.739067+00:00",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.legacy_r1_summary_stats",
+  "run_dir": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2",
+  "outputs": {
+    "dataset_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/dataset_summary.json",
+    "table_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/table_main.csv",
+    "panel_a_coverage": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/panel_a_coverage.csv",
+    "panel_b_annual_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/panel_b_annual_summary.csv",
+    "panel_c_event_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/panel_c_event_summary.csv",
+    "table_md": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/table_main.md",
+    "table_tex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/table_main.tex",
+    "table_docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/table_main.docx",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_r1_summary_stats/20260412_hybrid_api_a_conf49_main_v2/result_notes.md"
+  },
+  "paper_exports": {
+    "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2.csv",
+    "table_md": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2.md",
+    "table_tex": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/latex/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2.tex",
+    "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/docx/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2.docx",
+    "writer_packet": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/writer_packets/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2.md",
+    "result_notes": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/snippets/legacy_r1_summary_stats_20260412_hybrid_api_a_conf49_main_v2_result_notes.md"
+  }
+}

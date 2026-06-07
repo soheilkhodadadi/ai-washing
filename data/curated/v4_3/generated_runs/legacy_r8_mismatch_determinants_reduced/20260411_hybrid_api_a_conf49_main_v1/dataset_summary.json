@@ -1,0 +1,219 @@
+{
+  "test_id": "legacy_r8_mismatch_determinants_reduced",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T21:37:01.246787+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "payload": {
+    "title": "Table R8. Reduced-Baseline Determinants of PatentMismatch",
+    "note": "This table updates the firm-level PatentMismatch determinants table using a reduced baseline characteristic set to preserve sample size. The dependent variable is an indicator for whether the firm records at least one PatentMismatch incident during `2016-2025`. Baseline characteristics are measured in 2016 and include log assets, cash/assets, leverage, CAPX/assets, and ROA. R&D/assets and employees are omitted from this variant because they sharply reduce the multivariate complete-case sample. All specifications include industry fixed effects based on baseline `sic2`, and standard errors clustered at the industry level are shown in parentheses. Columns (1)-(5) report one-variable specifications; column (6) includes all reduced baseline characteristics jointly. Constants are omitted. (* p<0.1, ** p<0.05, *** p<0.01).",
+    "dependent_label": "Dependent variable: any PatentMismatch incident, 2016-2025",
+    "models": [
+      {
+        "number": "(1)",
+        "label": "Log assets"
+      },
+      {
+        "number": "(2)",
+        "label": "Cash/assets"
+      },
+      {
+        "number": "(3)",
+        "label": "Leverage"
+      },
+      {
+        "number": "(4)",
+        "label": "CAPX/assets"
+      },
+      {
+        "number": "(5)",
+        "label": "ROA"
+      },
+      {
+        "number": "(6)",
+        "label": "Multivar."
+      }
+    ],
+    "body_rows": [
+      {
+        "label": "Log assets",
+        "cells": [
+          "0.012***",
+          "",
+          "",
+          "",
+          "",
+          "0.012***"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "(0.004)",
+          "",
+          "",
+          "",
+          "",
+          "(0.004)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "Cash/assets",
+        "cells": [
+          "",
+          "-0.024",
+          "",
+          "",
+          "",
+          "0.033"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "(0.034)",
+          "",
+          "",
+          "",
+          "(0.033)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "Leverage",
+        "cells": [
+          "",
+          "",
+          "0.041",
+          "",
+          "",
+          "0.028"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "(0.036)",
+          "",
+          "",
+          "(0.037)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "CAPX/assets",
+        "cells": [
+          "",
+          "",
+          "",
+          "0.016",
+          "",
+          "-0.008"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "(0.263)",
+          "",
+          "(0.281)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "ROA",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "0.013",
+          "0.001"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "(0.009)",
+          "(0.009)"
+        ],
+        "kind": "se"
+      }
+    ],
+    "footer_rows": [
+      {
+        "label": "Industry FE",
+        "cells": [
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "All baseline covars.",
+        "cells": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y"
+        ]
+      },
+      {
+        "label": "Baseline year",
+        "cells": [
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016"
+        ]
+      },
+      {
+        "label": "Adj. R\u00b2",
+        "cells": [
+          "0.287",
+          "0.283",
+          "0.283",
+          "0.285",
+          "0.285",
+          "0.287"
+        ]
+      },
+      {
+        "label": "Observations",
+        "cells": [
+          "2,680",
+          "2,680",
+          "2,666",
+          "2,666",
+          "2,676",
+          "2,652"
+        ]
+      }
+    ],
+    "landscape": true
+  }
+}

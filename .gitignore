@@ -1,0 +1,53 @@
+# Local environments and tooling
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Generated outputs and logs
+outputs/reproduced/**
+outputs/paper_exports/**
+outputs/fixture/**
+!outputs/reproduced/README.md
+!outputs/fixture/.gitkeep
+*.log
+
+# Private, licensed, large, or machine-local data
+private_data/
+data/private/**
+data/raw/**
+data/interim/**
+data/processed/**
+data/labels/**
+data/validation/**
+data/reports/**
+*.parquet
+*.dta
+*.sas7bdat
+*.rds
+*.rda
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Archives and transfer packages
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+
+# Office/editor temporary files
+~$*
+*.tmp
+*.bak

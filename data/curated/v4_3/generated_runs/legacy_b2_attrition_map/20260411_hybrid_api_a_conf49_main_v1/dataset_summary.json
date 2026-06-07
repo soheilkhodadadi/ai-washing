@@ -1,0 +1,64 @@
+{
+  "test_id": "legacy_b2_attrition_map",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T20:57:43.084906+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet",
+    "event_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/filing_event_estimation_sample_hybrid_api_a_conf49_v1.parquet",
+    "daily_returns": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/interim/market/filing_event_returns_daily_hybrid_api_a_conf49_v1.parquet"
+  },
+  "attrition": {
+    "annual_counts": {
+      "annual_rows": 50840,
+      "annual_unique_firms": 5084,
+      "annual_ai_talk_rows": 13777,
+      "annual_core_controls_complete": 31006,
+      "annual_with_rd": 17934,
+      "annual_market_linked": 23747,
+      "annual_share_growth_complete": 20391,
+      "annual_nonbig_market_linked": 11876
+    },
+    "baseline_counts": {
+      "baseline_rows": 5084,
+      "baseline_core_controls_complete": 2652,
+      "baseline_with_rd": 1466,
+      "baseline_with_emp": 2479
+    },
+    "event_counts": {
+      "event_rows": 7355,
+      "event_unique_filings": 7355,
+      "window_counts": [
+        {
+          "row_label": "CAR[-1,+2] complete",
+          "n": 7344,
+          "share_of_parent": "99.9% of event sample",
+          "notes": "Immediate filing-window CAR sample after daily-return matching."
+        },
+        {
+          "row_label": "BHAR[+2,+21] complete",
+          "n": 7274,
+          "share_of_parent": "98.9% of event sample",
+          "notes": "Requires one trading month of post-filing returns."
+        },
+        {
+          "row_label": "BHAR[+2,+63] complete",
+          "n": 7108,
+          "share_of_parent": "96.6% of event sample",
+          "notes": "Three-month horizon drops later-sample filings mechanically."
+        },
+        {
+          "row_label": "BHAR[+2,+126] complete",
+          "n": 6845,
+          "share_of_parent": "93.1% of event sample",
+          "notes": "Six-month horizon drops more late-sample filings."
+        },
+        {
+          "row_label": "BHAR[+2,+252] complete",
+          "n": 4774,
+          "share_of_parent": "64.9% of event sample",
+          "notes": "One-year horizon is the main event-study attrition screen."
+        }
+      ]
+    }
+  }
+}

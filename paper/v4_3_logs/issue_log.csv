@@ -1,0 +1,5 @@
+issue_id,stage,location,severity,status,action,notes
+D1C-01,Rubric3 Stage6/Stage5B,Appendix Table A2 row note,minor,fixed,"Replaced 'economically meaningful here' with concrete sample-definition language","Local appendix wording issue; no empirical content changed"
+D1C-02,Rubric3 Stage4/Stage5B,Literature Review opening sentence,minor,fixed,"Replaced 'The closest conceptual foundation is disclosure credibility' with 'The starting point is disclosure credibility'","Removes old Rubric 3 high-risk phrase without changing argument"
+D1C-03,Rubric3 Stage2/Stage7,Post-ChatGPT and SEC salience language,watch-only,cleared,"No edit after review","Text explicitly describes ChatGPT diagnostic as exploratory and SEC result as salience/acceleration rather than sharp causal identification"
+D1C-04,Rubric3 Stage6/Stage8,References and cross-references,watch-only,cleared,"No edit after validation","LaTeX labels have zero missing references; included graphics exist; references render across pages 32-33"

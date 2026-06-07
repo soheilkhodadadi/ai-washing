@@ -1,0 +1,23 @@
+\begin{table}[!htbp]
+\centering
+\caption{Market reactions in capital-raising windows}
+\label{tab:issue_window_market_v32}
+\small
+\begin{tabular}{llccccrrr}
+\hline
+Panel & Outcome & PM $\times$ Issue & LowCred $\times$ Issue & AppMismatch $\times$ Issue & Baseline PM & IssueWindow & Mean & Obs. \\
+\hline
+\multicolumn{9}{l}{\textit{Panel A. Filing-year market reactions in all issue-eligible firms}} \\
+ & CAR[-1,+1] & 0.0058 (0.0089) & 0.0074 (0.0085) & 0.0046 (0.0088) & -0.0009 (0.0039) & -0.0055 (0.0055) & 0.000 & 4378 \\
+ & BHAR[+2,+63] & 0.0716** (0.0346) & 0.0577* (0.0313) & 0.0526 (0.0341) & -0.0272*** (0.0095) & 0.0279 (0.0174) & -0.029 & 4376 \\
+ & BHAR[+2,+252] & 0.3885 (0.2433) & 0.2496 (0.1922) & 0.3498 (0.2353) & 0.0094 (0.0242) & 0.1729*** (0.0548) & -0.024 & 4360 \\
+\multicolumn{9}{l}{\textit{Panel B. Filing-year market reactions in non-big firms}} \\
+ & CAR[-1,+1] & 0.0090 (0.0136) & 0.0163 (0.0134) & 0.0095 (0.0134) & -0.0014 (0.0080) & -0.0054 (0.0086) & -0.008 & 2024 \\
+ & BHAR[+2,+63] & 0.0918* (0.0504) & 0.1139** (0.0456) & 0.0823* (0.0487) & -0.0353** (0.0176) & 0.0282 (0.0241) & -0.068 & 2023 \\
+ & BHAR[+2,+252] & 0.4976 (0.3488) & 0.3805 (0.2888) & 0.4766 (0.3324) & 0.0398 (0.0427) & 0.1883** (0.0747) & -0.119 & 2009 \\
+\hline
+\end{tabular}
+\begin{flushleft}
+\footnotesize Notes: The event sample is collapsed to one filing-year return observation per firm-year and linked to the annual issue-window flag from Test 30. IssueWindow equals one when next-year CRSP shares-outstanding growth exceeds 5\%. Coefficients shown for the three main construct columns are the interaction terms between the disclosure metric and IssueWindow. The Baseline PM column reports the PatentMismatch coefficient outside issue windows, and the IssueWindow column reports the level issue-window coefficient in the canonical specification. All regressions include filing-year fixed effects, annual controls, and firm-clustered standard errors.
+\end{flushleft}
+\end{table}

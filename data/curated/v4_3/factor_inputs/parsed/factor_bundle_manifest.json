@@ -1,0 +1,24 @@
+{
+  "created_at_utc": "2026-04-23T01:18:56.086535+00:00",
+  "source_urls": {
+    "ff5_monthly": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "momentum_monthly": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Momentum_Factor_CSV.zip"
+  },
+  "raw_members": {
+    "ff5": "F-F_Research_Data_5_Factors_2x3.csv",
+    "momentum": "F-F_Momentum_Factor.csv"
+  },
+  "row_count": 752,
+  "month_min": "1963-07",
+  "month_max": "2026-02",
+  "paths": {
+    "ff5_zip": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/raw/F-F_Research_Data_5_Factors_2x3_CSV.zip",
+    "momentum_zip": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/raw/F-F_Momentum_Factor_CSV.zip",
+    "ff5_text": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/extracted/F-F_Research_Data_5_Factors_2x3.csv",
+    "momentum_text": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/extracted/F-F_Momentum_Factor.csv",
+    "ff5_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/parsed/ff5_monthly.csv",
+    "momentum_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/parsed/momentum_monthly.csv",
+    "merged_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/parsed/ff5_momentum_monthly.csv",
+    "merged_parquet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/factor_inputs/parsed/ff5_momentum_monthly.parquet"
+  }
+}

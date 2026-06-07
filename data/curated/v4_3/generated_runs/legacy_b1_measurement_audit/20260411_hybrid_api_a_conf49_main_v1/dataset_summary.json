@@ -1,0 +1,189 @@
+{
+  "test_id": "legacy_b1_measurement_audit",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T20:53:41.346405+00:00",
+  "inputs": {
+    "label_base": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/labels/v1/labels_master.parquet",
+    "training_pool": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/labels/v2/labels_master_boundary_revised_v1_excluding_heldout_v4.parquet",
+    "heldout_v4": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/validation/held_out_v4/held_out_sentences_v4.csv",
+    "irr_report": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/reports/labels/irr_boundary_revised_v3_rerun_report.json",
+    "hybrid_eval": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json"
+  },
+  "measurement": {
+    "label_base_rows": 551,
+    "training_pool_rows": 431,
+    "heldout_rows": 120,
+    "irr_summary": {
+      "status": "passed",
+      "reviewed_items": 120,
+      "kappa": 0.8499999999999999,
+      "human_human_only": true,
+      "stratified_100_firms_min": true,
+      "industry_year_balanced": true,
+      "by_class_kappa_reported": true,
+      "third_adjudicator_used": true,
+      "firms_reviewed": 120,
+      "rows_disagreement": 12,
+      "rows_master": 120,
+      "transition_counts": {
+        "A->S": 3,
+        "A->I": 0,
+        "S->A": 4,
+        "S->I": 3,
+        "I->A": 1,
+        "I->S": 1
+      },
+      "by_class_kappa": {
+        "Actionable": 0.8518518518518519,
+        "Speculative": 0.7898089171974522,
+        "Irrelevant": 0.906832298136646
+      },
+      "pending_reason": "",
+      "resolved_disagreements": 12,
+      "unresolved_disagreements": 0
+    },
+    "hybrid_payload": {
+      "generated_at_utc": "2026-04-09T17:35:51.051545+00:00",
+      "benchmark": {
+        "path": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/validation/held_out_v4/held_out_sentences_v4_hybrid_api_upgrade_v2_scored.csv",
+        "rows": 120
+      },
+      "local_base_model_id": "layered_binary_relevance_logreg_as_v1",
+      "api_a_column": "assistive_label",
+      "api_b_available": false,
+      "policies": [
+        {
+          "policy_name": "api_a_conf_or_margin",
+          "description": "Defer rows with low confidence or narrow A/S margin.",
+          "deployable": true,
+          "accuracy": 0.85,
+          "macro_f1": 0.8364470991648693,
+          "binary_relevance_accuracy": 0.9166666666666666,
+          "actionable_speculative_conditional_accuracy": 0.8648648648648649,
+          "deferred_rows": 40,
+          "deferred_rate": 0.3333333333333333,
+          "deferred_errors_captured": 13,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "api_a_conf_or_margin_or_disagreement",
+          "description": "Defer rows with low confidence, narrow A/S margin, or local component disagreement.",
+          "deployable": true,
+          "accuracy": 0.85,
+          "macro_f1": 0.8364470991648693,
+          "binary_relevance_accuracy": 0.9166666666666666,
+          "actionable_speculative_conditional_accuracy": 0.8648648648648649,
+          "deferred_rows": 40,
+          "deferred_rate": 0.3333333333333333,
+          "deferred_errors_captured": 13,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "api_a_low_conf_060",
+          "description": "Defer rows with local top-score confidence below 0.60.",
+          "deployable": true,
+          "accuracy": 0.85,
+          "macro_f1": 0.8364470991648693,
+          "binary_relevance_accuracy": 0.9166666666666666,
+          "actionable_speculative_conditional_accuracy": 0.8648648648648649,
+          "deferred_rows": 40,
+          "deferred_rate": 0.3333333333333333,
+          "deferred_errors_captured": 13,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "api_a_component_disagreement",
+          "description": "Defer rows where binary relevance and logreg disagree on irrelevance.",
+          "deployable": true,
+          "accuracy": 0.8,
+          "macro_f1": 0.7909769335142469,
+          "binary_relevance_accuracy": 0.9166666666666666,
+          "actionable_speculative_conditional_accuracy": 0.7837837837837838,
+          "deferred_rows": 4,
+          "deferred_rate": 0.03333333333333333,
+          "deferred_errors_captured": 2,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "api_a_low_as_margin_015",
+          "description": "Defer non-irrelevant rows with conditional A/S margin below 0.15.",
+          "deployable": true,
+          "accuracy": 0.7916666666666666,
+          "macro_f1": 0.7799424648950412,
+          "binary_relevance_accuracy": 0.8666666666666667,
+          "actionable_speculative_conditional_accuracy": 0.8378378378378378,
+          "deferred_rows": 16,
+          "deferred_rate": 0.13333333333333333,
+          "deferred_errors_captured": 4,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "local_only",
+          "description": "No deferral.",
+          "deployable": true,
+          "accuracy": 0.7833333333333333,
+          "macro_f1": 0.770940170940171,
+          "binary_relevance_accuracy": 0.9,
+          "actionable_speculative_conditional_accuracy": 0.7837837837837838,
+          "deferred_rows": 0,
+          "deferred_rate": 0.0,
+          "deferred_errors_captured": 0,
+          "api_b_majority": false
+        },
+        {
+          "policy_name": "oracle_error_only",
+          "description": "Upper-bound diagnostic: defer only rows the local model gets wrong.",
+          "deployable": false,
+          "accuracy": 0.925,
+          "macro_f1": 0.9185769301302035,
+          "binary_relevance_accuracy": 0.9583333333333334,
+          "actionable_speculative_conditional_accuracy": 0.9459459459459459,
+          "deferred_rows": 26,
+          "deferred_rate": 0.21666666666666667,
+          "deferred_errors_captured": 17,
+          "api_b_majority": false
+        }
+      ],
+      "best_deployable_policy": {
+        "policy_name": "api_a_conf_or_margin",
+        "description": "Defer rows with low confidence or narrow A/S margin.",
+        "deployable": true,
+        "accuracy": 0.85,
+        "macro_f1": 0.8364470991648693,
+        "binary_relevance_accuracy": 0.9166666666666666,
+        "actionable_speculative_conditional_accuracy": 0.8648648648648649,
+        "deferred_rows": 40,
+        "deferred_rate": 0.3333333333333333,
+        "deferred_errors_captured": 13,
+        "api_b_majority": false
+      }
+    },
+    "benchmark_rows": 120,
+    "best_policy": {
+      "policy_name": "api_a_conf_or_margin",
+      "description": "Defer rows with low confidence or narrow A/S margin.",
+      "deployable": true,
+      "accuracy": 0.85,
+      "macro_f1": 0.8364470991648693,
+      "binary_relevance_accuracy": 0.9166666666666666,
+      "actionable_speculative_conditional_accuracy": 0.8648648648648649,
+      "deferred_rows": 40,
+      "deferred_rate": 0.3333333333333333,
+      "deferred_errors_captured": 13,
+      "api_b_majority": false
+    },
+    "local_only": {
+      "policy_name": "local_only",
+      "description": "No deferral.",
+      "deployable": true,
+      "accuracy": 0.7833333333333333,
+      "macro_f1": 0.770940170940171,
+      "binary_relevance_accuracy": 0.9,
+      "actionable_speculative_conditional_accuracy": 0.7837837837837838,
+      "deferred_rows": 0,
+      "deferred_rate": 0.0,
+      "deferred_errors_captured": 0,
+      "api_b_majority": false
+    }
+  }
+}

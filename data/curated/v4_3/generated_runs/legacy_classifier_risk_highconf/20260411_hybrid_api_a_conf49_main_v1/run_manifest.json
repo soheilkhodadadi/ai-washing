@@ -1,0 +1,24 @@
+{
+  "test_id": "legacy_classifier_risk_highconf",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T21:40:58.159287+00:00",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.legacy_classifier_risk_highconf",
+  "run_dir": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_classifier_risk_highconf/20260411_hybrid_api_a_conf49_main_v1",
+  "outputs": {
+    "composition": {
+      "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_composition_20260411_hybrid_api_a_conf49_main_v1.csv",
+      "table_md": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_composition_20260411_hybrid_api_a_conf49_main_v1.md",
+      "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/docx/legacy_classifier_risk_highconf_composition_20260411_hybrid_api_a_conf49_main_v1.docx",
+      "table_payload": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_composition_20260411_hybrid_api_a_conf49_main_v1_payload.json"
+    },
+    "mismatch": {
+      "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_mismatch_20260411_hybrid_api_a_conf49_main_v1.csv",
+      "table_md": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_mismatch_20260411_hybrid_api_a_conf49_main_v1.md",
+      "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/docx/legacy_classifier_risk_highconf_mismatch_20260411_hybrid_api_a_conf49_main_v1.docx",
+      "table_payload": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/legacy_classifier_risk_highconf_mismatch_20260411_hybrid_api_a_conf49_main_v1_payload.json"
+    },
+    "writer_packet": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/writer_packets/legacy_classifier_risk_highconf_20260411_hybrid_api_a_conf49_main_v1.md",
+    "result_notes": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/snippets/legacy_classifier_risk_highconf_20260411_hybrid_api_a_conf49_main_v1_result_notes.md",
+    "dataset_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/legacy_classifier_risk_highconf/20260411_hybrid_api_a_conf49_main_v1/dataset_summary.json"
+  }
+}

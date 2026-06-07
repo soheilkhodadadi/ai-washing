@@ -1,0 +1,683 @@
+{
+  "test_id": "test_30_capital_raising_timing",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.test_30_capital_raising_timing",
+  "run_id": "20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1",
+  "generated_at_utc": "2026-04-23T22:15:03.896467+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "sample_summary": {
+    "issue_rule": "Issue>5% uses next-year CRSP shrout growth above 5%.",
+    "issue_event_firms": 2105,
+    "issue_event_rows": 9309,
+    "active_ai_issue_firms": 367,
+    "active_ai_issue_rows": 1775,
+    "nonbig_active_issue_firms": 251,
+    "nonbig_active_issue_rows": 1220
+  },
+  "paired_rows": [
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.2334293948126801,
+      "se": 0.02944464662900481,
+      "p_value": 3.103680829381175e-14,
+      "n_pairs": 347
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.10626702997275204,
+      "se": 0.02328937600176885,
+      "p_value": 6.8959726260709485e-06,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.14986376021798364,
+      "se": 0.02973424640044421,
+      "p_value": 7.329267784175683e-07,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.18155619596541786,
+      "se": 0.027615617120122664,
+      "p_value": 1.801876371410524e-10,
+      "n_pairs": 347
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.07901907356948229,
+      "se": 0.0242067840871823,
+      "p_value": 0.0012006071288668569,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.1008174386920981,
+      "se": 0.028781603807656337,
+      "p_value": 0.0005172874030930561,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.1786743515850144,
+      "se": 0.026906830544626902,
+      "p_value": 1.2124706739097006e-10,
+      "n_pairs": 347
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.09264305177111716,
+      "se": 0.02422856257479665,
+      "p_value": 0.0001544810666172774,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.11444141689373297,
+      "se": 0.02851180682944034,
+      "p_value": 7.248556992774137e-05,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.11870699822192439,
+      "se": 0.015753330302528283,
+      "p_value": 4.298668320788332e-13,
+      "n_pairs": 347
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.017673051711664167,
+      "se": 0.011817773648718617,
+      "p_value": 0.13565518680889344,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.021211152819973027,
+      "se": 0.01601263640422184,
+      "p_value": 0.18611346629039743,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "Event year vs. t-1",
+      "coef": 1.0050931016169493,
+      "se": 0.05446479380741709,
+      "p_value": 1.9904752948195217e-53,
+      "n_pairs": 347
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "t+1 vs. event year",
+      "coef": 0.3962336128825976,
+      "se": 0.04097740335302199,
+      "p_value": 7.583064830545443e-20,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "t+2 vs. event year",
+      "coef": 0.46441411943630523,
+      "se": 0.05920062457550577,
+      "p_value": 4.812026265031516e-14,
+      "n_pairs": 367
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.225,
+      "se": 0.03439302335922214,
+      "p_value": 3.6555722447751227e-10,
+      "n_pairs": 240
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.09561752988047809,
+      "se": 0.02757248448947258,
+      "p_value": 0.0006175285223567292,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.13545816733067728,
+      "se": 0.036015583681241504,
+      "p_value": 0.00021074509524511686,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.1875,
+      "se": 0.03354946492765063,
+      "p_value": 6.216802651748908e-08,
+      "n_pairs": 240
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.0796812749003984,
+      "se": 0.028899158234199387,
+      "p_value": 0.006259536877145125,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.10756972111553785,
+      "se": 0.03482354324049743,
+      "p_value": 0.002235162144316647,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.17083333333333334,
+      "se": 0.03234118835123799,
+      "p_value": 2.8701864056260455e-07,
+      "n_pairs": 240
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.0796812749003984,
+      "se": 0.028899158234199387,
+      "p_value": 0.006259536877145125,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.10358565737051793,
+      "se": 0.03417945910681626,
+      "p_value": 0.002696671816959401,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "Event year vs. t-1",
+      "coef": 0.12312874004845932,
+      "se": 0.018861069967675233,
+      "p_value": 3.9536367056321195e-10,
+      "n_pairs": 240
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "t+1 vs. event year",
+      "coef": -0.017122663246670184,
+      "se": 0.01443406781812639,
+      "p_value": 0.23664289045814285,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "comparison": "t+2 vs. event year",
+      "coef": -0.030476073836096195,
+      "se": 0.018977982820714143,
+      "p_value": 0.1095659848345807,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "Event year vs. t-1",
+      "coef": 1.0539740670309743,
+      "se": 0.0662544961416969,
+      "p_value": 2.3825466168086988e-39,
+      "n_pairs": 240
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "t+1 vs. event year",
+      "coef": 0.3881807088689159,
+      "se": 0.05065628934943593,
+      "p_value": 4.003249346903652e-13,
+      "n_pairs": 251
+    },
+    {
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "comparison": "t+2 vs. event year",
+      "coef": 0.41736626890208506,
+      "se": 0.07655789163642344,
+      "p_value": 1.1964520235542657e-07,
+      "n_pairs": 251
+    }
+  ],
+  "figure_rows": [
+    {
+      "event_time": -2,
+      "mean_value": 0.1345565749235474,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.21037463976945245,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.47411444141689374,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.3678474114441417,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.3242506811989101,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.09480122324159021,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.1585014409221902,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.35967302452316074,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.28065395095367845,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.25885558583106266,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.09785932721712538,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.16138328530259366,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.3678474114441417,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.27520435967302453,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.25340599455040874,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.04056097523021714,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.07149796058715967,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.1812927902999605,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.16361973858829634,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.16008163747998747,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.3735274352869781,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.6897038243563602,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 1.6774625509314844,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 2.0736961638140823,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 2.14187667036779,
+      "panel": "Panel A. First large equity issue among active AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.10572687224669604,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.1875,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.43824701195219123,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.3426294820717131,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.30278884462151395,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "LowCredibility",
+      "outcome_label": "LowCredibility"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.0881057268722467,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.1625,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.3705179282868526,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.2908366533864542,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.26294820717131473,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "ApplicationMismatch",
+      "outcome_label": "ApplicationMismatch"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.0881057268722467,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.1625,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.35856573705179284,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.2788844621513944,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.2549800796812749,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.03516307288043898,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.06764597296066034,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 0.1832108809648953,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 0.1660882177182251,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 0.15273480712879908,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share"
+    },
+    {
+      "event_time": -2,
+      "mean_value": 0.2796041222809294,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": -1,
+      "mean_value": 0.604643833018512,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 0,
+      "mean_value": 1.6372604047418136,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 1,
+      "mean_value": 2.0254411136107295,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    },
+    {
+      "event_time": 2,
+      "mean_value": 2.0546266736438987,
+      "panel": "Panel B. Non-big first-issue AI issuers",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus"
+    }
+  ],
+  "outputs": {
+    "docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1.docx",
+    "latex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1.tex",
+    "csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1.csv",
+    "figure_png": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1.png",
+    "figure_pdf": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1.pdf",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1_writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1_result_notes.md",
+    "figure_series_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_30_capital_raising_timing/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/test_30_capital_raising_timing_20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1_figure_series.csv",
+    "markdown_preview": "| Panel | Outcome | Event year vs. t-1 | t+1 vs. event year | t+2 vs. event year | Event-year mean | N firms |\n| --- | --- | --- | --- | --- | --- | --- |\n| Panel A. First large equity issue among active AI issuers |  |  |  |  |  |  |\n|  | LowCredibility | 0.2334*** (0.0294) | -0.1063*** (0.0233) | -0.1499*** (0.0297) | 0.4741 | 367 |\n|  | ApplicationMismatch | 0.1816*** (0.0276) | -0.0790*** (0.0242) | -0.1008*** (0.0288) | 0.3597 | 367 |\n|  | PatentMismatch | 0.1787*** (0.0269) | -0.0926*** (0.0242) | -0.1144*** (0.0285) | 0.3678 | 367 |\n|  | Speculative share | 0.1187*** (0.0158) | -0.0177 (0.0118) | -0.0212 (0.0160) | 0.1813 | 367 |\n|  | AI Focus | 1.0051*** (0.0545) | 0.3962*** (0.0410) | 0.4644*** (0.0592) | 1.6775 | 367 |\n| Panel B. Non-big first-issue AI issuers |  |  |  |  |  |  |\n|  | LowCredibility | 0.2250*** (0.0344) | -0.0956*** (0.0276) | -0.1355*** (0.0360) | 0.4382 | 251 |\n|  | ApplicationMismatch | 0.1875*** (0.0335) | -0.0797*** (0.0289) | -0.1076*** (0.0348) | 0.3705 | 251 |\n|  | PatentMismatch | 0.1708*** (0.0323) | -0.0797*** (0.0289) | -0.1036*** (0.0342) | 0.3586 | 251 |\n|  | Speculative share | 0.1231*** (0.0189) | -0.0171 (0.0144) | -0.0305 (0.0190) | 0.1832 | 251 |\n|  | AI Focus | 1.0540*** (0.0663) | 0.3882*** (0.0507) | 0.4174*** (0.0766) | 1.6373 | 251 |\n"
+  }
+}

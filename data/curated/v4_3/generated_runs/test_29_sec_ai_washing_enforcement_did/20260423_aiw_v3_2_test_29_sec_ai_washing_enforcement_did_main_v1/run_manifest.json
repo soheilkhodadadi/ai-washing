@@ -1,0 +1,477 @@
+{
+  "test_id": "test_29_sec_ai_washing_enforcement_did",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.test_29_sec_ai_washing_enforcement_did",
+  "run_id": "20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1",
+  "generated_at_utc": "2026-04-23T22:01:49.774449+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet",
+    "sec_event_date": "2024-03-18",
+    "sec_event_release": "https://www.sec.gov/newsroom/press-releases/2024-36",
+    "sec_event_speech": "https://www.sec.gov/newsroom/speeches-statements/sec-chair-gary-gensler-ai-washing"
+  },
+  "sample_summary": {
+    "treatment_year": 2022,
+    "placebo_year": 2023,
+    "post_start": 2024,
+    "treated_firms_main": 457,
+    "treated_firms_low_cred": 587,
+    "treated_firms_application": 468,
+    "analysis_firms": 1611,
+    "analysis_rows": 8055,
+    "analysis_years": [
+      2021,
+      2025
+    ]
+  },
+  "did_rows": [
+    {
+      "outcome": "SpecShare",
+      "nobs": 5663,
+      "outcome_mean": 0.16008713207267786,
+      "params": {
+        "treat_patent_mismatch_2022_x_post": -0.08392557600875965,
+        "ln_assets_l1": 2.025989467301375e-05,
+        "cash_l1": 0.06772492113664559,
+        "leverage_l1": -0.009042358682887596,
+        "roa_l1": 0.006292201383130413
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_post": 0.018401433369667746,
+        "ln_assets_l1": 0.007172933301772166,
+        "cash_l1": 0.030074773358201544,
+        "leverage_l1": 0.025623053553874175,
+        "roa_l1": 0.005655090996467869
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_post": 5.095489705265411e-06,
+        "ln_assets_l1": 0.997746384221133,
+        "cash_l1": 0.024329561024173038,
+        "leverage_l1": 0.7241639057920313,
+        "roa_l1": 0.2658538856776196
+      },
+      "adj_r2": -0.28102451583054044,
+      "outcome_label": "Speculative share",
+      "treatment_col": "treat_patent_mismatch_2022"
+    },
+    {
+      "outcome": "A_S",
+      "nobs": 5663,
+      "outcome_mean": 0.9385507192074659,
+      "params": {
+        "treat_patent_mismatch_2022_x_post": 0.2907426012256332,
+        "ln_assets_l1": 0.1191226860405362,
+        "cash_l1": 0.05369615858199084,
+        "leverage_l1": -0.0512351591658166,
+        "roa_l1": -0.011757786895027874
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_post": 0.03446179217311015,
+        "ln_assets_l1": 0.02158654198105135,
+        "cash_l1": 0.08283993715274542,
+        "leverage_l1": 0.05908029544345157,
+        "roa_l1": 0.0160738202501338
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_post": 3.265201718945588e-17,
+        "ln_assets_l1": 3.4214398182959446e-08,
+        "cash_l1": 0.5168609782037383,
+        "leverage_l1": 0.3858256956321271,
+        "roa_l1": 0.464481881136089
+      },
+      "adj_r2": -0.256020118078474,
+      "outcome_label": "A/S ratio",
+      "treatment_col": "treat_patent_mismatch_2022"
+    },
+    {
+      "outcome": "PatentMismatch",
+      "nobs": 5663,
+      "outcome_mean": 0.26099240685149216,
+      "params": {
+        "treat_patent_mismatch_2022_x_post": -0.3120978265975153,
+        "ln_assets_l1": -0.009151128635889587,
+        "cash_l1": 0.13041158157707627,
+        "leverage_l1": -0.018074905854896343,
+        "roa_l1": 0.008483308648213393
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_post": 0.028795440645362123,
+        "ln_assets_l1": 0.013343682144223462,
+        "cash_l1": 0.0462512539243687,
+        "leverage_l1": 0.0408495502606571,
+        "roa_l1": 0.012777540976079535
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_post": 2.2628220081500445e-27,
+        "ln_assets_l1": 0.49283775120606566,
+        "cash_l1": 0.004807853832159509,
+        "leverage_l1": 0.6581454976401631,
+        "roa_l1": 0.5067393286684688
+      },
+      "adj_r2": -0.23090474771668612,
+      "outcome_label": "PatentMismatch",
+      "treatment_col": "treat_patent_mismatch_2022"
+    },
+    {
+      "outcome": "AI_Focus",
+      "nobs": 5663,
+      "outcome_mean": 1.850067833883476,
+      "params": {
+        "treat_patent_mismatch_2022_x_post": -0.10443214094534312,
+        "ln_assets_l1": 0.21313647065286093,
+        "cash_l1": 0.27432381932760963,
+        "leverage_l1": -0.11189318524342685,
+        "roa_l1": -0.014936209451239243
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_post": 0.0652582294739899,
+        "ln_assets_l1": 0.03557091918860528,
+        "cash_l1": 0.12741401725837592,
+        "leverage_l1": 0.10973276800443461,
+        "roa_l1": 0.033162342249715496
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_post": 0.1095340980821329,
+        "ln_assets_l1": 2.0743645006847563e-09,
+        "cash_l1": 0.031317790226223066,
+        "leverage_l1": 0.30787646110281564,
+        "roa_l1": 0.6524244253756333
+      },
+      "adj_r2": -0.2663943167216489,
+      "outcome_label": "AI Focus",
+      "treatment_col": "treat_patent_mismatch_2022"
+    },
+    {
+      "outcome": "SpecShare",
+      "nobs": 5663,
+      "outcome_mean": 0.16008713207267786,
+      "params": {
+        "treat_low_credibility_2022_x_post": -0.12150907032976112,
+        "ln_assets_l1": 0.0003919567551173887,
+        "cash_l1": 0.07045086196536546,
+        "leverage_l1": -0.005866927659809159,
+        "roa_l1": 0.006198737016589335
+      },
+      "bse": {
+        "treat_low_credibility_2022_x_post": 0.016550676068138325,
+        "ln_assets_l1": 0.007144014242341394,
+        "cash_l1": 0.029778126103451784,
+        "leverage_l1": 0.025921001651720406,
+        "roa_l1": 0.005679800376129007
+      },
+      "pvalues": {
+        "treat_low_credibility_2022_x_post": 2.1099563637528417e-13,
+        "ln_assets_l1": 0.9562459696779448,
+        "cash_l1": 0.017988270424078814,
+        "leverage_l1": 0.8209379457099474,
+        "roa_l1": 0.27511217671656985
+      },
+      "adj_r2": -0.2622180551726687,
+      "outcome_label": "SpecShare DID",
+      "treatment_col": "treat_low_credibility_2022",
+      "treatment_label": "LowCredibility in 2022"
+    },
+    {
+      "outcome": "A_S",
+      "nobs": 5663,
+      "outcome_mean": 0.9385507192074659,
+      "params": {
+        "treat_low_credibility_2022_x_post": 0.3367643223332585,
+        "ln_assets_l1": 0.11825509468936816,
+        "cash_l1": 0.04731070905329084,
+        "leverage_l1": -0.05727761516244445,
+        "roa_l1": -0.012228053610741618
+      },
+      "bse": {
+        "treat_low_credibility_2022_x_post": 0.033071934819000955,
+        "ln_assets_l1": 0.021386357612164182,
+        "cash_l1": 0.08201700159830418,
+        "leverage_l1": 0.058482961202582215,
+        "roa_l1": 0.015882045710279253
+      },
+      "pvalues": {
+        "treat_low_credibility_2022_x_post": 2.3669443071162188e-24,
+        "ln_assets_l1": 3.212106920835524e-08,
+        "cash_l1": 0.5640473655172749,
+        "leverage_l1": 0.3273874193508718,
+        "roa_l1": 0.4413417847219714
+      },
+      "adj_r2": -0.2425260622767269,
+      "outcome_label": "A/S DID",
+      "treatment_col": "treat_low_credibility_2022",
+      "treatment_label": "LowCredibility in 2022"
+    },
+    {
+      "outcome": "PatentMismatch",
+      "nobs": 5663,
+      "outcome_mean": 0.26099240685149216,
+      "params": {
+        "treat_low_credibility_2022_x_post": -0.2606419883575358,
+        "ln_assets_l1": -0.008723122094943385,
+        "cash_l1": 0.13360211936719918,
+        "leverage_l1": -0.017529217913990994,
+        "roa_l1": 0.009939508330548056
+      },
+      "bse": {
+        "treat_low_credibility_2022_x_post": 0.025871630505855187,
+        "ln_assets_l1": 0.013674692280386348,
+        "cash_l1": 0.04669303210371605,
+        "leverage_l1": 0.040901033556881336,
+        "roa_l1": 0.012794782269484125
+      },
+      "pvalues": {
+        "treat_low_credibility_2022_x_post": 7.167354151211109e-24,
+        "ln_assets_l1": 0.523537069213299,
+        "cash_l1": 0.004219262329690897,
+        "leverage_l1": 0.6682315197419848,
+        "roa_l1": 0.4372527279561368
+      },
+      "adj_r2": -0.2434672681661081,
+      "outcome_label": "PatentMismatch DID",
+      "treatment_col": "treat_low_credibility_2022",
+      "treatment_label": "LowCredibility in 2022"
+    },
+    {
+      "outcome": "SpecShare",
+      "nobs": 5663,
+      "outcome_mean": 0.16008713207267786,
+      "params": {
+        "treat_application_mismatch_2022_x_post": -0.10417419160874446,
+        "ln_assets_l1": 0.0004252817650395348,
+        "cash_l1": 0.06998506292271124,
+        "leverage_l1": -0.008386267920729985,
+        "roa_l1": 0.006238874637319704
+      },
+      "bse": {
+        "treat_application_mismatch_2022_x_post": 0.018528761737778315,
+        "ln_assets_l1": 0.007159668876971914,
+        "cash_l1": 0.03002764251793718,
+        "leverage_l1": 0.025807094553279952,
+        "roa_l1": 0.005668344333775522
+      },
+      "pvalues": {
+        "treat_application_mismatch_2022_x_post": 1.8843551998645137e-08,
+        "ln_assets_l1": 0.9526337985441767,
+        "cash_l1": 0.019769822964025043,
+        "leverage_l1": 0.7452115075183863,
+        "roa_l1": 0.2710481360973117
+      },
+      "adj_r2": -0.2734685974111113,
+      "outcome_label": "SpecShare DID",
+      "treatment_col": "treat_application_mismatch_2022",
+      "treatment_label": "ApplicationMismatch in 2022"
+    },
+    {
+      "outcome": "A_S",
+      "nobs": 5663,
+      "outcome_mean": 0.9385507192074659,
+      "params": {
+        "treat_application_mismatch_2022_x_post": 0.3155462697060798,
+        "ln_assets_l1": 0.11799800758459819,
+        "cash_l1": 0.047584944535765596,
+        "leverage_l1": -0.05148945385778562,
+        "roa_l1": -0.012054475671309062
+      },
+      "bse": {
+        "treat_application_mismatch_2022_x_post": 0.034377083030437044,
+        "ln_assets_l1": 0.021547359476616276,
+        "cash_l1": 0.08291177554493288,
+        "leverage_l1": 0.059153596819983535,
+        "roa_l1": 0.016041845106066013
+      },
+      "pvalues": {
+        "treat_application_mismatch_2022_x_post": 4.352278407705907e-20,
+        "ln_assets_l1": 4.345157835983965e-08,
+        "cash_l1": 0.5660201565065028,
+        "leverage_l1": 0.3840618694419141,
+        "roa_l1": 0.45238821300762855
+      },
+      "adj_r2": -0.25111192245578406,
+      "outcome_label": "A/S DID",
+      "treatment_col": "treat_application_mismatch_2022",
+      "treatment_label": "ApplicationMismatch in 2022"
+    },
+    {
+      "outcome": "PatentMismatch",
+      "nobs": 5663,
+      "outcome_mean": 0.26099240685149216,
+      "params": {
+        "treat_application_mismatch_2022_x_post": -0.2633597562374603,
+        "ln_assets_l1": -0.00840661822792649,
+        "cash_l1": 0.13411529092248772,
+        "leverage_l1": -0.021156962328429358,
+        "roa_l1": 0.009601952815886404
+      },
+      "bse": {
+        "treat_application_mismatch_2022_x_post": 0.0290325852440958,
+        "ln_assets_l1": 0.013384251840158302,
+        "cash_l1": 0.046636611249489535,
+        "leverage_l1": 0.04192783801907063,
+        "roa_l1": 0.012739949047797043
+      },
+      "pvalues": {
+        "treat_application_mismatch_2022_x_post": 1.177368446412366e-19,
+        "ln_assets_l1": 0.5299399186141541,
+        "cash_l1": 0.0040306727742545866,
+        "leverage_l1": 0.6138368732811865,
+        "roa_l1": 0.45103630167458675
+      },
+      "adj_r2": -0.24834287308591207,
+      "outcome_label": "PatentMismatch DID",
+      "treatment_col": "treat_application_mismatch_2022",
+      "treatment_label": "ApplicationMismatch in 2022"
+    }
+  ],
+  "event_rows": [
+    {
+      "outcome": "SpecShare",
+      "nobs": 5663,
+      "params": {
+        "treat_patent_mismatch_2022_x_2021": -0.15115386072316556,
+        "treat_patent_mismatch_2022_x_2023": -0.12244173552252938,
+        "treat_patent_mismatch_2022_x_2024": -0.15143747881030656,
+        "treat_patent_mismatch_2022_x_2025": -0.19909903945020754,
+        "ln_assets_l1": -0.0009648684895088257,
+        "cash_l1": 0.06374009597550755,
+        "leverage_l1": -0.01044999589149554,
+        "roa_l1": 0.005691986949717147
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_2021": 0.02114553456317912,
+        "treat_patent_mismatch_2022_x_2023": 0.01867550998153662,
+        "treat_patent_mismatch_2022_x_2024": 0.02322108999069424,
+        "treat_patent_mismatch_2022_x_2025": 0.02530091662024412,
+        "ln_assets_l1": 0.007040874136991689,
+        "cash_l1": 0.029447296534317106,
+        "leverage_l1": 0.024995216908884458,
+        "roa_l1": 0.005472360242884418
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_2021": 8.788226048860378e-13,
+        "treat_patent_mismatch_2022_x_2023": 5.5169319511825626e-11,
+        "treat_patent_mismatch_2022_x_2024": 6.958492904534105e-11,
+        "treat_patent_mismatch_2022_x_2025": 3.567959837780906e-15,
+        "ln_assets_l1": 0.8910006263633035,
+        "cash_l1": 0.030422293072349126,
+        "leverage_l1": 0.6758887556993145,
+        "roa_l1": 0.29827773421739745
+      },
+      "outcome_label": "Speculative share"
+    },
+    {
+      "outcome": "A_S",
+      "nobs": 5663,
+      "params": {
+        "treat_patent_mismatch_2022_x_2021": 0.4055964437430016,
+        "treat_patent_mismatch_2022_x_2023": 0.33137291671653285,
+        "treat_patent_mismatch_2022_x_2024": 0.48222439503067566,
+        "treat_patent_mismatch_2022_x_2025": 0.5906560484314772,
+        "ln_assets_l1": 0.12168344976419998,
+        "cash_l1": 0.0642960556639111,
+        "leverage_l1": -0.047505897487684,
+        "roa_l1": -0.010273706795775503
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_2021": 0.030811142114038088,
+        "treat_patent_mismatch_2022_x_2023": 0.031530491622450786,
+        "treat_patent_mismatch_2022_x_2024": 0.04162030517325173,
+        "treat_patent_mismatch_2022_x_2025": 0.042183200612899666,
+        "ln_assets_l1": 0.02151461258886582,
+        "cash_l1": 0.08188856591997225,
+        "leverage_l1": 0.058804350858566605,
+        "roa_l1": 0.01571912380440497
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_2021": 1.4148431436976295e-39,
+        "treat_patent_mismatch_2022_x_2023": 7.802214563700824e-26,
+        "treat_patent_mismatch_2022_x_2024": 4.837023218975124e-31,
+        "treat_patent_mismatch_2022_x_2025": 1.5119804981087745e-44,
+        "ln_assets_l1": 1.550756797333634e-08,
+        "cash_l1": 0.43235669167180224,
+        "leverage_l1": 0.41916907918317714,
+        "roa_l1": 0.513382356692561
+      },
+      "outcome_label": "A/S ratio"
+    },
+    {
+      "outcome": "PatentMismatch",
+      "nobs": 5663,
+      "params": {
+        "treat_patent_mismatch_2022_x_2021": -0.5531386396279228,
+        "treat_patent_mismatch_2022_x_2023": -0.4305397212256812,
+        "treat_patent_mismatch_2022_x_2024": -0.588393649782604,
+        "treat_patent_mismatch_2022_x_2025": -0.6887296125328073,
+        "ln_assets_l1": -0.012464464964916077,
+        "cash_l1": 0.11530591147756533,
+        "leverage_l1": -0.023580512984757402,
+        "roa_l1": 0.006609219317329288
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_2021": 0.030144651567118548,
+        "treat_patent_mismatch_2022_x_2023": 0.028404043246995435,
+        "treat_patent_mismatch_2022_x_2024": 0.032055987510559325,
+        "treat_patent_mismatch_2022_x_2025": 0.0340356429438041,
+        "ln_assets_l1": 0.012896370879085616,
+        "cash_l1": 0.04444354919388312,
+        "leverage_l1": 0.03783334165321021,
+        "roa_l1": 0.012531010976266459
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_2021": 3.332951655076277e-75,
+        "treat_patent_mismatch_2022_x_2023": 6.739700394475736e-52,
+        "treat_patent_mismatch_2022_x_2024": 3.0005166187313395e-75,
+        "treat_patent_mismatch_2022_x_2025": 4.7638001311553096e-91,
+        "ln_assets_l1": 0.33378929575040617,
+        "cash_l1": 0.009474645305656367,
+        "leverage_l1": 0.5331049180756147,
+        "roa_l1": 0.5978956688902165
+      },
+      "outcome_label": "PatentMismatch"
+    },
+    {
+      "outcome": "AI_Focus",
+      "nobs": 5663,
+      "params": {
+        "treat_patent_mismatch_2022_x_2021": 0.025847751467588737,
+        "treat_patent_mismatch_2022_x_2023": 0.011799632291010895,
+        "treat_patent_mismatch_2022_x_2024": -0.10075115387575985,
+        "treat_patent_mismatch_2022_x_2025": -0.08297467589412792,
+        "ln_assets_l1": 0.21335212163674225,
+        "cash_l1": 0.27529117714805634,
+        "leverage_l1": -0.11148173937588392,
+        "roa_l1": -0.014727397243681146
+      },
+      "bse": {
+        "treat_patent_mismatch_2022_x_2021": 0.04808988445484234,
+        "treat_patent_mismatch_2022_x_2023": 0.049454073903113994,
+        "treat_patent_mismatch_2022_x_2024": 0.07575351999395483,
+        "treat_patent_mismatch_2022_x_2025": 0.08197792715511036,
+        "ln_assets_l1": 0.03561698306276914,
+        "cash_l1": 0.12745341329976562,
+        "leverage_l1": 0.10982785923264783,
+        "roa_l1": 0.03318120720415938
+      },
+      "pvalues": {
+        "treat_patent_mismatch_2022_x_2021": 0.5909303469795013,
+        "treat_patent_mismatch_2022_x_2023": 0.8114174860045533,
+        "treat_patent_mismatch_2022_x_2024": 0.1835227412499908,
+        "treat_patent_mismatch_2022_x_2025": 0.3114621579132143,
+        "ln_assets_l1": 2.096095670783159e-09,
+        "cash_l1": 0.03077764781264122,
+        "leverage_l1": 0.31007778039396783,
+        "roa_l1": 0.6571528136260292
+      },
+      "outcome_label": "AI Focus"
+    }
+  ],
+  "outputs": {
+    "docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1.docx",
+    "latex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1.tex",
+    "csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1.csv",
+    "figure_png": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1.png",
+    "figure_pdf": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1.pdf",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1_writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1_result_notes.md",
+    "event_series_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_29_sec_ai_washing_enforcement_did/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/test_29_sec_ai_washing_enforcement_did_20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1_event_series.csv",
+    "markdown_preview": "| Panel | Outcome / treatment | Post-2024 DID | 2023 placebo | Outcome mean | Observations |\n| --- | --- | --- | --- | --- | --- |\n| Panel A. Enforcement-salience DID using mismatch exposure in 2022 |  |  |  |  |  |\n|  | Speculative share | -0.0839*** (0.0184) | -0.1224*** (0.0187) | 0.160 | 5663 |\n|  | A/S ratio | 0.2907*** (0.0345) | 0.3314*** (0.0315) | 0.939 | 5663 |\n|  | PatentMismatch | -0.3121*** (0.0288) | -0.4305*** (0.0284) | 0.261 | 5663 |\n|  | AI Focus | -0.1044 (0.0653) | 0.0118 (0.0495) | 1.850 | 5663 |\n| Panel B. Alternative exposure definitions on core disclosure outcomes |  |  |  |  |  |\n|  | LowCredibility in 2022 | -0.1215*** (0.0166) | 0.3368*** (0.0331) | -0.2606*** (0.0259) | 587 |\n|  | ApplicationMismatch in 2022 | -0.1042*** (0.0185) | 0.3155*** (0.0344) | -0.2634*** (0.0290) | 468 |\n"
+  }
+}

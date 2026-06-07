@@ -1,0 +1,29 @@
+\begin{table}[H]
+\centering
+\caption{Classifier-risk robustness: high-confidence mismatch tests}
+\label{tab:appendix_highconf_mismatch}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}cccc}
+\hline
+Variable & \multicolumn{4}{c}{Dependent variable: log(1 + AI patents at t+1)} \\
+ & Firm + year FE & Industry$\times$year FE & Firm + year FE, non-fin. & Firm + year FE, non-fin./non-util. \\
+ & (1) & (2) & (3) & (4) \\
+\hline
+AS ratio & 0.085* & 0.267*** & 0.087* & 0.087* \\
+ & (0.049) & (0.046) & (0.052) & (0.052) \\
+AS ratio $\times$ PatentMismatch & -0.065 & -0.408*** & -0.068 & -0.068 \\
+ & (0.040) & (0.054) & (0.042) & (0.042) \\
+Controls & \multicolumn{4}{c}{Y} \\
+Firm FE & Y & N & Y & Y \\
+Industry$\times$Year FE & N & Y & N & N \\
+Year FE & Y & N & Y & Y \\
+Non-fin. & N & N & Y & Y \\
+No util. & N & N & N & Y \\
+Adj. $R^2$ & -0.909 & 0.081 & -0.885 & -0.883 \\
+Observations & 2,810 & 2,810 & 2,632 & 2,630 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table reports mismatch-based robustness checks using high-confidence sentence classifications only. The purpose is to assess whether the main PatentMismatch patterns remain when the disclosure layer is restricted to the most confidently classified sentences. *, **, and *** denote significance at the 10\%, 5\%, and 1\% levels, respectively.}
+\end{table}

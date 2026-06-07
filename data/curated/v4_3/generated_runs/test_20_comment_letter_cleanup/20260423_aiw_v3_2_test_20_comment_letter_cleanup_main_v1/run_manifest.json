@@ -1,0 +1,395 @@
+{
+  "test_id": "test_20_comment_letter_cleanup",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.test_20_comment_letter_cleanup",
+  "run_id": "20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1",
+  "run_timestamp_utc": "2026-04-23T17:21:56.697237+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet",
+    "event_panel": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_19_sec_comment_letter_scrutiny/20260423_aiw_v3_2_test_19_sec_comment_letter_scrutiny_main_v1/comment_letter_event_panel.parquet"
+  },
+  "sample_summaries": {
+    "any_comment": {
+      "event_firms": 1001,
+      "active_firms": 70,
+      "sample_rows": 330
+    },
+    "ai_comment_broad": {
+      "event_firms": 14,
+      "active_firms": 11,
+      "sample_rows": 52
+    }
+  },
+  "paper_outputs": {
+    "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/docx/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.docx",
+    "table_tex": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/latex/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.tex",
+    "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/tables/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.csv",
+    "event_means_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/tables/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1_event_means.csv",
+    "figure_png": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/figures/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.png",
+    "figure_pdf": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/figures/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.pdf",
+    "writer_packet": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/writer_packets/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.md",
+    "result_notes": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_2/snippets/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1_result_notes.md"
+  },
+  "local_outputs": {
+    "table_docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.docx",
+    "table_tex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.tex",
+    "table_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.csv",
+    "event_means_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1_event_means.csv",
+    "figure_png": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1.png",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1_writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_2/test_runs/test_20_comment_letter_cleanup/20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1/test_20_comment_letter_cleanup_20260423_aiw_v3_2_test_20_comment_letter_cleanup_main_v1_result_notes.md"
+  },
+  "results": [
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": -2,
+      "coef": -0.1799147440921855,
+      "se": 0.051875664247409935,
+      "p_value": 0.0009667743634963956,
+      "n_pairs": 62,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 0,
+      "coef": -0.047576415062148894,
+      "se": 0.030417713714106693,
+      "p_value": 0.12236866662796743,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 1,
+      "coef": -0.062082002378660586,
+      "se": 0.04073309171903747,
+      "p_value": 0.13204997498642898,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 2,
+      "coef": -0.10507336026278546,
+      "se": 0.04565007081077271,
+      "p_value": 0.025026822880224914,
+      "n_pairs": 58,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": -2,
+      "coef": -0.17678965997226942,
+      "se": 0.06438191256574798,
+      "p_value": 0.007918026147682796,
+      "n_pairs": 62,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 0,
+      "coef": 0.04656835659223053,
+      "se": 0.059928289639503154,
+      "p_value": 0.4397746319931327,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 1,
+      "coef": 0.17963662069672184,
+      "se": 0.06513004343918072,
+      "p_value": 0.007435116372476816,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 2,
+      "coef": 0.22132138525483333,
+      "se": 0.1048964728895635,
+      "p_value": 0.0392686730784035,
+      "n_pairs": 58,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": -2,
+      "coef": -0.1935483870967742,
+      "se": 0.06836733797553561,
+      "p_value": 0.006276122907158392,
+      "n_pairs": 62,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 0,
+      "coef": -0.04285714285714286,
+      "se": 0.05162259237750497,
+      "p_value": 0.40928827662157646,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 1,
+      "coef": -0.11428571428571428,
+      "se": 0.0628609070960214,
+      "p_value": 0.07339378046295375,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 2,
+      "coef": -0.1206896551724138,
+      "se": 0.06990437772229151,
+      "p_value": 0.08967490663302226,
+      "n_pairs": 58,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": -2,
+      "coef": -0.597666714962448,
+      "se": 0.09200375444511248,
+      "p_value": 1.6889317965675448e-08,
+      "n_pairs": 62,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 0,
+      "coef": 0.19927247341466975,
+      "se": 0.0794097200574585,
+      "p_value": 0.014444239993002891,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 1,
+      "coef": 0.5343929158801265,
+      "se": 0.09637426817698987,
+      "p_value": 5.03468403380249e-07,
+      "n_pairs": 70,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel A. First SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 2,
+      "coef": 0.5573946992343741,
+      "se": 0.14088511437349788,
+      "p_value": 0.00021305673167184452,
+      "n_pairs": 58,
+      "short_label": "Any SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": -2,
+      "coef": -0.009721528471528467,
+      "se": 0.0749812047126635,
+      "p_value": 0.8994118939417362,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 0,
+      "coef": 0.024117182607748644,
+      "se": 0.05433448752173276,
+      "p_value": 0.6665903065718208,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 1,
+      "coef": 0.1359550117859543,
+      "se": 0.1033622532591286,
+      "p_value": 0.2177601637874379,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "SpecShare",
+      "outcome_label": "Speculative share",
+      "event_time": 2,
+      "coef": 0.06968849963435535,
+      "se": 0.13689501370553017,
+      "p_value": 0.6263563589907059,
+      "n_pairs": 8,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": -2,
+      "coef": -0.1433742378362746,
+      "se": 0.11710132057258059,
+      "p_value": 0.24887712499989467,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 0,
+      "coef": 0.18833560999949392,
+      "se": 0.12128309016765751,
+      "p_value": 0.15150576521420633,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 1,
+      "coef": -0.005390972119293927,
+      "se": 0.18423615770445073,
+      "p_value": 0.9772320129575381,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "A_S",
+      "outcome_label": "A/S ratio",
+      "event_time": 2,
+      "coef": 0.17673243752993195,
+      "se": 0.21222485361625976,
+      "p_value": 0.43247053605380537,
+      "n_pairs": 8,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": -2,
+      "coef": -0.09090909090909091,
+      "se": 0.21125363706585912,
+      "p_value": 0.6760811849183088,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 0,
+      "coef": 0.09090909090909091,
+      "se": 0.09090909090909091,
+      "p_value": 0.34089313230205975,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 1,
+      "coef": 0.2727272727272727,
+      "se": 0.14083575804390608,
+      "p_value": 0.08155339870160576,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "PatentMismatch",
+      "outcome_label": "PatentMismatch",
+      "event_time": 2,
+      "coef": 0.125,
+      "se": 0.2265817417937414,
+      "p_value": 0.5983311559987461,
+      "n_pairs": 8,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": -2,
+      "coef": -0.41436206789032853,
+      "se": 0.13673406766230922,
+      "p_value": 0.012667987848239982,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 0,
+      "coef": 0.6666352840764583,
+      "se": 0.13026501516874295,
+      "p_value": 0.0004523137726001807,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 1,
+      "coef": 0.8162435150851252,
+      "se": 0.3075618602746706,
+      "p_value": 0.02415015581119174,
+      "n_pairs": 11,
+      "short_label": "AI-related SEC comment"
+    },
+    {
+      "panel": "Panel B. First AI-related SEC comment letter (active AI disclosers)",
+      "outcome": "AI_Focus",
+      "outcome_label": "AI Focus",
+      "event_time": 2,
+      "coef": 1.184338817585005,
+      "se": 0.3764389877406799,
+      "p_value": 0.01623878858171557,
+      "n_pairs": 8,
+      "short_label": "AI-related SEC comment"
+    }
+  ]
+}

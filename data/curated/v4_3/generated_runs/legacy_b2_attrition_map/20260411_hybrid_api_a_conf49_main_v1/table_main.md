@@ -1,0 +1,30 @@
+# Table Main
+
+## Panel A. Expanded annual ever-speaker panel
+| Empirical block | N | Share of parent | Main reason for shrinkage |
+| --- | --- | --- | --- |
+| Expanded ever-speaker backbone | 50840 | 100.0% of annual panel | 5,084 unique firms across 2016-2025. |
+| AI-talking firm-years | 13777 | 27.1% of annual panel | Disclosure-composition and PatentMismatch are economically meaningful here. |
+| Rows with core annual controls | 31006 | 61.0% of annual panel | Requires ln assets, leverage, cash, capx/assets, and ROA. |
+| Rows with R&D/assets | 17934 | 35.3% of annual panel | Most restrictive accounting variable in the annual panel. |
+| Rows with CRSP market-cap linkage | 23747 | 46.7% of annual panel | Needed for valuation and financing tests. |
+| Rows with next-year share growth | 20391 | 40.1% of annual panel | Requires current and next-year shares outstanding. |
+| Non-big rows inside market-linked sample | 11876 | 50.0% of market-linked rows | Matched-sample yearly median market-cap split used in the non-big refinement. |
+
+## Panel B. Filing-event backbone
+| Empirical block | N | Share of parent | Main reason for shrinkage |
+| --- | --- | --- | --- |
+| Filing-event estimation sample | 7355 | 100.0% of event sample | Annual 10-K filing events with matched daily return histories. |
+| CAR[-1,+2] complete | 7344 | 99.9% of event sample | Immediate filing-window CAR sample after daily-return matching. |
+| BHAR[+2,+21] complete | 7274 | 98.9% of event sample | Requires one trading month of post-filing returns. |
+| BHAR[+2,+63] complete | 7108 | 96.6% of event sample | Three-month horizon drops later-sample filings mechanically. |
+| BHAR[+2,+126] complete | 6845 | 93.1% of event sample | Six-month horizon drops more late-sample filings. |
+| BHAR[+2,+252] complete | 4774 | 64.9% of event sample | One-year horizon is the main event-study attrition screen. |
+
+## Panel C. Baseline cross-section for legacy determinants
+| Empirical block | N | Share of parent | Main reason for shrinkage |
+| --- | --- | --- | --- |
+| 2016 ever-speaker baseline | 5084 | 100.0% of baseline cross-section | One row per ever-speaker firm in 2016. |
+| 2016 rows with core controls | 2652 | 52.2% of baseline cross-section | Baseline multivariate sample with basic accounting controls present. |
+| 2016 rows with R&D/assets | 1466 | 28.8% of baseline cross-section | Primary pinch point for the fuller determinants appendix tables. |
+| 2016 rows with employment | 2479 | 48.8% of baseline cross-section | Second major source of legacy cross-sectional shrinkage. |

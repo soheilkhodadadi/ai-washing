@@ -1,0 +1,24 @@
+\begin{table}[H]
+\centering
+\caption{AI disclosure intensity and AI patent timing}
+\label{tab:appendix_aifocus_timing}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}ccccc}
+\hline
+Variable & \multicolumn{5}{c}{Dependent variable: log(1 + AI patents)} \\
+ & $t{-}2$ & $t{-}1$ & t & $t{+}1$ & $t{+}2$ \\
+ & (1) & (2) & (3) & (4) & (5) \\
+\hline
+AI Focus & 0.044*** & 0.054*** & 0.061*** & 0.045*** & 0.012** \\
+ & (0.007) & (0.008) & (0.008) & (0.007) & (0.005) \\
+Controls & \multicolumn{5}{c}{Y} \\
+Firm FE & \multicolumn{5}{c}{Y} \\
+Year FE & \multicolumn{5}{c}{Y} \\
+Adj. R\textsuperscript{2} & -0.150 & -0.142 & -0.133 & -0.152 & -0.171 \\
+Observations & \multicolumn{5}{c}{14,968} \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table presents annual panel regressions relating broad AI disclosure intensity to AI patent timing at horizons from $t{-}2$ through $t{+}2$. It provides the broad-intensity validation backbone that complements the composition-based evidence emphasized in the main text. *, **, and *** denote significance at the 10\%, 5\%, and 1\% levels, respectively.}
+\end{table}

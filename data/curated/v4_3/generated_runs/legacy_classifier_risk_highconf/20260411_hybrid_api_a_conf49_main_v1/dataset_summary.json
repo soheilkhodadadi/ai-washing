@@ -1,0 +1,19 @@
+{
+  "test_id": "legacy_classifier_risk_highconf",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T21:40:58.158890+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet",
+    "filing_measures": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/interim/market/filing_ai_measures_hybrid_api_a_conf49_v1.csv"
+  },
+  "summary": {
+    "panel_rows_total": 50840,
+    "matched_filing_years": 13121,
+    "all_local_year_rows": 7287,
+    "all_local_row_share": 0.14333202202989773,
+    "ai_talking_rows_total": 13777,
+    "ai_talking_all_local_rows": 7287,
+    "ai_talking_all_local_share": 0.5289250199608042,
+    "policy_low_confidence_threshold": 0.49
+  }
+}

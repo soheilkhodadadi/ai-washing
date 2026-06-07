@@ -1,0 +1,19 @@
+{
+  "run_id": "RUN_20260509_171724_DEFENSE_AI_WASHING_D1C_RELEASE_AUDIT",
+  "created_local": "2026-05-09 17:18:40 PDT",
+  "purpose": "D1C narrow release audit for AI washing defense-readiness path",
+  "input_latex_dir": "/Users/soheilkhodadadi/DataWork/rubric/rubric4/03_active_papers/ai_washing/working/ai_washing_phase1_baseline_20260509_152622/latex",
+  "output_pdf": "/Users/soheilkhodadadi/DataWork/rubric/rubric4/03_active_papers/ai_washing/runs/RUN_20260509_171724_DEFENSE_AI_WASHING_D1C_RELEASE_AUDIT/ai_washing_thomas_ready_d1c.pdf",
+  "pdf_sha256": "7d1c8161c69872002e7b44c3f69de20b34d5d02555f9dca2c8c17e356bc3ebb9",
+  "artifacts": [
+    "ai_washing_thomas_ready_d1c.pdf",
+    "ai_washing_thomas_ready_d1c.sha256",
+    "final_validation.md",
+    "issue_log.csv",
+    "pdf_text_extract.txt",
+    "rendered_checks",
+    "rubric3_high_risk_crosswalk.md",
+    "thomas_status_memo.md"
+  ],
+  "decision": "AI washing cleared for defense-clean handoff; move active work to Sinclair."
+}

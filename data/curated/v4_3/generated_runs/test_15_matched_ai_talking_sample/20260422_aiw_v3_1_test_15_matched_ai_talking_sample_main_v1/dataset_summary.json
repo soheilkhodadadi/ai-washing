@@ -1,0 +1,312 @@
+{
+  "test_id": "test_15_matched_ai_talking_sample",
+  "run_id": "20260422_aiw_v3_1_test_15_matched_ai_talking_sample_main_v1",
+  "created_at_utc": "2026-04-23T02:20:37.822102+00:00",
+  "inputs": {
+    "event_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/filing_event_estimation_sample_hybrid_api_a_conf49_v1.parquet",
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "sample_summary": {
+    "ai_filing_rows": 6861,
+    "unique_firms": 2604,
+    "filing_year_min": 2017,
+    "filing_year_max": 2024,
+    "mismatch_share": 0.3342078414225332
+  },
+  "match_summary": {
+    "matched_pairs": 1297,
+    "matched_treated_share": 0.5656345399040559,
+    "median_match_distance": 0.8573431838115513,
+    "median_matches_per_cell": 3.0,
+    "match_caliper": 1.5
+  },
+  "balance_rows": [
+    {
+      "row_label": "log(Market Cap, t-1)",
+      "pre_treated_mean": 14.11171892353687,
+      "pre_control_mean": 14.17279570125521,
+      "pre_smd": -0.02506362015253291,
+      "matched_treated_mean": 14.198629290002225,
+      "matched_control_mean": 14.239105905900594,
+      "matched_smd": -0.016773185975142775
+    },
+    {
+      "row_label": "Annual BHAR, t-1",
+      "pre_treated_mean": -0.06593256866792138,
+      "pre_control_mean": -0.06518041652080396,
+      "pre_smd": -0.0012164639873522194,
+      "matched_treated_mean": -0.12321262648648396,
+      "matched_control_mean": -0.12381922860058579,
+      "matched_smd": 0.001378033474584014
+    },
+    {
+      "row_label": "Annual Return, t-1",
+      "pre_treated_mean": 0.07994069431935028,
+      "pre_control_mean": 0.06544396021185327,
+      "pre_smd": 0.019434780173644788,
+      "matched_treated_mean": 0.004906626688211722,
+      "matched_control_mean": 0.005362021231967633,
+      "matched_smd": -0.0008382333333552567
+    },
+    {
+      "row_label": "ln(Assets)",
+      "pre_treated_mean": 7.247867975859358,
+      "pre_control_mean": 7.094868422327502,
+      "pre_smd": 0.0627797738318059,
+      "matched_treated_mean": 7.1638587293742075,
+      "matched_control_mean": 7.1290590294001515,
+      "matched_smd": 0.01476207603952592
+    },
+    {
+      "row_label": "Leverage",
+      "pre_treated_mean": 0.266990702414078,
+      "pre_control_mean": 0.29312772521045466,
+      "pre_smd": -0.06949384927416202,
+      "matched_treated_mean": 0.24565142851071245,
+      "matched_control_mean": 0.24166882799691713,
+      "matched_smd": 0.018607191752936625
+    },
+    {
+      "row_label": "Cash/Assets",
+      "pre_treated_mean": 0.27068118708045585,
+      "pre_control_mean": 0.2763470922562809,
+      "pre_smd": -0.021445199115971654,
+      "matched_treated_mean": 0.2822175455537634,
+      "matched_control_mean": 0.2888405579791037,
+      "matched_smd": -0.02456155621328641
+    },
+    {
+      "row_label": "ROA",
+      "pre_treated_mean": -0.22021571982357205,
+      "pre_control_mean": -0.18433527239501304,
+      "pre_smd": -0.021531467909085885,
+      "matched_treated_mean": -0.1383008700134501,
+      "matched_control_mean": -0.1371033636483247,
+      "matched_smd": -0.0030430246003457207
+    }
+  ],
+  "outcome_rows": [
+    {
+      "row_label": "CAR[-1,+1]",
+      "treated_mean": 0.0015612341576506969,
+      "control_mean": 0.0005502542503863991,
+      "diff_treat_minus_control": 0.001010979907264297,
+      "p_value": 0.811973506582755,
+      "se_diff": 0.004249074190387006,
+      "n_pairs": 1294
+    },
+    {
+      "row_label": "BHAR[+2,+21]",
+      "treated_mean": -0.030741531867103086,
+      "control_mean": -0.025814704621724558,
+      "diff_treat_minus_control": -0.00492682724537853,
+      "p_value": 0.48408329629244684,
+      "se_diff": 0.0070387706137257835,
+      "n_pairs": 1270
+    },
+    {
+      "row_label": "BHAR[+2,+63]",
+      "treated_mean": -0.051316791747132114,
+      "control_mean": -0.047742149330851545,
+      "diff_treat_minus_control": -0.0035746424162805654,
+      "p_value": 0.7550663971385676,
+      "se_diff": 0.011455844215540885,
+      "n_pairs": 1213
+    },
+    {
+      "row_label": "BHAR[+2,+126]",
+      "treated_mean": -0.0714533728035126,
+      "control_mean": -0.08137601233200324,
+      "diff_treat_minus_control": 0.00992263952849064,
+      "p_value": 0.5637448493296979,
+      "se_diff": 0.017183251519587318,
+      "n_pairs": 1121
+    },
+    {
+      "row_label": "BHAR[+2,+252]",
+      "treated_mean": -0.0648346945783285,
+      "control_mean": -0.08395737447825319,
+      "diff_treat_minus_control": 0.0191226798999247,
+      "p_value": 0.522834825851236,
+      "se_diff": 0.029911555772215746,
+      "n_pairs": 692
+    }
+  ],
+  "pairs_head": [
+    {
+      "treated_id": "8d49535b64dde298",
+      "control_id": "8a35330165b06991",
+      "filing_year": 2017,
+      "sic2": 36,
+      "match_distance": 1.40779472618621
+    },
+    {
+      "treated_id": "0cb682ceaa1f93b8",
+      "control_id": "a2f9a5498878b200",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 0.996177188350493
+    },
+    {
+      "treated_id": "0e663afc85e70429",
+      "control_id": "2217a0d7624cebf7",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 1.1470811040880444
+    },
+    {
+      "treated_id": "3229adfdfcb8646e",
+      "control_id": "12c4c686454b8238",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 1.0977937781127023
+    },
+    {
+      "treated_id": "40db35072a212b40",
+      "control_id": "4fafbd58c98467d7",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 1.2100084252525818
+    },
+    {
+      "treated_id": "a76216e08c781c8a",
+      "control_id": "73f226acd22b6020",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 1.0837068312726406
+    },
+    {
+      "treated_id": "c447d6abb98925e5",
+      "control_id": "9f9108b70cde7e3c",
+      "filing_year": 2017,
+      "sic2": 73,
+      "match_distance": 1.4734133989667724
+    },
+    {
+      "treated_id": "65deaa579b8306dc",
+      "control_id": "e59b29bb1b049fa1",
+      "filing_year": 2018,
+      "sic2": 28,
+      "match_distance": 1.0342186173244814
+    },
+    {
+      "treated_id": "8422580532cecc88",
+      "control_id": "0637afbb1dc0de48",
+      "filing_year": 2018,
+      "sic2": 28,
+      "match_distance": 0.43832223284306115
+    },
+    {
+      "treated_id": "adb2b1bde1aa7c42",
+      "control_id": "cdd62dd45b1faac6",
+      "filing_year": 2018,
+      "sic2": 35,
+      "match_distance": 1.280402494101922
+    },
+    {
+      "treated_id": "244c2b6d0550c6ad",
+      "control_id": "a87a37fbf55c04b5",
+      "filing_year": 2018,
+      "sic2": 36,
+      "match_distance": 0.8227127704158278
+    },
+    {
+      "treated_id": "27f75cb5df82fe9e",
+      "control_id": "8457119dac618afc",
+      "filing_year": 2018,
+      "sic2": 36,
+      "match_distance": 1.1694038672335574
+    },
+    {
+      "treated_id": "55fe1aa29946897e",
+      "control_id": "d158810d55975cb9",
+      "filing_year": 2018,
+      "sic2": 36,
+      "match_distance": 0.7898798288123187
+    },
+    {
+      "treated_id": "c1eb74b4f0ce91c3",
+      "control_id": "efedba2d58cc236a",
+      "filing_year": 2018,
+      "sic2": 36,
+      "match_distance": 1.1660756096475982
+    },
+    {
+      "treated_id": "fbb5e8e008d2aae3",
+      "control_id": "e4d7058fd536d1d1",
+      "filing_year": 2018,
+      "sic2": 38,
+      "match_distance": 1.3313649066189788
+    },
+    {
+      "treated_id": "3b4b4d74ae431bf0",
+      "control_id": "780af328dc627387",
+      "filing_year": 2018,
+      "sic2": 61,
+      "match_distance": 0.26964960946392114
+    },
+    {
+      "treated_id": "0269b9d388bb6731",
+      "control_id": "e5fda188111f04c3",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 0.8740975127484604
+    },
+    {
+      "treated_id": "068f358e6399652b",
+      "control_id": "cc9c896f002eb2ce",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 1.0270903683913999
+    },
+    {
+      "treated_id": "12f85426529c3ec3",
+      "control_id": "3be49632e94d631c",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 1.2680077877114602
+    },
+    {
+      "treated_id": "15a249546c4b79e4",
+      "control_id": "bfcce799387ea8b0",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 0.6057044135293839
+    },
+    {
+      "treated_id": "216ad32da314fe6f",
+      "control_id": "ae1266290ccac9b1",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 0.5266900371598552
+    },
+    {
+      "treated_id": "36fa8349a18b399e",
+      "control_id": "ffadce0cfa630420",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 1.1273500533853382
+    },
+    {
+      "treated_id": "3a070dae53a8d4e7",
+      "control_id": "40164fa75d794aaf",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 1.0090832981604536
+    },
+    {
+      "treated_id": "3c1fb00c149b0d03",
+      "control_id": "28bb09a7e026f168",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 0.7139964658350356
+    },
+    {
+      "treated_id": "3f82e8a268123633",
+      "control_id": "b74ef09b7ae835ab",
+      "filing_year": 2018,
+      "sic2": 73,
+      "match_distance": 0.7132297678992287
+    }
+  ]
+}

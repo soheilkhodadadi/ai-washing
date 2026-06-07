@@ -1,0 +1,368 @@
+{
+  "test_id": "test_13_pre_post_event_path",
+  "run_id": "20260422_aiw_v3_1_test_13_pre_post_event_path_main_v1",
+  "created_at_utc": "2026-04-23T01:54:28.370587+00:00",
+  "inputs": {
+    "event_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/filing_event_estimation_sample_hybrid_api_a_conf49_v1.parquet",
+    "monthly_returns": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/interim/market/wrds_crsp_msf_full_sample_v1.parquet",
+    "monthly_market": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/interim/market/wrds_crsp_msi_full_sample_v1.parquet",
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "sample_summary": {
+    "ai_filing_rows": 7355,
+    "balanced_filing_rows": 4222,
+    "balanced_unique_firms": 1544,
+    "window_min": -12,
+    "window_max": 12,
+    "balanced_mismatch_share": 0.2851729038370441
+  },
+  "window_table": [
+    {
+      "panel": "Pre-filing windows",
+      "window_label": "BHAR[-12,-2]",
+      "mean_mismatch": 0.006834651150679708,
+      "mean_non_mismatch": 0.009311204832498756,
+      "diff_mismatch_minus_non": -0.0024765536818190477,
+      "p_value": 0.9472275106318673,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Pre-filing windows",
+      "window_label": "BHAR[-6,-2]",
+      "mean_mismatch": -0.016464900105381708,
+      "mean_non_mismatch": -0.012763210761312746,
+      "diff_mismatch_minus_non": -0.003701689344068962,
+      "p_value": 0.8157035204474595,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Pre-filing windows",
+      "window_label": "BHAR[-3,-1]",
+      "mean_mismatch": 0.025881878035686392,
+      "mean_non_mismatch": 0.027586637458068792,
+      "diff_mismatch_minus_non": -0.0017047594223824,
+      "p_value": 0.9086126930572995,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Filing and post-filing windows",
+      "window_label": "BHAR[0,0]",
+      "mean_mismatch": -0.0037900116279069545,
+      "mean_non_mismatch": -0.01206752451954935,
+      "diff_mismatch_minus_non": 0.008277512891642394,
+      "p_value": 0.3143392104860307,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Filing and post-filing windows",
+      "window_label": "BHAR[+1,+3]",
+      "mean_mismatch": -0.03260484358651409,
+      "mean_non_mismatch": -0.019843026639809306,
+      "diff_mismatch_minus_non": -0.012761816946704783,
+      "p_value": 0.28837663244754347,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Filing and post-filing windows",
+      "window_label": "BHAR[+1,+6]",
+      "mean_mismatch": -0.03993870832690935,
+      "mean_non_mismatch": -0.05410790503156453,
+      "diff_mismatch_minus_non": 0.014169196704655176,
+      "p_value": 0.3936387291319941,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    },
+    {
+      "panel": "Filing and post-filing windows",
+      "window_label": "BHAR[+1,+12]",
+      "mean_mismatch": 0.06615630171465767,
+      "mean_non_mismatch": -0.05311728379609741,
+      "diff_mismatch_minus_non": 0.11927358551075508,
+      "p_value": 0.1993418317058504,
+      "n_mismatch": 1204,
+      "n_non_mismatch": 3018
+    }
+  ],
+  "event_path_snapshot": [
+    {
+      "rel_month": -12,
+      "diff_mismatch_minus_non": 0.0015002337613301323,
+      "se_diff": 0.0060537647635006036,
+      "ci_low": -0.01036514517513105,
+      "ci_high": 0.013365612697791315,
+      "mean_non_mismatch": -0.004870172299536093,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.0033699385382059605,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -11,
+      "diff_mismatch_minus_non": 0.006484944600062884,
+      "se_diff": 0.008104189160119065,
+      "ci_low": -0.009399266153770482,
+      "ci_high": 0.02236915535389625,
+      "mean_non_mismatch": -0.01895424488496151,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.012469300284898625,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -10,
+      "diff_mismatch_minus_non": 0.009965156073434105,
+      "se_diff": 0.010536638447313668,
+      "ci_low": -0.010686655283300685,
+      "ci_high": 0.030616967430168895,
+      "mean_non_mismatch": -0.02367305533562901,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.013707899262194904,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -9,
+      "diff_mismatch_minus_non": 0.013441843975657262,
+      "se_diff": 0.012764759550005307,
+      "ci_low": -0.011577084742353139,
+      "ci_high": 0.03846077269366766,
+      "mean_non_mismatch": -0.01865271749646907,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.005210873520811808,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -8,
+      "diff_mismatch_minus_non": 0.008070921662385797,
+      "se_diff": 0.0145505303821097,
+      "ci_low": -0.020448117886549214,
+      "ci_high": 0.03658996121132081,
+      "mean_non_mismatch": -0.020999894946321884,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.012928973283936086,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -7,
+      "diff_mismatch_minus_non": 0.004542501717813547,
+      "se_diff": 0.015079144081140495,
+      "ci_low": -0.02501262068122182,
+      "ci_high": 0.03409762411684892,
+      "mean_non_mismatch": -0.019437412793764344,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.014894911075950796,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -6,
+      "diff_mismatch_minus_non": -0.0015277243964104646,
+      "se_diff": 0.015418138534516825,
+      "ci_low": -0.03174727592406344,
+      "ci_high": 0.02869182713124251,
+      "mean_non_mismatch": -0.021712154464495488,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.023239878860905953,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -5,
+      "diff_mismatch_minus_non": -0.005760444166991209,
+      "se_diff": 0.01655344333985527,
+      "ci_low": -0.038205193113107536,
+      "ci_high": 0.026684304779125118,
+      "mean_non_mismatch": -0.028343582027967183,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.03410402619495839,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -4,
+      "diff_mismatch_minus_non": -0.006487266463883416,
+      "se_diff": 0.021772412521395525,
+      "ci_low": -0.04916119500581864,
+      "ci_high": 0.03618666207805181,
+      "mean_non_mismatch": -0.028994052573316588,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.035481319037200004,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -3,
+      "diff_mismatch_minus_non": -0.0015776149937444042,
+      "se_diff": 0.02640823537201409,
+      "ci_low": -0.05333775632289202,
+      "ci_high": 0.05018252633540321,
+      "mean_non_mismatch": -0.019024097136392748,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.020601712130137152,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -2,
+      "diff_mismatch_minus_non": -0.0024765536818190477,
+      "se_diff": 0.03741339915282421,
+      "ci_low": -0.0758068160213545,
+      "ci_high": 0.0708537086577164,
+      "mean_non_mismatch": 0.009311204832498757,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": 0.00683465115067971,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": -1,
+      "diff_mismatch_minus_non": -0.022201376483255285,
+      "se_diff": 0.041108934874134896,
+      "ci_low": -0.10277488883655969,
+      "ci_high": 0.058372135870049115,
+      "mean_non_mismatch": 0.03509390223022002,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": 0.012892525746964737,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 0,
+      "diff_mismatch_minus_non": -0.022998872291669803,
+      "se_diff": 0.03982777378183755,
+      "ci_low": -0.1010613089040714,
+      "ci_high": 0.0550635643207318,
+      "mean_non_mismatch": 0.02196538258349106,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.0010334897081787447,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 1,
+      "diff_mismatch_minus_non": -0.019520923941236445,
+      "se_diff": 0.034101045024482586,
+      "ci_low": -0.08635897218922231,
+      "ci_high": 0.04731712430674942,
+      "mean_non_mismatch": -0.0074348241553175015,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.026955748096553947,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 2,
+      "diff_mismatch_minus_non": -0.03332146909020433,
+      "se_diff": 0.03539907514311005,
+      "ci_low": -0.10270365637070003,
+      "ci_high": 0.036060718190291365,
+      "mean_non_mismatch": -0.008561314762053296,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.041882783852257625,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 3,
+      "diff_mismatch_minus_non": -0.04076357660501949,
+      "se_diff": 0.03612403433875343,
+      "ci_low": -0.1115666839089762,
+      "ci_high": 0.030039530698937222,
+      "mean_non_mismatch": -0.0001681128140376361,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04093168941905712,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 4,
+      "diff_mismatch_minus_non": -0.0339220590830266,
+      "se_diff": 0.03498815165180568,
+      "ci_low": -0.10249883632056572,
+      "ci_high": 0.034654718154512536,
+      "mean_non_mismatch": -0.015061409372906913,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04898346845593351,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 5,
+      "diff_mismatch_minus_non": -0.016279573321099652,
+      "se_diff": 0.0362203219548587,
+      "ci_low": -0.0872714043526227,
+      "ci_high": 0.0547122577104234,
+      "mean_non_mismatch": -0.025740453546358642,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.042020026867458295,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 6,
+      "diff_mismatch_minus_non": -0.009165958450257094,
+      "se_diff": 0.03556829794042432,
+      "ci_low": -0.07887982241348876,
+      "ci_high": 0.060547905512974565,
+      "mean_non_mismatch": -0.031040016468595225,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04020597491885232,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 7,
+      "diff_mismatch_minus_non": 0.0010395708552263863,
+      "se_diff": 0.03652579882559999,
+      "ci_low": -0.0705509948429496,
+      "ci_high": 0.07263013655340236,
+      "mean_non_mismatch": -0.04812742615155415,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.047087855296327766,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 8,
+      "diff_mismatch_minus_non": 0.002862487628612298,
+      "se_diff": 0.03405735274725274,
+      "ci_low": -0.06388992375600307,
+      "ci_high": 0.06961489901322766,
+      "mean_non_mismatch": -0.06866671637983732,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.06580422875122502,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 9,
+      "diff_mismatch_minus_non": 0.024445861020135205,
+      "se_diff": 0.03777464437536824,
+      "ci_low": -0.04959244195558655,
+      "ci_high": 0.09848416399585697,
+      "mean_non_mismatch": -0.07407010433617475,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04962424331603955,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 10,
+      "diff_mismatch_minus_non": 0.022449567015567017,
+      "se_diff": 0.037035516687324535,
+      "ci_low": -0.050140045691589065,
+      "ci_high": 0.0950391797227231,
+      "mean_non_mismatch": -0.07487822869183974,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.05242866167627273,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 11,
+      "diff_mismatch_minus_non": 0.023100087006547802,
+      "se_diff": 0.03927712202497157,
+      "ci_low": -0.05388307216239648,
+      "ci_high": 0.10008324617549208,
+      "mean_non_mismatch": -0.07182736977658423,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04872728277003643,
+      "n_mismatch": 1204
+    },
+    {
+      "rel_month": 12,
+      "diff_mismatch_minus_non": 0.03846160998456146,
+      "se_diff": 0.041479061876178135,
+      "ci_low": -0.042837351292747676,
+      "ci_high": 0.11976057126187059,
+      "mean_non_mismatch": -0.08477427059126098,
+      "n_non_mismatch": 3018,
+      "mean_mismatch": -0.04631266060669952,
+      "n_mismatch": 1204
+    }
+  ]
+}

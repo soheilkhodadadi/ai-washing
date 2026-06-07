@@ -1,0 +1,519 @@
+"""Build standalone delivery-phase figures and review DOCX wrappers."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt
+from semantic_ai_washing.analysis.delivery_table_payloads import (
+    _add_patent_mismatch,
+    _fit_absorbed_ols,
+    load_panel,
+)
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_PANEL = "data/processed/panel/panel_ai_patents_controls_ever_speaker_2016_2024_v1.csv"
+DEFAULT_REG_READY_PANEL = "data/processed/panel/panel_reg_ready_ever_speaker_2016_2024_v1.csv"
+DEFAULT_FIG_DIR = "output/figures/delivery_figures_v1"
+DEFAULT_DOC_DIR = "output/doc/delivery_figures_v1"
+
+
+def _set_doc_defaults(document: Document) -> None:
+    section = document.sections[0]
+    section.top_margin = Inches(0.75)
+    section.bottom_margin = Inches(0.75)
+    section.left_margin = Inches(0.75)
+    section.right_margin = Inches(0.75)
+    style = document.styles["Normal"]
+    style.font.name = "Times New Roman"
+    style._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    style.font.size = Pt(11)
+
+
+def _add_title(document: Document, text: str) -> None:
+    p = document.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_after = Pt(8)
+    r = p.add_run(text)
+    r.font.name = "Times New Roman"
+    r._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    r.font.size = Pt(16)
+    r.bold = True
+
+
+def _add_note(document: Document, text: str) -> None:
+    p = document.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    p.paragraph_format.space_after = Pt(10)
+    r = p.add_run(text)
+    r.font.name = "Times New Roman"
+    r._element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
+    r.font.size = Pt(11)
+
+
+def _save_figure_docx(title: str, note: str, image_path: Path, output_path: Path) -> None:
+    doc = Document()
+    _set_doc_defaults(doc)
+    _add_title(doc, title)
+    _add_note(doc, note)
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.add_run().add_picture(str(image_path), width=Inches(6.6))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(str(output_path))
+
+
+def _base_style() -> None:
+    plt.style.use("seaborn-v0_8-whitegrid")
+    plt.rcParams.update(
+        {
+            "font.family": "serif",
+            "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
+            "axes.titlesize": 14,
+            "axes.labelsize": 11,
+            "xtick.labelsize": 10,
+            "ytick.labelsize": 10,
+            "legend.fontsize": 10,
+        }
+    )
+
+
+def _style_axes(ax) -> None:
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.grid(True, axis="y", color="#d9d9d9", linewidth=0.7)
+    ax.grid(False, axis="x")
+
+
+def _load_merged_panel(panel_path: str | Path) -> pd.DataFrame:
+    return pd.read_csv(panel_path, low_memory=False)
+
+
+def _sector_bucket_from_sic2(series: pd.Series) -> pd.Series:
+    sic2 = pd.to_numeric(series, errors="coerce")
+    sector = pd.Series("Other", index=series.index, dtype="object")
+    sector.loc[sic2.between(10, 14, inclusive="both")] = "Mining"
+    sector.loc[sic2.between(15, 17, inclusive="both")] = "Construction"
+    sector.loc[sic2.between(20, 39, inclusive="both")] = "Manufacturing"
+    sector.loc[sic2.between(40, 49, inclusive="both")] = "Transport/Utilities"
+    sector.loc[sic2.between(50, 59, inclusive="both")] = "Trade"
+    sector.loc[sic2.between(60, 64, inclusive="both")] = "Finance/Insurance"
+    sector.loc[sic2.between(65, 67, inclusive="both")] = "Real Estate"
+    sector.loc[sic2.between(70, 89, inclusive="both")] = "Services"
+    return sector
+
+
+def build_figure_1(
+    panel_path: str | Path, output_dir: str | Path, doc_dir: str | Path
+) -> tuple[Path, Path]:
+    df = _load_merged_panel(panel_path)
+    yearly = (
+        df.groupby("year", as_index=False)
+        .agg(
+            ai_total_mean=("ai_total", "mean"),
+            n_A_mean=("n_A", "mean"),
+            n_S_mean=("n_S", "mean"),
+            any_ai_share=("any_ai_talk", "mean"),
+        )
+        .sort_values("year")
+    )
+    talker = df.loc[df["any_ai_talk"] > 0].copy()
+    comp = (
+        talker.groupby("year", as_index=False)
+        .agg(act_share_mean=("ActShare", "mean"), spec_share_mean=("SpecShare", "mean"))
+        .sort_values("year")
+    )
+
+    _base_style()
+    fig, axes = plt.subplots(2, 1, figsize=(8.2, 8.8), constrained_layout=True)
+
+    ax = axes[0]
+    ax.plot(
+        yearly["year"],
+        yearly["ai_total_mean"],
+        color="#22333b",
+        marker="o",
+        linewidth=2.3,
+        label="AI sentences",
+    )
+    ax.plot(
+        yearly["year"],
+        yearly["n_A_mean"],
+        color="#2a9d8f",
+        marker="o",
+        linewidth=2.0,
+        label="Actionable",
+    )
+    ax.plot(
+        yearly["year"],
+        yearly["n_S_mean"],
+        color="#c46b48",
+        marker="o",
+        linewidth=2.0,
+        label="Speculative",
+    )
+    ax.set_title("Panel A. Mean AI Disclosure Counts per Firm-Year")
+    ax.set_ylabel("Mean count")
+    ax.legend(loc="upper left", frameon=False)
+    _style_axes(ax)
+
+    ax2 = axes[1]
+    ax2.plot(
+        comp["year"],
+        comp["act_share_mean"],
+        color="#2a9d8f",
+        marker="o",
+        linewidth=2.2,
+        label="Actionable share",
+    )
+    ax2.plot(
+        comp["year"],
+        comp["spec_share_mean"],
+        color="#c46b48",
+        marker="o",
+        linewidth=2.2,
+        label="Speculative share",
+    )
+    ax2.plot(
+        yearly["year"],
+        yearly["any_ai_share"],
+        color="#6c757d",
+        marker="o",
+        linewidth=1.8,
+        linestyle="--",
+        label="Any AI talk share",
+    )
+    ax2.set_title("Panel B. Disclosure Composition Over Time")
+    ax2.set_xlabel("Year")
+    ax2.set_ylabel("Share")
+    ax2.set_ylim(bottom=0)
+    ax2.legend(loc="upper left", frameon=False)
+    _style_axes(ax2)
+
+    fig_dir = Path(output_dir)
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    image_path = fig_dir / "figure_1_disclosure_volume_composition_prelim_v1.png"
+    fig.savefig(image_path, dpi=220, bbox_inches="tight")
+    plt.close(fig)
+
+    note = (
+        "This figure uses the merged ever-speaker annual panel. Panel A plots mean AI sentence counts per firm-year, separating total AI sentences from the actionable and speculative subsets. "
+        "Panel B plots mean actionable and speculative shares among AI-talking firm-years, together with the share of ever-speaker firm-years that contain any AI disclosure."
+    )
+    doc_path = Path(doc_dir) / "figure_1_disclosure_volume_composition_prelim_v1.docx"
+    _save_figure_docx(
+        "Figure 1. AI Disclosure Volume and Composition Over Time", note, image_path, doc_path
+    )
+    return image_path, doc_path
+
+
+def build_figure_2(
+    panel_path: str | Path, output_dir: str | Path, doc_dir: str | Path
+) -> tuple[Path, Path]:
+    df = _load_merged_panel(panel_path)
+    yearly = (
+        df.groupby("year", as_index=False)
+        .agg(
+            ai_patent_share=(
+                "patents_ai",
+                lambda s: (pd.to_numeric(s, errors="coerce").fillna(0) > 0).mean(),
+            ),
+            ai_patent_mean=("patents_ai", "mean"),
+            log_ai_patent_mean=(
+                "patents_ai",
+                lambda s: np.log1p(pd.to_numeric(s, errors="coerce").fillna(0)).mean(),
+            ),
+        )
+        .sort_values("year")
+    )
+    yearly["log_ai_patent_mean"] = yearly["log_ai_patent_mean"].astype(float)
+
+    _base_style()
+    fig, axes = plt.subplots(2, 1, figsize=(8.2, 8.4), constrained_layout=True)
+
+    ax = axes[0]
+    ax.plot(yearly["year"], yearly["ai_patent_share"], color="#1d3557", marker="o", linewidth=2.3)
+    ax.set_title("Panel A. Share of Firm-Years with Any AI Patent")
+    ax.set_ylabel("Share")
+    ax.set_ylim(bottom=0)
+    _style_axes(ax)
+
+    ax2 = axes[1]
+    ax2.plot(
+        yearly["year"],
+        yearly["ai_patent_mean"],
+        color="#457b9d",
+        marker="o",
+        linewidth=2.1,
+        label="Mean AI patents",
+    )
+    ax2.plot(
+        yearly["year"],
+        yearly["log_ai_patent_mean"],
+        color="#a8dadc",
+        marker="o",
+        linewidth=2.1,
+        label="Mean log(1 + AI patents)",
+    )
+    ax2.set_title("Panel B. Mean AI Patent Intensity")
+    ax2.set_xlabel("Year")
+    ax2.set_ylabel("Mean level")
+    ax2.legend(loc="upper left", frameon=False)
+    _style_axes(ax2)
+
+    fig_dir = Path(output_dir)
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    image_path = fig_dir / "figure_2_ai_patent_coverage_prelim_v1.png"
+    fig.savefig(image_path, dpi=220, bbox_inches="tight")
+    plt.close(fig)
+
+    note = (
+        "This figure uses the merged ever-speaker annual panel. Panel A plots the share of firm-years with any AI patent. "
+        "Panel B plots the mean AI patent count and the mean log-transformed AI patent intensity, showing both sparsity and the growth of patenting in the upper tail."
+    )
+    doc_path = Path(doc_dir) / "figure_2_ai_patent_coverage_prelim_v1.docx"
+    _save_figure_docx("Figure 2. AI Patent Coverage Over Time", note, image_path, doc_path)
+    return image_path, doc_path
+
+
+def build_figure_3(
+    reg_ready_panel_path: str | Path, output_dir: str | Path, doc_dir: str | Path
+) -> tuple[Path, Path]:
+    df = load_panel(reg_ready_panel_path)
+    df = _add_patent_mismatch(df)
+    talk = df.loc[df["any_ai_talk"].fillna(0).astype(int).eq(1) & df["A_S"].notna()].copy()
+
+    quartile_codes = pd.qcut(talk["A_S"], 4, labels=False, duplicates="drop")
+    n_bins = int(pd.Series(quartile_codes).dropna().nunique())
+    quartile_labels = [f"Q{i + 1}" for i in range(n_bins)]
+    if quartile_labels:
+        quartile_labels[0] = "Q1 Low A/S"
+        quartile_labels[-1] = f"Q{n_bins} High A/S"
+    talk["A_S_quartile"] = quartile_codes.map(
+        {idx: label for idx, label in enumerate(quartile_labels)}
+    )
+    quartile_medians = (
+        talk.groupby("A_S_quartile", observed=True)["A_S"].median().reindex(quartile_labels)
+    )
+
+    t1_result, _, _ = _fit_absorbed_ols(
+        df,
+        dependent="log_patents_ai_lead1",
+        rhs_terms=["A_S", "AS_x_PatentMismatch"],
+        absorb_col="cik",
+        include_year=True,
+    )
+    t2_result, _, _ = _fit_absorbed_ols(
+        df,
+        dependent="log_patents_ai_lead2",
+        rhs_terms=["A_S", "AS_x_PatentMismatch"],
+        absorb_col="cik",
+        include_year=True,
+    )
+
+    coef_map = {
+        "t1": {
+            0: t1_result.params.get("A_S", 0.0),
+            1: t1_result.params.get("A_S", 0.0) + t1_result.params.get("AS_x_PatentMismatch", 0.0),
+        },
+        "t2": {
+            0: t2_result.params.get("A_S", 0.0),
+            1: t2_result.params.get("A_S", 0.0) + t2_result.params.get("AS_x_PatentMismatch", 0.0),
+        },
+    }
+
+    _base_style()
+    fig, axes = plt.subplots(2, 1, figsize=(8.2, 8.8), constrained_layout=True)
+    color_map = {0: "#2a9d8f", 1: "#c46b48"}
+    label_map = {0: "No mismatch", 1: "PatentMismatch = 1"}
+
+    for ax, horizon_key, title in [
+        (axes[0], "t1", "Panel A. Predicted Future AI Patents at t+1"),
+        (axes[1], "t2", "Panel B. Predicted Future AI Patents at t+2"),
+    ]:
+        for mismatch_value in [0, 1]:
+            slope = coef_map[horizon_key][mismatch_value]
+            y_values = quartile_medians.astype(float) * float(slope)
+            ax.plot(
+                quartile_labels,
+                y_values,
+                color=color_map[mismatch_value],
+                marker="o",
+                linewidth=2.2,
+                label=label_map[mismatch_value],
+            )
+        ax.set_title(title)
+        ax.set_ylabel("Predicted within-sample effect")
+        _style_axes(ax)
+
+    axes[1].set_xlabel("A/S quartile among AI-talking firm-years")
+    axes[0].legend(loc="upper left", frameon=False)
+
+    fig_dir = Path(output_dir)
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    image_path = fig_dir / "figure_3_patent_mismatch_alignment_prelim_v1.png"
+    fig.savefig(image_path, dpi=220, bbox_inches="tight")
+    plt.close(fig)
+
+    note = (
+        "This figure uses the firm+year fixed-effect mismatch specification from Table 6 and Table 6B. "
+        "The x-axis groups AI-talking firm-years into pooled quartiles of the `A_S` ratio, using the quartile medians as reference points. "
+        "The two lines plot the model-implied within-sample relation between `A_S` and future AI patenting for non-mismatch and mismatch firm-years. "
+        "PatentMismatch is defined from low-credibility disclosure (`low A_S / high SpecShare`) combined with weak contemporaneous AI patenting relative to the industry-year mean."
+    )
+    doc_path = Path(doc_dir) / "figure_3_patent_mismatch_alignment_prelim_v1.docx"
+    _save_figure_docx(
+        "Figure 3. Patent Alignment and Mismatch by A/S Quantile", note, image_path, doc_path
+    )
+    return image_path, doc_path
+
+
+def build_figure_4(
+    reg_ready_panel_path: str | Path, output_dir: str | Path, doc_dir: str | Path
+) -> tuple[Path, Path]:
+    df = load_panel(reg_ready_panel_path)
+    df = _add_patent_mismatch(df)
+    talk = df.loc[df["any_ai_talk"].fillna(0).astype(int).eq(1)].copy()
+    talk["sector_bucket"] = _sector_bucket_from_sic2(talk["sic2"])
+
+    yearly = (
+        talk.groupby("year", as_index=False)
+        .agg(
+            mismatch_count=("PatentMismatch", "sum"),
+            mismatch_share=("PatentMismatch", "mean"),
+            talk_count=("PatentMismatch", "size"),
+        )
+        .sort_values("year")
+    )
+    yearly["mismatch_share_pct"] = 100 * yearly["mismatch_share"]
+
+    sector = (
+        talk.groupby("sector_bucket", as_index=False)
+        .agg(
+            mismatch_count=("PatentMismatch", "sum"),
+            mismatch_share=("PatentMismatch", "mean"),
+            talk_count=("PatentMismatch", "size"),
+        )
+        .sort_values(["mismatch_count", "mismatch_share"], ascending=[False, False])
+    )
+    sector = sector.loc[sector["talk_count"] >= 25].head(6).copy()
+    sector = sector.sort_values("mismatch_count", ascending=True)
+
+    _base_style()
+    fig, axes = plt.subplots(2, 1, figsize=(8.2, 8.8), constrained_layout=True)
+
+    ax = axes[0]
+    ax.bar(
+        yearly["year"].astype(str),
+        yearly["mismatch_count"],
+        color="#c46b48",
+        alpha=0.85,
+        label="Mismatch incidents",
+    )
+    ax.set_title("Panel A. PatentMismatch Incidence Over Time")
+    ax.set_ylabel("Mismatch incidents")
+    _style_axes(ax)
+    ax.grid(False, axis="x")
+
+    ax_right = ax.twinx()
+    ax_right.plot(
+        yearly["year"].astype(str),
+        yearly["mismatch_share_pct"],
+        color="#1d3557",
+        marker="o",
+        linewidth=2.1,
+        label="Mismatch share (%)",
+    )
+    ax_right.set_ylabel("Mismatch share (%)")
+    ax_right.spines["top"].set_visible(False)
+    ax_right.grid(False)
+
+    handles_left, labels_left = ax.get_legend_handles_labels()
+    handles_right, labels_right = ax_right.get_legend_handles_labels()
+    ax.legend(
+        handles_left + handles_right, labels_left + labels_right, loc="upper left", frameon=False
+    )
+
+    ax2 = axes[1]
+    bars2 = ax2.barh(
+        sector["sector_bucket"],
+        sector["mismatch_count"],
+        color="#2a9d8f",
+        alpha=0.9,
+    )
+    ax2.set_title("Panel B. Industry Concentration of PatentMismatch Incidents")
+    ax2.set_xlabel("Mismatch incidents")
+    ax2.set_ylabel("")
+    _style_axes(ax2)
+    ax2.grid(True, axis="x", color="#d9d9d9", linewidth=0.7)
+    ax2.grid(False, axis="y")
+    for bar, share, talk_count in zip(
+        bars2, sector["mismatch_share"], sector["talk_count"], strict=True
+    ):
+        ax2.text(
+            bar.get_width() + 2,
+            bar.get_y() + bar.get_height() / 2,
+            f"{100 * share:.1f}% of talk years\nN={int(talk_count)}",
+            va="center",
+            ha="left",
+            fontsize=9,
+        )
+
+    fig_dir = Path(output_dir)
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    image_path = fig_dir / "figure_4_mismatch_incidence_industry_prelim_v1.png"
+    fig.savefig(image_path, dpi=220, bbox_inches="tight")
+    plt.close(fig)
+
+    note = (
+        "This figure uses the regression-ready ever-speaker annual panel and restricts the plotted observations to AI-talking firm-years, because PatentMismatch is defined only for years with AI disclosure. "
+        "Panel A plots the annual count of PatentMismatch firm-years together with the share of AI-talking firm-years flagged as mismatch. "
+        "Panel B shows the six industry buckets with the highest number of mismatch incidents, with each bar annotated by the mismatch share among AI-talking firm-years in that sector."
+    )
+    doc_path = Path(doc_dir) / "figure_4_mismatch_incidence_industry_prelim_v1.docx"
+    _save_figure_docx(
+        "Figure 4. PatentMismatch Incidence Over Time and by Industry",
+        note,
+        image_path,
+        doc_path,
+    )
+    return image_path, doc_path
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--panel", default=DEFAULT_PANEL)
+    parser.add_argument("--reg-ready-panel", default=DEFAULT_REG_READY_PANEL)
+    parser.add_argument("--figure-dir", default=DEFAULT_FIG_DIR)
+    parser.add_argument("--doc-dir", default=DEFAULT_DOC_DIR)
+    parser.add_argument("--figures", default="figure1,figure2")
+    return parser.parse_args()
+
+
+def _selected(raw: str) -> set[str]:
+    return {part.strip().lower() for part in raw.split(",") if part.strip()}
+
+
+def main() -> None:
+    args = parse_args()
+    selected = _selected(args.figures)
+    if "figure1" in selected:
+        build_figure_1(args.panel, args.figure_dir, args.doc_dir)
+    if "figure2" in selected:
+        build_figure_2(args.panel, args.figure_dir, args.doc_dir)
+    if "figure3" in selected:
+        build_figure_3(args.reg_ready_panel, args.figure_dir, args.doc_dir)
+    if "figure4" in selected:
+        build_figure_4(args.reg_ready_panel, args.figure_dir, args.doc_dir)
+    print(f"[delivery-figures] wrote selected figures under {args.figure_dir} and {args.doc_dir}")
+
+
+if __name__ == "__main__":
+    main()

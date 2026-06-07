@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Measurement audit of the disclosure-classification layer}
+\label{tab:appendix_audit}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.8cm}c>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{5.4cm}}
+\hline
+\multicolumn{5}{l}{\textit{Panel A. Human labeling and validation}} \\
+Item & N & Primary metric & Supporting metric & Notes \\
+Adjudicated sentence base & 551 & Human-reviewed labels & Historical master corpus & Used to seed and refine the local sentence classifier. \\
+Leakage-safe training pool & 431 & Human-reviewed labels & Excludes heldout-v4 items & Current training/calibration pool after removing benchmark sentences. \\
+Current adjudicated benchmark & 120 & Final heldout-v4 labels & Deployment benchmark & Balanced benchmark used for the current hybrid evaluation posture. \\
+Human-human IRR v3 rerun & 120 & Cohen's kappa = 0.850 & 12/12 disagreements adjudicated & By-class kappa: Actionable 0.852; Speculative 0.790; Irrelevant 0.907. \\
+\multicolumn{5}{l}{\textit{Panel B. Heldout-v4 model evaluation}} \\
+Item & N & Primary metric & Supporting metric & Notes \\
+Local-only baseline & 120 & Accuracy = 78.3\% & Macro-F1 = 77.1\% & Binary relevance 90.0\%; AS ratio 78.4\%; defer 0/120. \\
+Selected hybrid policy & 120 & Accuracy = 85.0\% & Macro-F1 = 83.6\% & api\_a\_conf\_or\_margin; binary relevance 91.7\%; AS ratio 86.5\%; defer 40/120. \\
+\hline
+\end{tabular}
+\caption*{\footnotesize \textit{Note.} This table reports the updated measurement audit for the disclosure-classification layer. Panel A summarizes the adjudicated sentence base, the leakage-safe training and calibration pool, the heldout-v4 benchmark, and the human--human IRR rerun. Panel B reports heldout-v4 evaluation metrics for the selected hybrid classifier.}
+\end{table}

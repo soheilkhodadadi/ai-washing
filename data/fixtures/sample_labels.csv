@@ -1,0 +1,6 @@
+firm_id,year,filing_id,sentence_id,label
+F001,2024,F001-2024-10K,1,actionable
+F001,2024,F001-2024-10K,2,actionable
+F002,2024,F002-2024-10K,1,speculative
+F002,2024,F002-2024-10K,2,speculative
+F003,2024,F003-2024-10K,1,irrelevant

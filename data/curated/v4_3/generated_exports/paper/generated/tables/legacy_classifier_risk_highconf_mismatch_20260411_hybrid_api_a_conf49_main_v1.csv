@@ -1,0 +1,13 @@
+row_type,label,Firm + year FE,Industry×year FE,"Firm + year FE, non-fin.","Firm + year FE, non-fin./non-util."
+coef,A/S ratio,0.085*,0.267***,0.087*,0.087*
+se,,(0.049),(0.046),(0.052),(0.052)
+coef,A/S ratio × PatentMismatch,-0.065,-0.408***,-0.068,-0.068
+se,,(0.040),(0.054),(0.042),(0.042)
+footer,Controls,Y,Y,Y,Y
+footer,Firm FE,Y,N,Y,Y
+footer,Industry×Year FE,N,Y,N,N
+footer,Year FE,Y,N,Y,Y
+footer,Non-fin.,N,N,Y,Y
+footer,No util.,N,N,N,Y
+footer,Adj. R²,-0.909,0.081,-0.885,-0.883
+footer,Observations,"2,810","2,810","2,632","2,630"

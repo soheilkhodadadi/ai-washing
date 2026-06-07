@@ -1,0 +1,147 @@
+{
+  "test_id": "legacy_r7_as_mismatch_tplus2",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T21:35:51.318354+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "payload": {
+    "title": "Table R7. A/S Ratio, Patent Mismatch, and Longer-Horizon AI Patenting",
+    "note": "This companion table presents the same methodology-aligned AI-washing specification as Table 6 but uses the longer-horizon outcome `log(1 + AI patents)` at `t+2`. Rows report the main `A_S` ratio and its interaction with `PatentMismatch`. PatentMismatch is constructed from year-`t` disclosure credibility and contemporaneous AI patenting relative to the industry-year. Columns vary the fixed-effects structure and sample trim while keeping the same baseline control set: size, leverage, cash/assets, R&D/assets, CAPX/assets, ROA, sales growth, and employees. Standard errors clustered at the firm level are shown in parentheses. Constants are omitted. (* p<0.1, ** p<0.05, *** p<0.01).",
+    "dependent_label": "Dependent variable: log(1 + AI patents at t+2)",
+    "models": [
+      {
+        "number": "(1)",
+        "label": "Firm + year FE"
+      },
+      {
+        "number": "(2)",
+        "label": "Industry\u00d7year FE"
+      },
+      {
+        "number": "(3)",
+        "label": "Firm + year FE, non-fin."
+      },
+      {
+        "number": "(4)",
+        "label": "Firm + year FE, non-fin./non-util."
+      }
+    ],
+    "body_rows": [
+      {
+        "label": "A/S ratio",
+        "cells": [
+          "0.021**",
+          "0.071***",
+          "0.022**",
+          "0.022**"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "(0.009)",
+          "(0.017)",
+          "(0.009)",
+          "(0.009)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "A/S ratio \u00d7 PatentMismatch",
+        "cells": [
+          "-0.008",
+          "-0.082***",
+          "-0.008",
+          "-0.008"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "(0.017)",
+          "(0.019)",
+          "(0.018)",
+          "(0.018)"
+        ],
+        "kind": "se"
+      }
+    ],
+    "footer_rows": [
+      {
+        "label": "Controls",
+        "cells": [
+          "Y",
+          "Y",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "Firm FE",
+        "cells": [
+          "Y",
+          "N",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "Industry\u00d7Year FE",
+        "cells": [
+          "N",
+          "Y",
+          "N",
+          "N"
+        ]
+      },
+      {
+        "label": "Year FE",
+        "cells": [
+          "Y",
+          "N",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "Non-fin.",
+        "cells": [
+          "N",
+          "N",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "No util.",
+        "cells": [
+          "N",
+          "N",
+          "N",
+          "Y"
+        ]
+      },
+      {
+        "label": "Adj. R\u00b2",
+        "cells": [
+          "-0.171",
+          "0.040",
+          "-0.173",
+          "-0.173"
+        ]
+      },
+      {
+        "label": "Observations",
+        "cells": [
+          "14,968",
+          "14,968",
+          "13,759",
+          "13,737"
+        ]
+      }
+    ]
+  }
+}

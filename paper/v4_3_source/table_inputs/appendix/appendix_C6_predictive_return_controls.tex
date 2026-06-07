@@ -1,0 +1,30 @@
+\begin{table}[p]
+\centering
+\small
+\caption{Predictive post-filing return regressions with richer controls}
+\label{tab:appendix_predictive_return_controls}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+ & Core controls & + operating controls & + market characteristics & + market + patent history \\
+ & (1) & (2) & (3) & (4) \\
+\hline
+\multicolumn{5}{l}{\textit{Panel A. Dependent variable: BHAR[+2,+63]}} \\
+PatentMismatch & 0.0005 (0.0099) & 0.0058 (0.0124) & 0.0086 (0.0110) & 0.0065 (0.0117) \\
+AS ratio & 0.0021 (0.0073) & 0.0076 (0.0088) & 0.0115 (0.0079) & 0.0104 (0.0081) \\
+AI Focus & -0.0044 (0.0053) & -0.0050 (0.0059) & -0.0072 (0.0056) & -0.0063 (0.0059) \\
+Outcome mean & -0.0445 & -0.0448 & -0.0474 & -0.0474 \\
+Observations & 6,958 & 4,243 & 4,113 & 4,113 \\
+Adj. $R^2$ & 0.043 & 0.064 & 0.227 & 0.227 \\
+\multicolumn{5}{l}{\textit{Panel B. Dependent variable: BHAR[+2,+252]}} \\
+PatentMismatch & 0.0216 (0.0266) & 0.0206 (0.0319) & 0.0322 (0.0224) & 0.0365 (0.0234) \\
+AS ratio & -0.0226 (0.0183) & -0.0065 (0.0213) & 0.0090 (0.0154) & 0.0115 (0.0158) \\
+AI Focus & 0.0151 (0.0136) & 0.0167 (0.0154) & 0.0012 (0.0106) & -0.0007 (0.0108) \\
+Outcome mean & -0.0807 & -0.0569 & -0.0569 & -0.0569 \\
+Observations & 4,644 & 2,936 & 2,936 & 2,936 \\
+Adj. $R^2$ & 0.114 & 0.156 & 0.536 & 0.536 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table asks whether post-filing return relations are absorbed by richer observable controls. The unit is an AI-talking annual filing event. Core controls include log assets, leverage, cash/assets, and ROA. Operating controls add R\&D/assets, CAPX/assets, and sales growth. Market characteristics add lagged market capitalization, annual return, annual buy-and-hold abnormal return, volatility, and market age. Patent history adds lagged AI patenting. All specifications include SIC2 and filing-year fixed effects, and standard errors are clustered by firm.}
+\end{table}

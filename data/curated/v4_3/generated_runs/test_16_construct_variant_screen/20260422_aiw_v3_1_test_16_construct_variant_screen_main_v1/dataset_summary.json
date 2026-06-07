@@ -1,0 +1,792 @@
+{
+  "test_id": "test_16_construct_variant_screen",
+  "run_id": "20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1",
+  "created_at_utc": "2026-04-23T02:41:37.046542+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "sample_summary": {
+    "ai_talking_rows": 13777,
+    "unique_firms": 5084,
+    "year_min": 2016,
+    "year_max": 2025,
+    "variant_shares": {
+      "PatentMismatch": 0.3548668069971692,
+      "StrictPatentMismatch": 0.09102126732960732,
+      "ApplicationMismatch": 0.3417289685708064,
+      "LowCredibility": 0.5009798940262756,
+      "WeakPatentRelative": 0.6934020468897438
+    }
+  },
+  "variant_counts": {
+    "PatentMismatch": 4889,
+    "StrictPatentMismatch": 1254,
+    "ApplicationMismatch": 4708,
+    "LowCredibility": 6902,
+    "WeakPatentRelative": 9553
+  },
+  "model_rows": [
+    {
+      "variant": "PatentMismatch",
+      "dependent": "log_patents_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5351769189404121,
+      "params": {
+        "PatentMismatch": -0.04347092800781304,
+        "AI_Focus": 0.030286103045175882,
+        "ln_assets": 0.03463827397425806,
+        "leverage": -0.006355890753903078,
+        "cash": -0.0031862276375663142,
+        "roa": -0.015721485584406586
+      },
+      "bse": {
+        "PatentMismatch": 0.013412132864054191,
+        "AI_Focus": 0.009472058801427105,
+        "ln_assets": 0.012309440375092712,
+        "leverage": 0.031030652525411175,
+        "cash": 0.03275500878528868,
+        "roa": 0.006567532102578221
+      },
+      "pvalues": {
+        "PatentMismatch": 0.0011904249591431107,
+        "AI_Focus": 0.0013866526406614416,
+        "ln_assets": 0.004893530299743776,
+        "leverage": 0.8377079134676082,
+        "cash": 0.922508393017525,
+        "roa": 0.016673957841479983
+      },
+      "outcome_mean": 0.10423860905721513
+    },
+    {
+      "variant": "StrictPatentMismatch",
+      "dependent": "log_patents_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5383778691224859,
+      "params": {
+        "StrictPatentMismatch": -0.027436983662665154,
+        "AI_Focus": 0.030127016024944806,
+        "ln_assets": 0.035108176050914854,
+        "leverage": -0.0050140992382153434,
+        "cash": -0.008392473808346804,
+        "roa": -0.015772284245673587
+      },
+      "bse": {
+        "StrictPatentMismatch": 0.022230847174479946,
+        "AI_Focus": 0.009550007866595338,
+        "ln_assets": 0.012574542496060338,
+        "leverage": 0.031160237416299266,
+        "cash": 0.03316870604425332,
+        "roa": 0.006616655249173517
+      },
+      "pvalues": {
+        "StrictPatentMismatch": 0.2171338826811623,
+        "AI_Focus": 0.0016068592370647662,
+        "ln_assets": 0.0052382668604992275,
+        "leverage": 0.8721616210403843,
+        "cash": 0.800249780636269,
+        "roa": 0.017138420194448698
+      },
+      "outcome_mean": 0.10423860905721513
+    },
+    {
+      "variant": "ApplicationMismatch",
+      "dependent": "log_patents_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5370085382725722,
+      "params": {
+        "ApplicationMismatch": -0.03076156216145779,
+        "AI_Focus": 0.030614029020291623,
+        "ln_assets": 0.03492307972148532,
+        "leverage": -0.005755075250807711,
+        "cash": -0.005615299754528286,
+        "roa": -0.01578838394737444
+      },
+      "bse": {
+        "ApplicationMismatch": 0.009175316265632484,
+        "AI_Focus": 0.00959637750694281,
+        "ln_assets": 0.012477940224087082,
+        "leverage": 0.03114451727783506,
+        "cash": 0.033384278145983055,
+        "roa": 0.00662349785575372
+      },
+      "pvalues": {
+        "ApplicationMismatch": 0.0008004380689676824,
+        "AI_Focus": 0.0014219151565386294,
+        "ln_assets": 0.005129518039832239,
+        "leverage": 0.8533967762790191,
+        "cash": 0.8664244288148593,
+        "roa": 0.01713990502639245
+      },
+      "outcome_mean": 0.10423860905721513
+    },
+    {
+      "variant": "LowCredibility",
+      "dependent": "log_patents_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5389462510562997,
+      "params": {
+        "LowCredibility": -0.0033522006027279483,
+        "AI_Focus": 0.030745993196163654,
+        "ln_assets": 0.035600332738496256,
+        "leverage": -0.00454454357233219,
+        "cash": -0.008427679014810901,
+        "roa": -0.016029114749430563
+      },
+      "bse": {
+        "LowCredibility": 0.013144376959522395,
+        "AI_Focus": 0.009606613030650248,
+        "ln_assets": 0.012471121459776139,
+        "leverage": 0.031051684888324004,
+        "cash": 0.033051084470816915,
+        "roa": 0.006571012315553594
+      },
+      "pvalues": {
+        "LowCredibility": 0.7987005074753073,
+        "AI_Focus": 0.0013718797237300246,
+        "ln_assets": 0.0043088132694676495,
+        "leverage": 0.8836418046170513,
+        "cash": 0.7987312204515337,
+        "roa": 0.014712991773631506
+      },
+      "outcome_mean": 0.10423860905721513
+    },
+    {
+      "variant": "WeakPatentRelative",
+      "dependent": "log_patents_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5174489390111277,
+      "params": {
+        "WeakPatentRelative": -0.12756962277800357,
+        "AI_Focus": 0.02498785662263732,
+        "ln_assets": 0.031891816508321125,
+        "leverage": -0.006415960835185061,
+        "cash": -0.001625595740820035,
+        "roa": -0.014990568147494037
+      },
+      "bse": {
+        "WeakPatentRelative": 0.02386869175448683,
+        "AI_Focus": 0.008876987090675578,
+        "ln_assets": 0.011721646840823033,
+        "leverage": 0.028989310539602797,
+        "cash": 0.031750906697270716,
+        "roa": 0.006291422839377108
+      },
+      "pvalues": {
+        "WeakPatentRelative": 9.05957135832393e-08,
+        "AI_Focus": 0.004879197521537573,
+        "ln_assets": 0.006513154823357888,
+        "leverage": 0.8248420260605418,
+        "cash": 0.9591674237936771,
+        "roa": 0.017186231069012597
+      },
+      "outcome_mean": 0.10423860905721513
+    },
+    {
+      "variant": "PatentMismatch",
+      "dependent": "log_patents_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5473432940109408,
+      "params": {
+        "PatentMismatch": 0.008498160155326886,
+        "AI_Focus": -0.01473879442037614,
+        "ln_assets": 0.002153826274738561,
+        "leverage": -0.012932150202912177,
+        "cash": -0.0415930769546209,
+        "roa": -0.005793548473371011
+      },
+      "bse": {
+        "PatentMismatch": 0.00809030899281431,
+        "AI_Focus": 0.0077532823205214325,
+        "ln_assets": 0.009647847796527432,
+        "leverage": 0.02511989312087845,
+        "cash": 0.031618897467314104,
+        "roa": 0.005537110707409136
+      },
+      "pvalues": {
+        "PatentMismatch": 0.2935285885122154,
+        "AI_Focus": 0.0573053115640251,
+        "ln_assets": 0.8233454361447345,
+        "leverage": 0.6066808439286842,
+        "cash": 0.18835872914492524,
+        "roa": 0.2954167488765911
+      },
+      "outcome_mean": 0.09247562354922409
+    },
+    {
+      "variant": "StrictPatentMismatch",
+      "dependent": "log_patents_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.546852587990273,
+      "params": {
+        "StrictPatentMismatch": -0.030071001927639795,
+        "AI_Focus": -0.0154637759203525,
+        "ln_assets": 0.001463982597638381,
+        "leverage": -0.013981916154477738,
+        "cash": -0.040260187011148765,
+        "roa": -0.0054842407744189175
+      },
+      "bse": {
+        "StrictPatentMismatch": 0.01866296809769605,
+        "AI_Focus": 0.0077316296826998795,
+        "ln_assets": 0.00972214688457858,
+        "leverage": 0.025084598461390866,
+        "cash": 0.03152078696648575,
+        "roa": 0.005549395415672992
+      },
+      "pvalues": {
+        "StrictPatentMismatch": 0.1071218049912817,
+        "AI_Focus": 0.045493050038721415,
+        "ln_assets": 0.8803052767472984,
+        "leverage": 0.5772606745165946,
+        "cash": 0.2015110677826798,
+        "roa": 0.3230257480792258
+      },
+      "outcome_mean": 0.09247562354922409
+    },
+    {
+      "variant": "ApplicationMismatch",
+      "dependent": "log_patents_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5473995163859033,
+      "params": {
+        "ApplicationMismatch": 0.006216309829218381,
+        "AI_Focus": -0.014802252323604676,
+        "ln_assets": 0.0021024203315403276,
+        "leverage": -0.013040703183275956,
+        "cash": -0.041138124893847154,
+        "roa": -0.005781891931633513
+      },
+      "bse": {
+        "ApplicationMismatch": 0.008461692714270549,
+        "AI_Focus": 0.007764725482472451,
+        "ln_assets": 0.009662569893560439,
+        "leverage": 0.025037651892243894,
+        "cash": 0.03171153451196096,
+        "roa": 0.005541249679603969
+      },
+      "pvalues": {
+        "ApplicationMismatch": 0.4625579141412577,
+        "AI_Focus": 0.0566053471917214,
+        "ln_assets": 0.8277532742493895,
+        "leverage": 0.602475659754562,
+        "cash": 0.1945415294543813,
+        "roa": 0.2967503733422753
+      },
+      "outcome_mean": 0.09247562354922409
+    },
+    {
+      "variant": "LowCredibility",
+      "dependent": "log_patents_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5472038561751291,
+      "params": {
+        "LowCredibility": 0.012078995632862563,
+        "AI_Focus": -0.014943013986123705,
+        "ln_assets": 0.0018664473828440536,
+        "leverage": -0.01280857394281007,
+        "cash": -0.041279937669318256,
+        "roa": -0.005648134138178331
+      },
+      "bse": {
+        "LowCredibility": 0.013810616025136111,
+        "AI_Focus": 0.007771429335707003,
+        "ln_assets": 0.00966944341025268,
+        "leverage": 0.025054018078515757,
+        "cash": 0.03145305862916005,
+        "roa": 0.00553787263196758
+      },
+      "pvalues": {
+        "LowCredibility": 0.38178248936924875,
+        "AI_Focus": 0.05450339934062662,
+        "ln_assets": 0.8469391405552876,
+        "leverage": 0.6091841937474222,
+        "cash": 0.18937509089547833,
+        "roa": 0.3077709355815397
+      },
+      "outcome_mean": 0.09247562354922409
+    },
+    {
+      "variant": "WeakPatentRelative",
+      "dependent": "log_patents_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5474645164005232,
+      "params": {
+        "WeakPatentRelative": 0.0019648164030183417,
+        "AI_Focus": -0.01473397122990626,
+        "ln_assets": 0.0020281189043137053,
+        "leverage": -0.013282671521876175,
+        "cash": -0.04063558666365405,
+        "roa": -0.005753911919294862
+      },
+      "bse": {
+        "WeakPatentRelative": 0.01519580681243367,
+        "AI_Focus": 0.0076998908619424055,
+        "ln_assets": 0.009584148868093846,
+        "leverage": 0.02509308513004919,
+        "cash": 0.031589094988984406,
+        "roa": 0.005517222679958824
+      },
+      "pvalues": {
+        "WeakPatentRelative": 0.8971203452604671,
+        "AI_Focus": 0.05568025218538303,
+        "ln_assets": 0.832409909994968,
+        "leverage": 0.596572435942142,
+        "cash": 0.19831040142369716,
+        "roa": 0.2969945772031857
+      },
+      "outcome_mean": 0.09247562354922409
+    },
+    {
+      "variant": "PatentMismatch",
+      "dependent": "log_applications_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5471346664425092,
+      "params": {
+        "PatentMismatch": 0.022081296782731095,
+        "AI_Focus": -0.014548464436098607,
+        "ln_assets": 0.001375000185108053,
+        "leverage": 0.0011210317553916225,
+        "cash": -0.016340462380452246,
+        "roa": -0.00015873954971535342
+      },
+      "bse": {
+        "PatentMismatch": 0.011382887227457594,
+        "AI_Focus": 0.007866413410800431,
+        "ln_assets": 0.013778291416518002,
+        "leverage": 0.02667994258593768,
+        "cash": 0.03446068092632636,
+        "roa": 0.00690477406222252
+      },
+      "pvalues": {
+        "PatentMismatch": 0.05239575420283743,
+        "AI_Focus": 0.0643942157090435,
+        "ln_assets": 0.9205073315826678,
+        "leverage": 0.9664845302966242,
+        "cash": 0.6353736916094296,
+        "roa": 0.9816583890066916
+      },
+      "outcome_mean": 0.14032879084388192
+    },
+    {
+      "variant": "StrictPatentMismatch",
+      "dependent": "log_applications_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.547817318247561,
+      "params": {
+        "StrictPatentMismatch": -0.013024405017655704,
+        "AI_Focus": -0.015042934844088623,
+        "ln_assets": 0.0006813242876568932,
+        "leverage": -0.00015969175278768768,
+        "cash": -0.013456157684272519,
+        "roa": 9.485082878369685e-05
+      },
+      "bse": {
+        "StrictPatentMismatch": 0.014870662227669603,
+        "AI_Focus": 0.007903589850816004,
+        "ln_assets": 0.013854336339701082,
+        "leverage": 0.0267601088168863,
+        "cash": 0.034511955340068026,
+        "roa": 0.006919633559596317
+      },
+      "pvalues": {
+        "StrictPatentMismatch": 0.38111394227894324,
+        "AI_Focus": 0.05700087821976748,
+        "ln_assets": 0.960777688825937,
+        "leverage": 0.9952386281882774,
+        "cash": 0.6966116445919752,
+        "roa": 0.9890633454367729
+      },
+      "outcome_mean": 0.14032879084388192
+    },
+    {
+      "variant": "ApplicationMismatch",
+      "dependent": "log_applications_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5477590549327302,
+      "params": {
+        "ApplicationMismatch": -0.009958098913714285,
+        "AI_Focus": -0.01479688888135015,
+        "ln_assets": 0.0006913129649965708,
+        "leverage": -0.00030750089971814286,
+        "cash": -0.012593973169506747,
+        "roa": 5.464000532625327e-05
+      },
+      "bse": {
+        "ApplicationMismatch": 0.008640738826291254,
+        "AI_Focus": 0.007906231574566314,
+        "ln_assets": 0.013812540445620077,
+        "leverage": 0.026721897550993672,
+        "cash": 0.03453313044279737,
+        "roa": 0.006910856571845503
+      },
+      "pvalues": {
+        "ApplicationMismatch": 0.2491324282181021,
+        "AI_Focus": 0.06126921595664639,
+        "ln_assets": 0.9600828142330173,
+        "leverage": 0.9908185859548099,
+        "cash": 0.7153409686372068,
+        "roa": 0.99369167020145
+      },
+      "outcome_mean": 0.14032879084388192
+    },
+    {
+      "variant": "LowCredibility",
+      "dependent": "log_applications_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.5478053730117611,
+      "params": {
+        "LowCredibility": 0.008408080149329382,
+        "AI_Focus": -0.014849167428366396,
+        "ln_assets": 0.000828028219066778,
+        "leverage": 0.0004813287612130975,
+        "cash": -0.014095674021197525,
+        "roa": 4.757635053284575e-05
+      },
+      "bse": {
+        "LowCredibility": 0.013352639815271926,
+        "AI_Focus": 0.007893110156460194,
+        "ln_assets": 0.013881707703878442,
+        "leverage": 0.02678353661254361,
+        "cash": 0.03439357255969585,
+        "roa": 0.0069385109984957645
+      },
+      "pvalues": {
+        "LowCredibility": 0.5288946631830258,
+        "AI_Focus": 0.05993354470273616,
+        "ln_assets": 0.952435292656836,
+        "leverage": 0.9856619339710893,
+        "cash": 0.6819273263612526,
+        "roa": 0.994529065659893
+      },
+      "outcome_mean": 0.14032879084388192
+    },
+    {
+      "variant": "WeakPatentRelative",
+      "dependent": "log_applications_ai_lead1",
+      "nobs": 10129,
+      "adj_r2": -0.54502136793468,
+      "params": {
+        "WeakPatentRelative": 0.05214156552220016,
+        "AI_Focus": -0.012425214969131343,
+        "ln_assets": 0.0024049914380477005,
+        "leverage": 0.0009519443360097125,
+        "cash": -0.016437538450902883,
+        "roa": -0.0004294460224575042
+      },
+      "bse": {
+        "WeakPatentRelative": 0.018177455310145668,
+        "AI_Focus": 0.007668479222066814,
+        "ln_assets": 0.013705957265268659,
+        "leverage": 0.026820075435105766,
+        "cash": 0.0344112883314557,
+        "roa": 0.006888955278748667
+      },
+      "pvalues": {
+        "WeakPatentRelative": 0.004124565532871233,
+        "AI_Focus": 0.1051684624982506,
+        "ln_assets": 0.8607099336105924,
+        "leverage": 0.9716860513154396,
+        "cash": 0.6328789279692073,
+        "roa": 0.9502933985424589
+      },
+      "outcome_mean": 0.14032879084388192
+    },
+    {
+      "variant": "PatentMismatch",
+      "dependent": "log_applications_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5256947450441063,
+      "params": {
+        "PatentMismatch": 0.06848489185699132,
+        "AI_Focus": -0.0579729569430012,
+        "ln_assets": -0.022793364202464732,
+        "leverage": 0.041054216363606066,
+        "cash": 0.0043757546015148144,
+        "roa": 0.0006923350810701217
+      },
+      "bse": {
+        "PatentMismatch": 0.014098589741213583,
+        "AI_Focus": 0.011079919025873764,
+        "ln_assets": 0.017490681163192225,
+        "leverage": 0.039066484330814215,
+        "cash": 0.03937284570626266,
+        "roa": 0.00930482898540221
+      },
+      "pvalues": {
+        "PatentMismatch": 1.1883490672972816e-06,
+        "AI_Focus": 1.674549138171673e-07,
+        "ln_assets": 0.19251608123143193,
+        "leverage": 0.2933133624764488,
+        "cash": 0.9115082192958459,
+        "roa": 0.9406873368179822
+      },
+      "outcome_mean": 0.11820036303362058
+    },
+    {
+      "variant": "StrictPatentMismatch",
+      "dependent": "log_applications_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5319842573398477,
+      "params": {
+        "StrictPatentMismatch": -0.0031844708779590536,
+        "AI_Focus": -0.05871257685867696,
+        "ln_assets": -0.02431684054511955,
+        "leverage": 0.03790899061180165,
+        "cash": 0.01299048256752469,
+        "roa": 0.0011644616986799953
+      },
+      "bse": {
+        "StrictPatentMismatch": 0.016732236683102857,
+        "AI_Focus": 0.011198347309675435,
+        "ln_assets": 0.017604561113047878,
+        "leverage": 0.03886654034332522,
+        "cash": 0.039493197108020184,
+        "roa": 0.009261093973872966
+      },
+      "pvalues": {
+        "StrictPatentMismatch": 0.8490587760592256,
+        "AI_Focus": 1.5801393210107985e-07,
+        "ln_assets": 0.16719266921472054,
+        "leverage": 0.3293801635966086,
+        "cash": 0.7422088806096476,
+        "roa": 0.89994015305947
+      },
+      "outcome_mean": 0.11820036303362058
+    },
+    {
+      "variant": "ApplicationMismatch",
+      "dependent": "log_applications_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5316484332702645,
+      "params": {
+        "ApplicationMismatch": 0.01568935091643365,
+        "AI_Focus": -0.05859443194549221,
+        "ln_assets": -0.023932543133122517,
+        "leverage": 0.038668658962477,
+        "cash": 0.011421273568030813,
+        "roa": 0.0010275396823241282
+      },
+      "bse": {
+        "ApplicationMismatch": 0.008852397308123169,
+        "AI_Focus": 0.011199760006040947,
+        "ln_assets": 0.01759456970987716,
+        "leverage": 0.03895454261170327,
+        "cash": 0.0393852385328804,
+        "roa": 0.009276616551976435
+      },
+      "pvalues": {
+        "ApplicationMismatch": 0.07634013902414608,
+        "AI_Focus": 1.6790564352413393e-07,
+        "ln_assets": 0.1737592811364541,
+        "leverage": 0.32087514001493855,
+        "cash": 0.7718248931933618,
+        "roa": 0.9118013968421431
+      },
+      "outcome_mean": 0.11820036303362058
+    },
+    {
+      "variant": "LowCredibility",
+      "dependent": "log_applications_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5315086870807675,
+      "params": {
+        "LowCredibility": 0.018523407741677402,
+        "AI_Focus": -0.058829990300991536,
+        "ln_assets": -0.024424123653590906,
+        "leverage": 0.03875430974158247,
+        "cash": 0.011808445739335906,
+        "roa": 0.0012758310455160068
+      },
+      "bse": {
+        "LowCredibility": 0.01538803046575208,
+        "AI_Focus": 0.01118929874836332,
+        "ln_assets": 0.017603264500337792,
+        "leverage": 0.038986055800766584,
+        "cash": 0.03929757058071389,
+        "roa": 0.009291496168430358
+      },
+      "pvalues": {
+        "LowCredibility": 0.22868456043942953,
+        "AI_Focus": 1.4586720822446604e-07,
+        "ln_assets": 0.16529637645744444,
+        "leverage": 0.320195766511434,
+        "cash": 0.7638049997916736,
+        "roa": 0.8907844303357558
+      },
+      "outcome_mean": 0.11820036303362058
+    },
+    {
+      "variant": "WeakPatentRelative",
+      "dependent": "log_applications_ai_lead2",
+      "nobs": 10129,
+      "adj_r2": -0.5082596180647956,
+      "params": {
+        "WeakPatentRelative": 0.16381521539657903,
+        "AI_Focus": -0.05129354335792565,
+        "ln_assets": -0.019538325915316453,
+        "leverage": 0.04056288775322457,
+        "cash": 0.003959333307743169,
+        "roa": -0.0001639321811821624
+      },
+      "bse": {
+        "WeakPatentRelative": 0.02315974572491544,
+        "AI_Focus": 0.010610545011869796,
+        "ln_assets": 0.01719320542902078,
+        "leverage": 0.03798193107382709,
+        "cash": 0.03877401821769134,
+        "roa": 0.009103273212270679
+      },
+      "pvalues": {
+        "WeakPatentRelative": 1.5132083932149568e-12,
+        "AI_Focus": 1.336791810422313e-06,
+        "ln_assets": 0.25578999225545873,
+        "leverage": 0.28554206340489374,
+        "cash": 0.9186669418016709,
+        "roa": 0.9856324330582037
+      },
+      "outcome_mean": 0.11820036303362058
+    }
+  ],
+  "figure_series": [
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Canonical grant mismatch",
+      "outcome": "Log(1 + AI grants) t+1",
+      "coef": -0.04347092800781304,
+      "p_value": 0.0011904249591431107
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Strict grant mismatch",
+      "outcome": "Log(1 + AI grants) t+1",
+      "coef": -0.027436983662665154,
+      "p_value": 0.2171338826811623
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Application mismatch",
+      "outcome": "Log(1 + AI grants) t+1",
+      "coef": -0.03076156216145779,
+      "p_value": 0.0008004380689676824
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Low credibility only",
+      "outcome": "Log(1 + AI grants) t+1",
+      "coef": -0.0033522006027279483,
+      "p_value": 0.7987005074753073
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Weak patent only",
+      "outcome": "Log(1 + AI grants) t+1",
+      "coef": -0.12756962277800357,
+      "p_value": 9.05957135832393e-08
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Canonical grant mismatch",
+      "outcome": "Log(1 + AI grants) t+2",
+      "coef": 0.008498160155326886,
+      "p_value": 0.2935285885122154
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Strict grant mismatch",
+      "outcome": "Log(1 + AI grants) t+2",
+      "coef": -0.030071001927639795,
+      "p_value": 0.1071218049912817
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Application mismatch",
+      "outcome": "Log(1 + AI grants) t+2",
+      "coef": 0.006216309829218381,
+      "p_value": 0.4625579141412577
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Low credibility only",
+      "outcome": "Log(1 + AI grants) t+2",
+      "coef": 0.012078995632862563,
+      "p_value": 0.38178248936924875
+    },
+    {
+      "panel": "Panel A. Future AI grant outcomes",
+      "variant": "Weak patent only",
+      "outcome": "Log(1 + AI grants) t+2",
+      "coef": 0.0019648164030183417,
+      "p_value": 0.8971203452604671
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Canonical grant mismatch",
+      "outcome": "Log(1 + AI applications) t+1",
+      "coef": 0.022081296782731095,
+      "p_value": 0.05239575420283743
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Strict grant mismatch",
+      "outcome": "Log(1 + AI applications) t+1",
+      "coef": -0.013024405017655704,
+      "p_value": 0.38111394227894324
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Application mismatch",
+      "outcome": "Log(1 + AI applications) t+1",
+      "coef": -0.009958098913714285,
+      "p_value": 0.2491324282181021
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Low credibility only",
+      "outcome": "Log(1 + AI applications) t+1",
+      "coef": 0.008408080149329382,
+      "p_value": 0.5288946631830258
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Weak patent only",
+      "outcome": "Log(1 + AI applications) t+1",
+      "coef": 0.05214156552220016,
+      "p_value": 0.004124565532871233
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Canonical grant mismatch",
+      "outcome": "Log(1 + AI applications) t+2",
+      "coef": 0.06848489185699132,
+      "p_value": 1.1883490672972816e-06
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Strict grant mismatch",
+      "outcome": "Log(1 + AI applications) t+2",
+      "coef": -0.0031844708779590536,
+      "p_value": 0.8490587760592256
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Application mismatch",
+      "outcome": "Log(1 + AI applications) t+2",
+      "coef": 0.01568935091643365,
+      "p_value": 0.07634013902414608
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Low credibility only",
+      "outcome": "Log(1 + AI applications) t+2",
+      "coef": 0.018523407741677402,
+      "p_value": 0.22868456043942953
+    },
+    {
+      "panel": "Panel B. Future AI application outcomes",
+      "variant": "Weak patent only",
+      "outcome": "Log(1 + AI applications) t+2",
+      "coef": 0.16381521539657903,
+      "p_value": 1.5132083932149568e-12
+    }
+  ]
+}

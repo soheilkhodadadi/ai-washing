@@ -1,0 +1,20 @@
+row_type,label,Log assets,Cash/assets,Leverage,R&D/assets,CAPX/assets,ROA,Employees (k),Multivar.
+coef,Log assets,0.004,,,,,,,-0.006
+se,,(0.004),,,,,,,(0.005)
+coef,Cash/assets,,-0.073*,,,,,,-0.045
+se,,,(0.042),,,,,,(0.052)
+coef,Leverage,,,0.060,,,,,0.042
+se,,,,(0.039),,,,,(0.073)
+coef,R&D/assets,,,,-0.042*,,,,-0.078
+se,,,,,(0.023),,,,(0.050)
+coef,CAPX/assets,,,,,-0.031,,,-0.434*
+se,,,,,,(0.165),,,(0.250)
+coef,ROA,,,,,,0.011*,,0.002
+se,,,,,,,(0.007),,(0.013)
+coef,Employees (k),,,,,,,0.000,-0.000
+se,,,,,,,,(0.000),(0.000)
+footer,Industry FE,Y,Y,Y,Y,Y,Y,Y,Y
+footer,All baseline covars.,N,N,N,N,N,N,N,Y
+footer,Baseline year,2016,2016,2016,2016,2016,2016,2016,2016
+footer,Adj. R²,0.271,0.272,0.271,0.141,0.272,0.272,0.265,0.135
+footer,Observations,"2,680","2,680","2,666","1,466","2,666","2,676","2,479","1,331"

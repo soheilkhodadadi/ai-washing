@@ -1,0 +1,21 @@
+panel,variant,outcome,coef,p_value
+Panel A. Future AI grant outcomes,Canonical grant mismatch,Log(1 + AI grants) t+1,-0.04347092800781304,0.0011904249591431107
+Panel A. Future AI grant outcomes,Strict grant mismatch,Log(1 + AI grants) t+1,-0.027436983662665154,0.2171338826811623
+Panel A. Future AI grant outcomes,Application mismatch,Log(1 + AI grants) t+1,-0.03076156216145779,0.0008004380689676824
+Panel A. Future AI grant outcomes,Low credibility only,Log(1 + AI grants) t+1,-0.0033522006027279483,0.7987005074753073
+Panel A. Future AI grant outcomes,Weak patent only,Log(1 + AI grants) t+1,-0.12756962277800357,9.05957135832393e-08
+Panel A. Future AI grant outcomes,Canonical grant mismatch,Log(1 + AI grants) t+2,0.008498160155326886,0.2935285885122154
+Panel A. Future AI grant outcomes,Strict grant mismatch,Log(1 + AI grants) t+2,-0.030071001927639795,0.1071218049912817
+Panel A. Future AI grant outcomes,Application mismatch,Log(1 + AI grants) t+2,0.006216309829218381,0.4625579141412577
+Panel A. Future AI grant outcomes,Low credibility only,Log(1 + AI grants) t+2,0.012078995632862563,0.38178248936924875
+Panel A. Future AI grant outcomes,Weak patent only,Log(1 + AI grants) t+2,0.0019648164030183417,0.8971203452604671
+Panel B. Future AI application outcomes,Canonical grant mismatch,Log(1 + AI applications) t+1,0.022081296782731095,0.05239575420283743
+Panel B. Future AI application outcomes,Strict grant mismatch,Log(1 + AI applications) t+1,-0.013024405017655704,0.38111394227894324
+Panel B. Future AI application outcomes,Application mismatch,Log(1 + AI applications) t+1,-0.009958098913714285,0.2491324282181021
+Panel B. Future AI application outcomes,Low credibility only,Log(1 + AI applications) t+1,0.008408080149329382,0.5288946631830258
+Panel B. Future AI application outcomes,Weak patent only,Log(1 + AI applications) t+1,0.05214156552220016,0.004124565532871233
+Panel B. Future AI application outcomes,Canonical grant mismatch,Log(1 + AI applications) t+2,0.06848489185699132,1.1883490672972816e-06
+Panel B. Future AI application outcomes,Strict grant mismatch,Log(1 + AI applications) t+2,-0.0031844708779590536,0.8490587760592256
+Panel B. Future AI application outcomes,Application mismatch,Log(1 + AI applications) t+2,0.01568935091643365,0.07634013902414608
+Panel B. Future AI application outcomes,Low credibility only,Log(1 + AI applications) t+2,0.018523407741677402,0.22868456043942953
+Panel B. Future AI application outcomes,Weak patent only,Log(1 + AI applications) t+2,0.16381521539657903,1.5132083932149568e-12

@@ -1,0 +1,41 @@
+event_time,mean_value,outcome,outcome_label,panel,short_label
+-2,0.10399385560675883,SpecShare,Speculative share,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-1,0.2716999978285888,SpecShare,Speculative share,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+0,0.22412358276643993,SpecShare,Speculative share,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+1,0.20961799544992823,SpecShare,Speculative share,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+2,0.16140091188392405,SpecShare,Speculative share,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-2,0.607150683680605,A_S,A/S ratio,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-1,0.7909782122426048,A_S,A/S ratio,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+0,0.8375465688348352,A_S,A/S ratio,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+1,0.9706148329393266,A_S,A/S ratio,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+2,1.0530917290238706,A_S,A/S ratio,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-2,0.1774193548387097,PatentMismatch,PatentMismatch,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-1,0.4142857142857143,PatentMismatch,PatentMismatch,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+0,0.37142857142857144,PatentMismatch,PatentMismatch,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+1,0.3,PatentMismatch,PatentMismatch,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+2,0.25862068965517243,PatentMismatch,PatentMismatch,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-2,0.85558177887139,AI_Focus,AI Focus,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-1,1.4719537927200566,AI_Focus,AI Focus,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+0,1.6712262661347261,AI_Focus,AI Focus,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+1,2.006346708600183,AI_Focus,AI Focus,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+2,1.9803714740014742,AI_Focus,AI Focus,Panel A. First SEC comment letter (active AI disclosers),Any SEC comment
+-2,0.13732933732933733,SpecShare,Speculative share,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-1,0.1470508658008658,SpecShare,Speculative share,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+0,0.17116804840861444,SpecShare,Speculative share,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+1,0.28300587758682005,SpecShare,Speculative share,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+2,0.2510501067772125,SpecShare,Speculative share,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-2,0.7117949119973573,A_S,A/S ratio,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-1,0.8551691498336318,A_S,A/S ratio,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+0,1.0435047598331257,A_S,A/S ratio,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+1,0.849778177714338,A_S,A/S ratio,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+2,1.1959946474892549,A_S,A/S ratio,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-2,0.18181818181818182,PatentMismatch,PatentMismatch,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-1,0.2727272727272727,PatentMismatch,PatentMismatch,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+0,0.36363636363636365,PatentMismatch,PatentMismatch,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+1,0.5454545454545454,PatentMismatch,PatentMismatch,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+2,0.375,PatentMismatch,PatentMismatch,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-2,1.665120992488747,AI_Focus,AI Focus,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+-1,2.0794830603790753,AI_Focus,AI Focus,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+0,2.7461183444555335,AI_Focus,AI Focus,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+1,2.8957265754642005,AI_Focus,AI Focus,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment
+2,3.6271024618343333,AI_Focus,AI Focus,Panel B. First AI-related SEC comment letter (active AI disclosers),AI-related SEC comment

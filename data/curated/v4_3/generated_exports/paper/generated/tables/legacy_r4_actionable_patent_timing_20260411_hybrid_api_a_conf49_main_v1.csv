@@ -1,0 +1,19 @@
+row_type,label,Firm + year FE,Industry + year FE,"Firm + year FE, non-fin.","Firm + year FE, non-fin./non-util."
+coef,log(1 + AI patents) at t-2,0.018,0.015,0.013,0.013
+se,,(0.018),(0.020),(0.017),(0.017)
+coef,log(1 + AI patents) at t-1,0.021,0.023,0.024,0.024
+se,,(0.016),(0.016),(0.016),(0.016)
+coef,log(1 + AI patents) at t,0.033**,0.040**,0.030*,0.030*
+se,,(0.017),(0.016),(0.017),(0.017)
+coef,log(1 + AI patents) at t+1,0.018,0.023**,0.019*,0.019*
+se,,(0.012),(0.011),(0.011),(0.011)
+coef,log(1 + AI patents) at t+2,0.050***,0.057***,0.048***,0.048***
+se,,(0.011),(0.014),(0.012),(0.012)
+footer,Controls,Y,Y,Y,Y
+footer,Firm FE,Y,N,Y,Y
+footer,Industry FE,N,Y,N,N
+footer,Year FE,Y,Y,Y,Y
+footer,Non-fin.,N,N,Y,Y
+footer,No util.,N,N,N,Y
+footer,Adj. R²,-0.160,0.016,-0.163,-0.163
+footer,Observations,"14,968","14,968","13,759","13,737"

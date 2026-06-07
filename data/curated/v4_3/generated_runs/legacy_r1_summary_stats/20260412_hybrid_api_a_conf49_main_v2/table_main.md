@@ -1,0 +1,64 @@
+# Table Main
+
+## Panel A. Coverage and corpus totals
+
+| Metric | Value | Notes |
+| --- | --- | --- |
+| Ever-speaker firms | 5,084 | Unique CIKs in the canonical annual panel. |
+| Firm-year observations | 50,840 | Annual panel coverage for 2016-2025. |
+| AI-talking firm-years | 13,777 | Firm-years with at least one classified AI sentence. |
+| Total classified AI sentences | 147,879 | Corpus total across the 2016-2025 ever-speaker panel. |
+| Actionable AI sentences | 67,080 | Corpus total. |
+| Speculative AI sentences | 17,900 | Corpus total. |
+| Irrelevant AI sentences | 62,899 | Corpus total. |
+| Firm-years with Compustat controls | 31,291 | Non-missing log assets in the annual panel. |
+| Firm-years with matched market cap | 23,747 | Annual rows with merged CRSP market-cap data. |
+| Filing-event observations | 7,355 | Distinct filing events across 2,753 firms. |
+| Filing events with CAR[-1,+1] | 7,342 | Usable immediate-return events. |
+| Filing events with BHAR[+2,+63] | 7,098 | Usable 3-month drift events. |
+| Filing events with BHAR[+2,+252] | 4,756 | Usable 12-month drift events. |
+
+## Panel B. Annual-panel variables
+
+| Variable | Mean | Std. Dev. | p5 | p25 | p50 | p75 | p95 | N |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Total AI sentences per firm-year | 2.909 | 17.306 | 0.000 | 0.000 | 0.000 | 1.000 | 13.000 | 50,840 |
+| Actionable AI sentences per firm-year | 1.319 | 8.293 | 0.000 | 0.000 | 0.000 | 0.000 | 6.000 | 50,840 |
+| Speculative AI sentences per firm-year | 0.352 | 2.494 | 0.000 | 0.000 | 0.000 | 0.000 | 1.000 | 50,840 |
+| Irrelevant AI sentences per firm-year | 1.237 | 8.209 | 0.000 | 0.000 | 0.000 | 0.000 | 6.000 | 50,840 |
+| AI focus | 0.463 | 0.933 | 0.000 | 0.000 | 0.000 | 0.693 | 2.639 | 50,840 |
+| Actionable share | 0.129 | 0.305 | 0.000 | 0.000 | 0.000 | 0.000 | 1.000 | 50,840 |
+| Speculative share | 0.031 | 0.136 | 0.000 | 0.000 | 0.000 | 0.000 | 0.200 | 50,840 |
+| CredAI | 0.000 | 0.755 | -0.298 | -0.018 | -0.018 | -0.018 | 0.344 | 50,840 |
+| A/S ratio | 0.210 | 0.516 | 0.000 | 0.000 | 0.000 | 0.000 | 1.386 | 50,840 |
+| PatentMismatch | 0.096 | 0.295 | 0.000 | 0.000 | 0.000 | 0.000 | 1.000 | 50,840 |
+| AI patents | 0.160 | 2.969 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 50,840 |
+| Total patents | 6.012 | 76.473 | 0.000 | 0.000 | 0.000 | 0.000 | 10.000 | 50,840 |
+| Log assets | 6.981 | 2.799 | 2.096 | 5.361 | 7.317 | 8.889 | 10.992 | 31,291 |
+| Leverage | 0.241 | 0.253 | 0.000 | 0.026 | 0.185 | 0.371 | 0.708 | 31,186 |
+| Cash/assets | 0.238 | 0.275 | 0.004 | 0.037 | 0.114 | 0.352 | 0.879 | 31,290 |
+| R&D/assets | 0.164 | 0.309 | 0.000 | 0.010 | 0.060 | 0.187 | 0.639 | 17,934 |
+| CAPX/assets | 0.028 | 0.039 | 0.000 | 0.002 | 0.014 | 0.038 | 0.104 | 31,113 |
+| ROA | -0.232 | 0.912 | -1.199 | -0.147 | 0.010 | 0.049 | 0.150 | 31,228 |
+| Sales growth | 1.310 | 31.591 | -0.378 | -0.025 | 0.072 | 0.212 | 1.016 | 28,010 |
+| Employees | 13.495 | 59.888 | 0.007 | 0.182 | 1.400 | 7.600 | 57.000 | 29,404 |
+| Log MktCap/assets | 6.811 | 1.187 | 4.675 | 6.088 | 6.894 | 7.638 | 8.679 | 23,444 |
+| Log Q proxy | 6.809 | 1.186 | 4.675 | 6.087 | 6.890 | 7.635 | 8.673 | 23,369 |
+| Delta log Q t+1 | -0.062 | 0.541 | -1.057 | -0.305 | -0.024 | 0.216 | 0.757 | 19,894 |
+| Delta shares t+1 | 0.083 | 0.407 | -0.097 | -0.010 | 0.006 | 0.049 | 0.562 | 20,391 |
+| Issue >5% t+1 | 0.247 | 0.431 | 0.000 | 0.000 | 0.000 | 0.000 | 1.000 | 20,391 |
+
+## Panel C. Event-study and market variables
+
+| Variable | Mean | Std. Dev. | p5 | p25 | p50 | p75 | p95 | N |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Total AI sentences per filing | 7.205 | 17.075 | 1.000 | 1.000 | 2.000 | 7.000 | 28.000 | 7,355 |
+| Actionable AI sentences per filing | 3.875 | 9.640 | 0.000 | 0.000 | 1.000 | 4.000 | 16.000 | 7,355 |
+| Speculative AI sentences per filing | 0.878 | 2.602 | 0.000 | 0.000 | 0.000 | 1.000 | 4.000 | 7,355 |
+| Actionable share per filing | 0.545 | 0.415 | 0.000 | 0.000 | 0.600 | 1.000 | 1.000 | 7,355 |
+| Speculative share per filing | 0.123 | 0.254 | 0.000 | 0.000 | 0.000 | 0.125 | 1.000 | 7,355 |
+| CAR[-1,+1] | 0.000 | 0.116 | -0.159 | -0.037 | -0.001 | 0.033 | 0.159 | 7,342 |
+| BHAR[+2,+21] | -0.022 | 0.219 | -0.315 | -0.109 | -0.023 | 0.051 | 0.244 | 7,265 |
+| BHAR[+2,+63] | -0.036 | 0.380 | -0.499 | -0.204 | -0.050 | 0.090 | 0.430 | 7,098 |
+| BHAR[+2,+126] | -0.064 | 0.530 | -0.695 | -0.304 | -0.084 | 0.111 | 0.572 | 6,829 |
+| BHAR[+2,+252] | -0.043 | 1.384 | -0.902 | -0.452 | -0.135 | 0.151 | 0.919 | 4,756 |

@@ -1,0 +1,15 @@
+panel,row_label,Log(1 + AI grants) t+1,Log(1 + AI grants) t+2,Log(1 + AI applications) t+1,Log(1 + AI applications) t+2
+Panel A. Future AI grant outcomes,Canonical grant mismatch,-0.0435*** (0.0134),0.0085 (0.0081),,
+Panel A. Future AI grant outcomes,Strict grant mismatch,-0.0274 (0.0222),-0.0301 (0.0187),,
+Panel A. Future AI grant outcomes,Application mismatch,-0.0308*** (0.0092),0.0062 (0.0085),,
+Panel A. Future AI grant outcomes,Low credibility only,-0.0034 (0.0131),0.0121 (0.0138),,
+Panel A. Future AI grant outcomes,Weak patent only,-0.1276*** (0.0239),0.0020 (0.0152),,
+Panel A. Future AI grant outcomes,Outcome mean,0.104,0.092,,
+Panel A. Future AI grant outcomes,Observations,10129,10129,,
+Panel B. Future AI application outcomes,Canonical grant mismatch,,,0.0221* (0.0114),0.0685*** (0.0141)
+Panel B. Future AI application outcomes,Strict grant mismatch,,,-0.0130 (0.0149),-0.0032 (0.0167)
+Panel B. Future AI application outcomes,Application mismatch,,,-0.0100 (0.0086),0.0157* (0.0089)
+Panel B. Future AI application outcomes,Low credibility only,,,0.0084 (0.0134),0.0185 (0.0154)
+Panel B. Future AI application outcomes,Weak patent only,,,0.0521*** (0.0182),0.1638*** (0.0232)
+Panel B. Future AI application outcomes,Outcome mean,,,0.140,0.118
+Panel B. Future AI application outcomes,Observations,,,10129,10129

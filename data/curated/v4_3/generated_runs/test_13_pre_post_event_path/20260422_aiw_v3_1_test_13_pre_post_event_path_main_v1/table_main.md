@@ -1,0 +1,16 @@
+# Table Main
+
+## Panel Pre-filing windows
+| Window | Mean mismatch | Mean non-mismatch | Diff | p-value | N mismatch | N non-mismatch |
+| --- | --- | --- | --- | --- | --- | --- |
+| BHAR[-12,-2] | 0.683 | 0.931 | -0.248 | 0.947 | 1204 | 3018 |
+| BHAR[-6,-2] | -1.646 | -1.276 | -0.370 | 0.816 | 1204 | 3018 |
+| BHAR[-3,-1] | 2.588 | 2.759 | -0.170 | 0.909 | 1204 | 3018 |
+
+## Panel Filing and post-filing windows
+| Window | Mean mismatch | Mean non-mismatch | Diff | p-value | N mismatch | N non-mismatch |
+| --- | --- | --- | --- | --- | --- | --- |
+| BHAR[0,0] | -0.379 | -1.207 | 0.828 | 0.314 | 1204 | 3018 |
+| BHAR[+1,+3] | -3.260 | -1.984 | -1.276 | 0.288 | 1204 | 3018 |
+| BHAR[+1,+6] | -3.994 | -5.411 | 1.417 | 0.394 | 1204 | 3018 |
+| BHAR[+1,+12] | 6.616 | -5.312 | 11.927 | 0.199 | 1204 | 3018 |

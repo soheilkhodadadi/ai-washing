@@ -1,0 +1,139 @@
+{
+  "title": "Table C2. High-Confidence Local-Only Subset: A/S Ratio, PatentMismatch, and Future AI Patenting",
+  "note": "This appendix table reruns the main `A/S \u00d7 PatentMismatch` specification on the same conservative high-confidence subset used in Table C1. A firm-year enters only when the hybrid conf49 policy never deferred any sentence to API-A in that filing year. The dependent variable is `log(1 + AI patents)` at `t+1`, controls are unchanged, and columns vary the fixed-effects structure and sample trim.",
+  "dependent_label": "Dependent variable: log(1 + AI patents at t+1)",
+  "models": [
+    {
+      "number": "(1)",
+      "label": "Firm + year FE"
+    },
+    {
+      "number": "(2)",
+      "label": "Industry\u00d7year FE"
+    },
+    {
+      "number": "(3)",
+      "label": "Firm + year FE, non-fin."
+    },
+    {
+      "number": "(4)",
+      "label": "Firm + year FE, non-fin./non-util."
+    }
+  ],
+  "body_rows": [
+    {
+      "label": "A/S ratio",
+      "cells": [
+        "0.085*",
+        "0.267***",
+        "0.087*",
+        "0.087*"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.049)",
+        "(0.046)",
+        "(0.052)",
+        "(0.052)"
+      ],
+      "kind": "se"
+    },
+    {
+      "label": "A/S ratio \u00d7 PatentMismatch",
+      "cells": [
+        "-0.065",
+        "-0.408***",
+        "-0.068",
+        "-0.068"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.040)",
+        "(0.054)",
+        "(0.042)",
+        "(0.042)"
+      ],
+      "kind": "se"
+    }
+  ],
+  "footer_rows": [
+    {
+      "label": "Controls",
+      "cells": [
+        "Y",
+        "Y",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Firm FE",
+      "cells": [
+        "Y",
+        "N",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Industry\u00d7Year FE",
+      "cells": [
+        "N",
+        "Y",
+        "N",
+        "N"
+      ]
+    },
+    {
+      "label": "Year FE",
+      "cells": [
+        "Y",
+        "N",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Non-fin.",
+      "cells": [
+        "N",
+        "N",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "No util.",
+      "cells": [
+        "N",
+        "N",
+        "N",
+        "Y"
+      ]
+    },
+    {
+      "label": "Adj. R\u00b2",
+      "cells": [
+        "-0.909",
+        "0.081",
+        "-0.885",
+        "-0.883"
+      ]
+    },
+    {
+      "label": "Observations",
+      "cells": [
+        "2,810",
+        "2,810",
+        "2,632",
+        "2,630"
+      ]
+    }
+  ]
+}

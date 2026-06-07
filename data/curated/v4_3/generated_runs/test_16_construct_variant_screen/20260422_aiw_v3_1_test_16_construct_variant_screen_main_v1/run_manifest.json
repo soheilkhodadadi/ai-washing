@@ -1,0 +1,46 @@
+{
+  "test_id": "test_16_construct_variant_screen",
+  "run_id": "20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1",
+  "created_at_utc": "2026-04-23T02:41:37.052551+00:00",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.test_16_construct_variant_screen",
+  "run_dir": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "outputs": {
+    "dataset_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/dataset_summary.json",
+    "table_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/table_main.csv",
+    "table_md": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/table_main.md",
+    "table_tex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/table_main.tex",
+    "table_docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/table_main.docx",
+    "figure_png": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/figure_main.png",
+    "figure_pdf": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/figure_main.pdf",
+    "figure_series": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/figure_series.csv",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/v3_1/test_runs/test_16_construct_variant_screen/20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1/result_notes.md"
+  },
+  "paper_exports": {
+    "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/tables/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.csv",
+    "table_md": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/tables/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.md",
+    "table_tex": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/latex/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.tex",
+    "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/docx/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.docx",
+    "figure_png": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/figures/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.png",
+    "figure_pdf": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/figures/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.pdf",
+    "figure_series": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/tables/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1_figure_series.csv",
+    "writer_packet": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/writer_packets/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1.md",
+    "result_notes": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/v3_1/snippets/test_16_construct_variant_screen_20260422_aiw_v3_1_test_16_construct_variant_screen_main_v1_result_notes.md"
+  },
+  "sample_summary": {
+    "ai_talking_rows": 13777,
+    "unique_firms": 5084,
+    "year_min": 2016,
+    "year_max": 2025,
+    "variant_shares": {
+      "PatentMismatch": 0.3548668069971692,
+      "StrictPatentMismatch": 0.09102126732960732,
+      "ApplicationMismatch": 0.3417289685708064,
+      "LowCredibility": 0.5009798940262756,
+      "WeakPatentRelative": 0.6934020468897438
+    }
+  }
+}

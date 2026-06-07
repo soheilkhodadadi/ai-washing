@@ -1,0 +1,14 @@
+Metric,Value,Notes
+Ever-speaker firms,"5,084",Unique CIKs in the canonical annual panel.
+Firm-year observations,"50,840",Annual panel coverage for 2016-2025.
+AI-talking firm-years,"13,777",Firm-years with at least one classified AI sentence.
+Total classified AI sentences,"147,879",Corpus total across the 2016-2025 ever-speaker panel.
+Actionable AI sentences,"67,080",Corpus total.
+Speculative AI sentences,"17,900",Corpus total.
+Irrelevant AI sentences,"62,899",Corpus total.
+Firm-years with Compustat controls,"31,291",Non-missing log assets in the annual panel.
+Firm-years with matched market cap,"23,747",Annual rows with merged CRSP market-cap data.
+Filing-event observations,"7,355","Distinct filing events across 2,753 firms."
+"Filing events with CAR[-1,+1]","7,342",Usable immediate-return events.
+"Filing events with BHAR[+2,+63]","7,098",Usable 3-month drift events.
+"Filing events with BHAR[+2,+252]","4,756",Usable 12-month drift events.

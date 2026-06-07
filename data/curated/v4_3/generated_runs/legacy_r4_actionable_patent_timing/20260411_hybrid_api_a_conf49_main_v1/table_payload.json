@@ -1,0 +1,199 @@
+{
+  "title": "Table R4. Actionable Disclosure and AI Patent Timing",
+  "note": "This table presents distributed-lag style firm-year regressions on the expanded 2016-2025 ever-speaker annual panel. The dependent variable is the actionable-disclosure indicator. Each column includes the full set of AI patent timing terms from `t-2` through `t+2`, so the rows trace how prior, contemporaneous, and future AI patenting line up with actionable AI disclosure. Columns vary the fixed-effects structure and sample trim while keeping the same baseline control set: size, leverage, cash/assets, R&D/assets, CAPX/assets, ROA, sales growth, and employees. Standard errors clustered at the firm level are shown in parentheses. Constants are omitted. (* p<0.1, ** p<0.05, *** p<0.01).",
+  "dependent_label": "Dependent variable: Actionable disclosure",
+  "models": [
+    {
+      "number": "(1)",
+      "label": "Firm + year FE"
+    },
+    {
+      "number": "(2)",
+      "label": "Industry + year FE"
+    },
+    {
+      "number": "(3)",
+      "label": "Firm + year FE, non-fin."
+    },
+    {
+      "number": "(4)",
+      "label": "Firm + year FE, non-fin./non-util."
+    }
+  ],
+  "body_rows": [
+    {
+      "label": "log(1 + AI patents) at t-2",
+      "cells": [
+        "0.018",
+        "0.015",
+        "0.013",
+        "0.013"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.018)",
+        "(0.020)",
+        "(0.017)",
+        "(0.017)"
+      ],
+      "kind": "se"
+    },
+    {
+      "label": "log(1 + AI patents) at t-1",
+      "cells": [
+        "0.021",
+        "0.023",
+        "0.024",
+        "0.024"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.016)",
+        "(0.016)",
+        "(0.016)",
+        "(0.016)"
+      ],
+      "kind": "se"
+    },
+    {
+      "label": "log(1 + AI patents) at t",
+      "cells": [
+        "0.033**",
+        "0.040**",
+        "0.030*",
+        "0.030*"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.017)",
+        "(0.016)",
+        "(0.017)",
+        "(0.017)"
+      ],
+      "kind": "se"
+    },
+    {
+      "label": "log(1 + AI patents) at t+1",
+      "cells": [
+        "0.018",
+        "0.023**",
+        "0.019*",
+        "0.019*"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.012)",
+        "(0.011)",
+        "(0.011)",
+        "(0.011)"
+      ],
+      "kind": "se"
+    },
+    {
+      "label": "log(1 + AI patents) at t+2",
+      "cells": [
+        "0.050***",
+        "0.057***",
+        "0.048***",
+        "0.048***"
+      ],
+      "kind": "coef"
+    },
+    {
+      "label": "",
+      "cells": [
+        "(0.011)",
+        "(0.014)",
+        "(0.012)",
+        "(0.012)"
+      ],
+      "kind": "se"
+    }
+  ],
+  "footer_rows": [
+    {
+      "label": "Controls",
+      "cells": [
+        "Y",
+        "Y",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Firm FE",
+      "cells": [
+        "Y",
+        "N",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Industry FE",
+      "cells": [
+        "N",
+        "Y",
+        "N",
+        "N"
+      ]
+    },
+    {
+      "label": "Year FE",
+      "cells": [
+        "Y",
+        "Y",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "Non-fin.",
+      "cells": [
+        "N",
+        "N",
+        "Y",
+        "Y"
+      ]
+    },
+    {
+      "label": "No util.",
+      "cells": [
+        "N",
+        "N",
+        "N",
+        "Y"
+      ]
+    },
+    {
+      "label": "Adj. R\u00b2",
+      "cells": [
+        "-0.160",
+        "0.016",
+        "-0.163",
+        "-0.163"
+      ]
+    },
+    {
+      "label": "Observations",
+      "cells": [
+        "14,968",
+        "14,968",
+        "13,759",
+        "13,737"
+      ]
+    }
+  ]
+}

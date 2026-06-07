@@ -1,0 +1,118 @@
+{
+  "title": "Table C1. High-Confidence Local-Only Subset: Disclosure Composition and AI Patent Timing",
+  "note": "This appendix table reruns the disclosure-composition timing regressions on a conservative high-confidence subset. A firm-year enters the subset only when the hybrid conf49 policy never deferred any sentence to API-A in that filing year, so all AI sentence labels remain local high-confidence classifications. The dependent variable is `log(1 + AI patents)` measured at different calendar-time horizons relative to the disclosure year. Firm and year fixed effects are included in all columns, the baseline control set is unchanged, and standard errors are clustered at the firm level.",
+  "dependent_label": "Dependent variable: log(1 + AI patents)",
+  "models": [
+    {
+      "number": "(1)",
+      "label": "t-2"
+    },
+    {
+      "number": "(2)",
+      "label": "t-1"
+    },
+    {
+      "number": "(3)",
+      "label": "t"
+    },
+    {
+      "number": "(4)",
+      "label": "t+1"
+    },
+    {
+      "number": "(5)",
+      "label": "t+2"
+    }
+  ],
+  "panels": [
+    {
+      "heading": "Panel A. Actionable disclosure",
+      "label": "Actionable disclosure (dummy)",
+      "coef_cells": [
+        "0.047",
+        "0.049*",
+        "0.030",
+        "0.035",
+        "0.072"
+      ],
+      "se_cells": [
+        "(0.029)",
+        "(0.029)",
+        "(0.029)",
+        "(0.039)",
+        "(0.047)"
+      ],
+      "footer_rows": []
+    },
+    {
+      "heading": "Panel B. Speculative-only disclosure",
+      "label": "Speculative-only disclosure (dummy)",
+      "coef_cells": [
+        "-0.014",
+        "-0.010",
+        "-0.006",
+        "-0.076",
+        "-0.129"
+      ],
+      "se_cells": [
+        "(0.049)",
+        "(0.046)",
+        "(0.044)",
+        "(0.080)",
+        "(0.082)"
+      ],
+      "footer_rows": [
+        {
+          "label": "Controls",
+          "cells": [
+            "Y",
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        },
+        {
+          "label": "Firm FE",
+          "cells": [
+            "Y",
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        },
+        {
+          "label": "Year FE",
+          "cells": [
+            "Y",
+            "Y",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        },
+        {
+          "label": "Adj. R\u00b2",
+          "cells": [
+            "-0.953",
+            "-0.954",
+            "-0.928",
+            "-0.922",
+            "-0.916"
+          ]
+        },
+        {
+          "label": "Observations",
+          "cells": [
+            "2,810",
+            "2,810",
+            "2,810",
+            "2,810",
+            "2,810"
+          ]
+        }
+      ]
+    }
+  ]
+}

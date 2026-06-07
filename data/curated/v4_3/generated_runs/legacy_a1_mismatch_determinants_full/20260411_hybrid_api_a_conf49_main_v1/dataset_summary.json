@@ -1,0 +1,313 @@
+{
+  "test_id": "legacy_a1_mismatch_determinants_full",
+  "run_id": "20260411_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-11T21:35:56.015856+00:00",
+  "inputs": {
+    "annual_panel": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/data/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet"
+  },
+  "payload": {
+    "title": "Table A1. Full-Baseline Determinants of PatentMismatch",
+    "note": "This table presents firm-level cross-sectional regressions examining the determinants of PatentMismatch. The dependent variable is an indicator for whether the firm records at least one PatentMismatch incident during `2016-2025`. Independent variables are baseline firm characteristics measured in 2016: log assets, cash/assets, leverage, R&D/assets, CAPX/assets, ROA, and employees (k). All specifications include industry fixed effects based on baseline `sic2`, and standard errors clustered at the industry level are shown in parentheses. Columns (1)-(7) report one-variable specifications; column (8) includes all baseline characteristics jointly. Constants are omitted. (* p<0.1, ** p<0.05, *** p<0.01).",
+    "dependent_label": "Dependent variable: any PatentMismatch incident, 2016-2025",
+    "models": [
+      {
+        "number": "(1)",
+        "label": "Log assets"
+      },
+      {
+        "number": "(2)",
+        "label": "Cash/assets"
+      },
+      {
+        "number": "(3)",
+        "label": "Leverage"
+      },
+      {
+        "number": "(4)",
+        "label": "R&D/assets"
+      },
+      {
+        "number": "(5)",
+        "label": "CAPX/assets"
+      },
+      {
+        "number": "(6)",
+        "label": "ROA"
+      },
+      {
+        "number": "(7)",
+        "label": "Employees (k)"
+      },
+      {
+        "number": "(8)",
+        "label": "Multivar."
+      }
+    ],
+    "body_rows": [
+      {
+        "label": "Log assets",
+        "cells": [
+          "0.012***",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "0.009**"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "(0.004)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(0.003)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "Cash/assets",
+        "cells": [
+          "",
+          "-0.024",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "0.037"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "(0.034)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(0.046)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "Leverage",
+        "cells": [
+          "",
+          "",
+          "0.041",
+          "",
+          "",
+          "",
+          "",
+          "0.028"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "(0.036)",
+          "",
+          "",
+          "",
+          "",
+          "(0.059)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "R&D/assets",
+        "cells": [
+          "",
+          "",
+          "",
+          "-0.029",
+          "",
+          "",
+          "",
+          "-0.025"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "(0.033)",
+          "",
+          "",
+          "",
+          "(0.050)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "CAPX/assets",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "0.016",
+          "",
+          "",
+          "-0.497"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "(0.263)",
+          "",
+          "",
+          "(0.376)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "ROA",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "0.013",
+          "",
+          "-0.001"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(0.009)",
+          "",
+          "(0.017)"
+        ],
+        "kind": "se"
+      },
+      {
+        "label": "Employees (k)",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "0.000",
+          "0.000"
+        ],
+        "kind": "coef"
+      },
+      {
+        "label": "",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "(0.000)",
+          "(0.000)"
+        ],
+        "kind": "se"
+      }
+    ],
+    "footer_rows": [
+      {
+        "label": "Industry FE",
+        "cells": [
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y",
+          "Y"
+        ]
+      },
+      {
+        "label": "All baseline covars.",
+        "cells": [
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "N",
+          "Y"
+        ]
+      },
+      {
+        "label": "Baseline year",
+        "cells": [
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016",
+          "2016"
+        ]
+      },
+      {
+        "label": "Adj. R\u00b2",
+        "cells": [
+          "0.287",
+          "0.283",
+          "0.283",
+          "0.132",
+          "0.285",
+          "0.285",
+          "0.278",
+          "0.133"
+        ]
+      },
+      {
+        "label": "Observations",
+        "cells": [
+          "2,680",
+          "2,680",
+          "2,666",
+          "1,466",
+          "2,666",
+          "2,676",
+          "2,479",
+          "1,331"
+        ]
+      }
+    ],
+    "landscape": true
+  }
+}

@@ -1,0 +1,51 @@
+event_time,mean_value,panel,outcome,outcome_label
+-2,0.1345565749235474,Panel A. First large equity issue among active AI issuers,LowCredibility,LowCredibility
+-1,0.21037463976945245,Panel A. First large equity issue among active AI issuers,LowCredibility,LowCredibility
+0,0.47411444141689374,Panel A. First large equity issue among active AI issuers,LowCredibility,LowCredibility
+1,0.3678474114441417,Panel A. First large equity issue among active AI issuers,LowCredibility,LowCredibility
+2,0.3242506811989101,Panel A. First large equity issue among active AI issuers,LowCredibility,LowCredibility
+-2,0.09480122324159021,Panel A. First large equity issue among active AI issuers,ApplicationMismatch,ApplicationMismatch
+-1,0.1585014409221902,Panel A. First large equity issue among active AI issuers,ApplicationMismatch,ApplicationMismatch
+0,0.35967302452316074,Panel A. First large equity issue among active AI issuers,ApplicationMismatch,ApplicationMismatch
+1,0.28065395095367845,Panel A. First large equity issue among active AI issuers,ApplicationMismatch,ApplicationMismatch
+2,0.25885558583106266,Panel A. First large equity issue among active AI issuers,ApplicationMismatch,ApplicationMismatch
+-2,0.09785932721712538,Panel A. First large equity issue among active AI issuers,PatentMismatch,PatentMismatch
+-1,0.16138328530259366,Panel A. First large equity issue among active AI issuers,PatentMismatch,PatentMismatch
+0,0.3678474114441417,Panel A. First large equity issue among active AI issuers,PatentMismatch,PatentMismatch
+1,0.27520435967302453,Panel A. First large equity issue among active AI issuers,PatentMismatch,PatentMismatch
+2,0.25340599455040874,Panel A. First large equity issue among active AI issuers,PatentMismatch,PatentMismatch
+-2,0.04056097523021714,Panel A. First large equity issue among active AI issuers,SpecShare,Speculative share
+-1,0.07149796058715967,Panel A. First large equity issue among active AI issuers,SpecShare,Speculative share
+0,0.1812927902999605,Panel A. First large equity issue among active AI issuers,SpecShare,Speculative share
+1,0.16361973858829634,Panel A. First large equity issue among active AI issuers,SpecShare,Speculative share
+2,0.16008163747998747,Panel A. First large equity issue among active AI issuers,SpecShare,Speculative share
+-2,0.3735274352869781,Panel A. First large equity issue among active AI issuers,AI_Focus,AI Focus
+-1,0.6897038243563602,Panel A. First large equity issue among active AI issuers,AI_Focus,AI Focus
+0,1.6774625509314844,Panel A. First large equity issue among active AI issuers,AI_Focus,AI Focus
+1,2.0736961638140823,Panel A. First large equity issue among active AI issuers,AI_Focus,AI Focus
+2,2.14187667036779,Panel A. First large equity issue among active AI issuers,AI_Focus,AI Focus
+-2,0.10572687224669604,Panel B. Non-big first-issue AI issuers,LowCredibility,LowCredibility
+-1,0.1875,Panel B. Non-big first-issue AI issuers,LowCredibility,LowCredibility
+0,0.43824701195219123,Panel B. Non-big first-issue AI issuers,LowCredibility,LowCredibility
+1,0.3426294820717131,Panel B. Non-big first-issue AI issuers,LowCredibility,LowCredibility
+2,0.30278884462151395,Panel B. Non-big first-issue AI issuers,LowCredibility,LowCredibility
+-2,0.0881057268722467,Panel B. Non-big first-issue AI issuers,ApplicationMismatch,ApplicationMismatch
+-1,0.1625,Panel B. Non-big first-issue AI issuers,ApplicationMismatch,ApplicationMismatch
+0,0.3705179282868526,Panel B. Non-big first-issue AI issuers,ApplicationMismatch,ApplicationMismatch
+1,0.2908366533864542,Panel B. Non-big first-issue AI issuers,ApplicationMismatch,ApplicationMismatch
+2,0.26294820717131473,Panel B. Non-big first-issue AI issuers,ApplicationMismatch,ApplicationMismatch
+-2,0.0881057268722467,Panel B. Non-big first-issue AI issuers,PatentMismatch,PatentMismatch
+-1,0.1625,Panel B. Non-big first-issue AI issuers,PatentMismatch,PatentMismatch
+0,0.35856573705179284,Panel B. Non-big first-issue AI issuers,PatentMismatch,PatentMismatch
+1,0.2788844621513944,Panel B. Non-big first-issue AI issuers,PatentMismatch,PatentMismatch
+2,0.2549800796812749,Panel B. Non-big first-issue AI issuers,PatentMismatch,PatentMismatch
+-2,0.03516307288043898,Panel B. Non-big first-issue AI issuers,SpecShare,Speculative share
+-1,0.06764597296066034,Panel B. Non-big first-issue AI issuers,SpecShare,Speculative share
+0,0.1832108809648953,Panel B. Non-big first-issue AI issuers,SpecShare,Speculative share
+1,0.1660882177182251,Panel B. Non-big first-issue AI issuers,SpecShare,Speculative share
+2,0.15273480712879908,Panel B. Non-big first-issue AI issuers,SpecShare,Speculative share
+-2,0.2796041222809294,Panel B. Non-big first-issue AI issuers,AI_Focus,AI Focus
+-1,0.604643833018512,Panel B. Non-big first-issue AI issuers,AI_Focus,AI Focus
+0,1.6372604047418136,Panel B. Non-big first-issue AI issuers,AI_Focus,AI Focus
+1,2.0254411136107295,Panel B. Non-big first-issue AI issuers,AI_Focus,AI Focus
+2,2.0546266736438987,Panel B. Non-big first-issue AI issuers,AI_Focus,AI Focus

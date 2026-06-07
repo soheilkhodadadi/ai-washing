@@ -1,0 +1,7 @@
+- Test 20 asks whether disclosure composition changes after SEC scrutiny among firms that keep talking about AI.
+- Main any-comment active sample: `70` firms.
+- AI-related comment active sample: `11` firms.
+- Any-comment `A/S` change at `t+1`: `0.1796` (p=`0.007`).
+- Any-comment `SpecShare` change at `t+2`: `-0.1051` (p=`0.025`).
+- Any-comment `PatentMismatch` change at `t+1`: `-0.1143` (p=`0.073`).
+- Read this as evidence of composition cleanup among ongoing AI disclosers, not as evidence that scrutiny suppresses AI talk overall.

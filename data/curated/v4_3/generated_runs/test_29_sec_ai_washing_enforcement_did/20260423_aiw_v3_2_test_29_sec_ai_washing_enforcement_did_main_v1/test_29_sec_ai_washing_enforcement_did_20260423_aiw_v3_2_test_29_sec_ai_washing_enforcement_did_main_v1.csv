@@ -1,0 +1,9 @@
+Panel,Outcome / treatment,Post-2024 DID,2023 placebo,Outcome mean,Observations
+Panel A. Enforcement-salience DID using mismatch exposure in 2022,,,,,
+,Speculative share,-0.0839*** (0.0184),-0.1224*** (0.0187),0.160,5663
+,A/S ratio,0.2907*** (0.0345),0.3314*** (0.0315),0.939,5663
+,PatentMismatch,-0.3121*** (0.0288),-0.4305*** (0.0284),0.261,5663
+,AI Focus,-0.1044 (0.0653),0.0118 (0.0495),1.850,5663
+Panel B. Alternative exposure definitions on core disclosure outcomes,,,,,
+,LowCredibility in 2022,-0.1215*** (0.0166),0.3368*** (0.0331),-0.2606*** (0.0259),587
+,ApplicationMismatch in 2022,-0.1042*** (0.0185),0.3155*** (0.0344),-0.2634*** (0.0290),468

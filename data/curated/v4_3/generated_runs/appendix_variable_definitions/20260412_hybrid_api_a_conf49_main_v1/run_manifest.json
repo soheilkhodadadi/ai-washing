@@ -1,0 +1,24 @@
+{
+  "test_id": "appendix_variable_definitions",
+  "run_id": "20260412_hybrid_api_a_conf49_main_v1",
+  "created_at_utc": "2026-04-13T03:26:06.865105+00:00",
+  "module_path": "semantic_ai_washing.analysis.publication_runs.appendix_variable_definitions",
+  "run_dir": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1",
+  "outputs": {
+    "dataset_summary": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/dataset_summary.json",
+    "table_csv": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/table_main.csv",
+    "table_md": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/table_main.md",
+    "table_tex": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/table_main.tex",
+    "table_docx": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/table_main.docx",
+    "writer_packet": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/writer_packet.md",
+    "result_notes": "/Users/soheilkhodadadi/DataWork/semantic-patterns/ai_washing/derived/test_runs/appendix_variable_definitions/20260412_hybrid_api_a_conf49_main_v1/result_notes.md"
+  },
+  "paper_exports": {
+    "table_csv": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1.csv",
+    "table_md": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/tables/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1.md",
+    "table_tex": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/latex/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1.tex",
+    "table_docx": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/docx/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1.docx",
+    "writer_packet": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/writer_packets/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1.md",
+    "result_notes": "/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/paper/generated/snippets/appendix_variable_definitions_20260412_hybrid_api_a_conf49_main_v1_result_notes.md"
+  }
+}
