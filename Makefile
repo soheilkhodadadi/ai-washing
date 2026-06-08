@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene
+.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data reproduce-all-tables-dry-run reproduce-all-tables reproduction-status
 
 validate:
 	$(PYTHON) scripts/validate_capsule.py
@@ -27,10 +27,20 @@ reproduce-selected:
 reproduce-table:
 	PYTHONPATH=src $(PYTHON) scripts/run_publication_table.py $(TABLE_ID)
 
+check-private-data:
+	$(PYTHON) scripts/check_private_data.py
+
+reproduce-all-tables-dry-run:
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --dry-run --include-figures
+
+reproduce-all-tables:
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --include-figures
+
+reproduction-status:
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --dry-run --include-figures
 
 git-hygiene:
 	$(PYTHON) scripts/git_hygiene_check.py
-
 
 compare-selected-reproduction:
 	$(PYTHON) scripts/compare_selected_reproduction.py

@@ -10,6 +10,8 @@ Start here:
 - [AGENTS.md](AGENTS.md): operating rules for Codex and automation agents.
 - [docs/collaboration_workflow.md](docs/collaboration_workflow.md): GitHub + private-data collaboration model.
 - [docs/data_management.md](docs/data_management.md): `AIW_DATA_ROOT` policy and private data handling.
+- [docs/private_data_contract.md](docs/private_data_contract.md): coauthor-facing private data mirror contract.
+- [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day clone, setup, validation, and reproduction commands.
 - [docs/releases/v4_3_defense_freeze.md](docs/releases/v4_3_defense_freeze.md): current frozen v4.3 release target.
 - [docs/current_state_and_roadmap.md](docs/current_state_and_roadmap.md): current diagnostic and next-phase roadmap.
 

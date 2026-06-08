@@ -40,7 +40,7 @@ Generated: 2026-06-08
 - Private data leakage: WRDS/CRSP, derived panels, labels, archives, and generated outputs must stay outside Git.
 - Environment drift: exact reproduction requires pinned dependency versions, not latest `pip` versions.
 - Manuscript wrapper deltas: many v4.3 manuscript TeX files differ from generated TeX because of captions, notes, resizing, or manual manuscript wrappers. Numeric CSV evidence should be treated separately from manuscript-facing TeX wrappers.
-- Full-table uncertainty: selected reproduction has passed, but the remaining 19 table assets and 2 figures still need full expansion or explicit frozen-asset treatment.
+- Full-table uncertainty: selected reproduction has passed, and Phase 3C now has a batch reproduction ledger. Remaining table assets still need actual rerun/verification beyond dry-run readiness.
 
 ## Roadmap To Complete Coauthor-Ready Workstation
 
@@ -61,29 +61,33 @@ Gate: fresh clone can pass all non-private validation and fails gracefully for p
 
 ### Phase 3B: Private Data Mirror Contract
 
+Status: implemented as a mechanical gate.
+
 Goal: make Kuntara's data setup mechanical.
 
-Tasks:
+Implemented artifacts:
 
-- Add a private-data package checklist under the external data root.
-- Confirm each expected path in `manifests/data_dependency_manifest.csv` maps cleanly from `data/...` to `$AIW_DATA_ROOT/...`.
-- Write a coauthor-facing private-data README that explains where to put the shared Dropbox/OneDrive folder and how to set `AIW_DATA_ROOT`.
-- Keep checksum reports outside Git unless paths/data are sanitized.
+- `docs/private_data_contract.md` defines the logical `data/...` to `$AIW_DATA_ROOT/...` mapping.
+- `docs/coauthor_runbook.md` gives first-day clone, setup, private data, and selected reproduction commands.
+- `docs/workspace_routing.md` explains how this memory-rich global thread can safely route commands to the canonical AI Washing repo.
+- `scripts/check_private_data.py` validates the external mirror and fails only for missing required-current inputs.
+- `make check-private-data` exposes the validation command.
 
-Gate: a collaborator can stage or mirror private data without guessing folder names.
+Gate: current local mirror reports 14/15 unique logical paths present, with only `data/external/execucomp_or_private_db` documented as a future-extension gap.
 
 ### Phase 3C: Full Table Expansion
 
+Status: batch helper implemented; actual full reruns remain the next execution step.
+
 Goal: move from selected reproduction to every v4.3 table/figure asset.
 
-Tasks:
+Implemented artifacts:
 
-- Run each crosswalk table one by one through `scripts/run_publication_table.py` where supported.
-- For each asset, classify output as `csv_exact_match`, `format_only_delta`, `content_delta`, `blocked_private_input`, `frozen_asset_only`, or `not_regenerated_by_design`.
-- Update `docs/full_reproduction_status.md` after each batch.
-- For Test 25, decide whether to stage the private ExecuComp/database artifact, preserve frozen generated evidence only, or mark as future extension.
+- `scripts/reproduce_assets.py` runs or dry-runs crosswalk assets in selected, main, appendix, or all batches.
+- `make reproduce-all-tables-dry-run`, `make reproduce-all-tables`, and `make reproduction-status` write `docs/full_reproduction_status.md` and `docs/full_reproduction_status.csv`.
+- Figures default to frozen-asset treatment unless explicitly included in the status ledger.
 
-Gate: every v4.3 table/figure has a table-level reproduction status with no unexplained numerical difference.
+Gate: every v4.3 table/figure has a table-level reproduction status. Actual reruns should proceed batch by batch, with Test 25 treated as future-extension/not-regenerated-by-design until the ExecuComp/private DB source is explicitly staged or replaced with a frozen-evidence policy.
 
 ### Phase 3D: Coauthor Runbook And First Issue Queue
 
@@ -111,4 +115,4 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Start with Phase 3B. The fresh-clone non-private gate has passed; the next practical bottleneck is making the private data mirror contract mechanical enough that Kuntara can stage data without guessing folder names or relying on Soheil's machine.
+Run Phase 3C in batches now that Phase 3B is mechanical: first `make reproduce-all-tables-dry-run`, then remaining main tables, then appendix batches. Preserve Test 25 as future-extension/not-regenerated-by-design unless the ExecuComp/private DB dependency is intentionally staged.

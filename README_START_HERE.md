@@ -26,7 +26,7 @@ Use an external private data root and point the workstation to it:
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
-The expected private input paths are listed in `manifests/data_dependency_manifest.csv` and summarized in `docs/private_data_staging_map.md`.
+The expected private input paths are listed in `manifests/data_dependency_manifest.csv` and summarized in `docs/private_data_staging_map.md` and `docs/private_data_contract.md`.
 
 ## Environment Setup
 
@@ -67,6 +67,12 @@ make smoke-fixture
 make git-hygiene
 ```
 
+If private data are staged, validate the mirror before rerunning tables:
+
+```bash
+make check-private-data
+```
+
 ## Comparison And Rerun Preflight
 
 ```bash
@@ -94,8 +100,8 @@ Recommended first rerun targets: `T00`, `T16`, `T17`, `T09`, and `T30`.
 - GitHub tracks code, docs, fixtures, manifests, and frozen manuscript assets.
 - Dropbox/OneDrive can share the external private data root.
 - Do **not** put this `.git` repository inside Dropbox or OneDrive; clone it into a normal local working folder and set `AIW_DATA_ROOT` to the shared or mirrored data folder.
-- See `docs/collaboration_workflow.md` and `docs/data_management.md` before adding new data or scripts.
+- See `docs/collaboration_workflow.md`, `docs/data_management.md`, `docs/private_data_contract.md`, and `docs/coauthor_runbook.md` before adding new data or scripts.
 
 ## Current Status
 
-The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Full-table expansion remains the next major phase.
+The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Phase 3B adds a mechanical private-data mirror checker. Full-table expansion is controlled through `scripts/reproduce_assets.py` and the `reproduce-all-tables-*` Make targets.

@@ -35,7 +35,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run one v4.3 publication table with explicit capsule paths.")
+    parser = argparse.ArgumentParser(description="Run one v4.3 publication table with explicit workstation paths.")
     parser.add_argument("table_id", help="Crosswalk table_id, e.g. T00 or T16")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
