@@ -1,11 +1,15 @@
-# Curated v4.3 Data Layer
+# Curated v4.3 Data Evidence
 
-This folder contains small generated run evidence and reproducible fixture-adjacent artifacts that help document v4.3 lineage.
+This folder contains non-sensitive curated evidence that is safe to track in Git and useful for comparing reproduced v4.3 outputs.
 
-It does **not** track full-rerun private panels, raw SEC/WRDS inputs, label parquet files, large binary data, or archives. Those belong under the external `AIW_DATA_ROOT`, recommended locally as:
+Private and licensed data are not stored here. Stage private inputs under an external `AIW_DATA_ROOT`, for example:
 
 ```bash
-/Users/soheilkhodadadi/DataWork/ai-washing-v43-private-data
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
-The expected private input paths are listed in `manifests/data_dependency_manifest.csv`.
+On Soheil's current machine, the local mirror is:
+
+```bash
+export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data
+```

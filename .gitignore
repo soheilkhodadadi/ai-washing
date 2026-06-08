@@ -9,6 +9,7 @@ venv/
 .ruff_cache/
 .ipynb_checkpoints/
 __pycache__/
+*.egg-info/
 *.py[cod]
 .DS_Store
 

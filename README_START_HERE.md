@@ -1,80 +1,101 @@
-# AI Washing v4.3 Handoff Workstation
+# AI Washing Research Workstation
 
-This repository is the local Git-tracked handoff workstation for **AI Washing v4.3**. It freezes v4.3 as the computational reference target and keeps the original `semantic-patterns` repository as provenance only.
+This private repository is the canonical computational workstation for the **AI Washing** project. It preserves **AI Washing v4.3** as the current frozen computational reference while giving the project a permanent place for future coauthor work, journal revisions, and reproducibility checks.
 
-The package is intentionally curated. It is not a wholesale copy of the original research repository, and it does not track private or licensed data.
+The workstation is intentionally curated. It is not a wholesale copy of the older `semantic-patterns` repository. That older repository remains provenance; this repository is where future AI Washing code, manifests, validation docs, and manuscript-facing reproduction logic should live.
 
-## What is tracked
+## What Git Tracks
 
 - `paper/v4_3_source/`: frozen v4.3 LaTeX source and manuscript table/figure inputs.
 - `paper/ai_washing_v4.3.pdf`: frozen v4.3 manuscript PDF.
 - `manifests/`: table/script/data/artifact lineage files.
-- `data/curated/v4_3/generated_runs/`: small generated run evidence where safe to track.
+- `data/curated/v4_3/generated_runs/`: safe generated run evidence used for v4.3 comparisons.
 - `data/fixtures/`: tiny non-sensitive fixture data for smoke tests.
 - `src/semantic_ai_washing/`: minimal source closure needed by mapped publication scripts.
-- `src/semantic_ai_washing_min/`: capsule-specific fixture and validation utilities.
+- `src/semantic_ai_washing_min/`: workstation-specific fixture and validation utilities.
 - `scripts/`: validation, comparison, hygiene, and reproduction wrappers.
+- `docs/`: collaboration guidance, release notes, data management, and reproduction status.
 
-## What is private or untracked
+## What Stays Outside Git
 
-Private, licensed, large, or machine-local data are deliberately excluded from Git. This includes raw SEC/WRDS data, derived full-rerun panels, label/evaluation parquet files, archives, and generated outputs.
+Private, licensed, large, or machine-local data are deliberately excluded from Git. This includes raw SEC/WRDS data, full derived panels, label/evaluation parquet files, archives, and generated outputs.
 
-Use this external data root for Phase 2 staging:
+Use an external private data root and point the workstation to it:
 
 ```bash
-export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-v43-private-data
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
 The expected private input paths are listed in `manifests/data_dependency_manifest.csv` and summarized in `docs/private_data_staging_map.md`.
 
-## Environment contract
+## Environment Setup
 
-The workstation uses four explicit path variables:
+Recommended local setup from a fresh clone:
+
+```bash
+cd ai-washing
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+python - <<'PY'
+import pandas, numpy, pyarrow
+print(pandas.__version__, numpy.__version__, pyarrow.__version__)
+PY
+```
+
+Then set the explicit path contract:
 
 ```bash
 export AIW_REPO_ROOT="$PWD"
-export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-v43-private-data
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 export AIW_OUTPUT_ROOT="$PWD/outputs/reproduced"
 export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
 ```
 
-If the variables are unset, the local scripts default to repository-local paths where possible. Full table reruns still require `AIW_DATA_ROOT` to contain the private inputs.
+If `.venv` is not available yet, pass another Python interpreter with `make PYTHON=/path/to/python ...`.
 
-## Quick validation
+The direct runtime dependencies are pinned to the v4.3-validated environment because some table scripts are sensitive to floating-point/string representation changes across `pandas` and `numpy` major versions.
 
-Use the Python environment from the source repository until this workstation receives its own pinned environment:
-
-```bash
-cd /Users/soheilkhodadadi/DataWork/ai-washing-v43-handoff
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python validate
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python path-leak-scan
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python import-smoke
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python smoke-fixture
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python git-hygiene
-```
-
-## Comparison and rerun preflight
+## Quick Validation
 
 ```bash
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python compare-tables
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python reproduce-selected
+make validate
+make path-leak-scan
+make import-smoke
+make smoke-fixture
+make git-hygiene
 ```
 
-`reproduce-selected` is a dry-run preflight for `T00`, `T16`, `T17`, `T09`, and `T30`. It reports missing private inputs without failing the workstation.
+## Comparison And Rerun Preflight
 
-## Full table reruns
+```bash
+make compare-tables
+make reproduce-selected
+```
+
+`reproduce-selected` dry-runs the selected reference targets `T00`, `T16`, `T17`, `T09`, and `T30`. It reports missing private inputs without failing the workstation.
+
+## Selected Table Reruns
 
 After private inputs are staged under `AIW_DATA_ROOT`, run one table at a time:
 
 ```bash
-export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-v43-private-data
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 export AIW_OUTPUT_ROOT="$PWD/outputs/reproduced"
 export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
-make PYTHON=/Users/soheilkhodadadi/Documents/Projects/semantic-patterns/.venv/bin/python TABLE_ID=T16 reproduce-table
+make TABLE_ID=T16 reproduce-table
 ```
 
 Recommended first rerun targets: `T00`, `T16`, `T17`, `T09`, and `T30`.
 
-## Current status
+## Collaboration Model
 
-Phase 2A-2D establish this repository as a clean local workstation, stage the current/support private inputs outside Git, and verify selected-table numerical reproduction. Full-table expansion remains pending.
+- GitHub tracks code, docs, fixtures, manifests, and frozen manuscript assets.
+- Dropbox/OneDrive can share the external private data root.
+- Do **not** put this `.git` repository inside Dropbox or OneDrive; clone it into a normal local working folder and set `AIW_DATA_ROOT` to the shared or mirrored data folder.
+- See `docs/collaboration_workflow.md` and `docs/data_management.md` before adding new data or scripts.
+
+## Current Status
+
+The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Full-table expansion remains the next major phase.

@@ -40,11 +40,11 @@ def main() -> int:
         failures.append("Data dependency manifest is empty")
 
     if failures:
-        print("CAPSULE VALIDATION FAILED")
+        print("WORKSTATION VALIDATION FAILED")
         for item in failures:
             print(f"- {item}")
         return 1
-    print("CAPSULE VALIDATION PASSED")
+    print("WORKSTATION VALIDATION PASSED")
     print(f"- table assets: {len(table_rows)}")
     print(f"- figures: {len(figure_rows)}")
     print(f"- dependency rows: {len(deps)}")

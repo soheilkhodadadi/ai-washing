@@ -8,4 +8,4 @@ If the project later adds job postings, updated patent data, or new market data,
 4. Keep v4.3 generated evidence unchanged.
 5. Record any new manuscript target as v4.4 or later.
 
-This prevents the coauthor-facing handoff from drifting away from the exact v4.3 target.
+This prevents the coauthor-facing workstation from drifting away from the exact v4.3 target.

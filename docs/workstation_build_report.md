@@ -1,4 +1,4 @@
-# Capsule Build Report
+# Workstation Build Report
 
 Generated: 2026-06-07T20:56:54.280355+00:00
 
@@ -11,7 +11,7 @@ Generated: 2026-06-07T20:56:54.280355+00:00
 ## Build choices
 
 - Preserved original `semantic_ai_washing` namespace for copied minimal source files to avoid import rewrites.
-- Added `semantic_ai_washing_min` only for handoff-specific validation and fixture utilities.
+- Added `semantic_ai_washing_min` only for collaboration-specific validation and fixture utilities.
 - Copied generated run evidence when available.
 - Marked full numerical reruns as blocked until private data inputs are staged.
 
