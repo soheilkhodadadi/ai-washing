@@ -15,6 +15,7 @@ Generated: 2026-06-08
 ## What Is Already Working
 
 - `README.md` now exists for GitHub's landing page and points to the full quickstart.
+- Fresh-clone smoke test passed from GitHub in `/tmp/aiw-fresh-clone-59obuX/ai-washing`: pinned versions installed, non-private validation passed, and missing private-data reruns reported clear staging paths.
 - `README_START_HERE.md`, `AGENTS.md`, `.env.example`, `requirements-lock.txt`, and collaboration/data-management docs are present.
 - The direct runtime dependencies are pinned to the v4.3-validated environment. This matters because an unpinned fresh install caused a tiny `T09` CSV representation delta under newer `pandas`/`numpy`; pinning restored exact matching.
 - Core validation passes:
@@ -45,6 +46,8 @@ Generated: 2026-06-08
 
 ### Phase 3A: Fresh Clone Smoke Test
 
+Status: initial pass on 2026-06-08. Keep this as a repeated gate after major code/data-manifest changes.
+
 Goal: prove a new machine can clone the private repo and validate the code/docs without private data.
 
 Tasks:
@@ -54,7 +57,7 @@ Tasks:
 - Run `make validate`, `make path-leak-scan`, `make import-smoke`, `make smoke-fixture`, and `make git-hygiene`.
 - Confirm `make reproduce-selected` reports private-data paths clearly when `AIW_DATA_ROOT` is absent.
 
-Gate: fresh clone can pass all non-private validation and fails gracefully for private reruns.
+Gate: fresh clone can pass all non-private validation and fails gracefully for private reruns. Initial gate passed; rerun after Phase 3B/3C changes.
 
 ### Phase 3B: Private Data Mirror Contract
 
@@ -108,4 +111,4 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Start with Phase 3A. A fresh-clone test is the fastest way to reveal whether the repository now behaves like a true standalone workstation rather than a curated folder that only works on Soheil's machine.
+Start with Phase 3B. The fresh-clone non-private gate has passed; the next practical bottleneck is making the private data mirror contract mechanical enough that Kuntara can stage data without guessing folder names or relying on Soheil's machine.
