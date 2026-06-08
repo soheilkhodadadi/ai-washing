@@ -6,29 +6,29 @@ Allowed statuses: `csv_exact_match`, `format_only_delta`, `content_delta`, `bloc
 
 | Asset | Type | Test | Priority | Status | CSV | TeX | Notes |
 |---|---|---|---|---|---|---|---|
-| T00 | table | `legacy_r1_summary_stats` | selected | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| T16 | table | `test_16_construct_variant_screen` | selected | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| T17 | table | `test_17_real_outcome_dynamics` | selected | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| T20 | table | `test_20_comment_letter_cleanup` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| T29 | table | `test_29_sec_ai_washing_enforcement_did` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
+| T00 | table | `legacy_r1_summary_stats` | selected | csv_exact_match | exact_match | exact_match | csv=exact_match: 93d27013b2fd9b397146d65e39ca188bc3388cd41f55429dc732575893a211b3; tex=exact_match: eb8088d97cdaf8cdf1008788aa501d3697aa0c4cae6180efcbd20dc44ff98cf9 |
+| T16 | table | `test_16_construct_variant_screen` | selected | csv_exact_match | exact_match | content_delta | csv=exact_match: 4a8a77e6528196c9dd62a01d096157185ab84370f25b253f49314ec2d79c7d29; tex=content_delta: reference=03b4153697129718b44bccd811cc84e4b0c6eb8c865dd2b06d6778418752db85;... |
+| T17 | table | `test_17_real_outcome_dynamics` | selected | csv_exact_match | exact_match | content_delta | csv=exact_match: d2e56d7bacd6b3485880a32ef0c0e8877c96428d24041476df0508fecc0841a6; tex=content_delta: reference=503240201da288d9c90ad0c359126e35ebe63eb87d7bc4104d201e833a1838bb;... |
+| T20 | table | `test_20_comment_letter_cleanup` | full | csv_exact_match | exact_match | content_delta | csv=exact_match: 9b374daf320067c17e3f0620279ca6cb49e8fd055b8e4b48c448d181f99da280; tex=content_delta: reference=0dd034edd5592c6019d16f1b7ec45923ce4ab6a75ffa49c741303fe641138c9d;... |
+| T29 | table | `test_29_sec_ai_washing_enforcement_did` | full | csv_exact_match | exact_match | content_delta | csv=exact_match: e2001adb072c5f35478af092ac9e7bcc5935218eacecec8a5649020d94fbe0e0; tex=content_delta: reference=9eb86d16c1b50eb284030d69a67bf7876ecd83938e0ee8e9304555266aeab757;... |
 | T25 | table | `test_25_exec_incentive_mismatch` | full | not_regenerated_by_design |  |  | execucomp=data/external/execucomp_or_private_db |
-| T30 | table | `test_30_capital_raising_timing` | selected | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| T09 | table | `test_09_factor_adjusted_alpha` | selected | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| A1 | table | `legacy_b1_measurement_audit` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| A2 | table | `legacy_b2_attrition_map` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| A3 | table | `legacy_classifier_risk_highconf` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| A4 | table | `legacy_classifier_risk_highconf` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| A5 | table | `appendix_variable_definitions` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| B1 | table | `legacy_r2_ai_focus_timing` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| B2 | table | `legacy_r4_actionable_patent_timing` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| B3 | table | `legacy_r5_speculative_patent_timing` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| B4 | table | `legacy_r7_as_mismatch_tplus2` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C1 | table | `legacy_r8_mismatch_determinants_reduced` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C2 | table | `legacy_a1_mismatch_determinants_full` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C3 | table | `legacy_a2_mismatch_intensity` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C4 | table | `test_05_size_heterogeneity` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C5 | table | `test_32_market_reaction_in_issue_windows` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C6 | table | `test_12_predictive_return_controls` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
-| C7 | table | `test_15_matched_ai_talking_sample` | full | dry_run_ready |  |  | All required inputs are present; no table script was executed. |
+| T30 | table | `test_30_capital_raising_timing` | selected | csv_exact_match | exact_match | content_delta | csv=exact_match: ff48fff88aae4b3a1f4220da13435f66321e907c4ef6286b88045edd3e91707c; tex=content_delta: reference=6ab0c42ef37be4c10c48ae3d1f935a8f1dd7b3dbfa1777e0a71c282bdd438f73;... |
+| T09 | table | `test_09_factor_adjusted_alpha` | selected | csv_exact_match | exact_match | content_delta | csv=exact_match: ef8fc20e8e17f58c2687084aee4aaab9c4ccfc96e1b271bc23891a7e8be16a84; tex=content_delta: reference=f1d6716608eccb5b12338d70b63c35b2ec28d16bdf1956377dee1cfaf751a35d;... |
+| A1 | table | `legacy_b1_measurement_audit` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: e3322e1a0ded8ac18a8d1f6b466acbc0ea78a5919f24175c2861755cbe30a27f; tex=not_applicable: no generated TeX target |
+| A2 | table | `legacy_b2_attrition_map` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: ae5dee73acd72377b020da8feebc449881d3bbc4227b580d3348306ba333c07b; tex=not_applicable: no generated TeX target |
+| A3 | table | `legacy_classifier_risk_highconf` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: b54b307430be34608ea8336a67f7a419a16d49068e8a8e4ac1ad4350dd310eb3; tex=not_applicable: no generated TeX target |
+| A4 | table | `legacy_classifier_risk_highconf` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 08d8b6e513fd5716d92fcaf728dcc074bb27bde9bb99d72bf6862b1000ccc871; tex=not_applicable: no generated TeX target |
+| A5 | table | `appendix_variable_definitions` | full | csv_exact_match | exact_match | exact_match | csv=exact_match: 0ecfcb54a63066d7dd0300211dbcf65b3ffa61bac25459e329e44b61261c0e1c; tex=exact_match: 60351563b43f3209a151420c8515d3604b269f57b552b9991a74a42a08438804 |
+| B1 | table | `legacy_r2_ai_focus_timing` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 184c8fd85a0855c999ec7ec8cea5b951efbdd4a572b30c55de53fc83d040295a; tex=not_applicable: no generated TeX target |
+| B2 | table | `legacy_r4_actionable_patent_timing` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: b5fa3ec2c5adfc401b128cf4f37ded663eb031f22b4b3e64aaa3fee6731634de; tex=not_applicable: no generated TeX target |
+| B3 | table | `legacy_r5_speculative_patent_timing` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 98386b4f7b060e0ce0f3db13ab0f8092b1631e983a54d5d1495acf69a763085c; tex=not_applicable: no generated TeX target |
+| B4 | table | `legacy_r7_as_mismatch_tplus2` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 214dd04d44d561a7cc750408f420341e18c146cb324520ef935a03b2b36e87a2; tex=not_applicable: no generated TeX target |
+| C1 | table | `legacy_r8_mismatch_determinants_reduced` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 5bc25051134f00fb89455cf05c5b2fc7989069dfbeaa71f37315fd1b6df72915; tex=not_applicable: no generated TeX target |
+| C2 | table | `legacy_a1_mismatch_determinants_full` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 3ee15e19b9aaa623f61e3c7e668e44d3f413f0a7e6f4e6d6db6863b77474d2f3; tex=not_applicable: no generated TeX target |
+| C3 | table | `legacy_a2_mismatch_intensity` | full | csv_exact_match | exact_match | not_applicable | csv=exact_match: 08f474cbc4c57f77807923fe3e9b2d6a9dc73e1bfaec0366fb8f6c436a1043ce; tex=not_applicable: no generated TeX target |
+| C4 | table | `test_05_size_heterogeneity` | full | csv_exact_match | exact_match | exact_match | csv=exact_match: f7d5a755434678c94fd0ab82ae0cf5645db8a10a23799c4f3deb2a6bdb2c6749; tex=exact_match: e5a6ad629bb2adebd5d69937cc033bffdc1ef057dbe1a4cc0ddde5bd574a774c |
+| C5 | table | `test_32_market_reaction_in_issue_windows` | full | csv_exact_match | exact_match | content_delta | csv=exact_match: d2c1a2afcc6260d29865d01e8c44d79d63e872b2caaec6c896499546f628075f; tex=content_delta: reference=8f0ffc4ff482d6dd0919a8c82f92921d0c240625625a19719814ae8a8272f806;... |
+| C6 | table | `test_12_predictive_return_controls` | full | csv_exact_match | exact_match | exact_match | csv=exact_match: bb4d3f7323517372a41e5799feb8f21c148acd1b0a4ec967362b7a77ab68191b; tex=exact_match: da62f59c1ef7d30ab82f7c00d0bac4fcc82643c9ebc50b76849342e19f181a1b |
+| C7 | table | `test_15_matched_ai_talking_sample` | full | format_only_delta | format_only_delta | exact_match | csv=format_only_delta: numeric string representation delta only; cells=16; tolerance=1e-10; tex=exact_match: f32f88736e030db0e661328881e879255144e7a3a7e8700eeb0f07b3193342d8 |
 | F1 | figure | `legacy_r1_disclosure_volume` | full | frozen_asset_only |  |  | Figure is preserved as frozen v4.3 manuscript asset; regeneration is skipped by default. |
 | FC1 | figure | `test_13_pre_post_event_path` | full | frozen_asset_only |  |  | Figure is preserved as frozen v4.3 manuscript asset; regeneration is skipped by default. |

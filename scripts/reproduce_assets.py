@@ -85,6 +85,38 @@ def dependency_status(row: dict[str, str], deps: list[dict[str, str]]) -> tuple[
     return "ready", "all required inputs present"
 
 
+def _as_float(value: str) -> float | None:
+    value = value.strip()
+    if value == "":
+        return None
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
+def csv_tolerant_status(reference: Path, reproduced: Path, tolerance: float = 1e-10) -> tuple[str, str]:
+    with reference.open(newline="") as ref_f, reproduced.open(newline="") as repro_f:
+        ref_rows = list(csv.reader(ref_f))
+        repro_rows = list(csv.reader(repro_f))
+    if len(ref_rows) != len(repro_rows):
+        return "content_delta", f"row_count reference={len(ref_rows)} reproduced={len(repro_rows)}"
+    differing_numeric = 0
+    for row_idx, (ref_row, repro_row) in enumerate(zip(ref_rows, repro_rows), start=1):
+        if len(ref_row) != len(repro_row):
+            return "content_delta", f"column_count row={row_idx} reference={len(ref_row)} reproduced={len(repro_row)}"
+        for col_idx, (ref_value, repro_value) in enumerate(zip(ref_row, repro_row), start=1):
+            if ref_value == repro_value:
+                continue
+            ref_float = _as_float(ref_value)
+            repro_float = _as_float(repro_value)
+            if ref_float is not None and repro_float is not None and abs(ref_float - repro_float) <= tolerance:
+                differing_numeric += 1
+                continue
+            return "content_delta", f"first_diff row={row_idx} col={col_idx} reference={ref_value!r} reproduced={repro_value!r}"
+    return "format_only_delta", f"numeric string representation delta only; cells={differing_numeric}; tolerance={tolerance}"
+
+
 def file_status(reference: Path, reproduced: Path) -> tuple[str, str]:
     if not reference.exists() and not reproduced.exists():
         return "missing_both", "reference and reproduced files are missing"
@@ -96,6 +128,10 @@ def file_status(reference: Path, reproduced: Path) -> tuple[str, str]:
     repro_hash = sha256(reproduced)
     if ref_hash == repro_hash:
         return "exact_match", ref_hash
+    if reference.suffix.lower() == ".csv" and reproduced.suffix.lower() == ".csv":
+        tolerant_status, tolerant_note = csv_tolerant_status(reference, reproduced)
+        if tolerant_status == "format_only_delta":
+            return tolerant_status, tolerant_note
     return "content_delta", f"reference={ref_hash}; reproduced={repro_hash}"
 
 
@@ -178,8 +214,12 @@ def assess_asset(row: dict[str, str], deps: list[dict[str, str]], dry_run: bool,
     )
     if csv_status == "exact_match":
         base["reproduction_status"] = "csv_exact_match"
+    elif csv_status == "format_only_delta":
+        base["reproduction_status"] = "format_only_delta"
     elif csv_status == "content_delta":
         base["reproduction_status"] = "content_delta"
+    elif csv_status == "missing_reproduced" and status_only:
+        base["reproduction_status"] = "not_regenerated_by_design"
     elif csv_status.startswith("missing"):
         base["reproduction_status"] = "blocked_private_input" if status_only else "content_delta"
     else:

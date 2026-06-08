@@ -37,7 +37,7 @@ reproduce-all-tables:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --include-figures
 
 reproduction-status:
-	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --dry-run --include-figures
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --status-only --include-figures
 
 git-hygiene:
 	$(PYTHON) scripts/git_hygiene_check.py

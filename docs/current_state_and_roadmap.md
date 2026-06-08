@@ -77,7 +77,7 @@ Gate: current local mirror reports 14/15 unique logical paths present, with only
 
 ### Phase 3C: Full Table Expansion
 
-Status: batch helper implemented; actual full reruns remain the next execution step.
+Status: first actual full-table reproduction pass completed.
 
 Goal: move from selected reproduction to every v4.3 table/figure asset.
 
@@ -87,7 +87,7 @@ Implemented artifacts:
 - `make reproduce-all-tables-dry-run`, `make reproduce-all-tables`, and `make reproduction-status` write `docs/full_reproduction_status.md` and `docs/full_reproduction_status.csv`.
 - Figures default to frozen-asset treatment unless explicitly included in the status ledger.
 
-Gate: every v4.3 table/figure has a table-level reproduction status. Actual reruns should proceed batch by batch, with Test 25 treated as future-extension/not-regenerated-by-design until the ExecuComp/private DB source is explicitly staged or replaced with a frozen-evidence policy.
+Gate: every v4.3 table/figure has a table-level reproduction status. Current status is 22 CSV exact matches, 1 format-only CSV delta for C7, 1 not-regenerated-by-design table for T25, and 2 frozen figure assets.
 
 ### Phase 3D: Coauthor Runbook And First Issue Queue
 
@@ -115,4 +115,4 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Run Phase 3C in batches now that Phase 3B is mechanical: first `make reproduce-all-tables-dry-run`, then remaining main tables, then appendix batches. Preserve Test 25 as future-extension/not-regenerated-by-design unless the ExecuComp/private DB dependency is intentionally staged.
+Proceed to Phase 3D/3E hardening: decide the T25 policy, keep figures frozen unless regeneration is promoted, and consider container/devcontainer support after the current reproduction surface is accepted.
