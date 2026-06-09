@@ -1,6 +1,6 @@
 # Current State And Roadmap
 
-Generated: 2026-06-08
+Generated: 2026-06-09
 
 ## Current State
 
@@ -32,7 +32,8 @@ Generated: 2026-06-08
 - v4.3 manuscript asset inventory: 31 rows.
 - Source closure: 34 modules.
 - Data dependency manifest: 44 rows and 15 unique logical private/support paths.
-- Private data staging: 14 of 15 unique logical paths staged locally. The remaining item is `data/external/execucomp_or_private_db`, marked as a future extension for Test 25.
+- Private data staging: 15 of 15 unique logical paths staged locally after promoting Test 25 to a private ExecuComp-cache dependency.
+- Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, patent lineage, CRSP/Compustat merge inputs, raw/near-raw sources, and extension data.
 
 ## Main Risks To Control
 
@@ -40,13 +41,13 @@ Generated: 2026-06-08
 - Private data leakage: WRDS/CRSP, derived panels, labels, archives, and generated outputs must stay outside Git.
 - Environment drift: exact reproduction requires pinned dependency versions, not latest `pip` versions.
 - Manuscript wrapper deltas: many v4.3 manuscript TeX files differ from generated TeX because of captions, notes, resizing, or manual manuscript wrappers. Numeric CSV evidence should be treated separately from manuscript-facing TeX wrappers.
-- Full-table uncertainty: selected reproduction has passed, and Phase 3C now has a batch reproduction ledger. Remaining table assets still need actual rerun/verification beyond dry-run readiness.
+- Full-table uncertainty: selected reproduction has passed, Phase 3C produced a batch reproduction ledger, and Phase 3D closes the T25 input-policy gap. Broader raw/intermediate data-room artifacts still need staging for bottom-up rebuilds and extensions.
 
 ## Roadmap To Complete Coauthor-Ready Workstation
 
 ### Phase 3A: Fresh Clone Smoke Test
 
-Status: initial pass on 2026-06-08. Keep this as a repeated gate after major code/data-manifest changes.
+Status: initial pass on 2026-06-08. Rerun after Phase 3D/3E changes before release.
 
 Goal: prove a new machine can clone the private repo and validate the code/docs without private data.
 
@@ -73,7 +74,7 @@ Implemented artifacts:
 - `scripts/check_private_data.py` validates the external mirror and fails only for missing required-current inputs.
 - `make check-private-data` exposes the validation command.
 
-Gate: current local mirror reports 14/15 unique logical paths present, with only `data/external/execucomp_or_private_db` documented as a future-extension gap.
+Gate: current local mirror reports 15/15 unique logical paths present after staging `external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet`.
 
 ### Phase 3C: Full Table Expansion
 
@@ -87,19 +88,23 @@ Implemented artifacts:
 - `make reproduce-all-tables-dry-run`, `make reproduce-all-tables`, and `make reproduction-status` write `docs/full_reproduction_status.md` and `docs/full_reproduction_status.csv`.
 - Figures default to frozen-asset treatment unless explicitly included in the status ledger.
 
-Gate: every v4.3 table/figure has a table-level reproduction status. Current status is 22 CSV exact matches, 1 format-only CSV delta for C7, 1 not-regenerated-by-design table for T25, and 2 frozen figure assets.
+Gate: every v4.3 table/figure has a table-level reproduction status. Current status is 23 CSV exact matches, 1 format-only CSV delta for C7, and 2 frozen figure assets. T25 is now a CSV exact match from the staged ExecuComp cache.
 
 ### Phase 3D: Coauthor Runbook And First Issue Queue
 
+Status: implemented for the coauthor-facing handoff layer.
+
 Goal: make collaboration easy once Kuntara starts testing or adding models.
 
-Tasks:
+Implemented artifacts:
 
-- Add `docs/coauthor_runbook.md` with exact first-day commands.
-- Add `docs/issue_queue.md` for known next work: Test 25 dependency, wrapper deltas, figure regeneration, full-table expansion.
-- Add one or two example Git workflows: new branch, run table, commit code-only changes, never commit data.
+- `docs/coauthor_data_room.md` defines the broader full-data handoff contract.
+- `manifests/coauthor_data_room_manifest.csv` records staged and deferred coauthor artifacts.
+- `scripts/validate_data_room.py` and `make validate-data-room` validate row counts, schemas, sizes, and optional hashes.
+- `docs/t25_execucomp_policy.md` documents the staged ExecuComp cache and explicit WRDS refresh path.
+- `docs/extension_playbook.md` records Kuntara's washing-pays and builder-hides extension lanes.
 
-Gate: coauthors can start from the README without needing the old `semantic-patterns` repository.
+Gate: coauthors can start from the README without needing the old `semantic-patterns` repository, and the remaining broader data-room gaps are explicit.
 
 ### Phase 3E: Containerization Or Devcontainer
 
@@ -115,4 +120,16 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to Phase 3D/3E hardening: decide the T25 policy, keep figures frozen unless regeneration is promoted, and consider container/devcontainer support after the current reproduction surface is accepted.
+Proceed to a fresh-clone/container validation pass, then stage the deferred broader data-room artifacts from the old `semantic-patterns` roots into the private data mirror.
+
+### Phase 3D Addendum: Full Coauthor Data Room
+
+Status: started.
+
+The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC files, extracted AI sentences, classifier outputs, patent-match lineage, CRSP/Compustat merge intermediates, and future extension inputs. Items marked `deferred_with_reason` are not v4.3 table-rerun blockers; they are the next staging queue before the handoff is considered complete enough for independent extension work.
+
+### Phase 3E Addendum: Container Surface
+
+Status: initial Dockerfile/devcontainer added; local container validation still remains to be run.
+
+The container installs the pinned Python environment and expects private data to be bind-mounted at `/workspaces/ai-washing-private-data`. Private data are never copied into the image. Container runtime validation remains open because Docker was installed but the local daemon was not running during the Phase 3D/3E pass.

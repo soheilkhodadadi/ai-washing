@@ -27,7 +27,7 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
 ```
 
-Expected current result: 14 of 15 unique logical paths are present. The only documented gap is `data/external/execucomp_or_private_db`, which is a future-extension dependency for `test_25_exec_incentive_mismatch`.
+Expected current result: all 15 unique logical paths are present after staging the Test 25 ExecuComp cache under `external/execucomp/`.
 
 The checker fails for missing `required_current` inputs. It exits cleanly for documented `future_extension` gaps so that coauthors can validate the current v4.3 reproduction surface without inventing an ExecuComp/database artifact.
 
@@ -37,7 +37,7 @@ The checker fails for missing `required_current` inputs. It exits cleanly for do
 |---|---|---|---|---|---|
 | `data/curated/v4_3/comment_letter_event_panel.parquet` | `$AIW_DATA_ROOT/curated/v4_3/comment_letter_event_panel.parquet` | required_current | event_panel | test_20_comment_letter_cleanup | Generated comment-letter event panel from test_19; staged because it is small and required by test_20. |
 | `data/curated/v4_3/factor_inputs` | `$AIW_DATA_ROOT/curated/v4_3/factor_inputs` | required_current | factor_root | test_09_factor_adjusted_alpha | Ken French factor cache; can be recreated if internet access and source availability allow. |
-| `data/external/execucomp_or_private_db` | `$AIW_DATA_ROOT/external/execucomp_or_private_db` | future_extension | execucomp | test_25_exec_incentive_mismatch | Executive compensation data; test_25 currently uses database-backed/private source logic. |
+| `data/external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet` | `$AIW_DATA_ROOT/external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet` | required_current | execucomp | test_25_exec_incentive_mismatch | Private staged WRDS ExecuComp CEO-row extract; normal reruns do not need WRDS credentials. |
 | `data/interim/market/annual_market_features_ever_speaker_2016_2025_hybrid_api_a_conf49_v1.csv` | `$AIW_DATA_ROOT/interim/market/annual_market_features_ever_speaker_2016_2025_hybrid_api_a_conf49_v1.csv` | required_current | market_features | legacy_r1_summary_stats | Annual market features merged to firm-year panel. |
 | `data/interim/market/filing_ai_measures_hybrid_api_a_conf49_v1.csv` | `$AIW_DATA_ROOT/interim/market/filing_ai_measures_hybrid_api_a_conf49_v1.csv` | required_current | filing_measures | legacy_classifier_risk_highconf | Filing-level AI measures used by high-confidence classifier-risk checks. |
 | `data/interim/market/filing_event_returns_daily_hybrid_api_a_conf49_v1.parquet` | `$AIW_DATA_ROOT/interim/market/filing_event_returns_daily_hybrid_api_a_conf49_v1.parquet` | required_current | daily_returns | legacy_b2_attrition_map | Private daily returns around filing events. |

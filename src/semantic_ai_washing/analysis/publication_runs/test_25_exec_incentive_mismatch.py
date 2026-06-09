@@ -64,6 +64,16 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--paper-root", type=Path, default=DEFAULT_PAPER_ROOT)
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument("--dotenv-path", type=Path, default=REPO_ROOT / ".env")
+    parser.add_argument(
+        "--execucomp-cache",
+        type=Path,
+        help="Private staged ExecuComp CEO rows parquet. Preferred for coauthor reproduction.",
+    )
+    parser.add_argument(
+        "--refresh-execucomp-from-wrds",
+        action="store_true",
+        help="Opt in to pulling ExecuComp from WRDS using --dotenv-path instead of the staged cache.",
+    )
     return parser.parse_args()
 
 
@@ -133,6 +143,26 @@ def _load_panel(path: Path) -> pd.DataFrame:
     )
     panel["post_chatgpt"] = panel["year"].ge(2023).astype(int)
     return panel
+
+
+def _load_execucomp(args: argparse.Namespace) -> pd.DataFrame:
+    if args.refresh_execucomp_from_wrds:
+        raw = _pull_execucomp(args.dotenv_path)
+        if args.execucomp_cache:
+            args.execucomp_cache.parent.mkdir(parents=True, exist_ok=True)
+            raw.to_parquet(args.execucomp_cache, index=False)
+        return raw
+    if not args.execucomp_cache:
+        raise FileNotFoundError(
+            "Test 25 requires --execucomp-cache unless --refresh-execucomp-from-wrds is supplied. "
+            "Stage the coauthor cache under AIW_DATA_ROOT/external/execucomp/."
+        )
+    if not args.execucomp_cache.exists():
+        raise FileNotFoundError(
+            f"ExecuComp cache not found: {args.execucomp_cache}. "
+            "Stage external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet under AIW_DATA_ROOT."
+        )
+    return pd.read_parquet(args.execucomp_cache)
 
 
 def _pull_execucomp(dotenv_path: Path) -> pd.DataFrame:
@@ -549,7 +579,7 @@ def main() -> None:
         (args.paper_root / subdir).mkdir(parents=True, exist_ok=True)
 
     panel = _load_panel(args.annual_panel)
-    raw = _pull_execucomp(args.dotenv_path)
+    raw = _load_execucomp(args)
     ceo, exec_summary = _prepare_execucomp(raw)
     sample, sample_summary = _prepare_sample(panel, ceo)
     rows = _fit_rows(sample)

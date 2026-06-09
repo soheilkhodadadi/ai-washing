@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data reproduce-all-tables-dry-run reproduce-all-tables reproduction-status
+.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data reproduce-all-tables-dry-run reproduce-all-tables reproduction-status validate-data-room
 
 validate:
 	$(PYTHON) scripts/validate_capsule.py
@@ -35,6 +35,9 @@ reproduce-all-tables-dry-run:
 
 reproduce-all-tables:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --include-figures
+
+validate-data-room:
+	$(PYTHON) scripts/validate_data_room.py
 
 reproduction-status:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --status-only --include-figures

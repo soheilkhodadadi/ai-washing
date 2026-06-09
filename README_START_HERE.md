@@ -71,6 +71,7 @@ If private data are staged, validate the mirror before rerunning tables:
 
 ```bash
 make check-private-data
+make validate-data-room
 ```
 
 ## Comparison And Rerun Preflight

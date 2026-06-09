@@ -1,0 +1,18 @@
+{
+  "name": "AI Washing",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspaces/ai-washing",
+  "containerEnv": {
+    "AIW_REPO_ROOT": "/workspaces/ai-washing",
+    "AIW_DATA_ROOT": "/workspaces/ai-washing-private-data",
+    "AIW_OUTPUT_ROOT": "/workspaces/ai-washing/outputs/reproduced",
+    "AIW_PAPER_ROOT": "/workspaces/ai-washing/outputs/paper_exports"
+  },
+  "mounts": [
+    "source=${localEnv:AIW_DATA_ROOT},target=/workspaces/ai-washing-private-data,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "python -m pip install -e . && make validate && make path-leak-scan && make import-smoke"
+}

@@ -53,7 +53,7 @@ These checks should pass even without private data.
 make check-private-data
 ```
 
-Expected current result: every `required_current` and `support_only` input is present, and `external/execucomp_or_private_db` is reported as a documented future extension.
+Expected current result: every table-rerun `required_current` and `support_only` input is present, including `external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet`.
 
 ## 6. Reproduce Selected v4.3 Tables
 

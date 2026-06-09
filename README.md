@@ -10,6 +10,9 @@ Start here:
 - [AGENTS.md](AGENTS.md): operating rules for Codex and automation agents.
 - [docs/collaboration_workflow.md](docs/collaboration_workflow.md): GitHub + private-data collaboration model.
 - [docs/data_management.md](docs/data_management.md): `AIW_DATA_ROOT` policy and private data handling.
+- [docs/coauthor_data_room.md](docs/coauthor_data_room.md): broader full-data handoff contract.
+- [docs/t25_execucomp_policy.md](docs/t25_execucomp_policy.md): Test 25 staged ExecuComp policy.
+- [docs/extension_playbook.md](docs/extension_playbook.md): coauthor extension lanes from Kuntara comments.
 - [docs/private_data_contract.md](docs/private_data_contract.md): coauthor-facing private data mirror contract.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day clone, setup, validation, and reproduction commands.
 - [docs/releases/v4_3_defense_freeze.md](docs/releases/v4_3_defense_freeze.md): current frozen v4.3 release target.

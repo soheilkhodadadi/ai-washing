@@ -20,8 +20,8 @@ Example: manifest path `data/processed/panel/file.parquet` should be staged at `
 
 - Dependency rows: 44
 - Unique expected paths: 15
-- Unique inputs staged in the current private root: 14/15
-- Current Phase 2C result: all `required_current` and `support_only` unique inputs found and staged, except the future-extension ExecuComp/private DB placeholder.
+- Unique inputs staged in the current private root: 15/15
+- Current Phase 3D result: all `required_current` and `support_only` unique inputs are staged, including the Test 25 ExecuComp cache.
 
 ## Unique Inputs
 
@@ -29,7 +29,7 @@ Example: manifest path `data/processed/panel/file.parquet` should be staged at `
 |---|---|---|---|---|---|---|---|
 | `data/curated/v4_3/comment_letter_event_panel.parquet` | `curated/v4_3/comment_letter_event_panel.parquet` | event_panel | required_current | present | staged_in_private_root | test_20_comment_letter_cleanup | Generated comment-letter event panel from test_19; staged because it is small and required by test_20. |
 | `data/curated/v4_3/factor_inputs` | `curated/v4_3/factor_inputs` | factor_root | required_current | present | staged_in_private_root | test_09_factor_adjusted_alpha | Ken French factor cache; can be recreated if internet access and source availability allow. |
-| `data/external/execucomp_or_private_db` | `external/execucomp_or_private_db` | execucomp | future_extension | missing_private_input | deferred_no_candidate_found | test_25_exec_incentive_mismatch | Executive compensation data; test_25 currently uses database-backed/private source logic. |
+| `data/external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet` | `external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet` | execucomp | required_current | missing_private_input | staged_in_private_root | test_25_exec_incentive_mismatch | Private staged WRDS ExecuComp CEO-row extract; normal reruns do not need WRDS credentials. |
 | `data/interim/market/annual_market_features_ever_speaker_2016_2025_hybrid_api_a_conf49_v1.csv` | `interim/market/annual_market_features_ever_speaker_2016_2025_hybrid_api_a_conf49_v1.csv` | market_features | required_current | missing_private_input | staged_in_private_root | legacy_r1_summary_stats | Annual market features merged to firm-year panel. |
 | `data/interim/market/filing_ai_measures_hybrid_api_a_conf49_v1.csv` | `interim/market/filing_ai_measures_hybrid_api_a_conf49_v1.csv` | filing_measures | required_current | missing_private_input | staged_in_private_root | legacy_classifier_risk_highconf | Filing-level AI measures used by high-confidence classifier-risk checks. |
 | `data/interim/market/filing_event_returns_daily_hybrid_api_a_conf49_v1.parquet` | `interim/market/filing_event_returns_daily_hybrid_api_a_conf49_v1.parquet` | daily_returns | required_current | missing_private_input | staged_in_private_root | legacy_b2_attrition_map | Private daily returns around filing events. |

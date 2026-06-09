@@ -26,6 +26,7 @@ ARG_BY_DEP = {
     "irr_report": "--irr-report",
     "hybrid_eval": "--hybrid-eval",
     "factor_root": "--factor-root",
+    "execucomp": "--execucomp-cache",
 }
 
 

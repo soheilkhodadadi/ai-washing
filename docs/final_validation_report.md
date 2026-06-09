@@ -22,7 +22,7 @@ make git-hygiene
 - Minimal source import smoke: passed for 34 modules.
 - Fixture pipeline: passed and wrote ignored output under `outputs/fixture/`.
 - Table comparison against v4.3 manuscript inputs: completed; most v4.3 manuscript table inputs remain manuscript-facing deltas from generated evidence.
-- Private data staging: all `required_current` and `support_only` unique inputs found and staged under `/Users/soheilkhodadadi/DataWork/ai-washing-private-data`; only the future-extension ExecuComp/private DB placeholder remains deferred.
+- Private data staging: all 15 table-rerun inputs are staged under `/Users/soheilkhodadadi/DataWork/ai-washing-private-data`, including the Test 25 ExecuComp cache.
 - Selected rerun dry-run: passed for `T00`, `T16`, `T17`, `T09`, and `T30`.
 - Selected numerical reruns: completed for `T00`, `T16`, `T17`, `T09`, and `T30`.
 - Selected reproduction comparison: all five fresh CSV outputs are exact SHA-256 matches to the frozen v4.3 generated CSV evidence.
@@ -31,4 +31,12 @@ make git-hygiene
 
 ## Current Blocker For Full Reproduction Completion
 
-The selected numerical gate has passed. The remaining work is full-table expansion, then optional containerization and share-package assembly. Test 25 still has a future-extension dependency on `data/external/execucomp_or_private_db`.
+The selected numerical gate has passed. Full-table status now reports 23 CSV exact matches, 1 format-only CSV delta, and 2 frozen figures. The remaining work is broader raw/intermediate data-room staging, container validation, and share-package assembly.
+
+
+## Phase 3D/3E Addendum
+
+- Test 25 now reproduces from the staged private ExecuComp cache at `$AIW_DATA_ROOT/external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet`; no WRDS credentials are needed for normal reruns.
+- Full-table reproduction was rerun after T25 staging: 23 table CSV exact matches, 1 format-only CSV delta for C7, and 2 frozen figure assets.
+- Coauthor data-room validation reports 16 staged items and 9 intentionally deferred broader/raw-source items for the next staging pass.
+- Docker/devcontainer scaffolding exists, but Docker runtime validation remains open because the Docker daemon was not running locally.
