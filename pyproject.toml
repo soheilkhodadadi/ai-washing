@@ -17,6 +17,10 @@ dependencies = [
   "python-dotenv==1.2.2",
   "psycopg2-binary==2.9.12",
   "pyarrow==23.0.1",
+  "pytest==9.0.2",
+  "pygments==2.20.0",
+  "pluggy==1.6.0",
+  "iniconfig==2.3.0",
 ]
 
 [tool.setuptools.packages.find]

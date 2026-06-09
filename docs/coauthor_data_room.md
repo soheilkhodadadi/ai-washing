@@ -11,6 +11,7 @@ cd /path/to/ai-washing
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
 make validate-data-room
+make validate-patent-data
 make audit-artifact-coverage
 ```
 
@@ -34,7 +35,7 @@ Roles:
 
 ## Current Interpretation
 
-The current private root is enough for v4.3 table reproduction. The broad data-room manifest is now more complete: the final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS bridge, SEC samples, and source documentation are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are the next data-room expansion checklist.
+The current private root is enough for v4.3 table reproduction. The broad data-room manifest is now more complete: the final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS bridge, SEC samples, patent counts/examples/diagnostics, patent identity metadata, patent keyword metadata, PatentsView source documentation, and patent method reports are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are the next data-room expansion checklist.
 
 The coverage target is lane-specific:
 
@@ -45,4 +46,14 @@ The coverage target is lane-specific:
 
 ## Coauthor Request Coverage
 
-Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs and core lineage/provenance files, while keeping a visible queue for remaining broader artifacts such as standalone patent-source files, Compustat source/merge intermediates, and future extension inputs.
+Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, and core provenance files, while keeping a visible queue for remaining broader artifacts such as Compustat source/merge intermediates and future extension inputs.
+
+## Patent Data Gate
+
+Patent matching is the central construct-audit layer. In addition to the broad data-room check, run:
+
+```bash
+make validate-patent-data
+```
+
+This validates `manifests/patent_data_manifest.csv` against `$AIW_DATA_ROOT`. It checks the final grant and pregrant count files, example files, diagnostics, hybrid lookup/alias metadata, patent keyword files, PatentsView source documentation, and final matching/fuzzy-sensitivity reports.

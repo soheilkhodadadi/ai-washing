@@ -26,6 +26,7 @@ From the repository root:
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
 make validate-data-room
+make validate-patent-data
 make audit-artifact-coverage
 ```
 
@@ -34,6 +35,8 @@ Expected current result: all 15 unique logical paths are present after staging t
 The checker fails for missing `required_current` inputs. It exits cleanly for documented `future_extension` gaps so that coauthors can validate the current v4.3 reproduction surface without inventing an ExecuComp/database artifact.
 
 `make audit-artifact-coverage` applies the stronger v4.3 provenance gate. It checks row counts, file counts, year coverage, and date coverage against `manifests/artifact_provenance_audit.csv`.
+
+`make validate-patent-data` applies the patent-specific coauthor audit gate. It checks the staged final grant/pregrant counts, readable patent/application examples, diagnostics, hybrid company lookup and alias files, patent keyword files, PatentsView source documentation, and patent matching reports against `manifests/patent_data_manifest.csv`.
 
 ## Lane-Specific Coverage
 
@@ -65,6 +68,20 @@ See `docs/artifact_coverage_policy.md` before replacing staged artifacts. If a 2
 | `data/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json` | `$AIW_DATA_ROOT/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json` | support_only | hybrid_eval | legacy_b1_measurement_audit | Hybrid classifier evaluation report. |
 | `data/reports/labels/irr_boundary_revised_v3_rerun_report.json` | `$AIW_DATA_ROOT/reports/labels/irr_boundary_revised_v3_rerun_report.json` | support_only | irr_report | legacy_b1_measurement_audit | Inter-rater/relabeling report for measurement audit. |
 | `data/validation/held_out_v4/held_out_sentences_v4.csv` | `$AIW_DATA_ROOT/validation/held_out_v4/held_out_sentences_v4.csv` | support_only | heldout_v4 | legacy_b1_measurement_audit | Held-out validation sample for measurement audit. |
+
+## Patent Audit Tree
+
+The patent lane has an additional manifest, `manifests/patent_data_manifest.csv`, because this is the construct most likely to draw coauthor or referee scrutiny.
+
+| Logical path group | Runtime location | Purpose |
+|---|---|---|
+| `data/processed/patents/*.csv` | `$AIW_DATA_ROOT/processed/patents/` | Final grant/pregrant counts, examples, and diagnostics used to audit the patent mismatch construct. |
+| `data/metadata/company_identity/*.csv` | `$AIW_DATA_ROOT/metadata/company_identity/` | Hybrid lookup and alias files used for exact normalized company-to-assignee/applicant matching. |
+| `data/metadata/patents/*.txt` | `$AIW_DATA_ROOT/metadata/patents/` | Patent AI keyword list and sensitivity keyword lists. |
+| `data/reports/patents/*` | `$AIW_DATA_ROOT/reports/patents/` | Patent matching robustness note, fuzzy-sensitivity note, keyword benchmark outputs, and extraction progress logs. |
+| `data/raw/patentsview/Guide/*` | `$AIW_DATA_ROOT/raw/patentsview/Guide/` | PatentsView data dictionaries and source documentation. |
+
+The full raw PatentsView TSV mirror is optional for v4.3 reproduction. If coauthors request a full raw-source rebuild, stage grant TSVs under `$AIW_DATA_ROOT/raw/patentsview/granted/` and pregrant TSVs under `$AIW_DATA_ROOT/raw/patentsview/pregrant/`; keep those files outside Git.
 
 ## Checksum Procedure
 

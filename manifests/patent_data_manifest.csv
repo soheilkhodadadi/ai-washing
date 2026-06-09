@@ -1,0 +1,29 @@
+artifact_id,logical_path,role,expected_format,expected_rows,year_column,expected_year_min,expected_year_max,required_columns,notes
+grant_counts_2014plus,data/processed/patents/ai_patent_counts_filtered_ever_speaker_2016_2025_hybrid_grant_2014plus.csv,required_extension,csv,11386,year,2014,2025,cik;name;year;patents_total;patents_ai;ai_share,Final hybrid grant-side annual patent counts used to build the 2016-2025 v4.3 panel.
+pregrant_counts_2014plus,data/processed/patents/ai_application_counts_filtered_ever_speaker_2016_2025_hybrid_pregrant_2014plus.csv,required_extension,csv,12051,year,2014,2025,cik;name;year;applications_total;applications_ai;ai_share_applications,Final pregrant application annual counts using assignee first and applicant fallback.
+grant_examples_2014plus,data/processed/patents/ai_patent_examples_ever_speaker_2016_2025_hybrid_grant_2014plus.csv,required_extension,csv,1403,year,2014,2025,cik;name;year;patent_id;patent_title;patent_abstract;matched_keywords,Readable grant-side examples showing titles abstracts and matched AI keywords.
+pregrant_examples_2014plus,data/processed/patents/ai_application_examples_ever_speaker_2016_2025_hybrid_pregrant_2014plus.csv,required_extension,csv,1920,year,2014,2025,cik;name;year;application_id;pgpub_id;patent_id;filing_date;published_date;application_title;application_abstract;matched_keywords,Readable pregrant examples showing application metadata abstracts and matched AI keywords.
+grant_diagnostics,data/processed/patents/patents_diagnostics_ever_speaker_2016_2025_hybrid_grant_2014plus.csv,required_extension,csv,1754,,,,cik;name;patents_total;patents_ai;ai_share_overall;matched_patent_rows_premerge,Grant-side firm-level matching diagnostics.
+pregrant_diagnostics,data/processed/patents/application_diagnostics_ever_speaker_2016_2025_hybrid_pregrant_2014plus.csv,required_extension,csv,1881,,,,cik;name;applications_total;applications_ai;matched_pgpub_rows_premerge;crosswalk_linked_rows;ai_share_overall,Pregrant firm-level matching diagnostics.
+company_lookup_hybrid,data/metadata/company_identity/company_lookup_ever_speaker_2016_2025_hybrid_v1.csv,required_extension,csv,4907,,,,cik;name;name_clean;ticker;gvkey;sic;name_source,Hybrid company lookup used for exact normalized patent matching.
+company_aliases_hybrid,data/metadata/company_identity/company_aliases_ever_speaker_2016_2025_hybrid_v1.csv,required_extension,csv,4823,,,,cik;name;alias;alias_clean;alias_source,Hybrid company alias file used for exact normalized patent matching.
+patent_keywords_base,data/metadata/patents/patent_keywords.txt,required_extension,text,,,,,,Base patent AI keyword list used by final extractors.
+patent_keywords_core,data/metadata/patents/patent_keywords_core_v1.txt,support_only,text,,,,,,Core keyword sensitivity list.
+patent_keywords_applied,data/metadata/patents/patent_keywords_applied_v2.txt,support_only,text,,,,,,Applied keyword sensitivity list.
+patent_keywords_precise,data/metadata/patents/patent_keywords_precise_v2.txt,support_only,text,,,,,,Precise keyword sensitivity list.
+patent_keywords_expanded,data/metadata/patents/patent_keywords_expanded_v1.txt,support_only,text,,,,,,Expanded keyword sensitivity list.
+patent_keywords_automation,data/metadata/patents/patent_keywords_automation_v2.txt,support_only,text,,,,,,Automation keyword sensitivity list.
+patent_keywords_industry,data/metadata/patents/patent_keywords_industry_v1.txt,support_only,text,,,,,,Industry keyword sensitivity list.
+patent_keywords_watchlist,data/metadata/patents/patent_keywords_watchlist_v2.txt,support_only,text,,,,,,Watchlist keyword sensitivity list.
+patent_matching_robustness_note,data/reports/patents/ai_washing_patent_matching_robustness_v1.md,required_extension,markdown,,,,,,Coauthor-facing patent matching robustness note from the final refresh.
+patent_fuzzy_sensitivity_note,data/reports/patents/ai_washing_patent_fuzzy_sensitivity_2024_v1.md,support_only,markdown,,,,,,Fuzzy-matching sensitivity note explaining why fuzzy matching was rejected.
+patent_fuzzy_sensitivity_json,data/reports/patents/ai_washing_patent_fuzzy_sensitivity_2024_v1.json,support_only,json,,,,,,Machine-readable fuzzy sensitivity summary.
+patent_fuzzy_sensitivity_examples,data/reports/patents/ai_washing_patent_fuzzy_sensitivity_2024_sample_examples_v1.csv,support_only,csv,120,,,,family;year;threshold;id;org_raw;matched_term;score;second_score;cik;name;title,Review sample for fuzzy-only patent/application matches.
+grant_extraction_progress,data/reports/patents/patent_extraction_progress_ever_speaker_2016_2025_hybrid_grant_2014plus.json,support_only,json,,,,,,Grant extraction progress log for final hybrid lane.
+pregrant_extraction_progress,data/reports/patents/pregrant_application_extraction_progress_ever_speaker_2016_2025_hybrid_pregrant_2014plus.json,support_only,json,,,,,,Pregrant extraction progress log for final hybrid lane.
+patent_keyword_benchmark_json,data/reports/patents/patent_keyword_benchmark_2024_v2_lightweight.json,support_only,json,,,,,,Keyword benchmark summary for patent keyword-set evaluation.
+patent_keyword_benchmark_examples,data/reports/patents/patent_keyword_benchmark_2024_examples_v2_lightweight.csv,support_only,csv,,,,,,Keyword benchmark examples for review.
+patentsview_grant_dictionary,data/raw/patentsview/Guide/PV_grant_data_dictionary.pdf,raw_source,pdf,,,,,,PatentsView grant data dictionary.
+patentsview_pregrant_dictionary,data/raw/patentsview/Guide/PV_pregrant_data_dictionary.pdf,raw_source,pdf,,,,,,PatentsView pregrant data dictionary.
+patentsview_bulk_descriptions,data/raw/patentsview/Guide/2026BulkDataProductDescriptions.xlsx,raw_source,xlsx,,,,,,PatentsView bulk data product descriptions.
+patentsview_source_readme,data/raw/patentsview/README_PATENTSVIEW_SOURCE.md,raw_source,markdown,,,,,,Private data-room note describing full raw-source mirror policy.

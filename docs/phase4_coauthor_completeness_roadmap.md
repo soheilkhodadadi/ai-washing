@@ -12,6 +12,19 @@ The main design principle is conservative: keep the Git repository small and exe
 
 The workstation is in a strong state for v4.3 reproduction, but it is not yet above criticism as a complete coauthor data room.
 
+Phase 4A/4B implementation update, 2026-06-09:
+
+- Processed patent grant/pregrant counts, examples, and diagnostics are staged in the private data room.
+- Hybrid company lookup and alias metadata are staged in the private data room.
+- Patent keyword lists and sensitivity keyword lists are staged in the private data room.
+- PatentsView guide/source files and a raw-source mirror policy note are staged in the private data room.
+- Patent matching/fuzzy-sensitivity reports and progress logs are staged in the private data room.
+- `manifests/patent_data_manifest.csv` and `make validate-patent-data` now enforce the patent audit surface.
+- Final patent construction modules have been ported into `src/semantic_ai_washing/patents/` with portable path defaults.
+- Focused patent unit tests have been ported under `tests/`.
+
+The remaining Phase 4 emphasis is now Phase 4C and Phase 4D: convert the staged patent material into a polished method/evidence pack, then close or narrow the remaining CRSP/Compustat merge-intermediate queue.
+
 What is already strong:
 
 - The canonical repository is `/Users/soheilkhodadadi/DataWork/ai-washing`.
