@@ -139,7 +139,7 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to validation of Phase 3F, then run a fresh-clone/container validation pass. After that, stage any remaining broader data-room artifacts from the old `semantic-patterns` roots into the private data mirror only if they are still needed for bottom-up rebuilds or Kuntara's extension work.
+Proceed to Phase 4 using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. The highest-return next step is patent closure: stage processed patent counts/examples/diagnostics, port the final patent construction modules, and add the patent method/evidence pack before sharing the coauthor data room.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
