@@ -10,6 +10,7 @@ Start here:
 - [AGENTS.md](AGENTS.md): operating rules for Codex and automation agents.
 - [docs/collaboration_workflow.md](docs/collaboration_workflow.md): GitHub + private-data collaboration model.
 - [docs/data_management.md](docs/data_management.md): `AIW_DATA_ROOT` policy and private data handling.
+- [docs/artifact_coverage_policy.md](docs/artifact_coverage_policy.md): lane-specific v4.3 artifact coverage rules.
 - [docs/coauthor_data_room.md](docs/coauthor_data_room.md): broader full-data handoff contract.
 - [docs/t25_execucomp_policy.md](docs/t25_execucomp_policy.md): Test 25 staged ExecuComp policy.
 - [docs/extension_playbook.md](docs/extension_playbook.md): coauthor extension lanes from Kuntara comments.
@@ -46,6 +47,7 @@ For selected v4.3 reruns after private data are staged:
 
 ```bash
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make audit-artifact-coverage
 make reproduce-selected
 make TABLE_ID=T16 reproduce-table
 make compare-selected-reproduction

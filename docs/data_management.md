@@ -28,6 +28,15 @@ Do not commit:
 
 Use `manifests/data_dependency_manifest.csv` to document required data, and use checksums outside Git for private artifact verification.
 
+Use `manifests/artifact_provenance_audit.csv` and `make audit-artifact-coverage` before promoting or replacing any major private artifact. The audit records candidate coverage and enforces the v4.3 lane targets:
+
+- annual NLP/patent artifacts: 2016-2025,
+- event/market-return artifacts: 2016-2024,
+- filing-spine/AI-measure lineage: 2016-2025,
+- CRSP-derived market inputs: through 2024-12-31.
+
+Do not overwrite the canonical annual panel with lineage CSVs, and do not treat the 2016-2025 filing spine as a completed 2025 event-return panel.
+
 ## Adding Future Data
 
 For future extensions such as job postings or executive-compensation data:
@@ -36,4 +45,5 @@ For future extensions such as job postings or executive-compensation data:
 2. Add or update the table/script crosswalk.
 3. Add status notes in `docs/full_reproduction_status.md`.
 4. Keep raw/private source files outside Git.
-5. Commit only the script, manifest, documentation, and non-sensitive fixture needed to prove the workflow mechanics.
+5. Add the candidate to the provenance audit before promotion.
+6. Commit only the script, manifest, documentation, and non-sensitive fixture needed to prove the workflow mechanics.

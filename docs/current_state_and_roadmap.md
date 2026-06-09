@@ -33,7 +33,9 @@ Generated: 2026-06-09
 - Source closure: 34 modules.
 - Data dependency manifest: 44 rows and 15 unique logical private/support paths.
 - Private data staging: 15 of 15 unique logical paths staged locally after promoting Test 25 to a private ExecuComp-cache dependency.
-- Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, patent lineage, CRSP/Compustat merge inputs, raw/near-raw sources, and extension data.
+- Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, sentence extracts, patent lineage, CRSP/Compustat merge inputs, raw/near-raw samples, source links, and extension data.
+- Artifact provenance audit: lane-specific v4.3 coverage gate with 22 tracked artifacts. Current expected state is 20 promoted artifacts passing coverage and 2 documented not-promoted candidates.
+- v4.3 lane coverage is explicit: annual NLP/patent artifacts cover 2016-2025; event/market-return artifacts cover 2016-2024 because staged CRSP/event-return inputs stop at 2024-12-31.
 
 ## Main Risks To Control
 
@@ -42,6 +44,7 @@ Generated: 2026-06-09
 - Environment drift: exact reproduction requires pinned dependency versions, not latest `pip` versions.
 - Manuscript wrapper deltas: many v4.3 manuscript TeX files differ from generated TeX because of captions, notes, resizing, or manual manuscript wrappers. Numeric CSV evidence should be treated separately from manuscript-facing TeX wrappers.
 - Full-table uncertainty: selected reproduction has passed, Phase 3C produced a batch reproduction ledger, and Phase 3D closes the T25 input-policy gap. Broader raw/intermediate data-room artifacts still need staging for bottom-up rebuilds and extensions.
+- Artifact substitution risk: newer-looking 2016-2025 filing-spine files must not be silently substituted for the 2016-2024 v4.3 event-return panel. Use `make audit-artifact-coverage` before promoting private artifacts.
 
 ## Roadmap To Complete Coauthor-Ready Workstation
 
@@ -106,6 +109,22 @@ Implemented artifacts:
 
 Gate: coauthors can start from the README without needing the old `semantic-patterns` repository, and the remaining broader data-room gaps are explicit.
 
+### Phase 3F: Artifact Coverage Correction
+
+Status: implemented; validation pending.
+
+Goal: remove ambiguity between March/v3 artifacts, April/v4.3 artifacts, and future-extension candidates.
+
+Implemented artifacts:
+
+- `docs/artifact_coverage_policy.md` defines the canonical lane coverage.
+- `manifests/artifact_provenance_audit.csv` records promoted artifacts, excluded candidates, expected row counts, file counts, and year/date coverage.
+- `scripts/audit_artifact_coverage.py` validates the private mirror against that manifest.
+- `make audit-artifact-coverage` exposes the gate.
+- The private data room now stages final hybrid API classifier outputs, local-layered classifier support/provenance, 2016-2024 extracted sentences, 2025 refresh extracted sentences, annual lineage panels, filing spine/WRDS bridge files, representative SEC full-submission samples, representative 2025 Stage-One samples, and source links.
+
+Gate: the audit must pass with annual/NLP/patent artifacts at 2016-2025 and event/market-return artifacts at 2016-2024. No required artifact may have unexplained coverage drift.
+
 ### Phase 3E: Containerization Or Devcontainer
 
 Goal: reduce environment variation after the full table surface is clearer.
@@ -120,13 +139,13 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to a fresh-clone/container validation pass, then stage the deferred broader data-room artifacts from the old `semantic-patterns` roots into the private data mirror.
+Proceed to validation of Phase 3F, then run a fresh-clone/container validation pass. After that, stage any remaining broader data-room artifacts from the old `semantic-patterns` roots into the private data mirror only if they are still needed for bottom-up rebuilds or Kuntara's extension work.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
 Status: started.
 
-The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC files, extracted AI sentences, classifier outputs, patent-match lineage, CRSP/Compustat merge intermediates, and future extension inputs. Items marked `deferred_with_reason` are not v4.3 table-rerun blockers; they are the next staging queue before the handoff is considered complete enough for independent extension work.
+The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC samples, extracted AI sentences, classifier outputs, patent-match lineage, CRSP/Compustat merge intermediates, and future extension inputs. Items marked `deferred_with_reason` are not v4.3 table-rerun blockers; they are the next staging queue before the handoff is considered complete enough for independent extension work.
 
 ### Phase 3E Addendum: Container Surface
 

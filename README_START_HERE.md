@@ -9,6 +9,7 @@ The workstation is intentionally curated. It is not a wholesale copy of the olde
 - `paper/v4_3_source/`: frozen v4.3 LaTeX source and manuscript table/figure inputs.
 - `paper/ai_washing_v4.3.pdf`: frozen v4.3 manuscript PDF.
 - `manifests/`: table/script/data/artifact lineage files.
+- `manifests/artifact_provenance_audit.csv`: lane-specific artifact provenance and coverage gate.
 - `data/curated/v4_3/generated_runs/`: safe generated run evidence used for v4.3 comparisons.
 - `data/fixtures/`: tiny non-sensitive fixture data for smoke tests.
 - `src/semantic_ai_washing/`: minimal source closure needed by mapped publication scripts.
@@ -27,6 +28,8 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
 The expected private input paths are listed in `manifests/data_dependency_manifest.csv` and summarized in `docs/private_data_staging_map.md` and `docs/private_data_contract.md`.
+
+The v4.3 target has lane-specific coverage. The annual NLP/patent lane covers 2016-2025, while the event/market-return lane covers 2016-2024 because the staged CRSP/event-return inputs stop at 2024-12-31. See `docs/artifact_coverage_policy.md` before replacing or promoting any private artifact.
 
 ## Environment Setup
 
@@ -72,6 +75,7 @@ If private data are staged, validate the mirror before rerunning tables:
 ```bash
 make check-private-data
 make validate-data-room
+make audit-artifact-coverage
 ```
 
 ## Comparison And Rerun Preflight
@@ -106,3 +110,5 @@ Recommended first rerun targets: `T00`, `T16`, `T17`, `T09`, and `T30`.
 ## Current Status
 
 The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Phase 3B adds a mechanical private-data mirror checker. Full-table expansion is controlled through `scripts/reproduce_assets.py` and the `reproduce-all-tables-*` Make targets.
+
+The artifact-coverage gate makes the March/v3 versus April/v4.3 distinction explicit: final classifier and annual NLP/patent artifacts cover 2016-2025, but event/market-return artifacts are intentionally 2016-2024 for v4.3 reproduction.

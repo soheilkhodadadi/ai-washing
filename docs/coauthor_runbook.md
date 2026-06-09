@@ -51,9 +51,13 @@ These checks should pass even without private data.
 
 ```bash
 make check-private-data
+make validate-data-room
+make audit-artifact-coverage
 ```
 
 Expected current result: every table-rerun `required_current` and `support_only` input is present, including `external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet`.
+
+The artifact coverage audit is deliberately lane-specific. Annual NLP/patent artifacts should cover 2016-2025, but event/market-return artifacts should cover 2016-2024 for v4.3 because the staged CRSP/event-return files stop at 2024-12-31. Do not replace the v4.3 event panel with a 2016-2025 filing spine unless a future release explicitly promotes a new return-event panel.
 
 ## 6. Reproduce Selected v4.3 Tables
 

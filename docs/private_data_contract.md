@@ -25,11 +25,26 @@ From the repository root:
 ```bash
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
+make validate-data-room
+make audit-artifact-coverage
 ```
 
 Expected current result: all 15 unique logical paths are present after staging the Test 25 ExecuComp cache under `external/execucomp/`.
 
 The checker fails for missing `required_current` inputs. It exits cleanly for documented `future_extension` gaps so that coauthors can validate the current v4.3 reproduction surface without inventing an ExecuComp/database artifact.
+
+`make audit-artifact-coverage` applies the stronger v4.3 provenance gate. It checks row counts, file counts, year coverage, and date coverage against `manifests/artifact_provenance_audit.csv`.
+
+## Lane-Specific Coverage
+
+Do not require every artifact to cover 2016-2025. v4.3 uses two different data lanes:
+
+- `annual_nlp_patent`: 2016-2025. This includes the canonical annual panel and final hybrid API classifier output with 147,879 AI-related sentences.
+- `event_market_return`: 2016-2024. This includes the filing-event estimation sample and CRSP-derived return inputs. This lane stops at 2024 because the staged CRSP/event-return files stop at 2024-12-31.
+- `filing_spine_ai_measures`: 2016-2025. These files document filing-level disclosure lineage and WRDS/CRSP bridge construction, but they are not a completed 2025 event-return panel.
+- `market_features`: source years through 2024. CRSP monthly and market-index inputs end at 2024-12-31.
+
+See `docs/artifact_coverage_policy.md` before replacing staged artifacts. If a 2025 event-return artifact is found later, treat it as a v5+ extension candidate, not as a silent v4.3 replacement.
 
 ## Logical Data Tree
 
