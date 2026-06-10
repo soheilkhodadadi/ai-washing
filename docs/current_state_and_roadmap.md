@@ -139,7 +139,7 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B has started: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` now provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. The next highest-return step is Phase 4C: convert the staged patent reports into a polished coauthor-facing patent method/evidence pack.
+Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is now implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. The next highest-return step is Phase 4D: close or narrow the CRSP/Compustat merge-intermediate queue.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 

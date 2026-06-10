@@ -12,6 +12,15 @@ The main design principle is conservative: keep the Git repository small and exe
 
 The workstation is in a strong state for v4.3 reproduction, but it is not yet above criticism as a complete coauthor data room.
 
+
+Phase 4C implementation update, 2026-06-10:
+
+- `docs/patent_mismatch_method_note.md` explains the construct lane, firm universe, identity layer, exact normalized matching, grant matching, pregrant assignee/applicant matching, AI patent keyword list, fuzzy rejection, and late-year pregrant caveat.
+- `docs/patent_matching_validation.md` defines the patent validation surface and manual review procedure.
+- `docs/patent_source_inventory.md` separates processed outputs, identity metadata, keyword metadata, reports, and optional raw PatentsView source.
+- `docs/patent_fuzzy_sensitivity_note.md` records why fuzzy matching was rejected as too noisy for v4.3.
+- `scripts/build_patent_audit_examples.py` and `make patent-example-audit` generate a 40-row balanced grant/pregrant audit sample under `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`.
+
 Phase 4A/4B implementation update, 2026-06-09:
 
 - Processed patent grant/pregrant counts, examples, and diagnostics are staged in the private data room.

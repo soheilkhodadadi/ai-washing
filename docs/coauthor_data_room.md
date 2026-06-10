@@ -56,4 +56,18 @@ Patent matching is the central construct-audit layer. In addition to the broad d
 make validate-patent-data
 ```
 
-This validates `manifests/patent_data_manifest.csv` against `$AIW_DATA_ROOT`. It checks the final grant and pregrant count files, example files, diagnostics, hybrid lookup/alias metadata, patent keyword files, PatentsView source documentation, and final matching/fuzzy-sensitivity reports.
+This validates `manifests/patent_data_manifest.csv` against `$AIW_DATA_ROOT`. It checks the final grant and pregrant count files, example files, diagnostics, hybrid lookup/alias metadata, patent keyword files, PatentsView source documentation, final matching/fuzzy-sensitivity reports, and the generated coauthor audit sample.
+
+Before sharing the patent evidence pack, run:
+
+```bash
+make patent-example-audit
+make validate-patent-data
+```
+
+The supporting method notes are tracked in Git:
+
+- `docs/patent_mismatch_method_note.md`
+- `docs/patent_matching_validation.md`
+- `docs/patent_source_inventory.md`
+- `docs/patent_fuzzy_sensitivity_note.md`

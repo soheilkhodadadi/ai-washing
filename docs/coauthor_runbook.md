@@ -59,7 +59,33 @@ Expected current result: every table-rerun `required_current` and `support_only`
 
 The artifact coverage audit is deliberately lane-specific. Annual NLP/patent artifacts should cover 2016-2025, but event/market-return artifacts should cover 2016-2024 for v4.3 because the staged CRSP/event-return files stop at 2024-12-31. Do not replace the v4.3 event panel with a 2016-2025 filing spine unless a future release explicitly promotes a new return-event panel.
 
-## 6. Reproduce Selected v4.3 Tables
+## 6. Inspect The Patent Evidence Pack
+
+Patent matching is the key construct-audit layer. After the private mirror is mounted, run:
+
+```bash
+make patent-example-audit
+make validate-patent-data
+```
+
+Then read the method notes:
+
+```text
+docs/patent_mismatch_method_note.md
+docs/patent_matching_validation.md
+docs/patent_source_inventory.md
+docs/patent_fuzzy_sensitivity_note.md
+```
+
+The generated private audit sample is:
+
+```text
+$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv
+```
+
+It contains a small balanced sample of actual matched grant and pregrant AI patent/application examples.
+
+## 7. Reproduce Selected v4.3 Tables
 
 Start with the selected gate:
 
@@ -71,7 +97,7 @@ make compare-selected-reproduction
 
 The selected v4.3 gate covers `T00`, `T16`, `T17`, `T09`, and `T30`. CSV exact matching is the numerical reproduction criterion; TeX wrapper differences can reflect manuscript notes, captions, or layout wrappers.
 
-## 7. Expand To Full Tables
+## 8. Expand To Full Tables
 
 Dry-run the full table surface first:
 
@@ -89,7 +115,7 @@ make reproduction-status
 
 Do not treat figures as required reruns unless they are explicitly promoted from frozen manuscript assets to regenerable outputs.
 
-## 8. Git Rules
+## 9. Git Rules
 
 - Commit code, docs, manifests, fixtures, and sanitized status ledgers.
 - Do not commit raw/private data, parquet outputs, WRDS/CRSP inputs, archives, `.venv`, or generated outputs under `outputs/`.
