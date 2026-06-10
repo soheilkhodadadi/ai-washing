@@ -50,6 +50,22 @@ The coverage target is lane-specific:
 Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, Compustat fundamentals extract, CRSP monthly/index and daily return inputs, CIK-GVKEY-PERMNO bridge files, WRDS build reports, and core provenance files. The visible remaining queue is now limited to future extension data such as actual SEO/offering terms and optional job-posting data.
 
 
+
+## Extension Starter Layer
+
+The extension layer helps Kuntara begin testing without changing the v4.3 freeze.
+
+```bash
+make builder-hides-first-pass
+```
+
+This writes ignored outputs under `outputs/extensions/builder_hides_right_tail/` unless `AIW_OUTPUT_ROOT` is set. The supporting docs are:
+
+- `docs/extensions/builder_hides_first_pass.md`
+- `docs/extensions/washing_pays_data_requirements.md`
+
+The washing-pays strong version still requires external issuance terms under `data/external/equity_issuance`; the current package only supports the share-growth proxy screen.
+
 ## WRDS / CRSP / Compustat Gate
 
 The CRSP, Compustat, and linkage layer has its own validator:

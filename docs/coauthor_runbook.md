@@ -134,7 +134,27 @@ make reproduction-status
 
 Do not treat figures as required reruns unless they are explicitly promoted from frozen manuscript assets to regenerable outputs.
 
-## 10. Git Rules
+
+## 10. Run Extension Starters
+
+After the v4.3 reproduction and construct-audit checks pass, Kuntara can start from the extension layer without changing the frozen v4.3 evidence.
+
+Builder-hides first pass:
+
+```bash
+make builder-hides-first-pass
+```
+
+Then read:
+
+```text
+docs/extensions/builder_hides_first_pass.md
+docs/extensions/washing_pays_data_requirements.md
+```
+
+The builder-hides script uses the staged annual panel and writes ignored outputs under `outputs/extensions/builder_hides_right_tail/` unless `AIW_OUTPUT_ROOT` is set. The washing-pays note separates the current CRSP share-growth proxy from the stronger financing-terms test that requires external SEO/offering data.
+
+## 11. Git Rules
 
 - Commit code, docs, manifests, fixtures, and sanitized status ledgers.
 - Do not commit raw/private data, parquet outputs, WRDS/CRSP inputs, archives, `.venv`, or generated outputs under `outputs/`.

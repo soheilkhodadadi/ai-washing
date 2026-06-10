@@ -139,7 +139,7 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is now implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. The next highest-return step is Phase 4E: add extension-readiness material for builder-hides and washing-pays without overpromising missing SEO terms.
+Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. Phase 4E is now implemented as an extension-readiness layer: `make builder-hides-first-pass` creates a runnable builder-hides screen, and `docs/extensions/washing_pays_data_requirements.md` separates the current share-growth proxy from the stronger financing-terms test. The next highest-return step is Phase 4F/4G: finalize raw SEC policy and rehearse the full coauthor handoff package.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
@@ -147,6 +147,20 @@ Status: started.
 
 The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC samples, extracted AI sentences, classifier outputs, patent-match lineage, WRDS/CRSP/Compustat merge intermediates, and future extension inputs. The remaining `deferred_with_reason` items are not v4.3 table-rerun blockers; they are extension inputs such as actual SEO/offering terms and optional job-posting data.
 
+
+
+### Phase 4E Addendum: Extension Readiness Layer
+
+Status: implemented.
+
+The repo now includes `src/semantic_ai_washing/analysis/extensions/builder_hides_right_tail.py` and `make builder-hides-first-pass`. The script uses the staged annual panel, defines a lagged right-tail real-AI builder indicator from AI patents and applications, and writes descriptive/regression outputs plus an interpretation memo under ignored extension outputs.
+
+The extension docs are tracked under `docs/extensions/`:
+
+- `builder_hides_first_pass.md` explains the runnable starter, interpretation rules, and safe next variants.
+- `washing_pays_data_requirements.md` separates the current CRSP share-growth issue proxy from the strong version requiring actual SEO/offering terms.
+
+This layer is deliberately not added to the v4.3 table crosswalk because it is a coauthor sandbox, not a frozen manuscript asset.
 
 ### Phase 4D Addendum: WRDS / CRSP / Compustat Evidence Pack
 

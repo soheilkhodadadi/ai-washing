@@ -23,7 +23,13 @@ Data-room needs:
 - Existing annual panel and filing-event panel.
 - Capital-raising table inputs from v4.3.
 - External issuance data under `data/external/equity_issuance` if a richer issuance database is used.
-- CRSP/Compustat controls already staged or refreshable.
+- CRSP/Compustat controls already staged and validated through `make validate-wrds-data`.
+
+Current status:
+
+- Proxy version is available from Test 30's next-year CRSP `shrout` growth rule.
+- Strong version is not available until actual issuance terms are staged.
+- See `docs/extensions/washing_pays_data_requirements.md` before writing any manuscript claim.
 
 Decision rule:
 
@@ -48,9 +54,15 @@ Candidate outcomes:
 
 Data-room needs:
 
-- Annual panel with patent columns.
-- Standalone patent match/crosswalk artifacts under `data/interim/patents`.
-- Raw patent source files under `data/raw/patents` if a rebuild is needed.
+- Annual panel with patent and application columns.
+- Standalone patent match/crosswalk artifacts under the patent data room.
+- Raw PatentsView source files only if a full bottom-up rebuild is needed.
+
+Current status:
+
+- First-pass starter script is available through `make builder-hides-first-pass`.
+- Outputs are written under ignored extension outputs, not promoted into v4.3 evidence.
+- See `docs/extensions/builder_hides_first_pass.md` before interpreting signs.
 
 Decision rule:
 

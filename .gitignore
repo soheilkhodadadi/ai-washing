@@ -17,6 +17,7 @@ __pycache__/
 outputs/reproduced/**
 outputs/paper_exports/**
 outputs/fixture/**
+outputs/extensions/**
 !outputs/reproduced/README.md
 !outputs/fixture/.gitkeep
 *.log

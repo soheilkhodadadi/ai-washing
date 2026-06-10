@@ -14,6 +14,15 @@ The workstation is now in a strong state for v4.3 reproduction and coauthor audi
 
 
 
+
+Phase 4E implementation update, 2026-06-10:
+
+- `src/semantic_ai_washing/analysis/extensions/builder_hides_right_tail.py` provides a runnable first-pass builder-hides screen from the staged annual panel.
+- `make builder-hides-first-pass` writes ignored extension outputs under `outputs/extensions/builder_hides_right_tail/` or `$AIW_OUTPUT_ROOT/extensions/builder_hides_right_tail/`.
+- `docs/extensions/builder_hides_first_pass.md` documents the right-tail builder definition, output files, and interpretation discipline.
+- `docs/extensions/washing_pays_data_requirements.md` separates the current Test 30 CRSP share-growth proxy from the stronger financing-terms extension requiring actual SEO/offering data.
+- The extension layer is not promoted into v4.3 evidence or the table crosswalk.
+
 Phase 4D implementation update, 2026-06-10:
 
 - Full-sample Compustat fundamentals, CRSP monthly stock file, CRSP market-index file, annual market features, daily event-return cache, CIK-GVKEY crosswalk, annual WRDS backbone, filing-level WRDS bridge, unmatched-tail diagnostics, JSON build reports, and WRDS source/progress notes are staged in the private data room.
@@ -41,7 +50,7 @@ Phase 4A/4B implementation update, 2026-06-09:
 - Final patent construction modules have been ported into `src/semantic_ai_washing/patents/` with portable path defaults.
 - Focused patent unit tests have been ported under `tests/`.
 
-Phase 4C and Phase 4D have now moved the package beyond table reproduction: the patent method/evidence pack is documented, and the CRSP/Compustat merge-intermediate queue is closed for coauthor audit. The remaining emphasis is Phase 4E and beyond: extension-readiness material, raw SEC policy, and final package rehearsal.
+Phase 4C and Phase 4D have now moved the package beyond table reproduction: the patent method/evidence pack is documented, and the CRSP/Compustat merge-intermediate queue is closed for coauthor audit. Phase 4E is now implemented as a coauthor extension starter layer. The remaining emphasis is Phase 4F and Phase 4G: raw SEC policy and final package rehearsal.
 
 What is already strong:
 
@@ -336,6 +345,8 @@ Gate:
 
 ## Phase 4E: Extension Readiness Layer
 
+Status: implemented on 2026-06-10.
+
 Goal: give Kuntara starting points for her two proposed tests without pretending missing data exist.
 
 ### Builder hides
@@ -350,9 +361,10 @@ Inputs already available:
 - firm controls
 - year and industry variables
 
-Add a starter script:
+Implemented starter script:
 
 - `src/semantic_ai_washing/analysis/extensions/builder_hides_right_tail.py`
+- `make builder-hides-first-pass`
 
 Cheap version:
 
@@ -381,7 +393,7 @@ Strong version:
 - required fields likely include firm identifier, issue date, proceeds, offer price, pre-issue price, discount, offer size, and valuation/market-cap base
 - possible sources need to be decided by Kuntara/Thomas based on their data access
 
-Add docs:
+Implemented docs:
 
 - `docs/extensions/washing_pays_data_requirements.md`
 - `docs/extensions/builder_hides_first_pass.md`
@@ -466,8 +478,8 @@ Gate:
 3. Port final patent construction modules and keyword resources into the canonical repo.
 4. Add patent method and evidence docs.
 5. Stage CRSP/Compustat merge intermediates and source/build reports.
-6. Add builder-hides starter extension.
-7. Add washing-pays data-requirements note and proxy/strong-version separation.
+6. Add builder-hides starter extension. Completed.
+7. Add washing-pays data-requirements note and proxy/strong-version separation. Completed.
 8. Rerun full v4.3 reproduction.
 9. Rerun Docker and fresh-clone validation.
 10. Prepare the coauthor share package and private-data-room upload.
