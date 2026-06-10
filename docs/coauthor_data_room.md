@@ -11,6 +11,7 @@ cd /path/to/ai-washing
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
 make validate-data-room
+make validate-wrds-data
 make validate-patent-data
 make audit-artifact-coverage
 ```
@@ -35,7 +36,7 @@ Roles:
 
 ## Current Interpretation
 
-The current private root is enough for v4.3 table reproduction. The broad data-room manifest is now more complete: the final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS bridge, SEC samples, patent counts/examples/diagnostics, patent identity metadata, patent keyword metadata, PatentsView source documentation, and patent method reports are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are the next data-room expansion checklist.
+The current private root is enough for v4.3 table reproduction and is now substantially broader than the table-rerun surface. The final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS/CRSP/Compustat bridge artifacts, WRDS raw-pull/build reports, SEC samples, patent counts/examples/diagnostics, patent identity metadata, patent keyword metadata, PatentsView source documentation, and patent method reports are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are future-extension inputs rather than hidden reproduction dependencies.
 
 The coverage target is lane-specific:
 
@@ -46,7 +47,23 @@ The coverage target is lane-specific:
 
 ## Coauthor Request Coverage
 
-Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, and core provenance files, while keeping a visible queue for remaining broader artifacts such as Compustat source/merge intermediates and future extension inputs.
+Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, Compustat fundamentals extract, CRSP monthly/index and daily return inputs, CIK-GVKEY-PERMNO bridge files, WRDS build reports, and core provenance files. The visible remaining queue is now limited to future extension data such as actual SEO/offering terms and optional job-posting data.
+
+
+## WRDS / CRSP / Compustat Gate
+
+The CRSP, Compustat, and linkage layer has its own validator:
+
+```bash
+make validate-wrds-data
+```
+
+This reads `manifests/wrds_data_manifest.csv` and checks the staged Compustat fundamentals extract, CRSP monthly/index extracts, daily filing-event returns, annual market features, CIK-GVKEY crosswalk, annual WRDS backbone, filing-level WRDS bridge, unmatched-tail audit file, and WRDS reports/notes. The supporting docs are:
+
+- `docs/wrds_crsp_compustat_method_note.md`
+- `docs/wrds_source_inventory.md`
+
+Normal reproduction does not require WRDS credentials. Refreshing WRDS data is an explicit coauthor action using that coauthor's own WRDS access, followed by validation before promotion.
 
 ## Patent Data Gate
 

@@ -33,7 +33,7 @@ Generated: 2026-06-09
 - Source closure: 34 modules.
 - Data dependency manifest: 44 rows and 15 unique logical private/support paths.
 - Private data staging: 15 of 15 unique logical paths staged locally after promoting Test 25 to a private ExecuComp-cache dependency.
-- Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, sentence extracts, patent lineage, CRSP/Compustat merge inputs, raw/near-raw samples, source links, and extension data.
+- Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, sentence extracts, patent lineage, staged WRDS/CRSP/Compustat merge inputs, raw/near-raw samples, source links, and extension data.
 - Artifact provenance audit: lane-specific v4.3 coverage gate with 22 tracked artifacts. Current expected state is 20 promoted artifacts passing coverage and 2 documented not-promoted candidates.
 - v4.3 lane coverage is explicit: annual NLP/patent artifacts cover 2016-2025; event/market-return artifacts cover 2016-2024 because staged CRSP/event-return inputs stop at 2024-12-31.
 
@@ -43,7 +43,7 @@ Generated: 2026-06-09
 - Private data leakage: WRDS/CRSP, derived panels, labels, archives, and generated outputs must stay outside Git.
 - Environment drift: exact reproduction requires pinned dependency versions, not latest `pip` versions.
 - Manuscript wrapper deltas: many v4.3 manuscript TeX files differ from generated TeX because of captions, notes, resizing, or manual manuscript wrappers. Numeric CSV evidence should be treated separately from manuscript-facing TeX wrappers.
-- Full-table uncertainty: selected reproduction has passed, Phase 3C produced a batch reproduction ledger, and Phase 3D closes the T25 input-policy gap. Broader raw/intermediate data-room artifacts still need staging for bottom-up rebuilds and extensions.
+- Full-table uncertainty: selected reproduction has passed, Phase 3C produced a batch reproduction ledger, and Phase 3D closes the T25 input-policy gap. Phase 4D now stages the main WRDS/CRSP/Compustat audit artifacts, but future extension sources such as actual SEO terms and job postings remain out of scope until promoted.
 - Artifact substitution risk: newer-looking 2016-2025 filing-spine files must not be silently substituted for the 2016-2024 v4.3 event-return panel. Use `make audit-artifact-coverage` before promoting private artifacts.
 
 ## Roadmap To Complete Coauthor-Ready Workstation
@@ -102,7 +102,7 @@ Goal: make collaboration easy once Kuntara starts testing or adding models.
 Implemented artifacts:
 
 - `docs/coauthor_data_room.md` defines the broader full-data handoff contract.
-- `manifests/coauthor_data_room_manifest.csv` records staged and deferred coauthor artifacts.
+- `manifests/coauthor_data_room_manifest.csv` records staged coauthor artifacts and explicitly deferred future-extension inputs.
 - `scripts/validate_data_room.py` and `make validate-data-room` validate row counts, schemas, sizes, and optional hashes.
 - `docs/t25_execucomp_policy.md` documents the staged ExecuComp cache and explicit WRDS refresh path.
 - `docs/extension_playbook.md` records Kuntara's washing-pays and builder-hides extension lanes.
@@ -139,13 +139,22 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is now implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. The next highest-return step is Phase 4D: close or narrow the CRSP/Compustat merge-intermediate queue.
+Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is now implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. The next highest-return step is Phase 4E: add extension-readiness material for builder-hides and washing-pays without overpromising missing SEO terms.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
 Status: started.
 
-The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC samples, extracted AI sentences, classifier outputs, patent-match lineage, CRSP/Compustat merge intermediates, and future extension inputs. Items marked `deferred_with_reason` are not v4.3 table-rerun blockers; they are the next staging queue before the handoff is considered complete enough for independent extension work.
+The table-rerun manifest is intentionally narrower than Kuntara's full-data request. The broader coauthor data-room manifest now tracks raw SEC samples, extracted AI sentences, classifier outputs, patent-match lineage, WRDS/CRSP/Compustat merge intermediates, and future extension inputs. The remaining `deferred_with_reason` items are not v4.3 table-rerun blockers; they are extension inputs such as actual SEO/offering terms and optional job-posting data.
+
+
+### Phase 4D Addendum: WRDS / CRSP / Compustat Evidence Pack
+
+Status: implemented.
+
+The private data room now stages the full-sample Compustat fundamentals extract, CRSP monthly stock file extract, CRSP market-index extract, annual market features, daily event-return cache, CIK-GVKEY crosswalk, annual WRDS backbone, filing-level WRDS bridge, unmatched-tail diagnostics, JSON build reports, and WRDS progress/source notes. The gate is `make validate-wrds-data`, backed by `manifests/wrds_data_manifest.csv`.
+
+The critical boundary is explicit: the annual filing/linkage spine extends through 2025, while the v4.3 event-return lane remains 2016-2024 because CRSP return data stop at 2024-12-31. No WRDS credentials are stored or shared; staged extracts support reproduction and coauthor audit, while refreshes remain opt-in.
 
 ### Phase 3E Addendum: Container Surface
 

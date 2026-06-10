@@ -52,6 +52,7 @@ These checks should pass even without private data.
 ```bash
 make check-private-data
 make validate-data-room
+make validate-wrds-data
 make audit-artifact-coverage
 ```
 
@@ -59,7 +60,25 @@ Expected current result: every table-rerun `required_current` and `support_only`
 
 The artifact coverage audit is deliberately lane-specific. Annual NLP/patent artifacts should cover 2016-2025, but event/market-return artifacts should cover 2016-2024 for v4.3 because the staged CRSP/event-return files stop at 2024-12-31. Do not replace the v4.3 event panel with a 2016-2025 filing spine unless a future release explicitly promotes a new return-event panel.
 
-## 6. Inspect The Patent Evidence Pack
+
+## 6. Validate The WRDS / CRSP / Compustat Layer
+
+Thomas specifically asked for the CRSP and Compustat merges, not only final panel variables. After the private mirror is mounted, run:
+
+```bash
+make validate-wrds-data
+```
+
+Then read:
+
+```text
+docs/wrds_crsp_compustat_method_note.md
+docs/wrds_source_inventory.md
+```
+
+The validator should report all 16 WRDS manifest rows present. The key interpretation rule is that the filing spine and annual WRDS backbone extend through 2025, but the v4.3 event-return lane stops in 2024 because the staged CRSP return extracts stop at 2024-12-31.
+
+## 7. Inspect The Patent Evidence Pack
 
 Patent matching is the key construct-audit layer. After the private mirror is mounted, run:
 
@@ -85,7 +104,7 @@ $AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv
 
 It contains a small balanced sample of actual matched grant and pregrant AI patent/application examples.
 
-## 7. Reproduce Selected v4.3 Tables
+## 8. Reproduce Selected v4.3 Tables
 
 Start with the selected gate:
 
@@ -97,7 +116,7 @@ make compare-selected-reproduction
 
 The selected v4.3 gate covers `T00`, `T16`, `T17`, `T09`, and `T30`. CSV exact matching is the numerical reproduction criterion; TeX wrapper differences can reflect manuscript notes, captions, or layout wrappers.
 
-## 8. Expand To Full Tables
+## 9. Expand To Full Tables
 
 Dry-run the full table surface first:
 
@@ -115,7 +134,7 @@ make reproduction-status
 
 Do not treat figures as required reruns unless they are explicitly promoted from frozen manuscript assets to regenerable outputs.
 
-## 9. Git Rules
+## 10. Git Rules
 
 - Commit code, docs, manifests, fixtures, and sanitized status ledgers.
 - Do not commit raw/private data, parquet outputs, WRDS/CRSP inputs, archives, `.venv`, or generated outputs under `outputs/`.

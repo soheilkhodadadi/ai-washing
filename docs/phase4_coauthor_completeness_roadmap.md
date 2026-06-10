@@ -10,8 +10,17 @@ The main design principle is conservative: keep the Git repository small and exe
 
 ## Current Verdict
 
-The workstation is in a strong state for v4.3 reproduction, but it is not yet above criticism as a complete coauthor data room.
+The workstation is now in a strong state for v4.3 reproduction and coauthor audit. It still needs extension-readiness scaffolding and final package rehearsal before being treated as a complete collaboration handoff.
 
+
+
+Phase 4D implementation update, 2026-06-10:
+
+- Full-sample Compustat fundamentals, CRSP monthly stock file, CRSP market-index file, annual market features, daily event-return cache, CIK-GVKEY crosswalk, annual WRDS backbone, filing-level WRDS bridge, unmatched-tail diagnostics, JSON build reports, and WRDS source/progress notes are staged in the private data room.
+- `manifests/wrds_data_manifest.csv` and `make validate-wrds-data` now provide a dedicated market/accounting/linkage validation gate.
+- `docs/wrds_crsp_compustat_method_note.md` explains the lane boundaries, refresh policy, and audit path.
+- `docs/wrds_source_inventory.md` maps coauthor-facing private folders and files to their purpose.
+- The remaining non-reproduction queue is narrowed to future-extension inputs: actual SEO/offering terms and optional job-posting data.
 
 Phase 4C implementation update, 2026-06-10:
 
@@ -32,7 +41,7 @@ Phase 4A/4B implementation update, 2026-06-09:
 - Final patent construction modules have been ported into `src/semantic_ai_washing/patents/` with portable path defaults.
 - Focused patent unit tests have been ported under `tests/`.
 
-The remaining Phase 4 emphasis is now Phase 4C and Phase 4D: convert the staged patent material into a polished method/evidence pack, then close or narrow the remaining CRSP/Compustat merge-intermediate queue.
+Phase 4C and Phase 4D have now moved the package beyond table reproduction: the patent method/evidence pack is documented, and the CRSP/Compustat merge-intermediate queue is closed for coauthor audit. The remaining emphasis is Phase 4E and beyond: extension-readiness material, raw SEC policy, and final package rehearsal.
 
 What is already strong:
 
@@ -46,8 +55,8 @@ What is already strong:
 
 What still needs attention:
 
-- The patent-mismatch construct is the central invention layer, but the current canonical repo mostly contains table-facing patent regressions, not the full bottom-up patent construction and audit trail.
-- The coauthor data-room manifest still marks `patent_raw`, `patent_match_artifacts`, `compustat_extracts`, `crsp_compustat_linking`, and `seo_or_equity_issuance` as deferred.
+- The patent-mismatch construct is now documented and auditable through staged patent artifacts, method notes, and example files, but it remains the construct most likely to need coauthor/referee scrutiny before journal submission.
+- The coauthor data-room manifest now marks `patent_raw`, `patent_match_artifacts`, `compustat_extracts`, and `crsp_compustat_linking` as present. The remaining deferred items are future-extension sources such as `seo_or_equity_issuance` and `job_postings`.
 - Kuntara's "washing pays" extension needs actual issuance terms if the test is to go beyond the current share-growth proxy.
 - The current panel includes `shrout` and a derived equity-issue proxy, but it does not include offer amount, offer discount, offer price, proceeds, or issuance valuation.
 - The full raw PatentsView source is large but available locally; deciding whether to mirror it is a coauthor-friction choice, not a v4.3 reproduction requirement.
@@ -65,10 +74,10 @@ Current status:
 | Cleaned panel | Present | Keep canonical annual and event panels staged and checksummed. |
 | Classifier outputs | Present | Keep final hybrid API classifier output as canonical; keep local layered output as support only. |
 | Scripts that build every table | Present for v4.3 tables | Keep full reproduction ledger current after every change. |
-| CRSP merge inputs | Mostly present | Add clearer CRSP/Compustat bridge and raw-pull reports to the data room. |
-| Compustat extracts | Deferred | Locate and stage `wrds_comp_funda_full_sample_v1.parquet` and related build scripts/logs if they match v4.3. |
-| Patent match | Partly present | Stage upstream patent counts, examples, diagnostics, lookup/alias files, keyword lists, and construction scripts. |
-| Raw patent data | Deferred | Mirror PatentsView raw grant/pregrant files privately or document them as optional raw source pack with exact source links and checksums. |
+| CRSP merge inputs | Present | Validate with `make validate-wrds-data`; inspect `docs/wrds_crsp_compustat_method_note.md` and `docs/wrds_source_inventory.md`. |
+| Compustat extracts | Present | Full-sample Compustat fundamentals extract is staged under `$AIW_DATA_ROOT/interim/accounting/` and validated by `manifests/wrds_data_manifest.csv`. |
+| Patent match | Present | Validate with `make validate-patent-data`; inspect the patent method/evidence docs and generated audit examples. |
+| Raw patent data | Optional raw-source mirror | PatentsView source docs and policy are staged; full grant/pregrant TSV mirror can be added privately if coauthors request a bottom-up raw rebuild. |
 | Folder labeling | Good but not final | Add coauthor-facing map that says what to open first, what is required, and what is optional. |
 
 ### Kuntara request
@@ -96,11 +105,10 @@ This is the highest remaining risk. If Kuntara sees only final patent variables 
 
 Control:
 
-- Port final patent construction scripts from the old `semantic-patterns` repository.
-- Stage the final grant and pregrant count/example/diagnostic CSVs.
-- Stage the final company lookup and alias files.
-- Stage the final patent keyword lists.
-- Add a short patent method note and example audit file.
+- Keep final patent construction scripts in the canonical repo and validate them with the focused patent tests.
+- Keep final grant and pregrant count/example/diagnostic CSVs staged in the private data room.
+- Keep final company lookup, alias files, and patent keyword lists staged and documented.
+- Use the patent method note and generated audit examples when discussing construct validity with coauthors.
 
 ### Risk 2: Company-to-assignee matching is hard to trust
 
@@ -287,19 +295,22 @@ Gate:
 
 ## Phase 4D: CRSP, Compustat, And Linkage Closure
 
+Status: implemented on 2026-06-10.
+
 Goal: satisfy Thomas's request for CRSP and Compustat merges, not only final merged variables.
 
-Known candidate artifacts from the old provenance repository include:
+Staged and validated artifacts include:
 
-- `data/interim/market/wrds_comp_funda_full_sample_v1.parquet`
+- `data/interim/accounting/wrds_comp_funda_full_sample_v1.parquet`
 - `data/interim/market/wrds_crsp_msf_full_sample_v1.parquet`
 - `data/interim/market/wrds_crsp_msi_full_sample_v1.parquet`
 - `data/interim/market/annual_market_features_ever_speaker_2016_2025_hybrid_api_a_conf49_v1.csv`
-- `data/interim/market/ever_speaker_wrds_backbone_2016_2025_hybrid_api_a_conf49_v1.csv`
-- `data/interim/market/filing_wrds_bridge_hybrid_api_a_conf49_v1.csv`
-- WRDS bridge reports and unmatched-firm diagnostics
+- `data/interim/linking/ever_speaker_wrds_backbone_2016_2025_hybrid_api_a_conf49_v1.csv`
+- `data/interim/linking/filing_wrds_bridge_hybrid_api_a_conf49_v1.csv`
+- `data/reports/wrds/filing_wrds_bridge_unmatched_hybrid_api_a_conf49_v1.csv`
+- WRDS bridge JSON reports and retained source/progress notes
 
-Port or document the relevant source modules:
+Documented provenance modules from the old workspace include:
 
 - `pull_full_sample_wrds_raw.py`
 - `build_wrds_gvkey_permno_bridge.py`
@@ -319,7 +330,8 @@ Policy:
 
 Gate:
 
-- `compustat_extracts` and `crsp_compustat_linking` in `coauthor_data_room_manifest.csv` are either present or narrowly documented with reason.
+- `compustat_extracts` and `crsp_compustat_linking` in `coauthor_data_room_manifest.csv` are present.
+- `make validate-wrds-data` reports all 16 WRDS manifest rows present.
 - Kuntara can see which file produced each market/accounting variable in the annual and event panels.
 
 ## Phase 4E: Extension Readiness Layer

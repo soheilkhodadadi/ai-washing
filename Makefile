@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status validate-data-room validate-patent-data patent-example-audit
+.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data
 
 validate:
 	$(PYTHON) scripts/validate_capsule.py
@@ -47,6 +47,9 @@ validate-patent-data:
 
 patent-example-audit:
 	$(PYTHON) scripts/build_patent_audit_examples.py
+
+validate-wrds-data:
+	$(PYTHON) scripts/validate_wrds_data.py
 
 reproduction-status:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --status-only --include-figures

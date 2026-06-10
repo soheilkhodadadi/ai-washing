@@ -26,11 +26,12 @@ From the repository root:
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make check-private-data
 make validate-data-room
+make validate-wrds-data
 make validate-patent-data
 make audit-artifact-coverage
 ```
 
-Expected current result: all 15 unique logical paths are present after staging the Test 25 ExecuComp cache under `external/execucomp/`.
+Expected current result: all 15 runtime table-dependency paths are present, the WRDS/market validator reports 16 of 16 manifest rows present, and the broad coauthor data-room check reports only explicitly deferred future-extension inputs.
 
 The checker fails for missing `required_current` inputs. It exits cleanly for documented `future_extension` gaps so that coauthors can validate the current v4.3 reproduction surface without inventing an ExecuComp/database artifact.
 
@@ -68,6 +69,21 @@ See `docs/artifact_coverage_policy.md` before replacing staged artifacts. If a 2
 | `data/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json` | `$AIW_DATA_ROOT/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json` | support_only | hybrid_eval | legacy_b1_measurement_audit | Hybrid classifier evaluation report. |
 | `data/reports/labels/irr_boundary_revised_v3_rerun_report.json` | `$AIW_DATA_ROOT/reports/labels/irr_boundary_revised_v3_rerun_report.json` | support_only | irr_report | legacy_b1_measurement_audit | Inter-rater/relabeling report for measurement audit. |
 | `data/validation/held_out_v4/held_out_sentences_v4.csv` | `$AIW_DATA_ROOT/validation/held_out_v4/held_out_sentences_v4.csv` | support_only | heldout_v4 | legacy_b1_measurement_audit | Held-out validation sample for measurement audit. |
+
+
+## WRDS / Market / Accounting Audit Tree
+
+The WRDS lane has an additional manifest, `manifests/wrds_data_manifest.csv`, because coauthors need to inspect more than the final annual/event panels.
+
+| Logical path group | Runtime location | Purpose |
+|---|---|---|
+| `data/interim/accounting/` | `$AIW_DATA_ROOT/interim/accounting/` | Compustat fundamentals extract used to audit and rebuild accounting controls. |
+| `data/interim/market/` | `$AIW_DATA_ROOT/interim/market/` | CRSP monthly/index inputs, annual market features, daily filing-event returns, filing AI measures, filing spine, and market bridge support. |
+| `data/interim/linking/` | `$AIW_DATA_ROOT/interim/linking/` | CIK-GVKEY crosswalk, annual WRDS backbone, and filing-level WRDS bridge. |
+| `data/reports/wrds/` | `$AIW_DATA_ROOT/reports/wrds/` | WRDS raw-pull/build reports and unmatched-link diagnostics. |
+| `data/docs/wrds/` | `$AIW_DATA_ROOT/docs/wrds/` | Legacy WRDS source-review and bridge-progress notes retained for coauthor audit context. |
+
+Run `make validate-wrds-data` before interpreting market/accounting changes. See `docs/wrds_crsp_compustat_method_note.md` and `docs/wrds_source_inventory.md`.
 
 ## Patent Audit Tree
 
