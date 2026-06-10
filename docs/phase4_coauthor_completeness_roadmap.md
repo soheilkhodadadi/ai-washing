@@ -10,8 +10,18 @@ The main design principle is conservative: keep the Git repository small and exe
 
 ## Current Verdict
 
-The workstation is now in a strong state for v4.3 reproduction and coauthor audit. It still needs extension-readiness scaffolding and final package rehearsal before being treated as a complete collaboration handoff.
+The workstation is now in a coauthor-ready state for private package rehearsal and initial collaboration. v4.3 reproduction, patent/WRDS/SEC audit surfaces, extension scaffolding, Docker validation, and fresh-clone validation have all passed. Remaining issues are documented future-extension gaps or non-blocking maintenance items.
 
+
+
+Phase 4G implementation update, 2026-06-10:
+
+- `docs/phase4g_final_coauthor_package_rehearsal.md` records the final coauthor package rehearsal.
+- Local validation, private data validation, data-room validation, SEC/WRDS/patent gates, artifact-coverage audit, full table reproduction, Docker validation, and fresh-clone Docker validation passed.
+- Docker was tested both without private data, where private-data gates failed with controlled missing-data messages, and with read-only mounted private data, where full v4.3 reproduction passed.
+- Fresh-clone rehearsal from the private GitHub repo passed with read-only private-data mount and reported 20 passing tests.
+- Full table status remains 23 CSV exact matches, 1 format-only delta, and 2 frozen figure assets.
+- A read-only private-data bug in Ken French factor staging was found and fixed before the final rehearsal pass.
 
 
 
@@ -50,7 +60,7 @@ Phase 4A/4B implementation update, 2026-06-09:
 - Final patent construction modules have been ported into `src/semantic_ai_washing/patents/` with portable path defaults.
 - Focused patent unit tests have been ported under `tests/`.
 
-Phase 4C and Phase 4D have now moved the package beyond table reproduction: the patent method/evidence pack is documented, and the CRSP/Compustat merge-intermediate queue is closed for coauthor audit. Phase 4E is now implemented as a coauthor extension starter layer. The remaining emphasis is Phase 4F and Phase 4G: raw SEC policy and final package rehearsal.
+Phase 4C through Phase 4G have now moved the package beyond table reproduction: the patent method/evidence pack is documented, the CRSP/Compustat merge-intermediate queue is closed for coauthor audit, the extension starter layer is available, the raw SEC source policy is explicit, and the final coauthor package rehearsal has passed.
 
 What is already strong:
 
@@ -447,6 +457,8 @@ Current validated anchors:
 
 ## Phase 4G: Final Coauthor Package Rehearsal
 
+Status: implemented on 2026-06-10.
+
 Goal: prove the package works before sharing.
 
 Run these checks:
@@ -490,6 +502,7 @@ Gate:
 
 - The final handoff can be explained in one page.
 - A coauthor can clone the repo, set `AIW_DATA_ROOT`, run validation, inspect patent examples, reproduce v4.3, and begin extension tests.
+- Gate passed on 2026-06-10. See `docs/phase4g_final_coauthor_package_rehearsal.md`.
 
 ## Recommended Execution Order
 
@@ -501,8 +514,8 @@ Gate:
 6. Add builder-hides starter extension. Completed.
 7. Add washing-pays data-requirements note and proxy/strong-version separation. Completed.
 8. Rerun full v4.3 reproduction.
-9. Rerun Docker and fresh-clone validation.
-10. Prepare the coauthor share package and private-data-room upload.
+9. Rerun Docker and fresh-clone validation. Completed.
+10. Prepare the coauthor share package and private-data-room upload. Ready for final sharing decision.
 
 ## Decision Recommendation
 
@@ -510,4 +523,4 @@ Proceed with Phase 4 before sharing the package.
 
 The package is already technically credible for v4.3 table reproduction, but Thomas and Kuntara asked for a collaboration-ready data room. The remaining work is not cosmetic. It directly protects the project from the most predictable critique: "I can rerun the tables, but I cannot see how the patent mismatch construct was built or how to extend the paper."
 
-The highest-return next step is patent closure: processed patent artifacts, patent code closure, and patent method/evidence documentation. That is where a skeptical coauthor or referee is most likely to press first.
+The highest-return next step is operational: decide the private-data-room sharing channel, invite coauthors to the private GitHub repo, and run a coauthor first-day rehearsal using the documented runbook. Patent closure, WRDS/CRSP/Compustat closure, SEC source policy, extension scaffolding, and final package rehearsal are now implemented.

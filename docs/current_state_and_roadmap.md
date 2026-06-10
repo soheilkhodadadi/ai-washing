@@ -44,7 +44,7 @@ Generated: 2026-06-09
 - Private data leakage: WRDS/CRSP, derived panels, labels, archives, and generated outputs must stay outside Git.
 - Environment drift: exact reproduction requires pinned dependency versions, not latest `pip` versions.
 - Manuscript wrapper deltas: many v4.3 manuscript TeX files differ from generated TeX because of captions, notes, resizing, or manual manuscript wrappers. Numeric CSV evidence should be treated separately from manuscript-facing TeX wrappers.
-- Full-table uncertainty: selected reproduction has passed, Phase 3C produced a batch reproduction ledger, and Phase 3D closes the T25 input-policy gap. Phase 4D now stages the main WRDS/CRSP/Compustat audit artifacts, but future extension sources such as actual SEO terms and job postings remain out of scope until promoted.
+- Full-table uncertainty: full reproduction now passes with a documented ledger: 23 CSV exact matches, 1 format-only delta, and 2 frozen figure assets. Future extension sources such as actual SEO terms and job postings remain out of scope until promoted.
 - Artifact substitution risk: newer-looking 2016-2025 filing-spine files must not be silently substituted for the 2016-2024 v4.3 event-return panel. Use `make audit-artifact-coverage` before promoting private artifacts.
 
 ## Roadmap To Complete Coauthor-Ready Workstation
@@ -140,7 +140,7 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. Phase 4E is implemented as an extension-readiness layer: `make builder-hides-first-pass` creates a runnable builder-hides screen, and `docs/extensions/washing_pays_data_requirements.md` separates the current share-growth proxy from the stronger financing-terms test. Phase 4F is now implemented as a raw SEC/source policy layer: `manifests/sec_source_manifest.csv`, `make validate-sec-source`, and the SEC source docs make clear that full raw SEC bulk is intentionally outside the default data room. The next highest-return step is Phase 4G: final coauthor package rehearsal.
+Use `docs/phase4_coauthor_completeness_roadmap.md` and `docs/phase4g_final_coauthor_package_rehearsal.md` as the controlling handoff roadmap. Phase 4A/4B through Phase 4G are implemented: patent processed artifacts and code closure, patent method/evidence documentation, WRDS/CRSP/Compustat evidence pack, extension-readiness layer, raw SEC/source policy, Docker validation, and fresh-clone coauthor rehearsal. The next highest-return step is deciding the private data-room sharing channel and inviting coauthors into a first-day clone/setup rehearsal.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
@@ -184,8 +184,14 @@ The private data room now stages the full-sample Compustat fundamentals extract,
 
 The critical boundary is explicit: the annual filing/linkage spine extends through 2025, while the v4.3 event-return lane remains 2016-2024 because CRSP return data stop at 2024-12-31. No WRDS credentials are stored or shared; staged extracts support reproduction and coauthor audit, while refreshes remain opt-in.
 
-### Phase 3E Addendum: Container Surface
+### Phase 3E / Phase 4G Addendum: Container Surface
 
-Status: initial Dockerfile/devcontainer added; local container validation still remains to be run.
+Status: Docker validation passed on 2026-06-10.
 
-The container installs the pinned Python environment and expects private data to be bind-mounted at `/workspaces/ai-washing-private-data`. Private data are never copied into the image. Container runtime validation remains open because Docker was installed but the local daemon was not running during the Phase 3D/3E pass.
+The container installs the pinned Python environment and expects private data to be bind-mounted at `/workspaces/ai-washing-private-data`. Private data are never copied into the image. Docker was validated in two modes: without private data, where code-only checks passed and private-data gates failed with controlled missing-data messages; and with read-only mounted private data, where private-data validation, full v4.3 reproduction, and tests passed. Devcontainer interactive use is scaffolded but not separately rehearsed with a coauthor machine.
+
+### Phase 4G Addendum: Final Coauthor Package Rehearsal
+
+Status: implemented.
+
+`docs/phase4g_final_coauthor_package_rehearsal.md` records the final rehearsal. The package passed local validation, Docker validation, read-only private-data reproduction, and a fresh-clone Docker rehearsal from the private GitHub repository. Full reproduction status remains 23 CSV exact matches, 1 format-only delta, and 2 frozen figure assets. Remaining non-blockers are the deferred future-extension inputs (`seo_or_equity_issuance`, `job_postings`), frozen figures by design, one format-only asset delta, and a pandas FutureWarning in `test_05_size_heterogeneity.py` that should be cleaned in a maintenance pass.

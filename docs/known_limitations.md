@@ -11,4 +11,5 @@
 - Test 25 now uses a staged private ExecuComp cache for normal reproduction. WRDS refresh remains local-only and explicit; credentials are not shared or committed.
 - Full raw SEC corpus files are not bundled in the current data room. Representative SEC full-submission samples, representative 2025 Stage-One cleaned filings, source links/documentation, extracted AI sentences, and final hybrid classifier outputs are staged for auditability. `make validate-sec-source` is the gate for this policy.
 - No DVC or heavy cloud artifact versioning is introduced yet. Checksums, manifests, Git, and a separate private data root are used until the artifact surface stabilizes.
-- Docker/devcontainer support has an initial scaffold. It still needs a real fresh-container validation pass with mounted private data before being treated as coauthor-ready.
+- Docker validation passed with both no-private-data and read-only private-data mounts. Devcontainer interactive use is scaffolded but has not been separately rehearsed on a coauthor machine.
+- `test_05_size_heterogeneity.py` emits a pandas `.fillna` downcasting `FutureWarning`; this is not a v4.3 reproduction blocker, but it should be cleaned in a maintenance pass.
