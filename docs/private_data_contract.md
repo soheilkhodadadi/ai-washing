@@ -28,6 +28,7 @@ make check-private-data
 make validate-data-room
 make validate-wrds-data
 make validate-patent-data
+make validate-sec-source
 make audit-artifact-coverage
 ```
 
@@ -38,6 +39,8 @@ The checker fails for missing `required_current` inputs. It exits cleanly for do
 `make audit-artifact-coverage` applies the stronger v4.3 provenance gate. It checks row counts, file counts, year coverage, and date coverage against `manifests/artifact_provenance_audit.csv`.
 
 `make validate-patent-data` applies the patent-specific coauthor audit gate. It checks the staged final grant/pregrant counts, readable patent/application examples, diagnostics, hybrid company lookup and alias files, patent keyword files, PatentsView source documentation, and patent matching reports against `manifests/patent_data_manifest.csv`.
+
+`make validate-sec-source` applies the SEC source/NLP audit gate. It checks representative SEC samples, Stage-One source links, extracted AI sentence support, and final classifier outputs against `manifests/sec_source_manifest.csv`.
 
 ## Lane-Specific Coverage
 
@@ -84,6 +87,21 @@ The WRDS lane has an additional manifest, `manifests/wrds_data_manifest.csv`, be
 | `data/docs/wrds/` | `$AIW_DATA_ROOT/docs/wrds/` | Legacy WRDS source-review and bridge-progress notes retained for coauthor audit context. |
 
 Run `make validate-wrds-data` before interpreting market/accounting changes. See `docs/wrds_crsp_compustat_method_note.md` and `docs/wrds_source_inventory.md`.
+
+## SEC Source And NLP Audit Tree
+
+The SEC source layer has an additional manifest, `manifests/sec_source_manifest.csv`, because "full raw data" can otherwise be misread as requiring a full raw SEC mirror for v4.3 reproduction.
+
+| Logical path group | Runtime location | Purpose |
+|---|---|---|
+| `data/raw/sec_samples/full_submission/` | `$AIW_DATA_ROOT/raw/sec_samples/full_submission/` | Representative raw SEC full-submission examples. |
+| `data/raw/sec_samples/stage_one_2025/` | `$AIW_DATA_ROOT/raw/sec_samples/stage_one_2025/` | Representative Notre Dame Stage-One cleaned examples. |
+| `data/docs/source_links/sec_stage_one_sources.md` | `$AIW_DATA_ROOT/docs/source_links/sec_stage_one_sources.md` | Public source documentation and source folder links for obtaining the full Stage-One 10-X corpus. |
+| `data/processed/sec/sentences_clean/` | `$AIW_DATA_ROOT/processed/sec/sentences_clean/` | Extracted AI sentence support for 2016-2024. |
+| `data/processed/sec/sentences_clean_refresh_2025_v1/` | `$AIW_DATA_ROOT/processed/sec/sentences_clean_refresh_2025_v1/` | Extracted AI sentence support for the 2025 refresh. |
+| `data/processed/classifications/classifications_shadow_hybrid_api_a_conf49_v1/` | `$AIW_DATA_ROOT/processed/classifications/classifications_shadow_hybrid_api_a_conf49_v1/` | Final April/v4.3 hybrid classifier output. |
+
+Run `make validate-sec-source` before interpreting NLP measurement changes. See `docs/sec_raw_source_policy.md` and `docs/sec_extraction_classification_audit.md`.
 
 ## Patent Audit Tree
 

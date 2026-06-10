@@ -53,6 +53,7 @@ These checks should pass even without private data.
 make check-private-data
 make validate-data-room
 make validate-wrds-data
+make validate-sec-source
 make audit-artifact-coverage
 ```
 
@@ -60,8 +61,25 @@ Expected current result: every table-rerun `required_current` and `support_only`
 
 The artifact coverage audit is deliberately lane-specific. Annual NLP/patent artifacts should cover 2016-2025, but event/market-return artifacts should cover 2016-2024 for v4.3 because the staged CRSP/event-return files stop at 2024-12-31. Do not replace the v4.3 event panel with a 2016-2025 filing spine unless a future release explicitly promotes a new return-event panel.
 
+## 6. Validate The SEC Source / NLP Audit Layer
 
-## 6. Validate The WRDS / CRSP / Compustat Layer
+The full raw SEC corpus is not bundled by default. The private mirror instead includes representative raw/full-submission samples, representative Notre Dame Stage-One cleaned samples, public source links, extracted AI sentence outputs, and final hybrid classifier outputs.
+
+```bash
+make validate-sec-source
+```
+
+Then read:
+
+```text
+docs/sec_raw_source_policy.md
+docs/sec_extraction_classification_audit.md
+```
+
+The validator should confirm 5 representative full-submission samples, 4 Stage-One 2025 samples, 106,977 extracted AI sentences for 2016-2024, 40,902 extracted AI sentences for 2025, and 147,879 final hybrid classified AI sentences for 2016-2025. If a coauthor wants a full raw rebuild, stage the corpus under a new private raw-source folder and add it to the manifest; do not put raw SEC text in Git.
+
+
+## 7. Validate The WRDS / CRSP / Compustat Layer
 
 Thomas specifically asked for the CRSP and Compustat merges, not only final panel variables. After the private mirror is mounted, run:
 
@@ -78,7 +96,7 @@ docs/wrds_source_inventory.md
 
 The validator should report all 16 WRDS manifest rows present. The key interpretation rule is that the filing spine and annual WRDS backbone extend through 2025, but the v4.3 event-return lane stops in 2024 because the staged CRSP return extracts stop at 2024-12-31.
 
-## 7. Inspect The Patent Evidence Pack
+## 8. Inspect The Patent Evidence Pack
 
 Patent matching is the key construct-audit layer. After the private mirror is mounted, run:
 
@@ -104,7 +122,7 @@ $AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv
 
 It contains a small balanced sample of actual matched grant and pregrant AI patent/application examples.
 
-## 8. Reproduce Selected v4.3 Tables
+## 9. Reproduce Selected v4.3 Tables
 
 Start with the selected gate:
 
@@ -116,7 +134,7 @@ make compare-selected-reproduction
 
 The selected v4.3 gate covers `T00`, `T16`, `T17`, `T09`, and `T30`. CSV exact matching is the numerical reproduction criterion; TeX wrapper differences can reflect manuscript notes, captions, or layout wrappers.
 
-## 9. Expand To Full Tables
+## 10. Expand To Full Tables
 
 Dry-run the full table surface first:
 
@@ -135,7 +153,7 @@ make reproduction-status
 Do not treat figures as required reruns unless they are explicitly promoted from frozen manuscript assets to regenerable outputs.
 
 
-## 10. Run Extension Starters
+## 11. Run Extension Starters
 
 After the v4.3 reproduction and construct-audit checks pass, Kuntara can start from the extension layer without changing the frozen v4.3 evidence.
 
@@ -154,7 +172,7 @@ docs/extensions/washing_pays_data_requirements.md
 
 The builder-hides script uses the staged annual panel and writes ignored outputs under `outputs/extensions/builder_hides_right_tail/` unless `AIW_OUTPUT_ROOT` is set. The washing-pays note separates the current CRSP share-growth proxy from the stronger financing-terms test that requires external SEO/offering data.
 
-## 11. Git Rules
+## 12. Git Rules
 
 - Commit code, docs, manifests, fixtures, and sanitized status ledgers.
 - Do not commit raw/private data, parquet outputs, WRDS/CRSP inputs, archives, `.venv`, or generated outputs under `outputs/`.

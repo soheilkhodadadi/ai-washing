@@ -24,6 +24,7 @@ Generated: 2026-06-09
   - `make import-smoke`
   - `make smoke-fixture`
   - `make git-hygiene`
+  - `make validate-sec-source`
 - Selected v4.3 reruns pass for `T00`, `T16`, `T17`, `T09`, and `T30`; fresh CSV outputs exactly match frozen v4.3 generated evidence.
 
 ## Current Manifest Snapshot
@@ -139,7 +140,7 @@ Gate: fresh clone plus mounted private data can reproduce selected tables in the
 
 ## Recommended Immediate Next Move
 
-Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. Phase 4E is now implemented as an extension-readiness layer: `make builder-hides-first-pass` creates a runnable builder-hides screen, and `docs/extensions/washing_pays_data_requirements.md` separates the current share-growth proxy from the stronger financing-terms test. The next highest-return step is Phase 4F/4G: finalize raw SEC policy and rehearse the full coauthor handoff package.
+Proceed to the remaining Phase 4 steps using `docs/phase4_coauthor_completeness_roadmap.md` as the controlling roadmap. Phase 4A/4B is complete: processed patent counts/examples/diagnostics, patent identity metadata, patent keyword files, PatentsView guide files, and patent method reports are staged in the private data room; `manifests/patent_data_manifest.csv` and `make validate-patent-data` provide the patent-specific gate; and final patent construction modules have been ported into the canonical repo with portable path defaults. Phase 4C is implemented as a coauthor-facing patent method/evidence pack: four Git-tracked method notes plus `make patent-example-audit`, which generates `$AIW_DATA_ROOT/reports/patents/patent_audit_examples.csv`. Phase 4D is implemented as a WRDS/CRSP/Compustat evidence pack: `manifests/wrds_data_manifest.csv`, `make validate-wrds-data`, and the WRDS method/source docs close the Compustat and CRSP linkage queue. Phase 4E is implemented as an extension-readiness layer: `make builder-hides-first-pass` creates a runnable builder-hides screen, and `docs/extensions/washing_pays_data_requirements.md` separates the current share-growth proxy from the stronger financing-terms test. Phase 4F is now implemented as a raw SEC/source policy layer: `manifests/sec_source_manifest.csv`, `make validate-sec-source`, and the SEC source docs make clear that full raw SEC bulk is intentionally outside the default data room. The next highest-return step is Phase 4G: final coauthor package rehearsal.
 
 ### Phase 3D Addendum: Full Coauthor Data Room
 
@@ -161,6 +162,19 @@ The extension docs are tracked under `docs/extensions/`:
 - `washing_pays_data_requirements.md` separates the current CRSP share-growth issue proxy from the strong version requiring actual SEO/offering terms.
 
 This layer is deliberately not added to the v4.3 table crosswalk because it is a coauthor sandbox, not a frozen manuscript asset.
+
+### Phase 4F Addendum: SEC Raw-Source Policy
+
+Status: implemented.
+
+The repo now includes `manifests/sec_source_manifest.csv`, `scripts/validate_sec_source_policy.py`, and `make validate-sec-source`. The gate validates the representative SEC full-submission samples, representative Stage-One 2025 samples, source links, extracted AI sentence outputs, and final hybrid classifier outputs.
+
+The supporting docs are:
+
+- `docs/sec_raw_source_policy.md`
+- `docs/sec_extraction_classification_audit.md`
+
+The critical boundary is explicit: the full raw SEC corpus is not bundled by default because v4.3 reproduction does not require it. Coauthors can audit the source/extraction/classification path through samples and staged outputs, and can separately mirror the full raw corpus only if they decide a bottom-up raw rebuild is necessary.
 
 ### Phase 4D Addendum: WRDS / CRSP / Compustat Evidence Pack
 

@@ -407,6 +407,8 @@ Gate:
 
 Goal: avoid unnecessary raw SEC bulk while keeping the extraction/classification path transparent.
 
+Status: implemented on 2026-06-10.
+
 Recommendation:
 
 - Do not mirror the full raw SEC corpus in the main coauthor data room unless Thomas or Kuntara specifically asks.
@@ -426,6 +428,23 @@ Gate:
 - Extraction/classification sample pipeline runs.
 - No one expects full raw 10-K text to be inside Git.
 
+Implemented artifacts:
+
+- `docs/sec_raw_source_policy.md`
+- `docs/sec_extraction_classification_audit.md`
+- `manifests/sec_source_manifest.csv`
+- `scripts/validate_sec_source_policy.py`
+- `make validate-sec-source`
+
+Current validated anchors:
+
+- 5 representative raw SEC full-submission samples.
+- 4 representative Notre Dame Stage-One 2025 samples.
+- Notre Dame/SRAF documentation and Google Drive source links.
+- 106,977 extracted AI sentences for 2016-2024.
+- 40,902 extracted AI sentences for the 2025 refresh.
+- 147,879 final hybrid classified AI sentences for 2016-2025.
+
 ## Phase 4G: Final Coauthor Package Rehearsal
 
 Goal: prove the package works before sharing.
@@ -441,6 +460,7 @@ make smoke-fixture
 make git-hygiene
 AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make check-private-data
 AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make validate-data-room
+AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make validate-sec-source
 AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make audit-artifact-coverage
 AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make reproduce-all-tables
 make reproduction-status

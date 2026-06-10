@@ -13,6 +13,7 @@ make check-private-data
 make validate-data-room
 make validate-wrds-data
 make validate-patent-data
+make validate-sec-source
 make audit-artifact-coverage
 ```
 
@@ -44,6 +45,18 @@ The coverage target is lane-specific:
 - Event/market-return artifacts cover 2016-2024 because the staged CRSP return files stop at 2024-12-31.
 - Filing-spine and AI-measure artifacts cover 2016-2025, but they are disclosure lineage and bridge inputs, not a completed 2025 return-event panel.
 - Full raw SEC filings are not bundled. The data room includes representative SEC full-submission samples, representative 2025 Stage-One cleaned filings, and source links so coauthors can obtain the full source corpus if they want a bottom-up raw rebuild.
+
+## SEC Source Policy Gate
+
+The SEC source layer has its own validator:
+
+```bash
+make validate-sec-source
+```
+
+This reads `manifests/sec_source_manifest.csv` and checks the representative SEC source samples, Stage-One source links, extracted AI sentence support, and final hybrid classifier outputs. The expected current anchors are 5 SEC full-submission samples, 4 Stage-One 2025 samples, 106,977 extracted AI sentences for 2016-2024, 40,902 extracted AI sentences for 2025, and 147,879 final hybrid classified AI sentences for 2016-2025.
+
+The policy is intentional: the full raw SEC corpus is not bundled unless Thomas or Kuntara specifically requests a bottom-up raw rebuild. The practical coauthor audit surface is source samples plus extracted sentences plus final classifier outputs. See `docs/sec_raw_source_policy.md` and `docs/sec_extraction_classification_audit.md`.
 
 ## Coauthor Request Coverage
 
