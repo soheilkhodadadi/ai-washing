@@ -4,7 +4,12 @@ ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
 PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
 endif
 
-.PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta
+
+doctor:
+	$(PYTHON) scripts/doctor.py
+
+coauthor-preflight: doctor validate path-leak-scan import-smoke smoke-fixture git-hygiene
 
 validate:
 	$(PYTHON) scripts/validate_capsule.py
@@ -40,6 +45,12 @@ reproduce-all-tables-dry-run:
 reproduce-all-tables:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --include-figures
 
+reproduce-figures:
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --tables F1,FC1 --include-figures --regenerate-figures --status-csv docs/figure_reproduction_status.csv --status-md docs/figure_reproduction_status.md
+
+figure-reproduction-status:
+	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --tables F1,FC1 --include-figures --regenerate-figures --status-only --status-csv docs/figure_reproduction_status.csv --status-md docs/figure_reproduction_status.md
+
 validate-data-room:
 	$(PYTHON) scripts/validate_data_room.py
 
@@ -69,3 +80,6 @@ git-hygiene:
 
 compare-selected-reproduction:
 	$(PYTHON) scripts/compare_selected_reproduction.py
+
+c7-format-delta:
+	$(PYTHON) scripts/explain_c7_format_delta.py

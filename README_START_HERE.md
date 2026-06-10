@@ -62,6 +62,17 @@ The direct runtime dependencies are pinned to the v4.3-validated environment bec
 
 ## Quick Validation
 
+Start with the environment doctor and the non-mutating coauthor preflight:
+
+```bash
+make doctor
+make coauthor-preflight
+```
+
+`make coauthor-preflight` runs the first-day code-only checks that should pass before private data are mounted: `doctor`, `validate`, `path-leak-scan`, `import-smoke`, `smoke-fixture`, and `git-hygiene`.
+
+The individual checks are also available:
+
 ```bash
 make validate
 make path-leak-scan
@@ -103,6 +114,30 @@ make TABLE_ID=T16 reproduce-table
 
 Recommended first rerun targets: `T00`, `T16`, `T17`, `T09`, and `T30`.
 
+## Full Tables, Figures, And Known Deltas
+
+Full v4.3 table reproduction is controlled by:
+
+```bash
+make reproduce-all-tables
+make reproduction-status
+```
+
+Figure regeneration is available as an audit layer, but the frozen manuscript PDFs remain canonical for v4.3:
+
+```bash
+make reproduce-figures
+make figure-reproduction-status
+```
+
+The figure runner regenerates candidate figure outputs and compares the figure-series CSV evidence against the frozen v4.3 exports. Current figure data match exactly; generated PDF hashes differ from the frozen manuscript PDFs because manuscript rendering/layout is preserved as the official v4.3 artifact. See `docs/figure_reproduction_status.md`.
+
+The one known CSV format-only table delta is `C7`, where 16 numeric-string cells differ only at floating-point representation depth. The TeX output is exact and the numeric deltas are bounded at `1e-10`. See `docs/c7_format_delta_explanation.md` and refresh the evidence with:
+
+```bash
+make c7-format-delta
+```
+
 ## Collaboration Model
 
 - GitHub tracks code, docs, fixtures, manifests, and frozen manuscript assets.
@@ -112,6 +147,8 @@ Recommended first rerun targets: `T00`, `T16`, `T17`, `T09`, and `T30`.
 
 ## Current Status
 
-The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Phase 3B adds a mechanical private-data mirror checker. Full-table expansion is controlled through `scripts/reproduce_assets.py` and the `reproduce-all-tables-*` Make targets.
+The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh reproduced CSV outputs exactly match the frozen v4.3 generated CSV evidence. Full-table expansion is controlled through `scripts/reproduce_assets.py` and the `reproduce-all-tables-*` Make targets.
 
 The artifact-coverage gate makes the March/v3 versus April/v4.3 distinction explicit: final classifier and annual NLP/patent artifacts cover 2016-2025, but event/market-return artifacts are intentionally 2016-2024 for v4.3 reproduction.
+
+For sharing, open `docs/coauthor_share_note.md` first, use `docs/onedrive_data_room_checklist.md` as the private data-room upload checklist, and keep `docs/phase4h_pre_share_polish_report.md` as the validation record.

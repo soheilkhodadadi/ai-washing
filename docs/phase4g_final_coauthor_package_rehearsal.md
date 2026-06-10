@@ -55,7 +55,7 @@ ai-washing-phase4g
 | Local repo validation | Pass | `make validate`, `make path-leak-scan`, `make import-smoke`, `make smoke-fixture`, and `make git-hygiene` passed. |
 | Local test suite | Pass | `python -m pytest -q` reported 20 passed. |
 | Private data mirror | Pass | `make check-private-data` reported 15 of 15 logical runtime paths present. |
-| Coauthor data room | Pass with documented extension gaps | `make validate-data-room` reported 35 present rows and 2 deferred future-extension rows: `seo_or_equity_issuance` and `job_postings`. |
+| Coauthor data room | Pass with documented extension gaps | `make validate-data-room` reported 35 present rows and 2 deferred future-extension rows: `seo_offering_terms` and `job_postings`. |
 | SEC source policy | Pass | `make validate-sec-source` reported 7 of 7 source-policy rows present. |
 | WRDS/CRSP/Compustat evidence pack | Pass | `make validate-wrds-data` reported 16 of 16 rows present. |
 | Patent evidence pack | Pass | `make validate-patent-data` reported 29 of 29 rows present. |
@@ -118,15 +118,15 @@ Fix implemented:
 
 This fix materially improves Kuntara's first-day experience because the private data room can be mounted as read-only for validation and reproduction.
 
-## Remaining Non-Blocking Items
+## Remaining Non-Blocking Items After Phase 4G
 
 These are not blockers for coauthor handoff, but they should stay visible.
 
-- `seo_or_equity_issuance` remains deferred because the strong washing-pays extension needs actual SEO/offering terms beyond the current CRSP share-growth proxy.
+- `seo_offering_terms` remains deferred because the strong washing-pays extension needs actual SEO/offering terms beyond the current CRSP `shrout`-growth proxy.
 - `job_postings` remains deferred because it is a future extension input, not a v4.3 reproduction dependency.
-- Figures are frozen by design; regeneration is not required for the current handoff.
-- One full-table asset remains a `format_only_delta` rather than a CSV exact match.
-- `test_05_size_heterogeneity.py` emits a pandas `FutureWarning` on `.fillna` downcasting. It does not affect current reproduction, but should be cleaned in a maintenance pass before long-term package release.
+- Figures are frozen by design in Phase 4G; Phase 4H adds regeneration evidence without replacing frozen manuscript PDFs.
+- One full-table asset remains a `format_only_delta` rather than a CSV exact match; Phase 4H documents this at the cell level.
+- `test_05_size_heterogeneity.py` emitted a pandas `FutureWarning` on `.fillna` downcasting during Phase 4G. Phase 4H removes this warning and adds a regression test.
 
 ## Recommended Coauthor Sharing Procedure
 

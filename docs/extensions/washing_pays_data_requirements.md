@@ -28,10 +28,10 @@ Safe language:
 
 ## What The Strong Version Requires
 
-A strong washing-pays test needs an external equity issuance or SEO/offering dataset under:
+A strong washing-pays test needs an external SEO/offering-terms dataset under:
 
 ```text
-$AIW_DATA_ROOT/external/equity_issuance/
+$AIW_DATA_ROOT/external/seo_offering_terms/
 ```
 
 Minimum fields:
@@ -71,7 +71,7 @@ Recommended new manifest entry:
 
 ```text
 artifact_id: equity_issuance_terms_v1
-logical_path: data/external/equity_issuance/<source_name>_equity_issuance_terms_v1.parquet
+logical_path: data/external/seo_offering_terms/<source_name>_equity_issuance_terms_v1.parquet
 role: required_extension
 shareability: licensed_private_or_manual
 status: present or deferred_with_reason
@@ -89,4 +89,4 @@ Once issuance data are available, the clean extension sequence is:
 
 ## Referee Lens
 
-A strict referee will not accept the current share-growth proxy as evidence of better financing terms. It is useful for screening issuance timing, not pricing. The strong version needs actual issuance terms before the paper can claim that AI washing pays in capital markets.
+A strict referee will not accept the current share-growth proxy as evidence of better financing terms. It is useful for screening issuance timing, not pricing. The strong version needs actual SEO/offering terms before the paper can claim that AI washing pays in capital markets.

@@ -88,17 +88,20 @@ def _prepare_sample(
     sample = sample.drop(columns=["month"], errors="ignore")
     sample["lag_mcap"] = pd.to_numeric(sample["lag_mcap"], errors="coerce")
     sample["month_size_break"] = sample.groupby("filing_month")["lag_mcap"].transform("median")
-    sample["Small"] = pd.NA
+    sample["Small"] = pd.Series(pd.NA, index=sample.index, dtype="Int64")
     has_size = sample["lag_mcap"].notna() & sample["month_size_break"].notna()
     sample.loc[has_size, "Small"] = (
-        sample.loc[has_size, "lag_mcap"].le(sample.loc[has_size, "month_size_break"]).astype(int)
+        sample.loc[has_size, "lag_mcap"]
+        .le(sample.loc[has_size, "month_size_break"])
+        .astype("int64")
+        .to_numpy()
     )
 
     summary = {
         "filing_count_total": int(len(sample)),
         "filing_count_with_size": int(sample["Small"].notna().sum()),
-        "small_count": int(sample["Small"].fillna(-1).eq(1).sum()),
-        "big_count": int(sample["Small"].fillna(-1).eq(0).sum()),
+        "small_count": int(sample["Small"].eq(1).sum()),
+        "big_count": int(sample["Small"].eq(0).sum()),
         "permno_with_size": int(sample.loc[sample["Small"].notna(), "permno"].nunique()),
         "filing_year_min": int(sample["filing_year"].min()),
         "filing_year_max": int(sample["filing_year"].max()),

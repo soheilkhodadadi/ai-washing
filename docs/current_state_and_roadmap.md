@@ -32,7 +32,7 @@ Generated: 2026-06-09
 - Manuscript crosswalk: 26 mapped assets, including 24 tables and 2 figures.
 - v4.3 manuscript asset inventory: 31 rows.
 - Source closure: 34 modules.
-- Data dependency manifest: 44 rows and 15 unique logical private/support paths.
+- Data dependency manifest: 47 rows and 15 unique logical private/support paths.
 - Private data staging: 15 of 15 unique logical paths staged locally after promoting Test 25 to a private ExecuComp-cache dependency.
 - Coauthor data-room manifest: broader full-data contract for cleaned panels, classifier outputs, sentence extracts, patent lineage, staged WRDS/CRSP/Compustat merge inputs, raw/near-raw samples, source links, and extension data.
 - Artifact provenance audit: lane-specific v4.3 coverage gate with 22 tracked artifacts. Current expected state is 20 promoted artifacts passing coverage and 2 documented not-promoted candidates.
@@ -92,7 +92,7 @@ Implemented artifacts:
 - `make reproduce-all-tables-dry-run`, `make reproduce-all-tables`, and `make reproduction-status` write `docs/full_reproduction_status.md` and `docs/full_reproduction_status.csv`.
 - Figures default to frozen-asset treatment unless explicitly included in the status ledger.
 
-Gate: every v4.3 table/figure has a table-level reproduction status. Current status is 23 CSV exact matches, 1 format-only CSV delta for C7, and 2 frozen figure assets. T25 is now a CSV exact match from the staged ExecuComp cache.
+Gate: every v4.3 table/figure has a table-level reproduction status. Current table status is 23 CSV exact matches and 1 format-only CSV delta for C7. T25 is now a CSV exact match from the staged ExecuComp cache. Figure audit status is tracked separately: F1 and FC1 regenerate exact figure-series CSV evidence, while the frozen manuscript PDFs remain canonical.
 
 ### Phase 3D: Coauthor Runbook And First Issue Queue
 
@@ -194,4 +194,19 @@ The container installs the pinned Python environment and expects private data to
 
 Status: implemented.
 
-`docs/phase4g_final_coauthor_package_rehearsal.md` records the final rehearsal. The package passed local validation, Docker validation, read-only private-data reproduction, and a fresh-clone Docker rehearsal from the private GitHub repository. Full reproduction status remains 23 CSV exact matches, 1 format-only delta, and 2 frozen figure assets. Remaining non-blockers are the deferred future-extension inputs (`seo_or_equity_issuance`, `job_postings`), frozen figures by design, one format-only asset delta, and a pandas FutureWarning in `test_05_size_heterogeneity.py` that should be cleaned in a maintenance pass.
+`docs/phase4g_final_coauthor_package_rehearsal.md` records the final rehearsal. The package passed local validation, Docker validation, read-only private-data reproduction, and a fresh-clone Docker rehearsal from the private GitHub repository. Full table status remains 23 CSV exact matches and 1 format-only C7 delta. Figure audit evidence now regenerates exact figure-series CSVs for F1 and FC1, with frozen manuscript PDFs retained as canonical. Remaining non-blockers are the deferred future-extension inputs (`seo_offering_terms`, `job_postings`), the documented C7 numeric-string format delta, and manuscript-PDF layout/hash differences for regenerated figure candidates.
+
+### Phase 4H Addendum: Pre-Share Polish And Friction Removal
+
+Status: in final validation.
+
+Phase 4H adds the final coauthor-friction layer:
+
+- `make doctor` and `make coauthor-preflight` provide a first-day environment and repo validation path.
+- `docs/coauthor_share_note.md` provides a polished email-style note for Thomas/Kuntara.
+- `docs/onedrive_data_room_checklist.md` gives the private data-room upload and first-day coauthor checklist.
+- `docs/phase4h_pre_share_polish_report.md` records the local and Docker validation results for this pre-share cleanup.
+- `make reproduce-figures` and `make figure-reproduction-status` regenerate figure audit evidence without replacing frozen manuscript figure PDFs.
+- `make c7-format-delta` documents the one C7 format-only delta at cell level.
+- The previous pandas FutureWarning in `test_05_size_heterogeneity.py` is removed and covered by a regression test.
+- The capital-raising boundary is explicit: Test 30 uses the v4.3 CRSP `shrout`-growth proxy; actual SEO/offering terms remain a future extension, not a missing v4.3 input.

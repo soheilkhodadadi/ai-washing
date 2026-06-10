@@ -38,6 +38,15 @@ export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
 ## 4. Run Non-Private Validation
 
 ```bash
+make doctor
+make coauthor-preflight
+```
+
+`make coauthor-preflight` is the shortest first-day command. It runs the environment doctor, manifest validation, path leakage scan, import smoke test, fixture smoke test, and Git hygiene check.
+
+The same checks can be run individually:
+
+```bash
 make validate
 make path-leak-scan
 make import-smoke
@@ -158,6 +167,40 @@ make reproduction-status
 ```
 
 Do not treat figures as required reruns unless they are explicitly promoted from frozen manuscript assets to regenerable outputs.
+
+## 10A. Regenerate Figure Evidence Without Replacing Frozen Figures
+
+The v4.3 manuscript figure PDFs remain frozen canonical assets. The workstation can still regenerate figure-series evidence and candidate PDFs for audit:
+
+```bash
+make reproduce-figures
+make figure-reproduction-status
+```
+
+Read:
+
+```text
+docs/figure_reproduction_status.md
+```
+
+Current expected status: figure-series CSV evidence for `F1` and `FC1` matches the frozen v4.3 exports exactly, while generated PDFs are documented as layout/hash deltas relative to the frozen manuscript PDFs.
+
+## 10B. Inspect The C7 Format-Only Delta
+
+The full table ledger has one known format-only CSV delta in `C7`. Refresh the cell-level explanation with:
+
+```bash
+make c7-format-delta
+```
+
+Read:
+
+```text
+docs/c7_format_delta_explanation.md
+docs/c7_format_delta_cells.csv
+```
+
+Current expected status: 16 numeric-string cells differ only at floating-point representation depth, all within `1e-10`, and the generated TeX file is an exact match.
 
 
 ## 11. Run Extension Starters

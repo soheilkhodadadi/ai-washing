@@ -2,6 +2,7 @@ FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/workspaces/ai-washing/src \
     AIW_REPO_ROOT=/workspaces/ai-washing \
     AIW_DATA_ROOT=/workspaces/ai-washing-private-data \
     AIW_OUTPUT_ROOT=/workspaces/ai-washing/outputs/reproduced \

@@ -29,6 +29,10 @@ ARG_BY_DEP = {
     "execucomp": "--execucomp-cache",
 }
 
+ARG_BY_TEST_AND_DEP = {
+    ("test_13_pre_post_event_path", "market_index"): "--monthly-market",
+}
+
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="") as f:
@@ -36,8 +40,8 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run one v4.3 publication table with explicit workstation paths.")
-    parser.add_argument("table_id", help="Crosswalk table_id, e.g. T00 or T16")
+    parser = argparse.ArgumentParser(description="Run one v4.3 publication table or figure with explicit workstation paths.")
+    parser.add_argument("table_id", help="Crosswalk asset id, e.g. T00, T16, F1, or FC1")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -47,18 +51,24 @@ def main() -> int:
     if not row:
         print(f"Unknown table_id: {args.table_id}", file=sys.stderr)
         return 2
-    if row["asset_type"] != "table":
-        print(f"{args.table_id} is not a table asset.", file=sys.stderr)
+    if row["asset_type"] not in {"table", "figure"}:
+        print(f"{args.table_id} is not a runnable table/figure asset.", file=sys.stderr)
         return 2
 
-    dep_rows = [d for d in deps if d["test_id"] == row["test_id"] and d["dependency_id"] in ARG_BY_DEP]
+    dep_rows = [
+        d
+        for d in deps
+        if d["test_id"] == row["test_id"]
+        and (d["dependency_id"] in ARG_BY_DEP or (row["test_id"], d["dependency_id"]) in ARG_BY_TEST_AND_DEP)
+    ]
     missing = []
     cmd = [sys.executable, "-m", row["script_module"]]
     for dep in dep_rows:
         path = DATA_ROOT / Path(dep["expected_capsule_path"]).relative_to("data")
         if not path.exists():
             missing.append(f"{dep['dependency_id']} -> {path}")
-        cmd.extend([ARG_BY_DEP[dep["dependency_id"]], str(path)])
+        arg_name = ARG_BY_TEST_AND_DEP.get((row["test_id"], dep["dependency_id"]), ARG_BY_DEP[dep["dependency_id"]])
+        cmd.extend([arg_name, str(path)])
     run_output = OUTPUT_ROOT / row["test_id"] / row["run_id"]
     cmd.extend(["--test-root", str(OUTPUT_ROOT), "--paper-root", str(PAPER_ROOT), "--run-id", row["run_id"]])
 

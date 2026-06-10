@@ -12,6 +12,15 @@ The main design principle is conservative: keep the Git repository small and exe
 
 The workstation is now in a coauthor-ready state for private package rehearsal and initial collaboration. v4.3 reproduction, patent/WRDS/SEC audit surfaces, extension scaffolding, Docker validation, and fresh-clone validation have all passed. Remaining issues are documented future-extension gaps or non-blocking maintenance items.
 
+Phase 4H implementation update, 2026-06-10:
+
+- `make doctor` and `make coauthor-preflight` now provide a coauthor first-day environment and validation path.
+- `docs/coauthor_share_note.md` and `docs/onedrive_data_room_checklist.md` provide the polished send note and private data-room upload checklist.
+- `make reproduce-figures` and `make figure-reproduction-status` regenerate candidate figure evidence while keeping frozen v4.3 manuscript PDFs canonical.
+- `make c7-format-delta` documents the one C7 format-only CSV delta with cell-level evidence and an exact TeX match.
+- The pandas FutureWarning in `test_05_size_heterogeneity.py` has been removed and covered by a focused test.
+- The deferred financing item is now labeled as SEO/offering terms for the strong washing-pays extension. The v4.3 Test 30 CRSP `shrout`-growth issue proxy is already reproducible and should not be described as missing equity-issuance data.
+
 
 
 Phase 4G implementation update, 2026-06-10:
@@ -75,8 +84,8 @@ What is already strong:
 What still needs attention:
 
 - The patent-mismatch construct is now documented and auditable through staged patent artifacts, method notes, and example files, but it remains the construct most likely to need coauthor/referee scrutiny before journal submission.
-- The coauthor data-room manifest now marks `patent_raw`, `patent_match_artifacts`, `compustat_extracts`, and `crsp_compustat_linking` as present. The remaining deferred items are future-extension sources such as `seo_or_equity_issuance` and `job_postings`.
-- Kuntara's "washing pays" extension needs actual issuance terms if the test is to go beyond the current share-growth proxy.
+- The coauthor data-room manifest now marks `patent_raw`, `patent_match_artifacts`, `compustat_extracts`, and `crsp_compustat_linking` as present. The remaining deferred items are future-extension sources such as `seo_offering_terms` and `job_postings`.
+- Kuntara's "washing pays" extension needs actual SEO/offering terms if the test is to go beyond the current share-growth proxy.
 - The current panel includes `shrout` and a derived equity-issue proxy, but it does not include offer amount, offer discount, offer price, proceeds, or issuance valuation.
 - The full raw PatentsView source is large but available locally; deciding whether to mirror it is a coauthor-friction choice, not a v4.3 reproduction requirement.
 

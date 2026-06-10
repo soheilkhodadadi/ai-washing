@@ -22,13 +22,13 @@ Data-room needs:
 
 - Existing annual panel and filing-event panel.
 - Capital-raising table inputs from v4.3.
-- External issuance data under `data/external/equity_issuance` if a richer issuance database is used.
+- External issuance data under `data/external/seo_offering_terms` if a richer issuance database is used.
 - CRSP/Compustat controls already staged and validated through `make validate-wrds-data`.
 
 Current status:
 
 - Proxy version is available from Test 30's next-year CRSP `shrout` growth rule.
-- Strong version is not available until actual issuance terms are staged.
+- Strong version is not available until actual SEO/offering terms are staged.
 - See `docs/extensions/washing_pays_data_requirements.md` before writing any manuscript claim.
 
 Decision rule:

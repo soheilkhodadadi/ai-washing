@@ -77,7 +77,7 @@ This writes ignored outputs under `outputs/extensions/builder_hides_right_tail/`
 - `docs/extensions/builder_hides_first_pass.md`
 - `docs/extensions/washing_pays_data_requirements.md`
 
-The washing-pays strong version still requires external issuance terms under `data/external/equity_issuance`; the current package only supports the share-growth proxy screen.
+The washing-pays strong version still requires external issuance terms under `data/external/seo_offering_terms`; the current package only supports the share-growth proxy screen.
 
 ## WRDS / CRSP / Compustat Gate
 
