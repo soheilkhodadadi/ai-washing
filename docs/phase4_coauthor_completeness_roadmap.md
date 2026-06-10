@@ -20,6 +20,7 @@ Phase 4H implementation update, 2026-06-10:
 - `make c7-format-delta` documents the one C7 format-only CSV delta with cell-level evidence and an exact TeX match.
 - The pandas FutureWarning in `test_05_size_heterogeneity.py` has been removed and covered by a focused test.
 - The deferred financing item is now labeled as SEO/offering terms for the strong washing-pays extension. The v4.3 Test 30 CRSP `shrout`-growth issue proxy is already reproducible and should not be described as missing equity-issuance data.
+- The pushed private GitHub repo passed a fresh-clone Docker rehearsal with read-only private-data mount at commit `1bfb973`.
 
 
 

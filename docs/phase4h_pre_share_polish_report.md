@@ -102,6 +102,29 @@ make PYTHON=python git-hygiene
 
 This confirms that the private data room can be mounted read-only for reproduction and audit. No script needs to mutate shared private data during normal validation.
 
+## Fresh-Clone Rehearsal
+
+After commit `1bfb973` was pushed to the private GitHub repository, the repo was cloned into a clean temporary directory:
+
+```text
+/tmp/aiw-fresh-clone-phase4h-1SOtEF/ai-washing
+```
+
+The fresh clone was validated with the same Docker image and a read-only private-data mount. It passed:
+
+- `make PYTHON=python coauthor-preflight`
+- `make PYTHON=python check-private-data validate-data-room validate-sec-source validate-wrds-data validate-patent-data audit-artifact-coverage`
+- `make PYTHON=python reproduce-all-tables`
+- `make PYTHON=python reproduction-status`
+- `make PYTHON=python reproduce-figures`
+- `make PYTHON=python figure-reproduction-status`
+- `make PYTHON=python c7-format-delta`
+- `PYTHONPATH=src python -m pytest -q`
+- `git diff --check`
+- `make PYTHON=python git-hygiene`
+
+The fresh-clone ledger matched the local and Docker rehearsal: 23 table CSV exact matches, 1 C7 format-only delta, 2 frozen manuscript figures by default, 2 regenerated figure-evidence assets, and 21 passing tests.
+
 ## Remaining Non-Blockers
 
 - `seo_offering_terms` is a future-extension data source for the strong washing-pays test: proceeds, offer price, discount, valuation base, offering type, and issue timing.

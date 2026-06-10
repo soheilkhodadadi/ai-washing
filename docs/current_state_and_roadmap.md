@@ -198,7 +198,7 @@ Status: implemented.
 
 ### Phase 4H Addendum: Pre-Share Polish And Friction Removal
 
-Status: in final validation.
+Status: implemented and fresh-clone validated.
 
 Phase 4H adds the final coauthor-friction layer:
 
@@ -210,3 +210,4 @@ Phase 4H adds the final coauthor-friction layer:
 - `make c7-format-delta` documents the one C7 format-only delta at cell level.
 - The previous pandas FutureWarning in `test_05_size_heterogeneity.py` is removed and covered by a regression test.
 - The capital-raising boundary is explicit: Test 30 uses the v4.3 CRSP `shrout`-growth proxy; actual SEO/offering terms remain a future extension, not a missing v4.3 input.
+- A fresh clone from the private GitHub repo passed the full Dockerized read-only private-data rehearsal at commit `1bfb973`.
