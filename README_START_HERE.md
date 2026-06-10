@@ -75,6 +75,9 @@ If private data are staged, validate the mirror before rerunning tables:
 ```bash
 make check-private-data
 make validate-data-room
+make validate-sec-source
+make validate-wrds-data
+make validate-patent-data
 make audit-artifact-coverage
 ```
 

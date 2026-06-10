@@ -1,4 +1,8 @@
 PYTHON ?= python
+PATENT_AUDIT_ARGS :=
+ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
+PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
+endif
 
 .PHONY: validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source
 
@@ -46,7 +50,7 @@ validate-patent-data:
 	$(PYTHON) scripts/validate_patent_data.py
 
 patent-example-audit:
-	$(PYTHON) scripts/build_patent_audit_examples.py
+	$(PYTHON) scripts/build_patent_audit_examples.py $(PATENT_AUDIT_ARGS)
 
 validate-wrds-data:
 	$(PYTHON) scripts/validate_wrds_data.py

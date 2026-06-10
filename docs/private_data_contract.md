@@ -103,6 +103,16 @@ The SEC source layer has an additional manifest, `manifests/sec_source_manifest.
 
 Run `make validate-sec-source` before interpreting NLP measurement changes. See `docs/sec_raw_source_policy.md` and `docs/sec_extraction_classification_audit.md`.
 
+## Read-Only Mirrors
+
+The main validation and v4.3 reproduction path should work with `AIW_DATA_ROOT` mounted read-only, provided the staged caches are complete. This is useful for Dropbox/OneDrive mirrors where coauthors should not accidentally mutate the shared data room.
+
+Artifact-refresh commands are different. For example, `make patent-example-audit` writes a refreshed CSV by default under `$AIW_DATA_ROOT/reports/patents/`. If the private mirror is read-only, provide an explicit output path:
+
+```bash
+make PATENT_AUDIT_OUTPUT="$PWD/outputs/patent_audit_examples.csv" patent-example-audit
+```
+
 ## Patent Audit Tree
 
 The patent lane has an additional manifest, `manifests/patent_data_manifest.csv`, because this is the construct most likely to draw coauthor or referee scrutiny.

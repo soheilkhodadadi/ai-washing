@@ -156,6 +156,21 @@ def stage_ken_french_monthly_factors(
 ) -> tuple[pd.DataFrame, dict[str, object]]:
     root = Path(output_root)
     paths = _bundle_paths(root)
+    if not refresh and paths.merged_parquet.exists():
+        merged = pd.read_parquet(paths.merged_parquet)
+        if paths.manifest.exists():
+            manifest = json.loads(paths.manifest.read_text(encoding="utf-8"))
+        else:
+            manifest = {
+                "cache_status": "reused_without_manifest",
+                "row_count": int(len(merged)),
+                "month_min": str(merged["month"].min()) if not merged.empty else "",
+                "month_max": str(merged["month"].max()) if not merged.empty else "",
+                "paths": {"merged_parquet": str(paths.merged_parquet)},
+            }
+        manifest["cache_status"] = "reused"
+        return merged, manifest
+
     _ensure_dirs(paths)
 
     if refresh or not paths.ff5_zip.exists():

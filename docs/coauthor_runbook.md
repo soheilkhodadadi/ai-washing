@@ -105,6 +105,13 @@ make patent-example-audit
 make validate-patent-data
 ```
 
+If the private data mirror is mounted read-only, write the refreshed audit sample to `outputs/` instead:
+
+```bash
+make PATENT_AUDIT_OUTPUT="$PWD/outputs/patent_audit_examples.csv" patent-example-audit
+make validate-patent-data
+```
+
 Then read the method notes:
 
 ```text
