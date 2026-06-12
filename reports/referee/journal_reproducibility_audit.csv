@@ -46,7 +46,7 @@ GIT HYGIENE CHECK PASSED
 - no tracked private/generated data paths
 - no tracked banned binary/archive file types"
 pytest,ok,pass,0,0,"..........................                                               [100%]
-26 passed in 3.30s"
+26 passed in 3.54s"
 check_private_data,ok,pass,0,0,"AI Washing private data mirror check
 - manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/data_dependency_manifest.csv
 - AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
