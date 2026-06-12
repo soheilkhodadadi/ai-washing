@@ -4,7 +4,7 @@ ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
 PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
 endif
 
-.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit referee-audit
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -83,3 +83,21 @@ compare-selected-reproduction:
 
 c7-format-delta:
 	$(PYTHON) scripts/explain_c7_format_delta.py
+
+package-surface-audit:
+	$(PYTHON) scripts/package_surface_audit.py
+
+data-sanity-audit:
+	$(PYTHON) scripts/data_sanity_audit.py
+
+textual-construct-audit:
+	$(PYTHON) scripts/textual_construct_audit.py
+
+patent-construct-audit:
+	$(PYTHON) scripts/patent_construct_audit.py
+
+journal-reproducibility-audit:
+	PYTHONPATH=src $(PYTHON) scripts/journal_reproducibility_audit.py
+
+referee-audit:
+	PYTHONPATH=src $(PYTHON) scripts/referee_audit.py

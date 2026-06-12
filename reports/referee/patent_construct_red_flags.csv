@@ -1,0 +1,161 @@
+artifact_id,cik,name,year,patent_id,patent_title,matched_keywords,short_acronym_only_keywords,ml_unit_context,application_id,application_title
+grant_examples,7084,ARCHER-DANIELS-MIDLAND CO,2018,10029234,Compounded surface treated carboxyalkylated starch polycrylate composites,ml,True,True,nan,nan
+grant_examples,10456,BAXTER INTERNATIONAL INC,2014,8722736,Multi-dose concentrate esmolol with benzyl alcohol,ml,True,True,nan,nan
+grant_examples,10456,BAXTER INTERNATIONAL INC,2020,10799564,"Insulin premix formulation and product, methods of preparing same, and methods of using same",ml,True,False,nan,nan
+grant_examples,10456,BAXTER INTERNATIONAL INC,2021,11033608,"Insulin premix formulation and product, methods of preparing same, and methods of using same",ml,True,False,nan,nan
+grant_examples,10456,BAXTER INTERNATIONAL INC,2023,11707509,"Insulin premix formulation and product, methods of preparing same, and methods of using same",ml,True,False,nan,nan
+grant_examples,10456,BAXTER INTERNATIONAL INC,2025,12403173,Micafungin compositions,ml,True,False,nan,nan
+grant_examples,12208,BIO-RAD LABORATORIES INC,2023,11590486,Solid phase for mixed-mode chromatographic purification of proteins,ml,True,False,nan,nan
+grant_examples,14272,BRISTOL-MYERS SQUIBB CO,2014,8632788,Parenteral formulation for epothilone analogs,ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2014,8895142,High surface area and low structure carbon blacks for energy storage applications,ml,True,False,nan,nan
+grant_examples,16040,CABOT CORP,2015,9150739,Oxidized carbon blacks treated with polyetheramines and coating compositions comprising same,ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2016,9388300,High structure carbon blacks,ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2018,10106696,Inkjet ink compositions,ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2019,10468682,Oxidized carbon blacks and applications for lead acid batteries,ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2021,10971730,"Electrodes, compositions, and devices having high structure carbon blacks",ml,True,True,nan,nan
+grant_examples,16040,CABOT CORP,2025,12394798,"Compositions containing conductive additives, related electrodes and related batteries",ml,True,True,nan,nan
+grant_examples,18230,CATERPILLAR INC,2021,10947919,Fuel injection control using a neural network,neural network,False,True,nan,nan
+grant_examples,21665,COLGATE-PALMOLIVE CO,2020,10760109,Compositions and methods for characterizing and diagnosing periodontal disease,ai,True,False,nan,nan
+grant_examples,21665,COLGATE-PALMOLIVE CO,2023,11713478,Compositions and methods for characterizing and diagnosing periodontal disease,ai,True,False,nan,nan
+grant_examples,24741,CORNING INC,2014,8916382,Defined cell culturing surfaces and methods of use,ml,True,False,nan,nan
+grant_examples,24741,CORNING INC,2021,10899659,Glass articles and methods for improving the reliability of glass articles,ai,True,False,nan,nan
+grant_examples,24741,CORNING INC,2022,11413848,Glass article,ml,True,True,nan,nan
+grant_examples,24741,CORNING INC,2023,11807570,Glass articles and methods for improving the reliability of glass articles,ai,True,False,nan,nan
+grant_examples,24741,CORNING INC,2025,12378156,"Salt bath compositions for strengthening glass articles, methods for using the salt bath compositions to strengthen glass articles, and glass articles strengthened thereby",ml,True,True,nan,nan
+grant_examples,31235,EASTMAN KODAK CO,2020,10858529,Aqueous pre-treatment compositions for inkjet printing,ml,True,False,nan,nan
+grant_examples,31235,EASTMAN KODAK CO,2021,10919328,Method for inkjet printing and printed article,ml,True,False,nan,nan
+grant_examples,70858,BANK OF AMERICA CORP,2015,9003355,Decentralized workflow management system,artificial intelligence,False,True,nan,nan
+grant_examples,70858,BANK OF AMERICA CORP,2016,9384454,Enterprise componentized workflow application,artificial intelligence,False,True,nan,nan
+grant_examples,78003,PFIZER INC,2017,9822150,Neisseria meningitidis compositions and methods thereof,ml,True,True,nan,nan
+grant_examples,78003,PFIZER INC,2021,10899802,Neisseria meningitidis compositions and methods thereof,ml,True,True,nan,nan
+grant_examples,78003,PFIZER INC,2023,11680087,Neisseria meningitidis compositions and methods thereof,ml,True,True,nan,nan
+grant_examples,106640,WHIRLPOOL CORP,2019,10442588,Container for fabric treatment composition,ml,True,True,nan,nan
+grant_examples,106640,WHIRLPOOL CORP,2021,11022359,Clear ice making appliance and method of same,ml,True,True,nan,nan
+grant_examples,318154,AMGEN INC,2024,11918650,Pharmaceutical composition comprising bispecific antibody constructs for improved storage and administration,ml,True,False,nan,nan
+grant_examples,318154,AMGEN INC,2025,12251474,Process for lyophilized pharmaceutical formulations of a therapeutic protein,ml,True,True,nan,nan
+grant_examples,711065,APPLIED MICRO CIRCUITS CORP,2014,8848686,Single carrier-frequency-division multiple access (SC-FDMA) physical uplink control channel (PUCCH) 2/2a/2b detection,ml,True,False,nan,nan
+grant_examples,715446,ANIXA BIOSCIENCES INC,2015,8933864,Passive matrix phosphor based cold cathode display,ml,True,False,nan,nan
+grant_examples,773840,HONEYWELL INTERNATIONAL INC,2014,8656065,Method and apparatus for automatically selecting a plurality of modes for programmable interface circuit by coupling field devices to process controllers,ai,True,False,nan,nan
+grant_examples,773840,HONEYWELL INTERNATIONAL INC,2016,9361247,Intrinsic barrier device with software configurable IO type,ai,True,False,nan,nan
+grant_examples,773840,HONEYWELL INTERNATIONAL INC,2017,9688416,System and method for isolating attitude failures in aircraft,ai,True,False,nan,nan
+grant_examples,794323,LEVEL 3 COMMUNICATIONS INC,2025,12224915,AI-supported network techniques,ai,True,False,nan,nan
+grant_examples,804328,QUALCOMM INC,2014,8903390,Provisioning single-mode and multimode system selection parameters and service management,ai,True,False,nan,nan
+grant_examples,818686,TEVA PHARMACEUTICALS,2015,9155775,Process for manufacturing glatiramer acetate product,ml,True,False,nan,nan
+grant_examples,818686,TEVA PHARMACEUTICALS,2017,9763993,Process for manufacturing glatiramer acetate product,ml,True,False,nan,nan
+grant_examples,818686,TEVA PHARMACEUTICALS,2021,11135154,Medroxyprogesterone acetate injectable compositions and methods of use,ml,True,True,nan,nan
+grant_examples,859737,HOLOGIC INC,2024,12119107,AI system for predicting reading time and reading complexity for reviewing 2D/3D breast images,ai,True,False,nan,nan
+grant_examples,872589,REGENERON PHARMACEUTICALS,2021,11160918,Medical device packaging and related methods,ml,True,True,nan,nan
+grant_examples,872589,REGENERON PHARMACEUTICALS,2023,11793926,Medical device packaging and related methods,ml,True,True,nan,nan
+grant_examples,896622,APTARGROUP INC,2017,9579674,Actuating system for a fluent substance dispensing system,ml,True,False,nan,nan
+grant_examples,915389,EASTMAN CHEMICAL CO,2015,9175134,Containers comprising polyester compositions which comprise cyclobutanediol,ml,True,True,nan,nan
+grant_examples,915389,EASTMAN CHEMICAL CO,2017,9534079,Containers comprising polyester compositions which comprise cyclobutanediol,ml,True,True,nan,nan
+grant_examples,1031308,BENTLEY SYSTEMS INC,2025,12406519,Techniques for extracting links and connectivity from schematic diagrams,ml,True,False,nan,nan
+grant_examples,1043604,JUNIPER NETWORKS INC,2015,9055114,Packet parsing and control packet classification,ai,True,False,nan,nan
+grant_examples,1043604,JUNIPER NETWORKS INC,2017,9571396,Packet parsing and control packet classification,ai,True,False,nan,nan
+grant_examples,1070081,PTC THERAPEUTICS INC,2021,10898585,Gene therapy for AADC deficiency,ml,True,True,nan,nan
+grant_examples,1070235,BLACKBERRY LTD,2015,9112660,Maximum likelihood detection,ml,True,False,nan,nan
+grant_examples,1082554,UNITED THERAPEUTICS CORP,2023,11672863,Enhanced solubility drug-containing formulations,ml,True,False,nan,nan
+grant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2015,9072661,Injectable ibuprofen formulation,ml,True,False,nan,nan
+grant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2023,11806400,Injectable ibuprofen formulation,ml,True,False,nan,nan
+grant_examples,1089143,COLLECTORS UNIVERSE INC,2025,12400462,Methods and apparatus to analyze an image of a portion of an item for a patternindicating authenticity of the item,ml,True,False,nan,nan
+grant_examples,1104506,INSMED INC,2015,9186322,Platinum aggregates and process for producing the same,ml,True,True,nan,nan
+grant_examples,1126741,GSI TECHNOLOGY INC,2021,10949766,Precise exponent and exact softmax computation,ai,True,False,nan,nan
+grant_examples,1130713,BED BATH & BEYOND INC,2022,11514493,System and method for conversational commerce online,ai,True,False,nan,nan
+grant_examples,1137789,SEAGATE TECHNOLOGY HOLDINGS,2014,8885779,Channel detector implementation with postcoder,ml,True,False,nan,nan
+grant_examples,1138723,ACCURAY INC,2024,11922656,Partial deformation maps for reconstructing motion-affected treatment dose using machine learning,machine learning,False,True,nan,nan
+grant_examples,1157601,MADRIGAL PHARMACEUTICALS INC,2014,8623921,Bis(thio-hydrazide amide) formulation,ml,True,True,nan,nan
+grant_examples,1261249,AGILE THERAPEUTICS INC,2014,8747888,Dermal delivery device with in situ seal,ai,True,False,nan,nan
+grant_examples,1273813,ASSURED GUARANTY LTD,2022,11384246,"Near infrared absorbing dye, optical filter, and imaging device",ai,True,False,nan,nan
+grant_examples,1326190,ALTIMMUNE INC,2017,9616117,Anthrax vaccine formulation and uses thereof,ml,True,False,nan,nan
+grant_examples,1375151,ZOGENIX INC,2014,8876758,Viscous formulations and their use in needle-free injection,ml,True,True,nan,nan
+grant_examples,1375151,ZOGENIX INC,2015,9186461,Viscous formulations and their use in needle-free injection,ml,True,True,nan,nan
+grant_examples,1403568,ULTA BEAUTY INC,2025,12229822,Methods and system for initiating a virtual try-on application running on a computer system and providing interactive augmented reality (AR) graphics,ai,True,False,nan,nan
+grant_examples,1408443,MILESTONE PHARMACEUTICLS INC,2025,12257224,Methods of administration for highly water-soluble salts of a short acting phenylalkylamine calcium channel blocker,ml,True,True,nan,nan
+grant_examples,1428439,ROKU INC,2023,11838592,Rendering a dynamic endemic banner on streaming platforms using content recommendation systems and advanced banner personalization,ml,True,False,nan,nan
+grant_examples,1428439,ROKU INC,2024,12143688,Rendering a dynamic endemic banner on streaming platforms using content recommendation systems,ml,True,False,nan,nan
+grant_examples,1507605,MARA HOLDINGS INC,2025,12321209,Method of subsidizing cost of providing information,ai,True,False,nan,nan
+grant_examples,1560241,G1 THERAPEUTICS INC,2022,11357779,G1T38 superior dosage regimes,ml,True,True,nan,nan
+grant_examples,1613103,MEDTRONIC PLC,2015,9180108,Baclofen formulations and methods for making same,ml,True,False,nan,nan
+grant_examples,1613103,MEDTRONIC PLC,2016,9445990,TNF inhibitor formulation for use in implantable infusion devices,ml,True,False,nan,nan
+grant_examples,1613103,MEDTRONIC PLC,2017,9545472,Extracorporeal blood circuit reservoir with angled venous inlet luer port,ml,True,True,nan,nan
+grant_examples,1613103,MEDTRONIC PLC,2018,10099001,Extracorporeal blood circuit reservoir with angled venous inlet luer port,ml,True,True,nan,nan
+pregrant_examples,10456,BAXTER INTERNATIONAL INC,2014,nan,nan,ml,True,True,14485632.0,CONCENTRATE ESMOLOL
+pregrant_examples,10456,BAXTER INTERNATIONAL INC,2017,nan,nan,ml,True,False,15843634.0,MICAFUNGIN COMPOSITIONS
+pregrant_examples,10456,BAXTER INTERNATIONAL INC,2020,nan,nan,ml,True,False,17066067.0,"INSULIN PREMIX FORMULATION AND PRODUCT, METHODS OF PREPARING SAME, AND METHODS OF USING SAME"
+pregrant_examples,10456,BAXTER INTERNATIONAL INC,2022,nan,nan,ml,True,False,18146499.0,MIDAZOLAM PREMIX FORMULATIONS AND USES THEREOF
+pregrant_examples,14272,BRISTOL-MYERS SQUIBB CO,2015,nan,nan,ml,True,True,14686005.0,PARENTERAL FORMULATION FOR EPOTHILONE ANALOGS
+pregrant_examples,14272,BRISTOL-MYERS SQUIBB CO,2018,nan,nan,ml,True,True,16644839.0,MODIFIED FIBROBLAST GROWTH FACTOR 21 (FGF-21) FOR USE IN METHODS FOR TREATING NONALCOHOLIC STEATOHEPATITIS (NASH)
+pregrant_examples,14272,BRISTOL-MYERS SQUIBB CO,2019,nan,nan,ml,True,False,17252163.0,METHODS OF PRODUCING RECOMBINANT PROTEINS
+pregrant_examples,14272,BRISTOL-MYERS SQUIBB CO,2020,nan,nan,ml,True,False,17632211.0,METHODS OF IMPROVING PROTEIN PRODUCTIVITY IN FED-BATCH CELL CULTURES
+pregrant_examples,14272,BRISTOL-MYERS SQUIBB CO,2025,nan,nan,ml,True,False,19030272.0,METHODS OF PRODUCING RECOMBINANT PROTEINS
+pregrant_examples,16040,CABOT CORP,2014,nan,nan,ml,True,False,14525601.0,High Surface Area and Low Structure Carbon Blacks for Energy Storage Applications
+pregrant_examples,16040,CABOT CORP,2015,nan,nan,ml,True,True,14875097.0,Oxidized Carbon Blacks Treated with Polyetheramines and Coating Compositions Comprising Same
+pregrant_examples,16040,CABOT CORP,2016,nan,nan,ml,True,True,15354284.0,INKJET INK COMPOSITIONS
+pregrant_examples,16040,CABOT CORP,2017,nan,nan,ml,True,True,15586670.0,"ELECTRODES, COMPOSITIONS, AND DEVICES HAVING HIGH STRUCTURE CARBON BLACKS"
+pregrant_examples,16040,CABOT CORP,2018,nan,nan,ml,True,True,16009588.0,ELECTRODES CONTAINING CARBON BLACK PARTICLES AND RELATED METHODS
+pregrant_examples,16040,CABOT CORP,2019,nan,nan,ml,True,True,17298122.0,"COMPOSITIONS, ELECTRODES AND LEAD-ACID BATTERIES HAVING IMPROVED LOW-TEMPERATURE PERFORMANCE"
+pregrant_examples,16040,CABOT CORP,2020,nan,nan,ml,True,True,17007356.0,"COMPOSITIONS CONTAINING CARBON BLACK AND GRAPHENES ADDITIVES, RELATED ELECTRODES AND RELATED BATTERIES"
+pregrant_examples,18230,CATERPILLAR INC,2019,nan,nan,neural network,False,True,16551317.0,FUEL INJECTION CONTROL USING A NEURAL NETWORK
+pregrant_examples,21665,COLGATE-PALMOLIVE CO,2015,nan,nan,ai,True,False,15316537.0,COMPOSITIONS AND METHODS FOR CHARACTERIZING AND DIAGNOSING PERIODONTAL DISEASE
+pregrant_examples,24741,CORNING INC,2014,nan,nan,ml,True,False,14510260.0,DEFINED CELL CULTURING SURFACES AND METHODS OF USE
+pregrant_examples,24741,CORNING INC,2015,nan,nan,ai,True,False,15508815.0,GLASS ARTICLES AND METHODS FOR IMPROVING THE RELIABILITY OF GLASS ARTICLES
+pregrant_examples,24741,CORNING INC,2020,nan,nan,ai,True,False,17115123.0,GLASS ARTICLES AND METHODS FOR IMPROVING THE RELIABILITY OF GLASS ARTICLES
+pregrant_examples,24741,CORNING INC,2022,nan,nan,ml,True,True,17860672.0,GLASS ARTICLE
+pregrant_examples,24741,CORNING INC,2023,nan,nan,ml,True,False,18446100.0,POLYFLUOROAROMATIC DERIVATIVES FOR LIQUID LENSES
+pregrant_examples,24741,CORNING INC,2024,nan,nan,ml,True,True,18747710.0,"COATED ARTICLES, METHODS OF POLISHING, AND METHODS OF MAKING THE SAME"
+pregrant_examples,29644,DONALDSON CO INC,2024,nan,nan,ml,True,False,18621873.0,COMPOSITE SEPARATION MEDIA
+pregrant_examples,31235,EASTMAN KODAK CO,2018,nan,nan,ml,True,False,16106045.0,METHOD FOR INKJET PRINTING AND PRINTED ARTICLE
+pregrant_examples,46080,HASBRO INC,2025,nan,nan,ai,True,False,19046501.0,GENERATING DIGITAL REPRESENTATIONS OF PHYSICAL CLAY-BASED MODELS WITH INTEGRATED DYNAMIC SUGGESTIONS AND IMAGE UPSCALING TRANSFORMATIONS
+pregrant_examples,50863,INTEL CORP,2020,nan,nan,ai,True,False,17135292.0,CONTENT ADAPTIVE DISPLAY POWER SAVINGS SYSTEMS AND METHODS
+pregrant_examples,51253,INTL FLAVORS & FRAGRANCES,2023,nan,nan,ml,True,False,18843454.0,FRAGRANCE-CONTAINING GRANULES
+pregrant_examples,77476,PEPSICO INC,2014,nan,nan,ai,True,False,14777463.0,TAILORING THE WETTING AND LUBRICATION PROPERTIES OF EDIBLE FAT WITH LOW HLB EMULSIFIERS OR LECITHINS
+pregrant_examples,77476,PEPSICO INC,2019,nan,nan,ai,True,False,16400824.0,TAILORING THE WETTING AND LUBRICATION PROPERTIES OF EDIBLE FAT WITH LOW HLB EMULSIFIERS OR LECITHINS
+pregrant_examples,78003,PFIZER INC,2014,nan,nan,ml,True,True,14470922.0,NEISSERIA MENINGITIDIS COMPOSITIONS AND METHODS THEREOF
+pregrant_examples,78003,PFIZER INC,2016,nan,nan,ml,True,True,15543232.0,NEISSERIA MENINGITIDIS COMPOSITIONS AND METHODS THEREOF
+pregrant_examples,78003,PFIZER INC,2017,nan,nan,ml,True,True,15728610.0,NEISSERIA MENINGITIDIS COMPOSITIONS AND METHODS THEREOF
+pregrant_examples,78003,PFIZER INC,2020,nan,nan,ml,True,True,17126712.0,NEISSERIA MENINGITIDIS COMPOSITIONS AND METHODS THEREOF
+pregrant_examples,78003,PFIZER INC,2021,nan,nan,ml,True,True,18250570.0,CRYSTAL-FREE HIGH-CONCENTRATION TESTOSTERONE CYPIONATE FORMULATIONS
+pregrant_examples,97476,TEXAS INSTRUMENTS INC,2014,nan,nan,ml,True,True,14169120.0,Multi-Step Deposition of Ferroelectric Dielectric Material
+pregrant_examples,106640,WHIRLPOOL CORP,2017,nan,nan,ml,True,True,16093395.0,CLEAR ICE MAKING APPLIANCE AND METHOD OF SAME
+pregrant_examples,275880,PARSONS CORP,2020,nan,nan,ai,True,False,17068142.0,AI GUIDED SPECTRUM OPERATIONS
+pregrant_examples,310764,STRYKER CORP,2014,nan,nan,ml,True,False,14251062.0,CONCENTRATED PROTEIN PREPARATIONS OF BONE MORPHOGENETIC PROTEINS AND METHODS OF USE THEREOF
+pregrant_examples,318154,AMGEN INC,2016,nan,nan,ml,True,False,15154749.0,USE OF LEPTIN FOR TREATING HUMAN LIPOATROPHY AND METHOD FOR DETERMINING PREDISPOSITION TO SAID TREATMENT
+pregrant_examples,318154,AMGEN INC,2018,nan,nan,ml,True,False,16195661.0,USE OF LEPTIN FOR TREATING HUMAN LIPOATROPHY AND METHOD OF DETERMINING PREDISPOSITION TO SAID TREATMENT
+pregrant_examples,318154,AMGEN INC,2022,nan,nan,ml,True,False,18701723.0,COMPOSITION AND METHODS FOR RECOMBINANT LENTIVIRAL PRODUCTION
+pregrant_examples,743758,AIADVERTISING INC,2023,nan,nan,ai,True,False,18139652.0,AI-Based Advertisement Prediction and Optimization Using Content Cube Methodology
+pregrant_examples,743988,XILINX INC,2023,nan,nan,ai,True,False,18394859.0,INTEGRATING AN AI ACCELERATOR WITH A CPU ON A SOC
+pregrant_examples,773840,HONEYWELL INTERNATIONAL INC,2014,nan,nan,ai,True,False,14575762.0,SYSTEM AND METHOD FOR ISOLATING ATTITUDE FAILURES IN AIRCRAFT
+pregrant_examples,794323,LEVEL 3 COMMUNICATIONS INC,2019,nan,nan,ai,True,False,16544633.0,Predictive AI Automated Cloud Service Turn-Up
+pregrant_examples,794323,LEVEL 3 COMMUNICATIONS INC,2021,nan,nan,ai,True,False,17477667.0,AI-SUPPORTED NETWORK TECHNIQUES
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2014,nan,nan,ml,True,False,14773683.0,CRYSTALS OF LAQUINIMOD SODIUM AND IMPROVED PROCESS FOR THE MANUFACTURE THEREOF
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2015,nan,nan,ml,True,False,14958396.0,CRYSTALS OF LAQUINIMOD SODIUM AND IMPROVED PROCESS FOR THE MANUFACTURE THEREOF
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2017,nan,nan,ml,True,False,15788698.0,PROCESS FOR MANUFACTURING GLATIRAMER ACETATE PRODUCT
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2018,nan,nan,ml,True,True,16644993.0,MEDROXYPROGESTERONE ACETATE INJECTABLE COMPOSITIONS AND METHODS OF USE
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2019,nan,nan,ml,True,True,17273392.0,MEDROXYPROGESTERONE ACETATE INJECTABLE COMPOSITIONS AND METHODS OF USE
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2021,nan,nan,ml,True,True,17489982.0,MEDROXYPROGESTERONE ACETATE INJECTABLE COMPOSITIONS AND METHODS OF USE
+pregrant_examples,818686,TEVA PHARMACEUTICALS,2022,nan,nan,ml,True,True,17843506.0,MEDROXYPROGESTERONE ACETATE INJECTABLE COMPOSITIONS AND METHODS OF USE
+pregrant_examples,829224,STARBUCKS CORP,2021,nan,nan,ml,True,False,17444859.0,EXTRACTION CELL
+pregrant_examples,829224,STARBUCKS CORP,2023,nan,nan,ml,True,False,18303840.0,EXTRACTION CELL
+pregrant_examples,859737,HOLOGIC INC,2020,nan,nan,ai,True,False,17033372.0,AI System for Predicting Reading Time and Reading Complexity for Reviewing 2D/3D Breast Images
+pregrant_examples,859737,HOLOGIC INC,2024,nan,nan,ai,True,False,18822675.0,AI SYSTEM FOR PREDICTING READING TIME AND READING COMPLEXITY FOR REVIEWING 2D/3D BREAST IMAGES
+pregrant_examples,872589,REGENERON PHARMACEUTICALS,2020,nan,nan,ml,True,True,16942271.0,MEDICAL DEVICE PACKAGING AND RELATED METHODS
+pregrant_examples,872589,REGENERON PHARMACEUTICALS,2021,nan,nan,ml,True,True,17495407.0,MEDICAL DEVICE PACKAGING AND RELATED METHODS
+pregrant_examples,875320,VERTEX PHARMACEUTICALS INC,2016,nan,nan,ml,True,False,15150497.0,FORMULATIONS OF AZAINDOLE COMPOUNDS
+pregrant_examples,875320,VERTEX PHARMACEUTICALS INC,2018,nan,nan,ml,True,False,16036044.0,FORMULATIONS OF AZAINDOLE COMPOUNDS
+pregrant_examples,875320,VERTEX PHARMACEUTICALS INC,2020,nan,nan,ml,True,False,17038749.0,FORMULATIONS OF AZAINDOLE COMPOUNDS
+pregrant_examples,896622,APTARGROUP INC,2015,nan,nan,ml,True,False,14758037.0,Actuating System For A Fluent Substance Dispensing System
+pregrant_examples,915389,EASTMAN CHEMICAL CO,2015,nan,nan,ml,True,True,14615941.0,BLENDS OF POLYESTERS CONTAINING CYCLOBUTANEDIOL WITH FLUOROALKYL ADDITIVES AND DEVICES MADE THEREROM
+pregrant_examples,915389,EASTMAN CHEMICAL CO,2017,nan,nan,ml,True,True,16326292.0,"POLYESTER COMPOSITIONS WHICH COMPRISE TETRAMETHYLCYCLOBUTANDIOL AND ETHYLENE GLYCOL, WITH IMPROVED CATALYST SYSTEM"
+pregrant_examples,915389,EASTMAN CHEMICAL CO,2021,nan,nan,ml,True,True,18257454.0,NOVEL THERMOPLASTIC POLYESTERS AND SYNTHESIS THEREFOR
+pregrant_examples,1002047,NETAPP INC,2025,nan,nan,ml,True,False,19054594.0,PROACTIVELY TAKING ACTION RESPONSIVE TO EVENTS WITHIN A CLUSTER BASED ON A RANGE OF NORMAL BEHAVIOR LEARNED FOR VARIOUS USER ROLES
+pregrant_examples,1002517,NUANCE COMMUNICATIONS INC,2019,nan,nan,ai,True,False,16716990.0,METHOD TO ASSIGN WORD CLASS INFORMATION
+pregrant_examples,1002517,NUANCE COMMUNICATIONS INC,2021,nan,nan,ai,True,False,17558336.0,AI Platform System and Method
+pregrant_examples,1014763,AINOS INC,2024,nan,nan,ml,True,True,18731677.0,LOW-DOSE INTERFERON COMPOSITION FOR CAT WITH LOW ADVERSE EFFECTS AND ITS USE AND METHOD
+pregrant_examples,1043604,JUNIPER NETWORKS INC,2015,nan,nan,ai,True,False,14722629.0,PACKET PARSING AND CONTROL PACKET CLASSIFICATION
+pregrant_examples,1065088,EBAY INC,2025,nan,nan,ai,True,False,19198788.0,AI-BASED KEYWORK PREDICTIONS FOR TITLES
+pregrant_examples,1070494,ACADIA PHARMACEUTICALS INC,2020,nan,nan,ml,True,True,17635459.0,PIMAVANSERIN FOR TREATING NEURODEGENERATIVE DISEASES
+pregrant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2015,nan,nan,ml,True,False,14755297.0,INJECTABLE IBUPROFEN FORMULATION
+pregrant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2019,nan,nan,ml,True,False,16249884.0,INJECTABLE IBUPROFEN FORMULATION
+pregrant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2020,nan,nan,ml,True,False,16869277.0,INJECTABLE IBUPROFEN FORMULATION
+pregrant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2023,nan,nan,ml,True,False,18376339.0,INJECTABLE IBUPROFEN FORMULATION
+pregrant_examples,1087294,CUMBERLAND PHARMACEUTICALS,2025,nan,nan,ml,True,False,19027478.0,INJECTABLE IBUPROFEN FORMULATION

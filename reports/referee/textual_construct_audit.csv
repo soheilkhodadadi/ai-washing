@@ -1,0 +1,13 @@
+check_name,severity,observed,expected,notes
+row_count,ok,147879,147879,Final classified sentence count.
+year_coverage,ok,2016-2025,2016-2025,Final classifier lane coverage.
+label_inventory,manageable,Actionable;Irrelevant;Speculative,known label set,"Unknown labels: ['Actionable', 'Irrelevant', 'Speculative']"
+short_acronym_only_sentence_rate,material_needs_future_layer,83253 (56.30%),quantified and sampled,"Sentences with AI/ML short acronym but no long AI anchor. This is a construct-validity risk, not automatically an error."
+ml_unit_context_sentence_count,material_needs_future_layer,22,near zero,Potential ML-as-milliliter or dosage context among short-acronym sentences.
+long_anchor_sentence_count,info,63741,context,Sentences with explicit long AI anchors.
+score_bounds_score_actionable,ok,0,0,"Classifier confidence/score should stay within [0,1]."
+score_bounds_score_speculative,ok,0,0,"Classifier confidence/score should stay within [0,1]."
+score_bounds_score_irrelevant,ok,0,0,"Classifier confidence/score should stay within [0,1]."
+score_bounds_api_a_confidence,ok,0,0,"Classifier confidence/score should stay within [0,1]."
+score_bounds_local_confidence,ok,0,0,"Classifier confidence/score should stay within [0,1]."
+heldout_validation_file,ok,120,present,"Held-out sample is required for auditability, though not for table reproduction."

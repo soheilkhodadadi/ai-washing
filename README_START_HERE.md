@@ -60,6 +60,15 @@ If `.venv` is not available yet, pass another Python interpreter with `make PYTH
 
 The direct runtime dependencies are pinned to the v4.3-validated environment because some table scripts are sensitive to floating-point/string representation changes across `pandas` and `numpy` major versions.
 
+## Platform, Runtime, And Storage Notes
+
+- Native reruns are validated on Mac with Python 3.11 and the pinned package set in this repository.
+- Linux should work either natively or through the Docker/devcontainer path because the reproduction commands use the same environment contract.
+- Windows users should prefer WSL2 or Docker Desktop and mount the private data room as a normal filesystem path before setting `AIW_DATA_ROOT`.
+- Docker is optional for coauthor work but useful for journal-style isolation checks; it does not bundle private data and expects `AIW_DATA_ROOT` to be mounted from outside the image.
+- Expected storage depends on the private data room rather than the Git repository. Keep several GB of free disk space for generated table/figure outputs and substantially more if staging larger optional source corpora.
+- Expected runtime for the code-only preflight is a few minutes; full private-data table and figure reproduction is longer and should be run after the private mirror validates.
+
 ## Quick Validation
 
 Start with the environment doctor and the non-mutating coauthor preflight:
@@ -152,3 +161,15 @@ The selected numerical reproduction gate has passed for `T00`, `T16`, `T17`, `T0
 The artifact-coverage gate makes the March/v3 versus April/v4.3 distinction explicit: final classifier and annual NLP/patent artifacts cover 2016-2025, but event/market-return artifacts are intentionally 2016-2024 for v4.3 reproduction.
 
 For sharing, open `docs/coauthor_share_note.md` first, use `docs/onedrive_data_room_checklist.md` as the private data-room upload checklist, and keep `docs/phase4h_pre_share_polish_report.md` as the validation record.
+
+## Referee-Style Audit Layer
+
+Before sharing or preparing a journal-facing replication archive, run the hostile-but-fair data-editor audit:
+
+```bash
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make referee-audit
+```
+
+This writes `docs/referee_first_impression_report.md` plus machine-readable evidence under `reports/referee/`. The audit checks package surface, panel sanity, SEC text construct risks, patent keyword/assignee risks, and reproduction hygiene. It is intentionally stricter than the coauthor preflight: its job is to find issues before a referee, data editor, or coauthor does.
+
+Use `docs/journal_replication_archive_policy.md` to separate the current coauthor package from a future journal archive. Coauthor notes and phase reports are useful here, but they should be excluded from a cold journal replication archive.

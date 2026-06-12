@@ -1,0 +1,108 @@
+check_name,severity,status,observed,expected,notes
+docs_mention_docker,ok,pass,True,True,Docker setup or usage should be visible in the instructions.
+docs_mention_windows,ok,pass,True,True,Windows/WSL2 considerations should be visible for coauthors/data editors.
+docs_mention_mac,ok,pass,True,True,Mac instructions or compatibility should be visible.
+docs_mention_linux,ok,pass,True,True,Linux instructions or compatibility should be visible.
+docs_mention_aiw_data_root,ok,pass,True,True,Private data mount/path contract should be visible.
+docs_mention_runtime,ok,pass,True,True,Runtime expectations should be stated or referenced.
+docs_mention_storage,ok,pass,True,True,Storage or disk requirements should be stated or referenced.
+docker_cli_available,info,info,/usr/local/bin/docker,optional but recommended,"Docker is not required for native reruns, but useful for journal-style isolated validation."
+doctor,ok,pass,0,0," environment doctor
+- python: 3.11.15 (/Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python)
+- AIW_REPO_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data (exists)
+- AIW_OUTPUT_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing/outputs/reproduced
+- AIW_PAPER_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing/outputs/paper_exports
+- pandas: 2.2.3 (OK; expected 2.2.3)
+- numpy: 1.26.4 (OK; expected 1.26.4)
+- scipy: 1.17.1 (OK; expected 1.17.1)
+- statsmodels: 0.14.6 (OK; expected 0.14.6)
+- matplotlib: 3.10.8 (OK; expected 3.10.8)
+- python-docx: 1.2.0 (OK; expected 1.2.0)
+- python-dotenv: 1.2.2 (OK; expected 1.2.2)
+- psycopg2-binary: 2.9.12 (OK; expected 2.9.12)
+- pyarrow: 23.0.1 (OK; expected 23.0.1)
+- pytest: 9.0.2 (OK; expected 9.0.2)
+- package imports: OK
+- docker: Docker version 29.5.3, build d1c06ef
+
+DOCTOR PASSED"
+coauthor_preflight,ok,pass,0,0,"ild d1c06ef
+
+DOCTOR PASSED
+/Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python scripts/validate_capsule.py
+WORKSTATION VALIDATION PASSED
+- table assets: 24
+- figures: 2
+- dependency rows: 47
+/Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python scripts/path_leak_scan.py
+PATH LEAK SCAN PASSED for executable/config files
+PYTHONPATH=src /Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python scripts/import_smoke.py
+IMPORT SMOKE PASSED (45 modules)
+PYTHONPATH=src /Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python -m semantic_ai_washing_min.fixture_pipeline --fixture-dir data/fixtures --output-dir outputs/fixture
+Wrote outputs/fixture/fixture_patent_mismatch_table.csv
+/Users/soheilkhodadadi/DataWork/ai-washing/.venv/bin/python scripts/git_hygiene_check.py
+GIT HYGIENE CHECK PASSED
+- no tracked private/generated data paths
+- no tracked banned binary/archive file types"
+pytest,ok,pass,0,0,"..........................                                               [100%]
+26 passed in 3.30s"
+check_private_data,ok,pass,0,0,"AI Washing private data mirror check
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/data_dependency_manifest.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- unique logical paths: 15
+- present: 15
+- missing required current: 0
+- missing support-only: 0
+- documented future extensions: 0
+- missing unknown: 0"
+validate_data_room,ok,pass,0,0,"AI Washing coauthor data-room check
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/coauthor_data_room_manifest.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- manifest rows: 37
+- deferred_with_reason: 2
+- present: 35
+
+deferred_with_reason: seo_offering_terms
+- role: required_extension
+- stage as: data/external/seo_offering_terms
+- note: Needed only for the strong washing-pays extension: proceeds amount raised offer price discount valuation base offering type and issue timing. Test 30 already includes the v4.3 CRSP shrout-growth issue-window proxy.
+
+deferred_with_reason: job_postings
+- role: required_extension
+- stage as: data/external/job_postings
+- note: Optional future human-capital or hiring validation data."
+validate_sec_source,ok,pass,0,0,"AI Washing SEC source policy check
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/sec_source_manifest.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- manifest rows: 7
+- present: 7"
+validate_wrds_data,ok,pass,0,0,"AI Washing WRDS/market data check
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/wrds_data_manifest.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- manifest rows: 16
+- present: 16"
+validate_patent_data,ok,pass,0,0,"AI Washing patent data check
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/patent_data_manifest.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- manifest rows: 29
+- present: 29"
+audit_artifact_coverage,ok,pass,0,0,"AI Washing artifact provenance coverage audit
+- manifest: /Users/soheilkhodadadi/DataWork/ai-washing/manifests/artifact_provenance_audit.csv
+- AIW_DATA_ROOT: /Users/soheilkhodadadi/DataWork/ai-washing-private-data
+- rows: 22
+- coverage_pass: 20
+- not_promoted: 2"
+reproduction_status,ok,pass,0,0,"Wrote /Users/soheilkhodadadi/DataWork/ai-washing/docs/full_reproduction_status.csv
+Wrote /Users/soheilkhodadadi/DataWork/ai-washing/docs/full_reproduction_status.md
+- csv_exact_match: 23
+- format_only_delta: 1
+- frozen_asset_only: 2"
+figure_reproduction_status,ok,pass,0,0,"Wrote docs/figure_reproduction_status.csv
+Wrote docs/figure_reproduction_status.md
+- figure_evidence_generated: 2"
+c7_format_delta,ok,pass,0,0,"Wrote /Users/soheilkhodadadi/DataWork/ai-washing/docs/c7_format_delta_explanation.md
+Wrote /Users/soheilkhodadadi/DataWork/ai-washing/docs/c7_format_delta_cells.csv"
+git_hygiene,ok,pass,0,0,"GIT HYGIENE CHECK PASSED
+- no tracked private/generated data paths
+- no tracked banned binary/archive file types"

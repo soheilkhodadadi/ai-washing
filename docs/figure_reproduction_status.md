@@ -7,4 +7,4 @@ Allowed statuses: `csv_exact_match`, `format_only_delta`, `content_delta`, `bloc
 | Asset | Type | Test | Priority | Status | CSV | TeX/Figure | Notes |
 |---|---|---|---|---|---|---|---|
 | F1 | figure | `legacy_r1_disclosure_volume` | full | figure_evidence_generated | exact_match | content_delta | figure data=exact_match: 82cdd155a1cb655073f99d59a8a5de21c1641367b858bea6df29fa3e05201a03; generated_pdf=content_delta: reference=20757d2c12599c94f70848ded85248075c8214790512499... |
-| FC1 | figure | `test_13_pre_post_event_path` | full | figure_evidence_generated | format_only_delta | content_delta | figure data=format_only_delta: numeric string representation delta only; cells=1; tolerance=1e-10; generated_pdf=content_delta: reference=d5dfae221703c5069660aa44d3e35be1ab8edb4... |
+| FC1 | figure | `test_13_pre_post_event_path` | full | figure_evidence_generated | exact_match | content_delta | figure data=exact_match: e87f016ac9042c1e9ba0bc8a1f1ed7f8f59142d55d2db5a6305fd7d24422e943; generated_pdf=content_delta: reference=d5dfae221703c5069660aa44d3e35be1ab8edb44ae349c1... |

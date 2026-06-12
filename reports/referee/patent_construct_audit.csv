@@ -1,0 +1,13 @@
+artifact_id,check_name,severity,observed,expected,notes
+grant_examples,example_rows,info,1403,context,Readable patent/application examples staged for coauthor audit.
+grant_examples,short_acronym_only_keyword_examples,material_needs_future_layer,86,quantified and sampled,Rows whose matched keyword evidence is only AI/ML.
+grant_examples,ml_unit_context_examples,material_needs_future_layer,32,near zero,Potential ML-as-milliliter or dosage context in patent/application abstracts.
+grant_examples,long_keyword_examples,info,1317,context,Rows with longer AI keyword evidence.
+pregrant_examples,example_rows,info,1920,context,Readable patent/application examples staged for coauthor audit.
+pregrant_examples,short_acronym_only_keyword_examples,material_needs_future_layer,130,quantified and sampled,Rows whose matched keyword evidence is only AI/ML.
+pregrant_examples,ml_unit_context_examples,material_needs_future_layer,46,near zero,Potential ML-as-milliliter or dosage context in patent/application abstracts.
+pregrant_examples,long_keyword_examples,info,1790,context,Rows with longer AI keyword evidence.
+grant_counts,ai_not_above_total,ok,0,0,patents_ai should not exceed patents_total.
+grant_counts,zero_total_rows,info,0,context,Rows with zero total patents/applications are acceptable but useful for coverage context.
+pregrant_counts,ai_not_above_total,ok,0,0,applications_ai should not exceed applications_total.
+pregrant_counts,zero_total_rows,info,0,context,Rows with zero total patents/applications are acceptable but useful for coverage context.
