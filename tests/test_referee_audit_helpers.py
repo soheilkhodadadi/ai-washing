@@ -49,3 +49,9 @@ def test_patent_short_only_keyword_detection() -> None:
     assert module.short_only_keywords("ml")
     assert module.short_only_keywords("ai | ml")
     assert not module.short_only_keywords("machine learning | neural network")
+
+
+def test_journal_audit_normalizes_pytest_runtime() -> None:
+    module = _load_script("journal_reproducibility_audit")
+    output = ".......................... [100%]\n26 passed in 4.42s"
+    assert module.normalize_output(output).endswith("26 passed in <runtime>s")

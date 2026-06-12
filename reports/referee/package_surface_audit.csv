@@ -493,6 +493,9 @@ tests/test_referee_audit_helpers.py,tracked,ok,include,include,tracked project f
 tests/test_size_heterogeneity.py,tracked,ok,include,include,tracked project file
 tests/test_validate_sec_source_policy.py,tracked,ok,include,include,tracked project file
 tests/test_validate_wrds_data.py,tracked,ok,include,include,tracked project file
+reports/referee/journal_reproducibility_audit.csv, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated referee-audit evidence; review before deciding whether to commit or archive
+scripts/journal_reproducibility_audit.py, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+tests/test_referee_audit_helpers.py, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
 .DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .pytest_cache/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .venv/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive

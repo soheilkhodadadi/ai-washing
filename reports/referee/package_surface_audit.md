@@ -4,8 +4,9 @@ This report separates the coauthor workstation surface from a future journal rep
 
 ## Severity Counts
 
-- `info`: 313
+- `info`: 314
 - `manageable`: 15
+- `material_needs_review`: 2
 - `ok`: 207
 
 ## Verdict
@@ -29,3 +30,5 @@ No stop-the-line tracked package-surface leakage was found.
 - `docs/phase4g_final_coauthor_package_rehearsal.md`: useful coauthor/process document but not suitable for a cold journal archive (manageable)
 - `docs/phase4h_pre_share_polish_report.md`: useful coauthor/process document but not suitable for a cold journal archive (manageable)
 - `docs/workstation_build_report.md`: useful coauthor/process document but not suitable for a cold journal archive (manageable)
+- `scripts/journal_reproducibility_audit.py`: modified/staged worktree entry; should be intentional before sharing (material_needs_review)
+- `tests/test_referee_audit_helpers.py`: modified/staged worktree entry; should be intentional before sharing (material_needs_review)

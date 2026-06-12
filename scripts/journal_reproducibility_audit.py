@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -28,12 +29,19 @@ REQUIRED_DOC_TERMS = {
 }
 
 
+def normalize_output(output: str) -> str:
+    """Remove incidental runtime text so audit ledgers are rerun-stable."""
+    output = re.sub(r"\b(\d+\s+passed\s+in\s+)\d+(?:\.\d+)?s\b", r"\1<runtime>s", output)
+    output = re.sub(r"\b(\d+\s+failed,\s+\d+\s+passed\s+in\s+)\d+(?:\.\d+)?s\b", r"\1<runtime>s", output)
+    return output
+
+
 def run_command(name: str, cmd: list[str], timeout: int = 1800) -> dict[str, Any]:
     env = os.environ.copy()
     env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
     try:
         result = subprocess.run(cmd, cwd=ROOT, env=env, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout)
-        output = result.stdout.strip()
+        output = normalize_output(result.stdout.strip())
         return {"check_name": name, "severity": "ok" if result.returncode == 0 else "stop_the_line", "status": "pass" if result.returncode == 0 else "fail", "observed": result.returncode, "expected": 0, "notes": output[-900:]}
     except subprocess.TimeoutExpired as exc:
         return {"check_name": name, "severity": "stop_the_line", "status": "fail", "observed": "timeout", "expected": f"<{timeout}s", "notes": str(exc)}
