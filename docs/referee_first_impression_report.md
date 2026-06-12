@@ -8,7 +8,7 @@ The referee audit found no stop-the-line reproduction or package-surface failure
 
 - `package_surface`: exit `0`
   `AI Washing package surface audit
-  - rows: 538
+  - rows: 535
   - stop_the_line: 0
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/referee/package_surface_audit.csv
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/referee/package_surface_audit.md`
