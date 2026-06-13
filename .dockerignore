@@ -1,0 +1,52 @@
+# Git and local environments
+.git
+.gitignore
+.venv
+venv
+.env
+.env.*
+!.env.example
+
+# Python/editor caches
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.ipynb_checkpoints
+.DS_Store
+*.swp
+*.swo
+
+# Generated outputs and runtime folders
+outputs
+reports/tmp
+*.log
+
+# Private, raw, large, or generated data must be mounted through AIW_DATA_ROOT
+private_data
+data/private
+data/raw
+data/labels
+data/validation
+data/reports
+data/interim/*
+!data/interim/README.md
+data/processed/*
+!data/processed/README.md
+
+# Large/private data file types should never enter the image build context
+*.parquet
+*.dta
+*.sas7bdat
+*.rds
+*.rda
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.zip
+*.tar
+*.tgz
+*.7z

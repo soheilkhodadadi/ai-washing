@@ -8,12 +8,6 @@ Recommended external data root:
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
-Soheil's current local mirror is:
-
-```bash
-export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data
-```
-
 Example: manifest path `data/processed/panel/file.parquet` should be staged at `$AIW_DATA_ROOT/processed/panel/file.parquet`.
 
 ## Status Summary

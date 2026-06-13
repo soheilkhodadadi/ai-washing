@@ -38,7 +38,9 @@ IMPORTS = {
 def _docker_version() -> str:
     docker = shutil.which("docker")
     if not docker:
-        return "not installed"
+        if Path("/.dockerenv").exists():
+            return "not installed inside container; this is expected"
+        return "not installed on host"
     try:
         result = subprocess.run([docker, "--version"], check=False, text=True, capture_output=True, timeout=10)
     except Exception as exc:  # pragma: no cover - defensive diagnostic only
@@ -84,7 +86,7 @@ def main() -> int:
     except Exception as exc:
         failures.append(f"package imports failed: {exc}")
 
-    print(f"- docker: {_docker_version()}")
+    print(f"- docker CLI: {_docker_version()}")
     if failures:
         print("\nDOCTOR FAILED")
         for item in failures:

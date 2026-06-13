@@ -2,10 +2,10 @@
 
 This Codex thread may remain a global, memory-rich session that opens from another workspace, including the older `semantic-patterns` repository. That is acceptable as long as AI Washing work is routed explicitly.
 
-For AI Washing, the canonical project root is:
+For AI Washing, the canonical project root is the local clone of this repository:
 
 ```text
-/Users/soheilkhodadadi/DataWork/ai-washing
+/path/to/ai-washing
 ```
 
 When running commands from a multi-project Codex session, use that directory as the command working directory. Do not infer the active project from the UI sidebar or shell prompt alone.
@@ -13,7 +13,7 @@ When running commands from a multi-project Codex session, use that directory as 
 Recommended shell guard:
 
 ```bash
-cd /Users/soheilkhodadadi/DataWork/ai-washing
+cd /path/to/ai-washing
 git status --short --branch
 ```
 

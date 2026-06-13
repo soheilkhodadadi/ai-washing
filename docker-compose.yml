@@ -1,0 +1,29 @@
+x-aiw-base: &aiw-base
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: ${AIW_DOCKER_IMAGE:-ai-washing:local}
+  working_dir: /workspaces/ai-washing
+  environment:
+    AIW_REPO_ROOT: /workspaces/ai-washing
+    AIW_DATA_ROOT: /workspaces/ai-washing-private-data
+    AIW_OUTPUT_ROOT: /workspaces/ai-washing/outputs/reproduced
+    AIW_PAPER_ROOT: /workspaces/ai-washing/outputs/paper_exports
+    PYTHONPATH: /workspaces/ai-washing/src
+    HOME: /tmp
+    MPLCONFIGDIR: /tmp/aiw-matplotlib
+    XDG_CACHE_HOME: /tmp/aiw-cache
+  volumes:
+    - .:/workspaces/ai-washing
+
+services:
+  ai-washing:
+    <<: *aiw-base
+    command: bash
+
+  ai-washing-with-data:
+    <<: *aiw-base
+    volumes:
+      - .:/workspaces/ai-washing
+      - ${AIW_DATA_ROOT:?Set AIW_DATA_ROOT to the private data mirror path}:/workspaces/ai-washing-private-data:ro
+    command: bash

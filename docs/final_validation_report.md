@@ -10,12 +10,12 @@ make path-leak-scan
 make import-smoke
 make smoke-fixture
 make compare-tables
-AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make reproduce-selected
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make reproduce-selected
 make compare-selected-reproduction
-AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make check-private-data
-AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make validate-data-room
-AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make audit-artifact-coverage
-AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data make reproduce-all-tables
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make check-private-data
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make validate-data-room
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make audit-artifact-coverage
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make reproduce-all-tables
 make reproduction-status
 make git-hygiene
 ```
@@ -27,7 +27,7 @@ make git-hygiene
 - Minimal source import smoke: passed for 34 modules.
 - Fixture pipeline: passed and wrote ignored output under `outputs/fixture/`.
 - Table comparison against v4.3 manuscript inputs: completed; most v4.3 manuscript table inputs remain manuscript-facing deltas from generated evidence.
-- Private data staging: all 15 table-rerun inputs are staged under `/Users/soheilkhodadadi/DataWork/ai-washing-private-data`, including the Test 25 ExecuComp cache.
+- Private data staging: all 15 table-rerun inputs are staged under the external `AIW_DATA_ROOT`, including the Test 25 ExecuComp cache.
 - Coauthor data-room validation: 26 broader data-room artifacts present; 6 extension/bottom-up rebuild artifacts remain explicitly deferred with reasons.
 - Artifact coverage audit: passed with 20 promoted artifacts meeting lane-specific coverage and 2 documented not-promoted candidates.
 - Lane-specific coverage: annual NLP/patent artifacts cover 2016-2025; event/market-return artifacts cover 2016-2024 because CRSP/event-return inputs stop at 2024-12-31.

@@ -1,7 +1,7 @@
 # Known Limitations
 
 - v4.3 is the current frozen computational target. Kuntara's v5.0 edits are editorial and are not treated as code-reproduction targets unless a later release explicitly promotes them.
-- Private, licensed, large, and machine-local data are not tracked in Git. Use an external `AIW_DATA_ROOT`, such as `/Users/soheilkhodadadi/DataWork/ai-washing-private-data` on Soheil's machine.
+- Private, licensed, large, and machine-local data are not tracked in Git. Use an external `AIW_DATA_ROOT`, such as `/path/to/ai-washing-private-data` on a local or shared private-data mirror.
 - v4.3 has lane-specific data coverage. The annual NLP/patent panel covers 2016-2025, while event/market-return tables use 2016-2024 because the staged CRSP return extracts stop at 2024-12-31. This is a reproduction boundary, not an older-file mistake.
 - Filing-spine and filing AI-measure files cover 2016-2025, but they are disclosure lineage/bridge inputs and are not a completed 2025 return-event panel.
 - Selected numerical reruns pass for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh CSV outputs exactly match frozen v4.3 generated CSV evidence.

@@ -6,6 +6,7 @@ This index lists the documents most useful for coauthors and future replication 
 
 - `../README.md`: repository overview and quick commands.
 - `../README_START_HERE.md`: full setup, validation, and reproduction guide.
+- `docker_quickstart.md`: lowest-friction container setup path.
 - `coauthor_quickstart.md`: shortest setup path.
 - `coauthor_runbook.md`: first-day runbook for environment setup, private data validation, table reruns, and extension starters.
 
@@ -34,6 +35,7 @@ This index lists the documents most useful for coauthors and future replication 
 - `patent_fuzzy_sensitivity_note.md`: fuzzy matching sensitivity note.
 - `replication_audit_runbook.md`: strict replication and data-integrity audit procedure.
 - `replication_audit_report.md`: current audit summary.
+- `share_readiness_report.md`: Docker share-readiness result.
 
 ## Extension Starters
 

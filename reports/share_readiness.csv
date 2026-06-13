@@ -1,0 +1,98 @@
+check_name,severity,status,return_code,command,notes
+docker_cli_available,ok,pass,0,docker --version,"Docker version 29.5.3, build d1c06ef"
+docker_engine_available,ok,pass,0,docker info --format '{{.ServerVersion}} {{.OSType}} {{.Architecture}}',29.5.3 linux aarch64
+docker_compose_available,ok,pass,0,docker compose version,Docker Compose version v5.1.4
+docker_image_build,ok,pass,0,docker build -t ai-washing:local .,"ed ai-washing-0.1.0
+#11 4.196 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 4.231 python scripts/validate_capsule.py
+#11 4.287 WORKSTATION VALIDATION PASSED
+#11 4.287 - table assets: 24
+#11 4.287 - figures: 2
+#11 4.287 - dependency rows: 47
+#11 4.290 python scripts/path_leak_scan.py
+#11 4.343 PATH LEAK SCAN PASSED for executable/config files
+#11 4.345 PYTHONPATH=src python scripts/import_smoke.py
+#11 5.672 IMPORT SMOKE PASSED (45 modules)
+#11 DONE 5.8s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 exporting manifest sha256:643c494ca4225f1bd2720e67d56ccb33e146856a3e47f12ba86354317bfc0757 done
+#12 exporting config sha256:fd801c7184e075ecebfe7385c659ffda8dd17eb40a5e10abf5ea89cb522a6c6e done
+#12 exporting attestation manifest sha256:f2ecbd35face629d52f82eef6b35f7216258737f64e9738ebba7348dab6da287 done
+#12 exporting manifest list sha256:e1c6686cbeb50efc1d0ce990c96693517755176b1c77ceffe02f0348c32339f0 done
+#12 naming to docker.io/library/ai-washing:local done
+#12 unpacking to docker.io/library/ai-washing:local 0.1s done
+#12 DONE 0.4s"
+docker_code_only_preflight,ok,pass,0,docker run --rm --user 501:20 -e HOME=/tmp -e MPLCONFIGDIR=/tmp/aiw-matplotlib -e XDG_CACHE_HOME=/tmp/aiw-cache -e AIW_REPO_ROOT=/workspaces/ai-washing -e AIW_OUTPUT_ROOT=/workspaces/ai-washing/outputs/reproduced -e AIW_PAPER_ROOT=/workspaces/ai-washing/outputs/paper_exports -e PYTHONPATH=/workspaces/ai-washing/src -v $AIW_REPO_ROOT:/workspaces/ai-washing -w /workspaces/ai-washing -e AIW_DATA_ROOT=/workspaces/ai-washing-private-data ai-washing:local make PYTHON=python coauthor-preflight,"ment doctor
+- python: 3.11.15 (/usr/local/bin/python)
+- AIW_REPO_ROOT: /workspaces/ai-washing
+- AIW_DATA_ROOT: /workspaces/ai-washing-private-data (exists)
+- AIW_OUTPUT_ROOT: /workspaces/ai-washing/outputs/reproduced
+- AIW_PAPER_ROOT: /workspaces/ai-washing/outputs/paper_exports
+- pandas: 2.2.3 (OK; expected 2.2.3)
+- numpy: 1.26.4 (OK; expected 1.26.4)
+- scipy: 1.17.1 (OK; expected 1.17.1)
+- statsmodels: 0.14.6 (OK; expected 0.14.6)
+- matplotlib: 3.10.8 (OK; expected 3.10.8)
+- python-docx: 1.2.0 (OK; expected 1.2.0)
+- python-dotenv: 1.2.2 (OK; expected 1.2.2)
+- psycopg2-binary: 2.9.12 (OK; expected 2.9.12)
+- pyarrow: 23.0.1 (OK; expected 23.0.1)
+- pytest: 9.0.2 (OK; expected 9.0.2)
+- package imports: OK
+- docker CLI: not installed inside container; this is expected
+
+DOCTOR PASSED
+python scripts/validate_capsule.py
+WORKSTATION VALIDATION PASSED
+- table assets: 24
+- figures: 2
+- dependency rows: 47
+python scripts/path_leak_scan.py
+PATH LEAK SCAN PASSED for executable/config files
+PYTHONPATH=src python scripts/import_smoke.py
+IMPORT SMOKE PASSED (45 modules)
+PYTHONPATH=src python -m semantic_ai_washing_min.fixture_pipeline --fixture-dir data/fixtures --output-dir outputs/fixture
+Wrote outputs/fixture/fixture_patent_mismatch_table.csv
+python scripts/git_hygiene_check.py
+GIT HYGIENE CHECK PASSED
+- no tracked private/generated data paths
+- no tracked banned binary/archive file types"
+docker_private_data_absent_fails_cleanly,ok,pass,2,docker run --rm --user 501:20 -e HOME=/tmp -e MPLCONFIGDIR=/tmp/aiw-matplotlib -e XDG_CACHE_HOME=/tmp/aiw-cache -e AIW_REPO_ROOT=/workspaces/ai-washing -e AIW_OUTPUT_ROOT=/workspaces/ai-washing/outputs/reproduced -e AIW_PAPER_ROOT=/workspaces/ai-washing/outputs/paper_exports -e PYTHONPATH=/workspaces/ai-washing/src -v $AIW_REPO_ROOT:/workspaces/ai-washing -w /workspaces/ai-washing -e AIW_DATA_ROOT=/workspaces/ai-washing-private-data ai-washing:local make PYTHON=python check-private-data,"_event_estimation_sample_hybrid_api_a_conf49_v1.parquet
+  tests: legacy_b2_attrition_map, legacy_r1_summary_stats, test_05_size_heterogeneity, test_09_factor_adjusted_alpha, test_12_predictive_return_controls, test_13_pre_post_event_path, test_15_matched_ai_talking_sample, test_32_market_reaction_in_issue_windows
+  dependencies: event_panel
+
+missing_support:
+- data/labels/v1/labels_master.parquet
+  stage as: labels/v1/labels_master.parquet
+  tests: legacy_b1_measurement_audit
+  dependencies: label_base
+- data/labels/v2/labels_master_boundary_revised_v1_excluding_heldout_v4.parquet
+  stage as: labels/v2/labels_master_boundary_revised_v1_excluding_heldout_v4.parquet
+  tests: legacy_b1_measurement_audit
+  dependencies: training_pool
+- data/reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json
+  stage as: reports/evaluation/selective_defer_heldout_v4_hybrid_api_upgrade_v2.json
+  tests: legacy_b1_measurement_audit
+  dependencies: hybrid_eval
+- data/reports/labels/irr_boundary_revised_v3_rerun_report.json
+  stage as: reports/labels/irr_boundary_revised_v3_rerun_report.json
+  tests: legacy_b1_measurement_audit
+  dependencies: irr_report
+- data/validation/held_out_v4/held_out_sentences_v4.csv
+  stage as: validation/held_out_v4/held_out_sentences_v4.csv
+  tests: legacy_b1_measurement_audit
+  dependencies: heldout_v4
+make: *** [Makefile:51: check-private-data] Error 1"
+docker_private_data_mount_check,ok,pass,0,docker run --rm --user 501:20 -e HOME=/tmp -e MPLCONFIGDIR=/tmp/aiw-matplotlib -e XDG_CACHE_HOME=/tmp/aiw-cache -e AIW_REPO_ROOT=/workspaces/ai-washing -e AIW_OUTPUT_ROOT=/workspaces/ai-washing/outputs/reproduced -e AIW_PAPER_ROOT=/workspaces/ai-washing/outputs/paper_exports -e PYTHONPATH=/workspaces/ai-washing/src -v $AIW_REPO_ROOT:/workspaces/ai-washing -w /workspaces/ai-washing -e AIW_DATA_ROOT=/workspaces/ai-washing-private-data -v $AIW_REPO_ROOT-private-data:/workspaces/ai-washing-private-data:ro ai-washing:local make PYTHON=python check-private-data,"python scripts/check_private_data.py
+AI Washing private data mirror check
+- manifest: /workspaces/ai-washing/manifests/data_dependency_manifest.csv
+- AIW_DATA_ROOT: /workspaces/ai-washing-private-data
+- unique logical paths: 15
+- present: 15
+- missing required current: 0
+- missing support-only: 0
+- documented future extensions: 0
+- missing unknown: 0"

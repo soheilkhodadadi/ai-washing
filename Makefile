@@ -4,7 +4,18 @@ ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
 PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
 endif
 
-.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit
+DOCKER_IMAGE ?= ai-washing:local
+DOCKER_WORKDIR := /workspaces/ai-washing
+DOCKER_DATA_DIR := /workspaces/ai-washing-private-data
+DOCKER_USER := $(shell id -u):$(shell id -g)
+DOCKER_COMMON_ARGS := --rm --user $(DOCKER_USER) -e HOME=/tmp -e MPLCONFIGDIR=/tmp/aiw-matplotlib -e XDG_CACHE_HOME=/tmp/aiw-cache -e AIW_REPO_ROOT=$(DOCKER_WORKDIR) -e AIW_OUTPUT_ROOT=$(DOCKER_WORKDIR)/outputs/reproduced -e AIW_PAPER_ROOT=$(DOCKER_WORKDIR)/outputs/paper_exports -e PYTHONPATH=$(DOCKER_WORKDIR)/src -v "$(CURDIR)":$(DOCKER_WORKDIR) -w $(DOCKER_WORKDIR)
+ifneq ($(strip $(AIW_DATA_ROOT)),)
+DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR) -v "$(AIW_DATA_ROOT)":$(DOCKER_DATA_DIR):ro
+else
+DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR)
+endif
+
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -103,3 +114,27 @@ replication-audit:
 	PYTHONPATH=src $(PYTHON) scripts/replication_audit.py
 
 referee-audit: replication-audit
+
+docker-build:
+	docker build -t $(DOCKER_IMAGE) .
+
+docker-preflight:
+	docker run $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) make PYTHON=python coauthor-preflight
+
+docker-private-check:
+	@if [ -z "$(AIW_DATA_ROOT)" ]; then echo "Set AIW_DATA_ROOT=/path/to/ai-washing-private-data"; exit 2; fi
+	docker run $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) make PYTHON=python check-private-data validate-data-room validate-sec-source validate-wrds-data validate-patent-data audit-artifact-coverage
+
+docker-reproduce-selected:
+	@if [ -z "$(AIW_DATA_ROOT)" ]; then echo "Set AIW_DATA_ROOT=/path/to/ai-washing-private-data"; exit 2; fi
+	docker run $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) /bin/bash -lc 'make PYTHON=python reproduce-selected && make PYTHON=python TABLE_ID=T16 reproduce-table && make PYTHON=python compare-selected-reproduction'
+
+docker-replication-audit:
+	@if [ -z "$(AIW_DATA_ROOT)" ]; then echo "Set AIW_DATA_ROOT=/path/to/ai-washing-private-data"; exit 2; fi
+	docker run $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) make PYTHON=python replication-audit
+
+docker-shell:
+	docker run -it $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) bash
+
+share-readiness:
+	AIW_DOCKER_IMAGE=$(DOCKER_IMAGE) AIW_DATA_ROOT="$(AIW_DATA_ROOT)" $(PYTHON) scripts/share_readiness.py

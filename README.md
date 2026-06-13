@@ -8,6 +8,7 @@ This repository contains the code, manifests, documentation, fixtures, and froze
 
 - [README_START_HERE.md](README_START_HERE.md): setup, validation, and reproduction guide.
 - [docs/index.md](docs/index.md): documentation map.
+- [docs/docker_quickstart.md](docs/docker_quickstart.md): lowest-friction Docker path.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day coauthor runbook.
 - [docs/private_data_contract.md](docs/private_data_contract.md): private data mirror contract.
 - [docs/full_reproduction_status.md](docs/full_reproduction_status.md): v4.3 table/figure reproduction status.
@@ -27,23 +28,25 @@ Keep the Git repository outside Dropbox, OneDrive, and other sync folders. Use c
 
 ## Quick Check
 
+Recommended Docker path:
+
+```bash
+make docker-build
+make docker-preflight
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make docker-private-check
+make docker-reproduce-selected
+make docker-replication-audit
+```
+
+Native Python remains available for technical users:
+
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e .
-make doctor
 make coauthor-preflight
 ```
 
-After private data are staged:
-
-```bash
-make check-private-data
-make validate-data-room
-make reproduce-all-tables
-make reproduce-figures
-make reproduction-status
-make figure-reproduction-status
-make replication-audit
-```
+See [docs/docker_quickstart.md](docs/docker_quickstart.md) for Mac, Linux, and Windows/WSL2 notes.

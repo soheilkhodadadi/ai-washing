@@ -36,7 +36,19 @@ The expected private paths are listed in `manifests/data_dependency_manifest.csv
 
 ## Environment Setup
 
-Recommended local setup from a fresh clone:
+Recommended Docker setup from a fresh clone:
+
+```bash
+cd ai-washing
+make docker-build
+make docker-preflight
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make docker-private-check
+```
+
+Docker Desktop on macOS/Windows or Docker Engine on Linux is enough for this path. Private data are mounted read-only and are not copied into the image. See `docs/docker_quickstart.md` for platform notes.
+
+Native Python setup remains available for technical users:
 
 ```bash
 cd ai-washing
@@ -115,7 +127,14 @@ The v4.3 target has lane-specific coverage. The annual NLP/patent lane covers 20
 
 ## Strict Replication And Data-Integrity Audit
 
-Before sharing or preparing a journal-facing archive, run:
+Before sharing or preparing a journal-facing archive, run the Docker audit path when possible:
+
+```bash
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make docker-replication-audit
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make share-readiness
+```
+
+The native equivalent remains:
 
 ```bash
 AIW_DATA_ROOT=/path/to/ai-washing-private-data make replication-audit

@@ -13,7 +13,16 @@ cd ai-washing
 
 If SSH is not configured, use the HTTPS private-repo URL from GitHub.
 
-## 2. Create The Python Environment
+## 2. Choose The Runtime Path
+
+The easiest path is Docker:
+
+```bash
+make docker-build
+make docker-preflight
+```
+
+Use native Python if you plan to edit code directly:
 
 ```bash
 python3 -m venv .venv
@@ -64,6 +73,12 @@ make validate-data-room
 make validate-wrds-data
 make validate-sec-source
 make audit-artifact-coverage
+```
+
+Docker equivalent:
+
+```bash
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make docker-private-check
 ```
 
 Expected current result: every table-rerun `required_current` and `support_only` input is present, including `external/execucomp/execucomp_ceo_anncomp_2015_2024.parquet`.
