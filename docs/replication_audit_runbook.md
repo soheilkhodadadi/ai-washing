@@ -1,6 +1,6 @@
-# Referee Audit Runbook
+# Replication Audit Runbook
 
-This runbook is the hostile-but-fair audit layer for the AI Washing workstation. It is designed to answer the question a finance referee or data editor would ask: if I try to reproduce the paper and inspect the data work, what could be wrong, hidden, or insufficiently documented?
+This runbook is the strict replication and data-integrity audit layer for the AI Washing workstation. It is designed to answer the question a finance referee or data editor would ask: if I try to reproduce the paper and inspect the data work, what could be wrong, hidden, or insufficiently documented?
 
 ## Benchmark Standards
 
@@ -17,7 +17,7 @@ The audit is aligned with five replication-package benchmarks:
 Run the full audit with:
 
 ```bash
-AIW_DATA_ROOT=/path/to/ai-washing-private-data make referee-audit
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make replication-audit
 ```
 
 The full audit calls these layers:
@@ -52,10 +52,10 @@ AIW_DATA_ROOT=/path/to/ai-washing-private-data make journal-reproducibility-audi
 
 ## Outputs
 
-The audit writes machine-readable reports under `reports/referee/` and a human-facing summary at:
+The audit writes machine-readable reports under `reports/replication_audit/` and a human-facing summary at:
 
 ```text
-docs/referee_first_impression_report.md
+docs/replication_audit_report.md
 ```
 
 Generated reports are evidence, not manuscript results. If a report surfaces a limitation, update the relevant limitation note rather than hiding the finding.

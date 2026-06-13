@@ -90,7 +90,7 @@ The validator should confirm 5 representative full-submission samples, 4 Stage-O
 
 ## 7. Validate The WRDS / CRSP / Compustat Layer
 
-Thomas specifically asked for the CRSP and Compustat merges, not only final panel variables. After the private mirror is mounted, run:
+The coauthor request includes the CRSP and Compustat merges, not only final panel variables. After the private mirror is mounted, run:
 
 ```bash
 make validate-wrds-data
@@ -205,7 +205,7 @@ Current expected status: 16 numeric-string cells differ only at floating-point r
 
 ## 11. Run Extension Starters
 
-After the v4.3 reproduction and construct-audit checks pass, Kuntara can start from the extension layer without changing the frozen v4.3 evidence.
+After the v4.3 reproduction and construct-audit checks pass, coauthors can start from the extension layer without changing the frozen v4.3 evidence.
 
 Builder-hides first pass:
 

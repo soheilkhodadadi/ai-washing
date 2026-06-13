@@ -5,8 +5,8 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REPORT = ROOT / "docs" / "referee_first_impression_report.md"
-REPORT_DIR = ROOT / "reports" / "referee"
+REPORT = ROOT / "docs" / "replication_audit_report.md"
+REPORT_DIR = ROOT / "reports" / "replication_audit"
 
 SCRIPTS = [
     ("package_surface", "scripts/package_surface_audit.py"),
@@ -30,15 +30,15 @@ def main() -> int:
     results = [run_script(name, rel) for name, rel in SCRIPTS]
     stop = sum(1 for _, code, _ in results if code != 0)
     sections = [
-        "# Referee First-Impression Report",
+        "# Replication Audit Report",
         "",
         "## Verdict",
         "",
     ]
     if stop:
-        sections.append("The referee audit found at least one stop-the-line failure. Review the command logs and generated reports before sharing.")
+        sections.append("The replication audit found at least one stop-the-line failure. Review the command logs and generated reports before sharing.")
     else:
-        sections.append("The referee audit found no stop-the-line reproduction or package-surface failure. It does surface honest construct-validity risks, especially short-acronym AI/ML ambiguity, that should be disclosed as limitations and future audit layers.")
+        sections.append("The replication audit found no stop-the-line reproduction or package-surface failure. It does surface construct-validity risks, especially short-acronym AI/ML ambiguity, that should be documented as limitations and future robustness layers.")
     sections += [
         "",
         "## Command Outcomes",
@@ -53,22 +53,22 @@ def main() -> int:
         "",
         "## Generated Evidence",
         "",
-        "- `reports/referee/package_surface_audit.md`",
-        "- `reports/referee/data_sanity_summary.md`",
-        "- `reports/referee/textual_construct_summary.md`",
-        "- `reports/referee/patent_construct_summary.md`",
-        "- `reports/referee/journal_reproducibility_audit.md`",
+        "- `reports/replication_audit/package_surface_audit.md`",
+        "- `reports/replication_audit/data_sanity_summary.md`",
+        "- `reports/replication_audit/textual_construct_summary.md`",
+        "- `reports/replication_audit/patent_construct_summary.md`",
+        "- `reports/replication_audit/journal_reproducibility_audit.md`",
         "",
-        "## Referee Lens Summary",
+        "## Replication Audit Summary",
         "",
-        "- Package hygiene: coauthor-facing notes are useful for Thomas/Kuntara but should be excluded from a future journal archive profile.",
+        "- Package hygiene: coauthor-facing runbooks are appropriate for the private collaboration package, while informal phase notes and email drafts remain outside the shared repo.",
         "- Data integrity: row counts, lane coverage, duplicate keys, impossible values, and private-data availability are now checked mechanically.",
-        "- Textual construct validity: short-acronym AI/ML hits are quantified and sampled rather than hidden.",
+        "- Textual construct validity: short-acronym AI/ML hits are quantified and sampled as documented construct-validity evidence.",
         "- Patent construct validity: short-acronym-only keyword evidence and potential ML-as-unit contexts are quantified and sampled.",
         "- Reproducibility: the environment, package dependencies, table/figure statuses, C7 format delta, and Git hygiene are checked from one command.",
     ]
     REPORT.write_text("\n".join(sections) + "\n", encoding="utf-8")
-    print("AI Washing referee audit")
+    print("AI Washing replication audit")
     print(f"- scripts: {len(results)}")
     print(f"- nonzero_exit_count: {stop}")
     print(f"- wrote: {REPORT}")

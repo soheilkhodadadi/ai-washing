@@ -11,7 +11,7 @@ import pandas as pd
 
 ROOT = Path(os.environ.get("AIW_REPO_ROOT", Path(__file__).resolve().parents[1])).resolve()
 DATA_ROOT = Path(os.environ.get("AIW_DATA_ROOT", ROOT / "data")).resolve()
-REPORT_DIR = ROOT / "reports" / "referee"
+REPORT_DIR = ROOT / "reports" / "replication_audit"
 SUMMARY_CSV = REPORT_DIR / "textual_construct_audit.csv"
 SAMPLES_CSV = REPORT_DIR / "textual_construct_red_flags.csv"
 SUMMARY_MD = REPORT_DIR / "textual_construct_summary.md"
@@ -157,7 +157,7 @@ def main() -> int:
         "",
         "## Action",
         "",
-        "Treat short-acronym ambiguity as a known construct-validity limitation and future reviewer-labeled disambiguation layer, not as something to hide from coauthors.",
+        "Treat short-acronym ambiguity as a documented construct-validity limitation and future reviewer-labeled disambiguation layer.",
     ]
     SUMMARY_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
     stop = sum(1 for row in rows if row["severity"] == "stop_the_line" and str(row["observed"]) != str(row["expected"]))

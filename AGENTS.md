@@ -33,6 +33,7 @@ make path-leak-scan
 make import-smoke
 make smoke-fixture
 make git-hygiene
+make replication-audit
 ```
 
 If private data are staged, also run:

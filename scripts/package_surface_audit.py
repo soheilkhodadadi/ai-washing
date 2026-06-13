@@ -7,7 +7,7 @@ import sys
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-REPORT_DIR = ROOT / "reports" / "referee"
+REPORT_DIR = ROOT / "reports" / "replication_audit"
 REPORT_CSV = REPORT_DIR / "package_surface_audit.csv"
 REPORT_MD = REPORT_DIR / "package_surface_audit.md"
 
@@ -41,19 +41,19 @@ STOP_PREFIXES = (
 )
 ALLOWED_TRACKED_OUTPUTS = {"outputs/reproduced/README.md", "outputs/fixture/.gitkeep"}
 JOURNAL_EXCLUDE_PREFIXES = (
-    "docs/coauthor_",
     "docs/phase",
     "docs/onedrive_",
-    "docs/extension_",
 )
-JOURNAL_EXCLUDE_EXACT = {
-    "docs/current_state_and_roadmap.md",
-    "docs/workstation_build_report.md",
-    "docs/collaboration_workflow.md",
-}
+JOURNAL_EXCLUDE_EXACT: set[str] = set()
 JOURNAL_OPTIONAL_EXACT = {
     "paper/ai_washing_v4.3.pdf",
     "docs/coauthor_runbook.md",
+    "docs/coauthor_quickstart.md",
+    "docs/coauthor_data_room.md",
+    "docs/extension_playbook.md",
+    "docs/extension_notes_future_data.md",
+    "docs/extensions/builder_hides_first_pass.md",
+    "docs/extensions/washing_pays_data_requirements.md",
 }
 
 
@@ -129,12 +129,6 @@ def classify_tracked(path: str) -> dict[str, str]:
         coauthor_profile = "include_frozen_evidence"
         journal_profile = "include_frozen_evidence"
         reason = "frozen v4.3 generated evidence used for reproduction comparison"
-    elif path.startswith("docs/") and ("share" in path or "rehearsal" in path):
-        severity = "manageable"
-        coauthor_profile = "include"
-        journal_profile = "exclude"
-        reason = "share/rehearsal note should not be in journal archive"
-
     return {
         "path": path,
         "surface": "tracked",
@@ -150,11 +144,11 @@ def classify_worktree(status: str, path: str) -> dict[str, str]:
     reason = "ignored or untracked local artifact"
     coauthor_profile = "exclude"
     journal_profile = "exclude"
-    if path.startswith("reports/referee/"):
+    if path.startswith("reports/replication_audit/"):
         severity = "info"
         coauthor_profile = "include_generated_audit_evidence"
         journal_profile = "optional_include_generated_audit_evidence"
-        reason = "generated referee-audit evidence; review before deciding whether to commit or archive"
+        reason = "generated replication audit evidence; review before deciding whether to commit or archive"
     elif status == "??":
         severity = "material_needs_review"
         reason = "untracked file would be missed by Git archive; review before zipping a raw folder"

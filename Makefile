@@ -4,7 +4,7 @@ ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
 PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
 endif
 
-.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit referee-audit
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -99,5 +99,7 @@ patent-construct-audit:
 journal-reproducibility-audit:
 	PYTHONPATH=src $(PYTHON) scripts/journal_reproducibility_audit.py
 
-referee-audit:
-	PYTHONPATH=src $(PYTHON) scripts/referee_audit.py
+replication-audit:
+	PYTHONPATH=src $(PYTHON) scripts/replication_audit.py
+
+referee-audit: replication-audit

@@ -10,13 +10,14 @@ import sys
 from typing import Any
 
 ROOT = Path(os.environ.get("AIW_REPO_ROOT", Path(__file__).resolve().parents[1])).resolve()
-REPORT_DIR = ROOT / "reports" / "referee"
+REPORT_DIR = ROOT / "reports" / "replication_audit"
 REPORT_CSV = REPORT_DIR / "journal_reproducibility_audit.csv"
 REPORT_MD = REPORT_DIR / "journal_reproducibility_audit.md"
 DOCS_TO_SCAN = [
     ROOT / "README_START_HERE.md",
+    ROOT / "docs" / "index.md",
     ROOT / "docs" / "coauthor_runbook.md",
-    ROOT / "docs" / "onedrive_data_room_checklist.md",
+    ROOT / "docs" / "private_data_contract.md",
 ]
 REQUIRED_DOC_TERMS = {
     "Docker": "Docker setup or usage should be visible in the instructions.",

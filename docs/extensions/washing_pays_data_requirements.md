@@ -4,7 +4,7 @@ This note separates what the current AI Washing workstation can test from what r
 
 ## Research Question
 
-Kuntara's proposed washing-pays channel asks:
+The proposed washing-pays channel asks:
 
 > Among firms raising capital, do low-substance AI talkers raise more capital, or raise it on better terms, than quieter but more substantive AI builders?
 

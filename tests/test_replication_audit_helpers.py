@@ -15,12 +15,12 @@ def _load_script(name: str):
     return module
 
 
-def test_package_surface_flags_coauthor_note_as_journal_excluded() -> None:
+def test_package_surface_marks_coauthor_runbook_optional_for_journal() -> None:
     module = _load_script("package_surface_audit")
-    row = module.classify_tracked("docs/coauthor_share_note.md")
-    assert row["severity"] == "manageable"
+    row = module.classify_tracked("docs/coauthor_runbook.md")
+    assert row["severity"] == "info"
     assert row["coauthor_profile"] == "include"
-    assert row["journal_profile"] == "exclude"
+    assert row["journal_profile"] == "optional_exclude"
 
 
 def test_package_surface_blocks_tracked_private_data() -> None:

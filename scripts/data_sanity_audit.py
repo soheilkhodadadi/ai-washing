@@ -10,7 +10,7 @@ import pandas as pd
 
 ROOT = Path(os.environ.get("AIW_REPO_ROOT", Path(__file__).resolve().parents[1])).resolve()
 DATA_ROOT = Path(os.environ.get("AIW_DATA_ROOT", ROOT / "data")).resolve()
-REPORT_DIR = ROOT / "reports" / "referee"
+REPORT_DIR = ROOT / "reports" / "replication_audit"
 REPORT_CSV = REPORT_DIR / "data_sanity_audit.csv"
 REPORT_MD = REPORT_DIR / "data_sanity_summary.md"
 

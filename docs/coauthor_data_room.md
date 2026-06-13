@@ -37,7 +37,7 @@ Roles:
 
 ## Current Interpretation
 
-The current private root is enough for v4.3 table reproduction and is now substantially broader than the table-rerun surface. The final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS/CRSP/Compustat bridge artifacts, WRDS raw-pull/build reports, SEC samples, patent counts/examples/diagnostics, patent identity metadata, patent keyword metadata, PatentsView source documentation, and patent method reports are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are future-extension inputs rather than hidden reproduction dependencies.
+The current private root is enough for v4.3 table reproduction and is now substantially broader than the table-rerun surface. The final hybrid classifier outputs, extracted sentence support, lineage annual panels, filing spine, WRDS/CRSP/Compustat bridge artifacts, WRDS raw-pull/build reports, SEC samples, patent counts/examples/diagnostics, patent identity metadata, patent keyword metadata, PatentsView source documentation, and patent method reports are staged. The remaining deferred items are not table-rerun blockers unless `scripts/validate_data_room.py --strict-deferred` is run manually. They are documented future-extension inputs, not hidden reproduction dependencies.
 
 The coverage target is lane-specific:
 
