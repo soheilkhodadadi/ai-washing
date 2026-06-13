@@ -291,48 +291,40 @@ data/fixtures/sample_market_patent_panel.csv,tracked,ok,include,include,tracked 
 docs/artifact_coverage_policy.md,tracked,ok,include,include,tracked project file
 docs/c7_format_delta_cells.csv,tracked,ok,include,include,tracked project file
 docs/c7_format_delta_explanation.md,tracked,ok,include,include,tracked project file
-docs/coauthor_data_room.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/coauthor_quickstart.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/coauthor_runbook.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/coauthor_share_note.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/collaboration_workflow.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/current_state_and_roadmap.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
+docs/coauthor_data_room.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
+docs/coauthor_quickstart.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
+docs/coauthor_runbook.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
+docs/collaboration_workflow.md,tracked,ok,include,include,tracked project file
 docs/data_management.md,tracked,ok,include,include,tracked project file
-docs/extension_notes_future_data.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/extension_playbook.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
+docs/extension_notes_future_data.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
+docs/extension_playbook.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/extensions/README.md,tracked,ok,include,include,tracked project file
-docs/extensions/builder_hides_first_pass.md,tracked,ok,include,include,tracked project file
-docs/extensions/washing_pays_data_requirements.md,tracked,ok,include,include,tracked project file
+docs/extensions/builder_hides_first_pass.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
+docs/extensions/washing_pays_data_requirements.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/figure_reproduction_status.csv,tracked,ok,include,include,tracked project file
 docs/figure_reproduction_status.md,tracked,ok,include,include,tracked project file
 docs/final_validation_report.md,tracked,ok,include,include,tracked project file
 docs/full_reproduction_status.csv,tracked,ok,include,include,tracked project file
 docs/full_reproduction_status.md,tracked,ok,include,include,tracked project file
+docs/index.md,tracked,ok,include,include,tracked project file
 docs/journal_replication_archive_policy.md,tracked,ok,include,include,tracked project file
 docs/known_limitations.md,tracked,ok,include,include,tracked project file
 docs/match_status_report.md,tracked,ok,include,include,tracked project file
-docs/onedrive_data_room_checklist.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
 docs/patent_fuzzy_sensitivity_note.md,tracked,ok,include,include,tracked project file
 docs/patent_matching_validation.md,tracked,ok,include,include,tracked project file
 docs/patent_mismatch_method_note.md,tracked,ok,include,include,tracked project file
 docs/patent_source_inventory.md,tracked,ok,include,include,tracked project file
-docs/phase2_execution_log.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/phase3c_reproduction_report.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/phase4_coauthor_completeness_roadmap.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/phase4g_final_coauthor_package_rehearsal.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
-docs/phase4h_pre_share_polish_report.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
 docs/private_data_contract.md,tracked,ok,include,include,tracked project file
 docs/private_data_staging_map.md,tracked,ok,include,include,tracked project file
-docs/replication_audit_runbook.md,tracked,ok,include,include,tracked project file
-docs/replication_audit_report.md,tracked,ok,include,include,tracked project file
 docs/releases/v4_3_defense_freeze.md,tracked,ok,include,include,tracked project file
+docs/replication_audit_report.md,tracked,ok,include,include,tracked project file
+docs/replication_audit_runbook.md,tracked,ok,include,include,tracked project file
 docs/sec_extraction_classification_audit.md,tracked,ok,include,include,tracked project file
 docs/sec_raw_source_policy.md,tracked,ok,include,include,tracked project file
 docs/selected_reproduction_comparison.csv,tracked,ok,include,include,tracked project file
 docs/selected_reproduction_status.md,tracked,ok,include,include,tracked project file
 docs/t25_execucomp_policy.md,tracked,ok,include,include,tracked project file
 docs/workspace_routing.md,tracked,ok,include,include,tracked project file
-docs/workstation_build_report.md,tracked,manageable,include,exclude,useful coauthor/process document but not suitable for a cold journal archive
 docs/wrds_crsp_compustat_method_note.md,tracked,ok,include,include,tracked project file
 docs/wrds_source_inventory.md,tracked,ok,include,include,tracked project file
 manifests/artifact_manifest.csv,tracked,ok,include,include,tracked project file
@@ -419,7 +411,7 @@ scripts/journal_reproducibility_audit.py,tracked,ok,include,include,tracked proj
 scripts/package_surface_audit.py,tracked,ok,include,include,tracked project file
 scripts/patent_construct_audit.py,tracked,ok,include,include,tracked project file
 scripts/path_leak_scan.py,tracked,ok,include,include,tracked project file
-scripts/referee_audit.py,tracked,ok,include,include,tracked project file
+scripts/replication_audit.py,tracked,ok,include,include,tracked project file
 scripts/reproduce_assets.py,tracked,ok,include,include,tracked project file
 scripts/run_publication_table.py,tracked,ok,include,include,tracked project file
 scripts/textual_construct_audit.py,tracked,ok,include,include,tracked project file
@@ -489,10 +481,12 @@ tests/test_patent_lookup_builder.py,tracked,ok,include,include,tracked project f
 tests/test_patentsview_sources.py,tracked,ok,include,include,tracked project file
 tests/test_pregrant_extractor.py,tracked,ok,include,include,tracked project file
 tests/test_pregrant_sources.py,tracked,ok,include,include,tracked project file
-tests/test_referee_audit_helpers.py,tracked,ok,include,include,tracked project file
+tests/test_replication_audit_helpers.py,tracked,ok,include,include,tracked project file
 tests/test_size_heterogeneity.py,tracked,ok,include,include,tracked project file
 tests/test_validate_sec_source_policy.py,tracked,ok,include,include,tracked project file
 tests/test_validate_wrds_data.py,tracked,ok,include,include,tracked project file
+reports/replication_audit/package_surface_audit.csv, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
+reports/replication_audit/package_surface_audit.md, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
 .DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .pytest_cache/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .venv/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
@@ -522,6 +516,7 @@ outputs/reproduced/20260423_aiw_v3_2_test_25_exec_incentive_mismatch_main_v1/,!!
 outputs/reproduced/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 outputs/reproduced/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 outputs/reproduced/20260423_aiw_v3_2_test_32_market_reaction_in_issue_windows_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
+reports/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 scripts/__pycache__/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 src/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 src/ai_washing.egg-info/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive

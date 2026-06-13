@@ -14,4 +14,4 @@ The final classifier output reconciles to the expected v4.3 sentence count and c
 
 ## Action
 
-Treat short-acronym ambiguity as a known construct-validity limitation and future reviewer-labeled disambiguation layer, as a documented construct-validity limitation and future robustness layer.
+Treat short-acronym ambiguity as a documented construct-validity limitation and future reviewer-labeled disambiguation layer.

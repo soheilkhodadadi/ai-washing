@@ -2,13 +2,13 @@
 
 ## Verdict
 
-The replication audit found no stop-the-line reproduction or package-surface failure. It does surface honest construct-validity risks, especially short-acronym AI/ML ambiguity, that should be disclosed as limitations and future audit layers.
+The replication audit found no stop-the-line reproduction or package-surface failure. It does surface construct-validity risks, especially short-acronym AI/ML ambiguity, that should be documented as limitations and future robustness layers.
 
 ## Command Outcomes
 
 - `package_surface`: exit `0`
   `AI Washing package surface audit
-  - rows: 535
+  - rows: 530
   - stop_the_line: 0
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/replication_audit/package_surface_audit.csv
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/replication_audit/package_surface_audit.md`
@@ -51,7 +51,7 @@ The replication audit found no stop-the-line reproduction or package-surface fai
 
 ## Replication Audit Summary
 
-- Package hygiene: coauthor-facing notes are useful for Thomas/Kuntara but should be excluded from a future journal archive profile.
+- Package hygiene: coauthor-facing runbooks are appropriate for the private collaboration package, while informal phase notes and email drafts remain outside the shared repo.
 - Data integrity: row counts, lane coverage, duplicate keys, impossible values, and private-data availability are now checked mechanically.
 - Textual construct validity: short-acronym AI/ML hits are quantified and sampled as documented construct-validity evidence.
 - Patent construct validity: short-acronym-only keyword evidence and potential ML-as-unit contexts are quantified and sampled.
