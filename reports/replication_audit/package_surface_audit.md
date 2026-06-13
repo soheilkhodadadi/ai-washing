@@ -4,7 +4,7 @@ This report separates the coauthor workstation surface from a future journal rep
 
 ## Severity Counts
 
-- `info`: 323
+- `info`: 321
 - `ok`: 207
 
 ## Verdict

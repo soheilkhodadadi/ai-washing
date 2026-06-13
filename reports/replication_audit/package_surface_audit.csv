@@ -485,8 +485,6 @@ tests/test_replication_audit_helpers.py,tracked,ok,include,include,tracked proje
 tests/test_size_heterogeneity.py,tracked,ok,include,include,tracked project file
 tests/test_validate_sec_source_policy.py,tracked,ok,include,include,tracked project file
 tests/test_validate_wrds_data.py,tracked,ok,include,include,tracked project file
-reports/replication_audit/package_surface_audit.csv, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
-reports/replication_audit/package_surface_audit.md, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
 .DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .pytest_cache/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .venv/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
