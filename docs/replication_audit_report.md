@@ -8,7 +8,7 @@ The replication audit found no stop-the-line reproduction or package-surface fai
 
 - `package_surface`: exit `0`
   `AI Washing package surface audit
-  - rows: 530
+  - rows: 528
   - stop_the_line: 0
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/replication_audit/package_surface_audit.csv
   - wrote: /Users/soheilkhodadadi/DataWork/ai-washing/reports/replication_audit/package_surface_audit.md`
