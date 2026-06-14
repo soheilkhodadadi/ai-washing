@@ -30,6 +30,14 @@ make dashboard
 open outputs/dashboard/index.html
 ```
 
+Optional portfolio-safe one-click demo:
+
+```bash
+make portfolio-demo
+make portfolio-demo-check
+open outputs/portfolio_demo/index.html
+```
+
 Optional local app:
 
 ```bash
@@ -52,9 +60,10 @@ make extension-builder-hides
 3. `docs/panel_and_data_catalog.md`: what the cleaned panels, classifier outputs, patent files, and WRDS/market products are.
 4. `docs/construct_playbooks/`: how central constructs are built and safely updated.
 5. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
-6. `docs/docker_quickstart.md`: lowest-friction setup path.
-7. `docs/private_data_contract.md`: how to mount the private data room.
-8. `docs/coauthor_runbook.md`: complete first-day command sequence.
+6. `docs/portfolio_demo_deployment.md`: portfolio-safe static demo path.
+7. `docs/docker_quickstart.md`: lowest-friction setup path.
+8. `docs/private_data_contract.md`: how to mount the private data room.
+9. `docs/coauthor_runbook.md`: complete first-day command sequence.
 
 The full documentation map is `docs/index.md`.
 

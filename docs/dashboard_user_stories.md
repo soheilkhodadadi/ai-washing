@@ -35,6 +35,7 @@
 - As a portfolio reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
 - As a portfolio reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and client-facing analytics.
 - As a portfolio reviewer, I want a case-study page and screenshots that explain the reusable methodology without private research data.
+- As a nontechnical viewer, I want a one-click static page that opens locally or from a hosted link without installing Python, Docker, or Streamlit.
 
 ## Out Of Scope For Phase 9
 
@@ -43,3 +44,4 @@
 - Editing data, panels, scripts, or manifests from the app.
 - Displaying private row-level values.
 - Replacing the static dashboard, Make commands, or Docker workflow.
+- Treating the static portfolio demo as empirical evidence rather than as a presentation layer.

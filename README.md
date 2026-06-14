@@ -23,6 +23,7 @@ This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables
 - [docs/construct_playbooks/](docs/construct_playbooks/): concise guides for changing central constructs safely.
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
 - [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces, including table review and technical drill-down.
+- [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md): one-click static demo path for nonprivate portfolio or presentation review.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day commands and detailed validation path.
 
 ## Fastest Setup
@@ -76,6 +77,14 @@ Optional static dashboard:
 ```bash
 make dashboard
 open outputs/dashboard/index.html
+```
+
+Optional one-click portfolio demo:
+
+```bash
+make portfolio-demo
+make portfolio-demo-check
+open outputs/portfolio_demo/index.html
 ```
 
 Then run the table command:
@@ -147,7 +156,14 @@ Use **Portfolio Demo Mode** for external screenshots or capability walkthroughs.
 make dashboard-screenshots
 ```
 
-See [docs/dashboard_guide.md](docs/dashboard_guide.md).
+For an even simpler nontechnical view, generate the static portfolio landing page:
+
+```bash
+make portfolio-demo
+open outputs/portfolio_demo/index.html
+```
+
+See [docs/dashboard_guide.md](docs/dashboard_guide.md) and [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md).
 
 ## Documentation Map
 

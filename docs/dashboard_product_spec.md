@@ -16,6 +16,7 @@ The dashboard has three jobs:
 - **Supervisor / research client:** reviews the paper map, table meaning, figures, and extension outputs without needing to understand the repository internals.
 - **Journal data editor:** verifies that the package has reproducible scripts, documented data boundaries, and no hidden local-machine dependency.
 - **Portfolio reviewer:** sees a polished nonprivate demonstration of the project workflow and technical depth.
+- **Nontechnical external viewer:** opens a static one-click portfolio page without installing Python, Docker, or Streamlit.
 
 ## Dashboard Modes
 
@@ -26,6 +27,8 @@ Coauthor Mode is the default. It may show real manifest metadata, paper labels, 
 ### Demo Mode
 
 Demo Mode is portfolio-safe. It should emphasize the project narrative, dashboard capabilities, static summary metrics, nonprivate manifest metadata, and case-study screenshots. It should hide private-data-root instructions, disable command execution, and avoid copy-ready commands that imply access to private data.
+
+The separate static portfolio demo is the simplest public-facing surface. It is generated with `make portfolio-demo`, checked with `make portfolio-demo-check`, and can be opened as `outputs/portfolio_demo/index.html` or hosted later as a static site. It is presentation-only and does not replace the Streamlit coauthor workstation.
 
 ### Thomas-Facing Table Review
 
@@ -73,6 +76,7 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - **Command Center:** approved local Make targets, confirmation gates, environment summary, exit code, duration, and sanitized log tail.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
 - **Portfolio Demo Mode:** nonprivate, presentation-oriented case study of the workstation capability and reusable methodology.
+- **Static Portfolio Demo:** one-click HTML landing page for nontechnical or public portfolio review, generated from manifests and safe narrative content.
 
 ## Success Criteria
 
@@ -84,4 +88,4 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - The dashboard works through both native Streamlit and Docker.
 - The app remains read-only outside Command Center and never exposes private data values.
 - Command Center can run approved local Make targets, but not arbitrary shell commands or full reproduction/audit targets.
-- Portfolio Demo Mode can be shown in screenshots or a portfolio without private data roots, row-level research data, command logs, or local machine paths.
+- Portfolio Demo Mode and the static portfolio demo can be shown in screenshots or a portfolio without private data roots, row-level research data, command logs, or local machine paths.

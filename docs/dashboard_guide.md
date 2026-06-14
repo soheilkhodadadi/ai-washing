@@ -113,6 +113,16 @@ Then open the local URL printed by Streamlit. If private data are mounted, the a
 
 Use **Portfolio Demo Mode** when showing the dashboard outside the private research team. It presents a nonprivate case study of the workstation: the research problem, manifest-first workflow, evidence surfaces, reusable methodology, and the information hidden in Demo Mode.
 
+For a simpler one-click static presentation that does not require Streamlit, generate the portfolio demo:
+
+```bash
+make portfolio-demo
+make portfolio-demo-check
+open outputs/portfolio_demo/index.html
+```
+
+This page is generated from manifests, executes no commands, and is designed for nontechnical or portfolio review. See `docs/portfolio_demo_deployment.md`.
+
 To prepare a local screenshot checklist, run:
 
 ```bash

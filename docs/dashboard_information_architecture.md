@@ -7,6 +7,7 @@ The app uses Streamlit multipage navigation with grouped pages.
 - **Start**
   - Home / Project Overview
   - Portfolio Demo Mode
+  - Static Portfolio Demo (`outputs/portfolio_demo/index.html`)
 - **Paper Review**
   - Paper Results
   - Table Explorer
@@ -44,6 +45,7 @@ The sidebar should contain:
 | Command Center | trusted local coauthor | run approved Make targets safely | dashboard command registry and local environment | fixed command, confirmation gate, duration, exit code, sanitized log tail, ignored raw log path | allowlisted Make targets only; disabled in Demo Mode |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
 | Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests and static portfolio narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
+| Static Portfolio Demo | nontechnical external reviewer | open a one-click public-safe landing page | manifests, reproduction-status ledger, and safe narrative content | static HTML case study, metrics, showcase tables, evidence spine, extension roadmap | no private paths, no row-level values, no command execution |
 
 ## Manifest Mapping
 
@@ -54,6 +56,7 @@ The sidebar should contain:
 - `manifests/extension_workbench.csv` feeds Extension Lab.
 - Construct pages link to `docs/construct_playbooks/` and use registered construct IDs.
 - Reproduction pages link to existing status documents and Make targets rather than duplicating table results.
+- `outputs/portfolio_demo/index.html` is generated from manifests and safe narrative content for portfolio or nontechnical review.
 
 ## State Model
 
