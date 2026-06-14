@@ -1,11 +1,11 @@
 field_name,required,preferred_type,description,accepted_identifiers,notes
-firm_id,yes,string,Stable internal firm identifier used after linking to the annual panel.,gvkey; permno; cik; cusip,At least one accepted identifier must be present before linking.
+firm_id,yes,string,Stable internal firm identifier used after linking to the annual panel.,"gvkey; permno; cik; cusip",At least one accepted identifier must be present before linking.
 gvkey,preferred,string,Compustat firm identifier for panel linkage.,gvkey,Use character format to preserve leading zeros where relevant.
 permno,preferred,integer,CRSP security identifier for market-data linkage.,permno,Useful when event returns or share-growth validation are required.
 cik,preferred,string,SEC Central Index Key for filing-level linkage.,cik,Normalize leading zeros separately from display format.
 issue_announcement_date,yes,date,Date when the equity offering or financing event was announced.,YYYY-MM-DD,Use announcement date for pre-event disclosure timing when available.
 issue_completion_date,no,date,Date when the transaction closed or was completed.,YYYY-MM-DD,Keep separate from announcement date to avoid look-ahead timing.
-offering_type,yes,string,Offering category such as SEO, ATM, private placement, convertible, or mixed.,controlled vocabulary,Use a controlled vocabulary before manuscript tables.
+offering_type,yes,string,"Offering category such as SEO, ATM, private placement, convertible, or mixed.",controlled vocabulary,Use a controlled vocabulary before manuscript tables.
 gross_proceeds_usd,preferred,float,Gross proceeds from the offering in U.S. dollars.,numeric,Record currency conversion policy if non-USD deals are included.
 net_proceeds_usd,no,float,Net proceeds after fees when available.,numeric,Optional but useful for issuance-cost analysis.
 shares_offered,no,float,Number of shares offered in the transaction.,numeric,Use split-adjusted values if combined with CRSP prices.
@@ -13,6 +13,6 @@ offer_price,no,float,Offer price per share.,numeric,Required for offer-discount 
 pre_announcement_price,no,float,Reference stock price before announcement.,numeric,Define the exact trading day and price source.
 offer_discount,no,float,Offer discount relative to the pre-announcement price.,numeric,Can be computed after validating price timing.
 underwriter,no,string,Lead underwriter or placement agent.,text,Useful for capital-market quality controls.
-completion_status,yes,string,Completed, withdrawn, amended, or pending.,controlled vocabulary,Exclude or separately flag withdrawn offerings.
+completion_status,yes,string,"Completed, withdrawn, amended, or pending.",controlled vocabulary,Exclude or separately flag withdrawn offerings.
 source_file,yes,string,Original data source or vendor file name.,path or vendor id,Needed for auditability and future journal archive.
 source_record_id,no,string,Vendor/event identifier if available.,text,Supports duplicate detection.

@@ -16,7 +16,7 @@ DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR)
 endif
 
 .PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit package-surface-audit-refresh data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness table-info table-script data-products locate-data construct-info
-.PHONY: workbench-index show-table export-table-workbench extension-info extension-builder-hides extension-builder-hides-ai-talk-only extension-washing-pays-proxy
+.PHONY: workbench-index show-table export-table-workbench extension-info extension-builder-hides extension-builder-hides-ai-talk-only extension-washing-pays-proxy check-seo-schema
 .PHONY: dashboard dashboard-check dashboard-app-install dashboard-app docker-dashboard-app
 
 doctor:
@@ -124,6 +124,10 @@ extension-builder-hides-ai-talk-only:
 
 extension-washing-pays-proxy:
 	PYTHONPATH=src $(PYTHON) scripts/workbench.py export-extension --extension washing_pays_proxy --rerun
+
+check-seo-schema:
+	@test -n "$(SEO_FILE)" || (echo "Set SEO_FILE=/path/to/seo_offering_terms.csv"; exit 2)
+	@$(PYTHON) scripts/check_seo_offering_terms_schema.py --file "$(SEO_FILE)"
 
 validate-sec-source:
 	$(PYTHON) scripts/validate_sec_source_policy.py

@@ -49,7 +49,7 @@ make coauthor-preflight
 
 ## Private Data Boundary
 
-Git tracks code, documentation, manifests, fixtures, and frozen v4.3 manuscript assets. It does not track private or licensed data, WRDS/CRSP/Compustat extracts, full raw SEC corpora, derived panels, credentials, local environments, caches, or generated outputs.
+Git tracks code, documentation, manifests, fixtures, and frozen v4.3 manuscript assets. It does not track private or licensed data, WRDS/CRSP/Compustat extracts, full raw SEC corpora, derived panels, access details, local environments, caches, or generated outputs.
 
 Set the private data root before running data-dependent checks:
 
@@ -110,9 +110,10 @@ make extension-builder-hides
 make extension-builder-hides-ai-talk-only
 make extension-info EXTENSION=washing_pays_proxy
 make extension-washing-pays-proxy
+make check-seo-schema SEO_FILE=/path/to/seo_offering_terms.csv
 ```
 
-The washing-pays command is a proxy screen based on Test 30's share-growth logic. The stronger SEO/offering-terms extension should use [templates/seo_offering_terms_schema.csv](templates/seo_offering_terms_schema.csv) before any manuscript claim is promoted.
+The washing-pays command is a proxy screen based on Test 30's share-growth logic. The stronger SEO/offering-terms extension should use [templates/seo_offering_terms_schema.csv](templates/seo_offering_terms_schema.csv) or `make check-seo-schema` before any manuscript claim is promoted. The Streamlit Extension Lab can also preview generated aggregate extension outputs and run the schema-only checker without saving uploaded files.
 
 ## Dashboard Interfaces
 

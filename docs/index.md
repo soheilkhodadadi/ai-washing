@@ -75,6 +75,7 @@ This index is organized by coauthor task. Internal development reports and email
 - `extensions/washing_pays_proxy_first_pass.md`: operational proxy screen based on Test 30 share-growth logic.
 - `extensions/washing_pays_data_requirements.md`: data requirements for the stronger financing-terms extension.
 - `../templates/seo_offering_terms_schema.csv`: template for future SEO/offering-terms data.
+- Schema helper: `make check-seo-schema SEO_FILE=/path/to/seo_offering_terms.csv`.
 
 ## Limitations And Archive Policy
 

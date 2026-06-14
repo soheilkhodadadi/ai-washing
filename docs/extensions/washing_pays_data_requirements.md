@@ -45,6 +45,14 @@ $AIW_DATA_ROOT/external/seo_offering_terms/
 
 Use `templates/seo_offering_terms_schema.csv` as the first schema checklist before staging or linking a new offering-level dataset.
 
+Schema-only check:
+
+```bash
+make check-seo-schema SEO_FILE=/path/to/seo_offering_terms.csv
+```
+
+The same check is available in the Streamlit **Extension Lab** as an in-memory upload. It reports column coverage and row count only; it does not save uploaded files or display row-level values.
+
 Minimum fields:
 
 | Field | Purpose |

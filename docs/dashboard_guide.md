@@ -56,7 +56,7 @@ For technical continuation work, open the same **Table Explorer** page and switc
 - construct playbooks and extension lanes;
 - copy-ready commands for table export, rerun, data location, and registered extensions.
 
-If `AIW_DATA_ROOT` is set before launching the app, the drill-down can report file existence, row counts, file counts, and column names for private data products. It does not display row-level private values, credentials, or old local workspace paths.
+If `AIW_DATA_ROOT` is set before launching the app, the drill-down can report file existence, row counts, file counts, and column names for private data products. It does not display row-level private values, access details, or old local workspace paths.
 
 ## Inspect Data Quality And Construct Evidence
 
@@ -68,6 +68,13 @@ Use **Data Room** when the question is, “where is this data product and what i
 - metadata-only schema/status checks from `AIW_DATA_ROOT`, limited to existence, file count, row count, column names, and file type.
 
 Use **Construct Audits** when the question is, “how confident are we in this construct?” The page links each construct to its playbook, relevant data products, audit checks, and copy-ready validation commands. The browser still does not display private row-level values or execute commands.
+
+
+## Inspect Extension Lanes In The App
+
+Open **Extension Lab** to review follow-on tests without mixing them into frozen v4.3 evidence. The page shows Builder Hides, Builder Hides AI-talk-only, Washing Pays Proxy, and the future SEO/offering-terms placeholder with status badges, purpose, inputs, generated aggregate outputs where present, interpretation limits, and copy-ready commands.
+
+Every lane is marked as exploratory, proxy, or future-data-required, and as not manuscript-ready unless a later release explicitly promotes it. The strong washing-pays placeholder includes a schema-only CSV checker for future SEO/offering-terms data. The checker reports column coverage and row count only; it does not save uploaded files or display row values.
 
 ## Optional Streamlit App
 

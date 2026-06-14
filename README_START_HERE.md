@@ -123,6 +123,7 @@ make extension-builder-hides
 make extension-builder-hides-ai-talk-only
 make extension-info EXTENSION=washing_pays_proxy
 make extension-washing-pays-proxy
+make check-seo-schema SEO_FILE=/path/to/seo_offering_terms.csv
 ```
 
 Use `docs/extensions/README.md` and `manifests/extension_workbench.csv` to see the purpose, data needs, and interpretation limits for each lane. The washing-pays command is a share-growth proxy screen; the stronger SEO/offering-terms version needs new data following `templates/seo_offering_terms_schema.csv`.
@@ -137,7 +138,7 @@ Use `docs/extensions/README.md` and `manifests/extension_workbench.csv` to see t
 
 ## What Stays Outside Git
 
-Private, licensed, large, or machine-local data are deliberately excluded from Git. This includes raw SEC/WRDS data, full derived panels, label/evaluation parquet files, archives, generated outputs, credentials, and local environments.
+Private, licensed, large, or machine-local data are deliberately excluded from Git. This includes raw SEC/WRDS data, full derived panels, label/evaluation parquet files, archives, generated outputs, access details, and local environments.
 
 Use an external private data root:
 

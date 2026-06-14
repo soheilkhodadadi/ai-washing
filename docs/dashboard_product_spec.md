@@ -37,7 +37,12 @@ The Table Explorer should also support a technical continuation path. A coauthor
 
 ### Data Product And Construct Audit Browser
 
-The Data Room and Construct Audits pages should support a data-quality cockpit view. A coauthor can inspect data product cards, coverage lanes, keys, logical private-data paths, validation status, classifier evidence, patent-match evidence, textual acronym-risk status, and WRDS/CRSP/Compustat lane checks. Metadata previews may report file existence, file count, size, row count, and column names from `AIW_DATA_ROOT`; they must not display private row-level values, sentence text, patent titles, abstracts, credentials, or local absolute paths.
+The Data Room and Construct Audits pages should support a data-quality cockpit view. A coauthor can inspect data product cards, coverage lanes, keys, logical private-data paths, validation status, classifier evidence, patent-match evidence, textual acronym-risk status, and WRDS/CRSP/Compustat lane checks. Metadata previews may report file existence, file count, size, row count, and column names from `AIW_DATA_ROOT`; they must not display private row-level values, sentence text, patent titles, abstracts, access details, or local absolute paths.
+
+
+### Extension Lab And Future Tests
+
+The Extension Lab is a follow-on research cockpit, not a frozen-results page. It should make Builder Hides, Builder Hides AI-talk-only, Washing Pays Proxy, and the future SEO/offering-terms version tangible while keeping all lanes clearly labeled as exploratory or future-data-required. Generated extension outputs may be previewed when they are aggregate repo-contained files under `outputs/extensions/`; private source rows and local paths must remain hidden. The strong washing-pays version may validate an uploaded CSV schema in memory, but it must not store uploaded data or display row values.
 
 ### Command Execution Policy
 
@@ -61,7 +66,7 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 - **Table Explorer:** paper-label table review with an Open First panel, safe CSV preview, artifact downloads, technical drill-down, source schema/status metadata, and export/rerun commands.
 - **Data Room:** data product catalog, logical paths, coverage, keys, validation status, classifier/patent/WRDS evidence panels, and private-data boundary.
 - **Construct Audits:** construct playbook index, validation/audit orientation, acronym-risk status, patent-match confidence, and WRDS lane checks.
-- **Extension Lab:** registered extension lanes, status, interpretation limits, and commands.
+- **Extension Lab:** registered follow-on tests, maturity badges, generated aggregate output previews, interpretation limits, copy-ready commands, and schema-only checks for future SEO/offering-terms data.
 - **Reproduction Status:** validation posture, table/figure status links, and audit commands.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
 - **Portfolio Demo Mode:** nonprivate, presentation-oriented view of the workstation capability.

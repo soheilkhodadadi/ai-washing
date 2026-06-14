@@ -23,6 +23,18 @@ from services.audit_data import (  # noqa: E402
     report_inventory,
     wrds_evidence_panel,
 )
+from services.extension_outputs import (  # noqa: E402
+    HIDDEN_VALUE,
+    check_seo_schema,
+    extension_csv_preview,
+    extension_json_preview,
+    extension_markdown_preview,
+    extension_output_bundle,
+    safe_extension_output_dir,
+    safe_schema_template,
+    schema_template_fields,
+    status_badges,
+)
 from services.table_artifacts import (  # noqa: E402
     REFERENCE_STATUS,
     build_review_packet,
@@ -67,10 +79,12 @@ def test_dashboard_manifests_load_from_canonical_contract() -> None:
     data = load_dashboard_data()
     assert len(data.tables) == 26
     assert len(data.data_products) >= 10
-    assert len(data.extensions) >= 3
+    assert len(data.extensions) >= 4
     assert {"asset_id", "paper_label", "script_module", "make_command"} <= set(data.tables.columns)
     assert {"product_id", "logical_private_path", "coverage"} <= set(data.data_products.columns)
-    assert {"extension_id", "make_command", "interpretation_limits"} <= set(data.extensions.columns)
+    assert {"extension_id", "make_command", "interpretation_limits", "maturity_status", "manuscript_status"} <= set(
+        data.extensions.columns
+    )
 
 
 def test_manifest_text_used_by_dashboard_is_public_safe() -> None:
@@ -259,6 +273,101 @@ def test_wrds_and_construct_evidence_map_to_expected_surfaces() -> None:
     assert wrds.status == "validated"
     assert patent_construct.title == "Patent Match Evidence"
     assert disclosure_construct.title == "Classifier Evidence"
+
+
+def test_extension_manifest_registers_future_seo_placeholder() -> None:
+    data = load_dashboard_data()
+    extension = data.extensions.loc[data.extensions["extension_id"] == "washing_pays_strong_seo"].iloc[0]
+
+    assert extension["maturity_status"] == "future_data_required"
+    assert extension["manuscript_status"] == "not_manuscript_ready"
+    assert safe_schema_template(extension) is not None
+    assert "Not manuscript-ready" in status_badges(extension)
+
+
+def test_extension_output_bundle_discovers_generated_aggregate_files() -> None:
+    data = load_dashboard_data()
+    extension = data.extensions.loc[data.extensions["extension_id"] == "builder_hides"].iloc[0]
+    bundle = extension_output_bundle(extension)
+    names = {file.path.name for file in bundle.files}
+
+    assert bundle.exists
+    assert bundle.rel_output_dir == "outputs/extensions/builder_hides_right_tail"
+    assert "builder_hides_summary.json" in names
+    assert "builder_hides_interpretation.md" in names
+    assert "builder_hides_descriptive.csv" in names
+
+
+def test_extension_output_bundle_handles_missing_placeholder_outputs() -> None:
+    data = load_dashboard_data()
+    extension = data.extensions.loc[data.extensions["extension_id"] == "washing_pays_strong_seo"].iloc[0]
+    bundle = extension_output_bundle(extension)
+
+    assert not bundle.exists
+    assert bundle.files == ()
+    assert "not present" in bundle.note.lower()
+
+
+def test_extension_output_path_safety_rejects_private_or_old_local_paths() -> None:
+    assert safe_extension_output_dir({"output_dir": "outputs/extensions/example"}) is not None
+    assert safe_extension_output_dir({"output_dir": "/Users/soheilkhodadadi/DataWork/ai-washing-private-data/x"}) is None
+    assert safe_extension_output_dir({"output_dir": "DataWork/semantic-patterns/outputs/extensions/x"}) is None
+    assert safe_extension_output_dir({"output_dir": "../outputs/extensions/x"}) is None
+
+
+def test_extension_json_preview_hides_private_paths() -> None:
+    data = load_dashboard_data()
+    extension = data.extensions.loc[data.extensions["extension_id"] == "builder_hides"].iloc[0]
+    bundle = extension_output_bundle(extension)
+    summary = next(file for file in bundle.files if file.path.name == "builder_hides_summary.json")
+    payload = extension_json_preview(summary)
+
+    assert payload["annual_panel"] == HIDDEN_VALUE
+    assert "/Users/soheilkhodadadi" not in str(payload)
+    assert "ai-washing-private-data" not in str(payload)
+
+
+def test_extension_csv_and_markdown_previews_are_safe_and_capped() -> None:
+    data = load_dashboard_data()
+    extension = data.extensions.loc[data.extensions["extension_id"] == "builder_hides"].iloc[0]
+    bundle = extension_output_bundle(extension)
+    csv_file = next(file for file in bundle.files if file.path.name == "builder_hides_descriptive.csv")
+    md_file = next(file for file in bundle.files if file.path.name == "builder_hides_interpretation.md")
+
+    preview = extension_csv_preview(csv_file, max_rows=2)
+    markdown = extension_markdown_preview(md_file)
+
+    assert len(preview) <= 2
+    assert not preview.empty
+    assert "Builder-Hides" in markdown
+    assert "/Users/soheilkhodadadi" not in markdown
+
+
+def test_seo_schema_checker_validates_headers_without_values() -> None:
+    source = (
+        "firm_id,issue_announcement_date,offering_type,completion_status,source_file\n"
+        "secret_firm,2026-01-05,SEO,Completed,private_vendor.csv\n"
+    ).encode()
+    result = check_seo_schema(source)
+    payload = result.summary_rows().astype(str).to_csv(index=False)
+
+    assert result.is_valid
+    assert result.row_count == 1
+    assert result.missing_required == ()
+    assert "secret_firm" not in payload
+    assert "private_vendor.csv" not in payload
+
+
+def test_seo_schema_checker_reports_missing_required_extra_and_parse_errors() -> None:
+    missing = check_seo_schema(b"gvkey,extra_field\n001000,value\n")
+    malformed = check_seo_schema(b"")
+    fields = schema_template_fields()
+
+    assert not missing.is_valid
+    assert "issue_announcement_date" in missing.missing_required
+    assert "extra_field" in missing.extra_columns
+    assert malformed.status == "parse_error"
+    assert "field_name" in fields.columns
 
 
 def test_product_status_rows_are_metadata_only(monkeypatch, tmp_path: Path) -> None:

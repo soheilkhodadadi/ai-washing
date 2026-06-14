@@ -37,7 +37,7 @@ The sidebar should contain:
 | Table Explorer | supervisor/client and technical coauthor | review one table by paper label, then inspect technical continuation details | paper table workbench, table crosswalk, data catalog, constructs, extensions, repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, source script, data products, metadata-only schema/status, construct links, extension relevance, copy-ready commands | preview only repo-contained artifacts; show private-data metadata only; copy commands only |
 | Data Room | technical coauthor / data editor | locate data products and inspect audit status | data product catalog, source manifests, audit CSVs | data product cards, evidence panels, coverage, keys, validation status, metadata-only schema checks, locate-data commands | hide private path commands in demo mode; never display row-level values |
 | Construct Audits | coauthor / data editor | inspect construct definitions, confidence, and limitations | construct playbooks, audit CSVs, data catalog | playbook links, construct commands, classifier/patent/WRDS evidence, acronym-risk status | summarize audit counts only; no private row examples |
-| Extension Lab | coauthor | inspect extension lanes | extension workbench | status, commands, interpretation limits | label extensions as exploratory unless promoted |
+| Extension Lab | coauthor | inspect extension lanes and future data readiness | extension workbench, ignored aggregate outputs, SEO/offering schema template | maturity badges, generated output viewer, copy-ready commands, interpretation limits, and schema-only checks | label extensions as not manuscript-ready unless promoted; never display private row-level values |
 | Reproduction Status | data editor | verify reproducibility posture | status docs and manifests | audit commands and status links | no command execution |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
 | Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests only | capability summary and demo-safe story | hide private-data-root instructions |
@@ -99,3 +99,8 @@ The data-quality cockpit starts from **Data Room** or **Construct Audits**:
 ## Future Command Execution Boundary
 
 A later command-execution phase may add an allowlisted runner for safe Make targets. That future runner must show the command, require confirmation, write logs to ignored outputs, and disable itself in Demo Mode. Phase 9A/B deliberately stops before this boundary.
+
+
+## Extension Lab Safety Boundary
+
+Extension Lab reads `outputs/extensions/` only for repo-contained aggregate artifacts. It may render summary JSON, Markdown notes, and capped CSV previews after path-safety checks. It does not read `$AIW_DATA_ROOT`, does not execute Make commands, and does not treat extension outputs as manuscript evidence. The SEO/offering-terms checker validates headers and row count only; uploaded row values are not displayed or stored.
