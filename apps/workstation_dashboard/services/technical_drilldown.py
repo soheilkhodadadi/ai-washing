@@ -84,6 +84,23 @@ def load_crosswalk() -> pd.DataFrame:
     return load_manifest("table_to_script_crosswalk.csv")
 
 
+def load_reproduction_status() -> pd.DataFrame:
+    path = ROOT / "docs" / "full_reproduction_status.csv"
+    if not path.is_file():
+        return pd.DataFrame()
+    return pd.read_csv(path).fillna("")
+
+
+def reproduction_status_for_asset(asset_id: str, status_frame: pd.DataFrame | None = None) -> pd.Series | None:
+    df = status_frame if status_frame is not None else load_reproduction_status()
+    if df.empty or "table_id" not in df.columns:
+        return None
+    match = df.loc[df["table_id"].astype(str).str.lower() == asset_id.lower()]
+    if match.empty:
+        return None
+    return match.iloc[0]
+
+
 def source_script_for_module(module: object) -> SourceScript:
     module_text = str(module or "").strip()
     if not module_text.startswith("semantic_ai_washing."):

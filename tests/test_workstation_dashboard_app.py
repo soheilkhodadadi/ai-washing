@@ -63,6 +63,7 @@ from services.technical_drilldown import (  # noqa: E402
     linked_constructs,
     linked_data_products,
     linked_extensions,
+    reproduction_status_for_asset,
     source_script_for_module,
 )
 
@@ -165,6 +166,12 @@ def test_dashboard_command_registry_is_allowlisted_and_fixed_make_only() -> None
         assert command.display_command.startswith("make ")
         assert "\n" not in command.display_command
         assert ";" not in command.display_command
+
+
+def test_dashboard_command_registry_docs_exist() -> None:
+    for command in load_command_registry():
+        if command.docs:
+            assert (ROOT / command.docs).is_file(), command.docs
 
 
 def test_dashboard_command_runner_rejects_unknown_or_unconfirmed_commands(tmp_path: Path) -> None:
@@ -341,6 +348,15 @@ def test_t30_technical_drilldown_resolves_script_data_construct_and_extension() 
     assert "annual_nlp_patent_panel" in set(products["product_id"])
     assert "capital_raising" in {construct["id"] for construct in constructs}
     assert "washing_pays_proxy" in set(extensions["extension_id"])
+
+
+def test_t30_reproduction_status_distinguishes_numeric_and_tex_delta() -> None:
+    status = reproduction_status_for_asset("T30")
+
+    assert status is not None
+    assert status["reproduction_status"] == "csv_exact_match"
+    assert status["csv_status"] == "exact_match"
+    assert status["tex_status"] == "content_delta"
 
 
 def test_every_table_has_drilldown_commands() -> None:

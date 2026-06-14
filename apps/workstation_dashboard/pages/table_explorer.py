@@ -24,6 +24,7 @@ from services.technical_drilldown import (
     linked_constructs,
     linked_data_products,
     linked_extensions,
+    reproduction_status_for_asset,
     source_script_for_module,
 )
 from state import DEMO_MODE
@@ -218,6 +219,7 @@ def _render_data_product_status(product: pd.Series, mode: str) -> None:
 def _render_technical_drilldown(row: pd.Series, data: DashboardData, mode: str) -> None:
     asset_id = str(row["asset_id"])
     crosswalk = crosswalk_for_asset(asset_id)
+    reproduction = reproduction_status_for_asset(asset_id)
     script = source_script_for_module(row["script_module"])
     products = linked_data_products(row, data.data_products)
     constructs = linked_constructs(row)
@@ -237,7 +239,27 @@ def _render_technical_drilldown(row: pd.Series, data: DashboardData, mode: str) 
         _render_status_value("Paper source", row["paper_tex_file"])
     with summary_right:
         st.markdown("#### Reproduction status")
-        if crosswalk is not None:
+        if reproduction is not None:
+            badges(
+                [
+                    f"CSV: {reproduction.get('csv_status', '')}",
+                    f"TeX: {reproduction.get('tex_status', '')}",
+                    str(reproduction.get("reproduction_status", "")),
+                ]
+            )
+            if str(reproduction.get("csv_status", "")) == "exact_match":
+                st.success("Numerical CSV output exactly matches the frozen v4.3 reference.")
+            elif str(reproduction.get("csv_status", "")):
+                st.warning(f"CSV comparison status: {reproduction.get('csv_status')}")
+            tex_status = str(reproduction.get("tex_status", "") or "")
+            if tex_status and tex_status != "exact_match":
+                st.info(
+                    "The TeX/manuscript wrapper differs from the frozen reference. "
+                    "Use the CSV status as the numerical reproduction gate."
+                )
+            _render_status_value("Run ID", reproduction.get("run_id", ""))
+            _render_status_value("Status notes", reproduction.get("notes", ""))
+        elif crosswalk is not None:
             badges([crosswalk.get("match_status", ""), crosswalk.get("priority", ""), crosswalk.get("test_id", "")])
             _render_status_value("Run ID", crosswalk.get("run_id", ""))
             _render_status_value("Match notes", crosswalk.get("match_notes", ""))
