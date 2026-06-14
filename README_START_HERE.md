@@ -108,6 +108,8 @@ Example rerun:
 AIW_DATA_ROOT=/path/to/ai-washing-private-data make TABLE_ID=T30 reproduce-table
 ```
 
+For a richer local interface, run `make dashboard-app` and open **Table Explorer**. The **Review** tab is optimized for table inspection; the **Technical Drill-Down** tab maps a selected table to its source script, data products, metadata-only schema/status checks, construct playbooks, and extension commands.
+
 If the result changes numerically, keep the original v4.3 output as the reference and document whether the change is intended for a future release.
 
 ## Run A First Extension

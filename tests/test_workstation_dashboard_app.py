@@ -20,6 +20,15 @@ from services.table_artifacts import (  # noqa: E402
     table_artifacts,
     table_display_label,
 )
+from services.technical_drilldown import (  # noqa: E402
+    command_set,
+    crosswalk_for_asset,
+    data_product_path_statuses,
+    linked_constructs,
+    linked_data_products,
+    linked_extensions,
+    source_script_for_module,
+)
 
 
 def test_dashboard_page_specs_are_complete() -> None:
@@ -115,3 +124,64 @@ def test_review_packet_contains_only_safe_artifacts() -> None:
     assert "OPEN_FIRST.md" in names
     assert "/Users/soheilkhodadadi" not in text
     assert "DataWork/semantic-patterns" not in text
+
+
+def test_t30_technical_drilldown_resolves_script_data_construct_and_extension() -> None:
+    data = load_dashboard_data()
+    row = data.tables.loc[data.tables["asset_id"] == "T30"].iloc[0]
+    crosswalk = crosswalk_for_asset("T30")
+    script = source_script_for_module(row["script_module"])
+    products = linked_data_products(row, data.data_products)
+    constructs = linked_constructs(row)
+    extensions = linked_extensions(row, data.extensions)
+
+    assert crosswalk is not None
+    assert crosswalk["test_id"] == "test_30_capital_raising_timing"
+    assert script.exists
+    assert script.rel_path.endswith("test_30_capital_raising_timing.py")
+    assert "annual_nlp_patent_panel" in set(products["product_id"])
+    assert "capital_raising" in {construct["id"] for construct in constructs}
+    assert "washing_pays_proxy" in set(extensions["extension_id"])
+
+
+def test_every_table_has_drilldown_commands() -> None:
+    data = load_dashboard_data()
+    for _, row in data.tables.iterrows():
+        products = linked_data_products(row, data.data_products)
+        extensions = linked_extensions(row, data.extensions)
+        commands = command_set(row, products, extensions)
+        labels = {item["label"] for item in commands}
+        assert "Export table bundle" in labels
+        assert "Rerun table" in labels
+        assert "Show owning script" in labels
+        assert all(item["command"].strip() for item in commands)
+
+
+def test_data_product_status_reports_metadata_only(monkeypatch, tmp_path: Path) -> None:
+    import duckdb
+
+    private_root = tmp_path / "private"
+    panel_path = private_root / "processed" / "panel" / "example.parquet"
+    panel_path.parent.mkdir(parents=True)
+    import pandas as pd
+
+    pd.DataFrame({"cik": ["0001", "0002"], "secret_value": ["alpha", "beta"]}).to_parquet(panel_path)
+    monkeypatch.setenv("AIW_DATA_ROOT", str(private_root))
+    status = data_product_path_statuses({"logical_private_path": "data/processed/panel/example.parquet"})[0]
+    payload = status.to_public_dict()
+
+    assert duckdb.__version__
+    assert status.status == "present"
+    assert status.kind == "file"
+    assert status.row_count == 2
+    assert "secret_value" in status.columns
+    assert "alpha" not in str(payload)
+    assert "beta" not in str(payload)
+    assert str(tmp_path) not in payload["display_path"]
+
+
+def test_data_product_status_rejects_unsafe_paths(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("AIW_DATA_ROOT", str(tmp_path))
+    statuses = data_product_path_statuses({"logical_private_path": "/tmp/private.csv; ../outside.csv"})
+    assert [status.status for status in statuses] == ["not_resolved", "not_resolved"]
+    assert all(status.kind == "reference" for status in statuses)

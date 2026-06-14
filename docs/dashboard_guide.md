@@ -46,6 +46,18 @@ Main Table 7 - Capital-raising timing and low-credibility AI disclosure
 
 The page shows an **Open First** panel, safe CSV preview, available PNG/PDF/DOCX/CSV/TeX/notes artifacts, and a downloadable table-review packet. The browser does not rerun the table or inspect private panels; it only reads repo-contained review artifacts.
 
+## Inspect A Table Technically
+
+For technical continuation work, open the same **Table Explorer** page and switch to **Technical Drill-Down**. This tab maps the selected table to:
+
+- the owning Python module and repo-relative source file;
+- the table-to-script crosswalk status and notes;
+- candidate data products, keys, coverage, overwrite rules, and metadata-only schema/status checks;
+- construct playbooks and extension lanes;
+- copy-ready commands for table export, rerun, data location, and registered extensions.
+
+If `AIW_DATA_ROOT` is set before launching the app, the drill-down can report file existence, row counts, file counts, and column names for private data products. It does not display row-level private values, credentials, or old local workspace paths.
+
 ## Optional Streamlit App
 
 The Streamlit app is an optional richer interface for coauthor demonstrations or portfolio presentation. It reads the same manifests as the static dashboard.

@@ -34,7 +34,7 @@ The sidebar should contain:
 | --- | --- | --- | --- | --- | --- |
 | Home / Project Overview | all users | understand the project and first actions | table, data, extension manifests | metrics, paper story, first commands | no private data inspection |
 | Paper Results | supervisor/client | review tables and figures in paper order | paper table workbench | paper sections, result cards, bundle commands | do not imply exploratory outputs are frozen evidence |
-| Table Explorer | supervisor/client and technical coauthor | review one table by paper label, then inspect script details if needed | paper table workbench and repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, script, command, data products, safe modifications | preview only repo-contained artifacts; copy commands only |
+| Table Explorer | supervisor/client and technical coauthor | review one table by paper label, then inspect technical continuation details | paper table workbench, table crosswalk, data catalog, constructs, extensions, repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, source script, data products, metadata-only schema/status, construct links, extension relevance, copy-ready commands | preview only repo-contained artifacts; show private-data metadata only; copy commands only |
 | Data Room | technical coauthor / data editor | locate data products and boundaries | data product catalog | coverage, keys, logical paths, locate-data commands | hide private path commands in demo mode |
 | Construct Audits | coauthor / data editor | inspect construct definitions and limitations | construct playbooks | playbook links, construct commands, audit orientation | no private row examples |
 | Extension Lab | coauthor | inspect extension lanes | extension workbench | status, commands, interpretation limits | label extensions as exploratory unless promoted |
@@ -73,6 +73,17 @@ The nontechnical review flow starts from paper labels rather than internal asset
 3. Read the **Open First** panel for the empirical question, relevance, canonical status, and first file to inspect.
 4. Use the artifact sections to preview CSV evidence, view PNGs, and download DOCX/PDF/CSV/TeX/notes.
 5. Use the technical details and copy-ready commands only if a rerun or modification is needed.
+
+## Technical Drill-Down Flow
+
+The technical coauthor flow starts from the same table selection but opens the **Technical Drill-Down** tab:
+
+1. Select a paper table or figure by paper label.
+2. Confirm the table-to-script crosswalk status and owning source module.
+3. Inspect candidate data products, coverage, keys, overwrite rules, and metadata-only schema/status checks.
+4. Open construct playbook links for variables that might be changed.
+5. Review extension relevance and copy the relevant Make commands.
+6. Run commands manually in a terminal; the browser does not execute them.
 
 ## Future Command Execution Boundary
 

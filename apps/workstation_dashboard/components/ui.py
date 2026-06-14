@@ -40,12 +40,23 @@ def card(title: str, body: str, *, meta: Iterable[object] = ()) -> None:
     )
 
 
-def command_box(command: str, *, mode: str, allow_demo: bool = True, note: str = "") -> None:
+def command_box(
+    command: str,
+    *,
+    mode: str,
+    allow_demo: bool = True,
+    note: str = "",
+    label: str = "",
+    tags: Iterable[object] = (),
+) -> None:
     if not command:
         return
     if mode == DEMO_MODE and not allow_demo:
         st.info("Private-data command hidden in Demo Mode. Switch to Coauthor Mode when using the private data room.")
         return
+    if label:
+        st.markdown(f"**{label}**")
+    badges(tags)
     if note:
         st.caption(note)
     st.code(command, language="bash")

@@ -19,6 +19,7 @@ EXPECTED = {
     "python-dotenv": "1.2.2",
     "psycopg2-binary": "2.9.12",
     "pyarrow": "23.0.1",
+    "duckdb": "1.5.3",
     "pytest": "9.0.2",
 }
 IMPORTS = {
@@ -31,6 +32,7 @@ IMPORTS = {
     "python-dotenv": "dotenv",
     "psycopg2-binary": "psycopg2",
     "pyarrow": "pyarrow",
+    "duckdb": "duckdb",
     "pytest": "pytest",
 }
 

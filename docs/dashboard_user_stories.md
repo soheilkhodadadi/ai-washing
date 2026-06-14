@@ -4,6 +4,9 @@
 
 - As a coauthor, I want to select a paper table by paper label or asset ID so I can find the exact script, data products, and rerun command.
 - As a coauthor, I want to see which constructs each table uses so I can evaluate whether a robustness test should modify the panel, the construct definition, or only the regression specification.
+- As a coauthor, I want one technical drill-down tab that links the table to its source path, crosswalk status, data products, metadata-only schema checks, construct playbooks, and extension lanes.
+- As a coauthor, I want copy-ready commands labeled by risk, such as read-only, requires private data, or writes ignored outputs.
+- As a coauthor, I want schema and row-count checks to summarize private data products without printing private row-level values.
 - As a coauthor, I want to locate classifier outputs, patent match artifacts, WRDS/CRSP/Compustat data, and annual/event panels without depending on old local paths.
 - As a coauthor, I want extension lanes separated from frozen v4.3 evidence so exploratory outputs are not confused with manuscript results.
 - As a coauthor, I want copy-ready commands and links to workbench bundles, but I do not need the browser to execute code in this phase.

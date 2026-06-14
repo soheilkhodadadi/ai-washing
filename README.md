@@ -22,7 +22,7 @@ This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables
 - [docs/panel_and_data_catalog.md](docs/panel_and_data_catalog.md): catalog of cleaned panels, classifier outputs, patent match artifacts, and WRDS/market data products.
 - [docs/construct_playbooks/](docs/construct_playbooks/): concise guides for changing central constructs safely.
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
-- [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces.
+- [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces, including table review and technical drill-down.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day commands and detailed validation path.
 
 ## Fastest Setup
@@ -130,6 +130,11 @@ An optional Streamlit/Plotly app is available for a richer local demo:
 make dashboard-app-install
 make dashboard-app
 ```
+
+In the Streamlit app, use **Table Explorer** for two workflows:
+
+- **Review:** select a table by paper label, inspect readable artifacts first, preview frozen CSV output, and download a review packet.
+- **Technical Drill-Down:** inspect the owning script, data products, metadata-only schema/status checks, construct playbooks, rerun commands, and extension relevance.
 
 See [docs/dashboard_guide.md](docs/dashboard_guide.md).
 

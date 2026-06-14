@@ -17,6 +17,16 @@ from services.table_artifacts import (
     table_artifacts,
     table_display_label,
 )
+from services.technical_drilldown import (
+    command_set,
+    crosswalk_for_asset,
+    data_product_path_statuses,
+    linked_constructs,
+    linked_data_products,
+    linked_extensions,
+    source_script_for_module,
+)
+from state import DEMO_MODE
 
 DETAIL_COLUMNS = [
     "paper_label",
@@ -171,6 +181,142 @@ def _render_artifacts(row: pd.Series, artifacts: list[TableArtifact]) -> None:
         _render_artifact_group(category, items, expanded=category in {"Review first", "Numeric audit"})
 
 
+def _render_status_value(label: str, value: object) -> None:
+    text = str(value or "").strip()
+    if text:
+        st.markdown(f"**{label}:** {text}")
+
+
+def _render_data_product_status(product: pd.Series, mode: str) -> None:
+    if mode == DEMO_MODE:
+        st.info("Private-data path and schema checks are hidden in Demo Mode.")
+        return
+    statuses = data_product_path_statuses(product)
+    if not statuses:
+        st.caption("No logical private path is listed for this product.")
+        return
+    for status in statuses:
+        with st.container(border=True):
+            badges([status.status, status.kind, status.suffix])
+            st.caption(f"Logical path: `{status.logical_path}`")
+            st.caption(f"Mounted path: `{status.display_path}`")
+            if status.size_bytes is not None:
+                st.caption(f"Size: {status.size_bytes:,} bytes")
+            if status.file_count:
+                st.caption(f"File count: {status.file_count}")
+            if status.row_count is not None:
+                st.caption(f"Rows: {status.row_count:,}")
+            if status.schema_source:
+                st.caption(f"Schema source: `{status.schema_source}`")
+            if status.columns:
+                st.markdown("**Columns**")
+                st.code(", ".join(status.columns), language="text")
+            if status.note:
+                st.caption(status.note)
+
+
+def _render_technical_drilldown(row: pd.Series, data: DashboardData, mode: str) -> None:
+    asset_id = str(row["asset_id"])
+    crosswalk = crosswalk_for_asset(asset_id)
+    script = source_script_for_module(row["script_module"])
+    products = linked_data_products(row, data.data_products)
+    constructs = linked_constructs(row)
+    extensions = linked_extensions(row, data.extensions)
+
+    st.markdown("### Technical Drill-Down")
+    st.caption(
+        "Read-only continuation map for coauthors. The dashboard displays copy-ready commands and metadata only; it does not execute empirical scripts."
+    )
+
+    summary_left, summary_right = st.columns([1, 1])
+    with summary_left:
+        st.markdown("#### Table identity")
+        _render_status_value("Paper label", row["paper_label"])
+        _render_status_value("Asset ID", asset_id)
+        _render_status_value("Paper section", row["paper_section"])
+        _render_status_value("Paper source", row["paper_tex_file"])
+    with summary_right:
+        st.markdown("#### Reproduction status")
+        if crosswalk is not None:
+            badges([crosswalk.get("match_status", ""), crosswalk.get("priority", ""), crosswalk.get("test_id", "")])
+            _render_status_value("Run ID", crosswalk.get("run_id", ""))
+            _render_status_value("Match notes", crosswalk.get("match_notes", ""))
+        else:
+            st.warning("No table-to-script crosswalk row was found for this asset.")
+
+    st.markdown("#### Owning script")
+    script_cols = st.columns([1.2, 0.8])
+    with script_cols[0]:
+        _render_status_value("Module", script.module)
+        _render_status_value("Repo source path", script.rel_path)
+    with script_cols[1]:
+        badges([script.status])
+        if not script.exists:
+            st.warning("The source path could not be resolved inside the canonical repo.")
+
+    st.markdown("#### Data dependencies")
+    if products.empty:
+        st.info("No catalog data product is linked to this asset yet.")
+    for _, product in products.iterrows():
+        title = f"{product['product_id']} - {product['purpose']}"
+        with st.expander(title, expanded=len(products) == 1):
+            _render_status_value("Coverage", product["coverage"])
+            _render_status_value("Keys", product["keys"])
+            _render_status_value("Source lineage", product["source_lineage"])
+            _render_status_value("Validation scripts", product["producing_or_validation_scripts"])
+            _render_status_value("Overwrite rule", product["overwrite_rule"])
+            _render_status_value("Extension relevance", product["extension_relevance"])
+            if mode != DEMO_MODE:
+                _render_status_value("Logical private path", f"`{product['logical_private_path']}`")
+            _render_data_product_status(product, mode)
+
+    st.markdown("#### Construct playbooks")
+    if not constructs:
+        st.info("No construct playbook was matched from the table constructs.")
+    for construct in constructs:
+        with st.container(border=True):
+            st.markdown(f"**{construct['title']}**")
+            st.write(construct["summary"])
+            st.caption(f"Playbook: `{construct['doc']}`")
+            command_box(
+                construct["command"],
+                mode=mode,
+                label="Construct command",
+                tags=["read-only"],
+            )
+
+    st.markdown("#### Extension relevance")
+    if extensions.empty:
+        st.info("No registered extension lane directly references this asset.")
+    for _, extension in extensions.iterrows():
+        with st.container(border=True):
+            st.markdown(f"**{extension['title']}**")
+            st.write(extension["research_question"])
+            _render_status_value("Status", extension["current_status"])
+            _render_status_value("Interpretation limits", extension["interpretation_limits"])
+            _render_status_value("Documentation", f"`{extension['docs']}`")
+            command_box(
+                extension["make_command"],
+                mode=mode,
+                allow_demo=False,
+                label="Extension command",
+                tags=["extension", "writes ignored outputs"],
+            )
+
+    st.markdown("#### Controlled command clipboard")
+    for item in command_set(row, products, extensions):
+        tags = [part.strip() for part in item["tags"].split(";") if part.strip()]
+        allow_demo = "requires private data" not in item["tags"]
+        command_box(
+            item["command"],
+            mode=mode,
+            allow_demo=allow_demo,
+            label=item["label"],
+            tags=tags,
+            note=item["note"],
+        )
+
+
 def render(data: DashboardData, mode: str) -> None:
     hero("Table Explorer", "Review manuscript tables by paper label, with readable outputs first and technical details second.")
     if st.button("Review Main Table 7", help="Open the capital-raising timing table used as the supervisor review example."):
@@ -198,29 +344,40 @@ def render(data: DashboardData, mode: str) -> None:
 
     st.markdown(f"## {row['paper_label']}: {row['caption']}")
     badges([row["asset_type"], row["paper_section"], f"Asset {row['asset_id']}"])
-    _render_open_first(row, artifacts)
 
-    st.markdown("### Safe CSV preview")
-    _render_csv_preview(artifacts)
+    review_tab, technical_tab = st.tabs(["Review", "Technical Drill-Down"])
+    with review_tab:
+        _render_open_first(row, artifacts)
 
-    _render_artifacts(row, artifacts)
+        st.markdown("### Safe CSV preview")
+        _render_csv_preview(artifacts)
 
-    st.markdown("### Empirical and technical details")
-    left, right = st.columns([1.1, 1])
-    with left:
-        st.markdown("### What this result answers")
-        st.write(row["empirical_question"])
-        st.markdown(f"**Caption:** {row['caption']}")
-        st.markdown(f"**Main constructs:** {row['main_constructs']}")
-        st.markdown(f"**Extension relevance:** {row['extension_relevance']}")
-    with right:
-        st.markdown("### Implementation details")
-        st.markdown(f"**Primary data product:** {row['primary_data_product']}")
-        st.markdown(f"**Owning script:** `{row['script_module']}`")
-        st.markdown(f"**Reference outputs:** `{row['reference_outputs']}`")
-        st.markdown(f"**Safe modifications:** {row['safe_modifications']}")
+        _render_artifacts(row, artifacts)
 
-    st.markdown("### Copy-ready commands")
-    st.caption("The browser does not run these commands. They are provided for copying into a terminal.")
-    command_box(f"make export-table-workbench TABLE_ID={row['asset_id']}", mode=mode)
-    command_box(row["make_command"], mode=mode, allow_demo=False)
+        st.markdown("### Empirical summary")
+        left, right = st.columns([1.1, 1])
+        with left:
+            st.markdown("#### What this result answers")
+            st.write(row["empirical_question"])
+            st.markdown(f"**Caption:** {row['caption']}")
+            st.markdown(f"**Main constructs:** {row['main_constructs']}")
+            st.markdown(f"**Extension relevance:** {row['extension_relevance']}")
+        with right:
+            st.markdown("#### Review commands")
+            st.caption("The browser does not run these commands. They are provided for copying into a terminal.")
+            command_box(
+                f"make export-table-workbench TABLE_ID={row['asset_id']}",
+                mode=mode,
+                label="Export review bundle",
+                tags=["writes ignored outputs"],
+            )
+            command_box(
+                row["make_command"],
+                mode=mode,
+                allow_demo=False,
+                label="Rerun table",
+                tags=["requires private data", "writes ignored outputs"],
+            )
+
+    with technical_tab:
+        _render_technical_drilldown(row, data, mode)
