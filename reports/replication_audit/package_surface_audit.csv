@@ -297,8 +297,17 @@ docs/coauthor_data_room.md,tracked,info,include,optional_exclude,"useful for rev
 docs/coauthor_quickstart.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/coauthor_runbook.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/collaboration_workflow.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/README.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/ai_disclosure_and_classifier_constructs.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/capital_raising_proxy.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/crsp_compustat_linkage_and_market_return_tests.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/execucomp_incentives.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/patent_matching_and_company_identity.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/patent_mismatch_construct.md,tracked,ok,include,include,tracked project file
+docs/construct_playbooks/sec_scrutiny_enforcement_timing.md,tracked,ok,include,include,tracked project file
 docs/data_management.md,tracked,ok,include,include,tracked project file
 docs/docker_quickstart.md,tracked,ok,include,include,tracked project file
+docs/empirical_workstation.md,tracked,ok,include,include,tracked project file
 docs/extension_notes_future_data.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/extension_playbook.md,tracked,info,include,optional_exclude,"useful for review, but journal replication archives may request code/data only"
 docs/extensions/README.md,tracked,ok,include,include,tracked project file
@@ -313,6 +322,8 @@ docs/index.md,tracked,ok,include,include,tracked project file
 docs/journal_replication_archive_policy.md,tracked,ok,include,include,tracked project file
 docs/known_limitations.md,tracked,ok,include,include,tracked project file
 docs/match_status_report.md,tracked,ok,include,include,tracked project file
+docs/panel_and_data_catalog.md,tracked,ok,include,include,tracked project file
+docs/paper_table_workbench.md,tracked,ok,include,include,tracked project file
 docs/patent_fuzzy_sensitivity_note.md,tracked,ok,include,include,tracked project file
 docs/patent_matching_validation.md,tracked,ok,include,include,tracked project file
 docs/patent_mismatch_method_note.md,tracked,ok,include,include,tracked project file
@@ -335,6 +346,8 @@ manifests/artifact_manifest.csv,tracked,ok,include,include,tracked project file
 manifests/artifact_provenance_audit.csv,tracked,ok,include,include,tracked project file
 manifests/coauthor_data_room_manifest.csv,tracked,ok,include,include,tracked project file
 manifests/data_dependency_manifest.csv,tracked,ok,include,include,tracked project file
+manifests/data_product_catalog.csv,tracked,ok,include,include,tracked project file
+manifests/paper_table_workbench.csv,tracked,ok,include,include,tracked project file
 manifests/patent_data_manifest.csv,tracked,ok,include,include,tracked project file
 manifests/sec_source_manifest.csv,tracked,ok,include,include,tracked project file
 manifests/source_closure_manifest.csv,tracked,ok,include,include,tracked project file
@@ -426,6 +439,7 @@ scripts/validate_data_room.py,tracked,ok,include,include,tracked project file
 scripts/validate_patent_data.py,tracked,ok,include,include,tracked project file
 scripts/validate_sec_source_policy.py,tracked,ok,include,include,tracked project file
 scripts/validate_wrds_data.py,tracked,ok,include,include,tracked project file
+scripts/workbench.py,tracked,ok,include,include,tracked project file
 src/semantic_ai_washing/__init__.py,tracked,ok,include,include,tracked project file
 src/semantic_ai_washing/analysis/__init__.py,tracked,ok,include,include,tracked project file
 src/semantic_ai_washing/analysis/build_delivery_figures.py,tracked,ok,include,include,tracked project file
@@ -491,6 +505,24 @@ tests/test_replication_audit_helpers.py,tracked,ok,include,include,tracked proje
 tests/test_size_heterogeneity.py,tracked,ok,include,include,tracked project file
 tests/test_validate_sec_source_policy.py,tracked,ok,include,include,tracked project file
 tests/test_validate_wrds_data.py,tracked,ok,include,include,tracked project file
+.gitignore, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+Makefile, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+README.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+README_START_HERE.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/coauthor_runbook.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/empirical_workstation.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/extension_playbook.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/extensions/README.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/extensions/builder_hides_first_pass.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/extensions/washing_pays_data_requirements.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/index.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/paper_table_workbench.md, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+reports/replication_audit/package_surface_audit.csv, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
+reports/replication_audit/package_surface_audit.md, M,info,include_generated_audit_evidence,optional_include_generated_audit_evidence,generated replication audit evidence; review before deciding whether to commit or archive
+scripts/workbench.py, M,material_needs_review,exclude,exclude,modified/staged worktree entry; should be intentional before sharing
+docs/extensions/washing_pays_proxy_first_pass.md,??,material_needs_review,exclude,exclude,untracked file would be missed by Git archive; review before zipping a raw folder
+manifests/extension_workbench.csv,??,material_needs_review,exclude,exclude,untracked file would be missed by Git archive; review before zipping a raw folder
+templates/,??,material_needs_review,exclude,exclude,untracked file would be missed by Git archive; review before zipping a raw folder
 .DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .pytest_cache/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 .venv/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
@@ -520,6 +552,9 @@ outputs/reproduced/20260423_aiw_v3_2_test_25_exec_incentive_mismatch_main_v1/,!!
 outputs/reproduced/20260423_aiw_v3_2_test_29_sec_ai_washing_enforcement_did_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 outputs/reproduced/20260423_aiw_v3_2_test_30_capital_raising_timing_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 outputs/reproduced/20260423_aiw_v3_2_test_32_market_reaction_in_issue_windows_main_v1/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
+outputs/workbench/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
+paper/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
+paper/v4_3_source/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 reports/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 scripts/__pycache__/,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive
 src/.DS_Store,!!,info,exclude,exclude,ignored local/generated artifact; excluded from Git archive

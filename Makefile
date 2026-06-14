@@ -1,4 +1,4 @@
-PYTHON ?= python
+PYTHON ?= $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python; fi)
 PATENT_AUDIT_ARGS :=
 ifneq ($(strip $(PATENT_AUDIT_OUTPUT)),)
 PATENT_AUDIT_ARGS += --output $(PATENT_AUDIT_OUTPUT)
@@ -16,6 +16,7 @@ DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR)
 endif
 
 .PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness table-info data-products construct-info
+.PHONY: workbench-index show-table export-table-workbench extension-info extension-builder-hides extension-builder-hides-ai-talk-only extension-washing-pays-proxy
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -54,11 +55,25 @@ check-private-data:
 table-info:
 	PYTHONPATH=src $(PYTHON) scripts/workbench.py table-info --table-id "$(or $(TABLE_ID),$(TABLE))"
 
+show-table:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py show-table --table "$(or $(TABLE_ID),$(TABLE))"
+
+workbench-index:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py list-tables
+
+export-table-workbench:
+	@test -n "$(or $(TABLE_ID),$(TABLE))" || (echo "Set TABLE_ID=T30 or TABLE=T30"; exit 2)
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py export-table --table "$(or $(TABLE_ID),$(TABLE))" $(if $(RERUN),--rerun,)
+
 data-products:
 	PYTHONPATH=src $(PYTHON) scripts/workbench.py data-products $(if $(PRODUCT_ID),--product-id "$(PRODUCT_ID)",)
 
 construct-info:
 	PYTHONPATH=src $(PYTHON) scripts/workbench.py construct-info --construct "$(CONSTRUCT)"
+
+extension-info:
+	@test -n "$(EXTENSION)" || (echo "Set EXTENSION=builder_hides or EXTENSION=washing_pays_proxy"; exit 2)
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py extension-info --extension "$(EXTENSION)"
 
 reproduce-all-tables-dry-run:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --dry-run --include-figures
@@ -89,6 +104,17 @@ validate-wrds-data:
 
 builder-hides-first-pass:
 	PYTHONPATH=src $(PYTHON) -m semantic_ai_washing.analysis.extensions.builder_hides_right_tail
+
+extension-builder-hides:
+	PYTHONPATH=src $(PYTHON) -m semantic_ai_washing.analysis.extensions.builder_hides_right_tail --output-dir outputs/extensions/builder_hides_right_tail
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py export-extension --extension builder_hides
+
+extension-builder-hides-ai-talk-only:
+	PYTHONPATH=src $(PYTHON) -m semantic_ai_washing.analysis.extensions.builder_hides_right_tail --ai-talk-only --output-dir outputs/extensions/builder_hides_right_tail_ai_talk_only
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py export-extension --extension builder_hides_ai_talk_only
+
+extension-washing-pays-proxy:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py export-extension --extension washing_pays_proxy --rerun
 
 validate-sec-source:
 	$(PYTHON) scripts/validate_sec_source_policy.py

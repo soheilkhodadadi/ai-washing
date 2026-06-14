@@ -18,6 +18,7 @@ outputs/reproduced/**
 outputs/paper_exports/**
 outputs/fixture/**
 outputs/extensions/**
+outputs/workbench/**
 !outputs/reproduced/README.md
 !outputs/fixture/.gitkeep
 *.log

@@ -233,26 +233,60 @@ docs/c7_format_delta_cells.csv
 Current expected status: 16 numeric-string cells differ only at floating-point representation depth, all within `1e-10`, and the generated TeX file is an exact match.
 
 
-## 11. Run Extension Starters
+## 11. Export A Table Workbench Bundle
+
+For a table-specific inspection folder, run:
+
+```bash
+make workbench-index
+make export-table-workbench TABLE_ID=T30
+```
+
+The bundle is written under ignored `outputs/workbench/T30/` and includes a short README, input-artifact notes, the rerun command, frozen reference outputs where available, generated public outputs where available, and safe-modification notes. It does not copy private panels or licensed data.
+
+To rerun the table first and then refresh the bundle:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make export-table-workbench TABLE_ID=T30 RERUN=1
+```
+
+## 12. Run Extension Starters
 
 After the v4.3 reproduction and construct-audit checks pass, coauthors can start from the extension layer without changing the frozen v4.3 evidence.
 
-Builder-hides first pass:
+Inspect the registered extension lanes:
 
 ```bash
-make builder-hides-first-pass
+make extension-info EXTENSION=builder_hides
+make extension-info EXTENSION=washing_pays_proxy
+```
+
+Run builder-hides first-pass screens:
+
+```bash
+make extension-builder-hides
+make extension-builder-hides-ai-talk-only
+```
+
+Run the washing-pays proxy screen:
+
+```bash
+make extension-washing-pays-proxy
 ```
 
 Then read:
 
 ```text
+docs/extensions/README.md
 docs/extensions/builder_hides_first_pass.md
+docs/extensions/washing_pays_proxy_first_pass.md
 docs/extensions/washing_pays_data_requirements.md
 ```
 
-The builder-hides script uses the staged annual panel and writes ignored outputs under `outputs/extensions/builder_hides_right_tail/` unless `AIW_OUTPUT_ROOT` is set. The washing-pays note separates the current CRSP share-growth proxy from the stronger financing-terms test that requires external SEO/offering data.
+The builder-hides scripts use the staged annual panel and write ignored outputs under `outputs/extensions/`. The washing-pays proxy uses Test 30's CRSP share-growth logic and is not an SEO/offering-terms test. Use `templates/seo_offering_terms_schema.csv` before building the stronger financing-terms extension.
 
-## 12. Git Rules
+## 13. Git Rules
 
 - Commit code, docs, manifests, fixtures, and sanitized status ledgers.
 - Do not commit raw/private data, parquet outputs, WRDS/CRSP inputs, archives, `.venv`, or generated outputs under `outputs/`.

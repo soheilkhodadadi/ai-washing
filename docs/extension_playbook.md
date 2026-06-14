@@ -1,6 +1,15 @@
 # Extension Playbook
 
-This playbook turns Kuntara's comments into coauthor-ready extension lanes. It is not a commitment that Soheil must run these tests before handoff; it is a map so Kuntara/Thomas can begin from the shared workstation.
+This playbook turns coauthor comments into extension lanes that can be run from the shared workstation. It separates first-pass screens from stronger tests that require new data.
+
+For a terminal summary of each lane, use:
+
+```bash
+make extension-info EXTENSION=builder_hides
+make extension-info EXTENSION=washing_pays_proxy
+```
+
+The machine-readable registry is `manifests/extension_workbench.csv`.
 
 ## E1: Washing Pays
 
@@ -29,7 +38,9 @@ Current status:
 
 - Proxy version is available from Test 30's next-year CRSP `shrout` growth rule.
 - Strong version is not available until actual SEO/offering terms are staged.
+- Operational proxy command: `make extension-washing-pays-proxy`.
 - See `docs/extensions/washing_pays_data_requirements.md` before writing any manuscript claim.
+- See `docs/extensions/washing_pays_proxy_first_pass.md` for the current proxy workflow and interpretation limits.
 
 Decision rule:
 
@@ -60,7 +71,8 @@ Data-room needs:
 
 Current status:
 
-- First-pass starter script is available through `make builder-hides-first-pass`.
+- First-pass starter script is available through `make extension-builder-hides`.
+- AI-talking-sample robustness command: `make extension-builder-hides-ai-talk-only`.
 - Outputs are written under ignored extension outputs, not promoted into v4.3 evidence.
 - See `docs/extensions/builder_hides_first_pass.md` before interpreting signs.
 

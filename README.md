@@ -8,6 +8,8 @@ This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables
 
 - Understand how the paper's SEC text, classifier outputs, patent data, WRDS/Compustat/CRSP data, and event panels fit together.
 - Find the script and data product behind each v4.3 manuscript table or figure.
+- Export a table-specific workbench bundle with the question, inputs, script, command, reference outputs, and safe modification notes.
+- Run first-pass extension lanes without overwriting frozen v4.3 evidence.
 - Rerun selected or full v4.3 table evidence from a mounted private data room.
 - Modify a table script or extension starter while keeping v4.3 as the frozen reference.
 - Run a strict replication and data-integrity audit before sharing or journal deposit.
@@ -61,7 +63,9 @@ Keep this Git repository outside Dropbox, OneDrive, and other sync folders. Use 
 Use the paper workbench to find the relevant `TABLE_ID`, or print a terminal summary:
 
 ```bash
+make workbench-index
 make table-info TABLE_ID=T29
+make export-table-workbench TABLE_ID=T30
 make data-products
 make construct-info CONSTRUCT=patent_mismatch
 ```
@@ -86,6 +90,21 @@ AIW_DATA_ROOT=/path/to/ai-washing-private-data make reproduce-figures
 ```
 
 Current expected status: all table CSV evidence matches v4.3 exactly except Appendix Table C7, which has a documented numeric-string format-only delta; figure-series CSV evidence matches, while frozen manuscript PDFs remain canonical.
+
+## Extension Lanes
+
+The first extension commands are registered in [manifests/extension_workbench.csv](manifests/extension_workbench.csv). They write ignored outputs under `outputs/extensions/` and do not replace v4.3 evidence.
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make extension-info EXTENSION=builder_hides
+make extension-builder-hides
+make extension-builder-hides-ai-talk-only
+make extension-info EXTENSION=washing_pays_proxy
+make extension-washing-pays-proxy
+```
+
+The washing-pays command is a proxy screen based on Test 30's share-growth logic. The stronger SEO/offering-terms extension should use [templates/seo_offering_terms_schema.csv](templates/seo_offering_terms_schema.csv) before any manuscript claim is promoted.
 
 ## Documentation Map
 

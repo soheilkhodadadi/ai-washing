@@ -60,7 +60,9 @@ The direct runtime dependencies are pinned to the v4.3-validated environment bec
 Use `docs/paper_table_workbench.md` first. It maps each table and figure to the empirical question, primary data product, constructs, script module, rerun command, reference outputs, and safe modifications. For a terminal view, run:
 
 ```bash
+make workbench-index
 make table-info TABLE_ID=T29
+make export-table-workbench TABLE_ID=T30
 make data-products
 make construct-info CONSTRUCT=patent_mismatch
 ```
@@ -72,6 +74,21 @@ AIW_DATA_ROOT=/path/to/ai-washing-private-data make TABLE_ID=T30 reproduce-table
 ```
 
 If the result changes numerically, keep the original v4.3 output as the reference and document whether the change is intended for a future release.
+
+## Run A First Extension
+
+Extension outputs are ignored and separate from frozen v4.3 evidence:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make extension-info EXTENSION=builder_hides
+make extension-builder-hides
+make extension-builder-hides-ai-talk-only
+make extension-info EXTENSION=washing_pays_proxy
+make extension-washing-pays-proxy
+```
+
+Use `docs/extensions/README.md` and `manifests/extension_workbench.csv` to see the purpose, data needs, and interpretation limits for each lane. The washing-pays command is a share-growth proxy screen; the stronger SEO/offering-terms version needs new data following `templates/seo_offering_terms_schema.csv`.
 
 ## What Git Tracks
 

@@ -13,6 +13,32 @@ Use this document with `manifests/paper_table_workbench.csv` when changing a tab
 
 For setup, start with `README_START_HERE.md` or `docs/docker_quickstart.md`. For private data paths, use `docs/private_data_contract.md`.
 
+## Export A Table Workbench Bundle
+
+For a compact inspection folder, export any table or figure by asset ID:
+
+```bash
+make export-table-workbench TABLE_ID=T30
+```
+
+This writes an ignored bundle under `outputs/workbench/T30/` with:
+
+- the empirical question and owning script;
+- input-artifact notes and safe-modification guidance;
+- a rerun shell command;
+- copied frozen v4.3 reference outputs where available;
+- copied current generated outputs where available;
+- machine-readable `table_info.json`.
+
+To refresh generated outputs before creating the bundle, run:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make export-table-workbench TABLE_ID=T30 RERUN=1
+```
+
+The bundle does not copy private panels or licensed data. It is a navigation and inspection layer for coauthors who want to modify a table without reverse-engineering the whole repository.
+
 ## Main Text
 
 ### Figure 1: PatentMismatch surge through 2025

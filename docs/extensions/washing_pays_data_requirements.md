@@ -22,6 +22,15 @@ Existing proxy:
 
 This can screen whether low-credibility AI talk is elevated around likely equity issuance windows. It does not measure offer terms.
 
+Operational command:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make extension-washing-pays-proxy
+```
+
+The command reruns the existing Test 30 logic and writes an ignored proxy bundle under `outputs/extensions/washing_pays_proxy/`.
+
 Safe language:
 
 > The current package can test whether low-substance AI disclosure clusters around a CRSP share-growth issue proxy. It cannot yet test whether AI washers receive better offer prices, lower discounts, or larger proceeds.
@@ -33,6 +42,8 @@ A strong washing-pays test needs an external SEO/offering-terms dataset under:
 ```text
 $AIW_DATA_ROOT/external/seo_offering_terms/
 ```
+
+Use `templates/seo_offering_terms_schema.csv` as the first schema checklist before staging or linking a new offering-level dataset.
 
 Minimum fields:
 

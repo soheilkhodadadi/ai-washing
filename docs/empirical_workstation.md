@@ -62,7 +62,15 @@ Use `docs/paper_table_workbench.md` first. It maps each manuscript table and fig
 
 The machine-readable version is `manifests/paper_table_workbench.csv`. The older `manifests/table_to_script_crosswalk.csv` remains the reproduction crosswalk; the workbench adds paper-facing interpretation and coauthor workflow guidance.
 
+Useful terminal helpers:
 
+```bash
+make workbench-index
+make table-info TABLE_ID=T30
+make export-table-workbench TABLE_ID=T30
+```
+
+The export command writes an ignored inspection bundle under `outputs/workbench/<asset_id>/` without copying private data.
 
 ## Historical Run Identifiers
 
@@ -82,6 +90,7 @@ After that, use the table workbench to rerun or modify a specific table:
 
 ```bash
 AIW_DATA_ROOT=/path/to/ai-washing-private-data make TABLE_ID=T30 reproduce-table
+make export-table-workbench TABLE_ID=T30
 ```
 
 ## Extension Lanes
@@ -94,6 +103,16 @@ The repository includes extension starters but does not promote them into v4.3 r
 - Market response: starts from Main Table 8 and Appendix C return/event-window tests.
 
 See `docs/extension_playbook.md` and `docs/extensions/` for starter notes.
+
+Operational extension helpers:
+
+```bash
+make extension-info EXTENSION=builder_hides
+make extension-builder-hides
+make extension-builder-hides-ai-talk-only
+make extension-info EXTENSION=washing_pays_proxy
+make extension-washing-pays-proxy
+```
 
 ## Guardrails
 

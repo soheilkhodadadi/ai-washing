@@ -11,6 +11,7 @@ This index is organized by coauthor task. Internal development reports and email
 - `../manifests/paper_table_workbench.csv`: machine-readable paper table workbench.
 - `../manifests/data_product_catalog.csv`: machine-readable data product catalog.
 - `../manifests/table_to_script_crosswalk.csv`: reproduction-oriented table/script crosswalk.
+- Terminal helpers: `make workbench-index`, `make table-info TABLE_ID=T30`, and `make export-table-workbench TABLE_ID=T30`.
 
 ## First-Day Setup
 
@@ -66,8 +67,11 @@ This index is organized by coauthor task. Internal development reports and email
 
 - `extension_playbook.md`: extension roadmap for the next empirical tests.
 - `extension_notes_future_data.md`: data gaps for future extensions.
+- `../manifests/extension_workbench.csv`: machine-readable extension registry.
 - `extensions/builder_hides_first_pass.md`: first-pass builder-hides extension.
+- `extensions/washing_pays_proxy_first_pass.md`: operational proxy screen based on Test 30 share-growth logic.
 - `extensions/washing_pays_data_requirements.md`: data requirements for the stronger financing-terms extension.
+- `../templates/seo_offering_terms_schema.csv`: template for future SEO/offering-terms data.
 
 ## Limitations And Archive Policy
 

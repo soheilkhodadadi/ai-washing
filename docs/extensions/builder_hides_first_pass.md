@@ -1,6 +1,6 @@
 # Builder-Hides First-Pass Extension
 
-This note gives Kuntara a low-friction starting point for testing the "builder hides" channel: among firms with strong real AI activity, do disclosures contain less actionable AI detail?
+This note gives coauthors a low-friction starting point for testing the "builder hides" channel: among firms with strong real AI activity, do disclosures contain less actionable AI detail?
 
 This is an extension screen, not a frozen v4.3 result and not a causal claim.
 
@@ -18,20 +18,20 @@ From the repository root:
 
 ```bash
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
-export AIW_OUTPUT_ROOT=/path/to/local/ignored/outputs
-make builder-hides-first-pass
+make extension-builder-hides
 ```
 
-To restrict the screen to firm-years that mention AI, run the module directly with `--ai-talk-only`:
+To restrict the screen to firm-years that mention AI:
 
 ```bash
-PYTHONPATH=src python -m semantic_ai_washing.analysis.extensions.builder_hides_right_tail --ai-talk-only
+make extension-builder-hides-ai-talk-only
 ```
 
-If `AIW_OUTPUT_ROOT` is not set, outputs are written under:
+Outputs are written under:
 
 ```text
 outputs/extensions/builder_hides_right_tail/
+outputs/extensions/builder_hides_right_tail_ai_talk_only/
 ```
 
 The output files are:
@@ -87,7 +87,7 @@ Use this as a diagnostic, not as a final table.
 - If the signs differ by outcome, separate the disclosure-margin story: broad AI focus can rise while implementation detail remains protected.
 - If results are weak or sensitive, treat this as a null or boundary condition rather than forcing the narrative.
 
-## Suggested Next Edits For Kuntara
+## Suggested Next Edits
 
 Useful variations that do not need new data:
 
