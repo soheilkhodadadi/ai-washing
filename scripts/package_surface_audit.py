@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 from pathlib import Path
 import subprocess
@@ -205,17 +206,34 @@ def write_md(rows: list[dict[str, str]], path: Path) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def main() -> int:
+def build_rows() -> list[dict[str, str]]:
     rows = [classify_tracked(path) for path in tracked_files()]
     rows.extend(classify_worktree(status, path) for status, path in status_entries() if status != "  ")
-    write_csv(rows, REPORT_CSV)
-    write_md(rows, REPORT_MD)
+    return rows
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Audit the AI Washing package surface.")
+    parser.add_argument(
+        "--refresh",
+        action="store_true",
+        help="Write the tracked report files under reports/replication_audit.",
+    )
+    args = parser.parse_args()
+
+    rows = build_rows()
     stop_count = sum(1 for row in rows if row["severity"] == "stop_the_line")
     print("AI Washing package surface audit")
     print(f"- rows: {len(rows)}")
     print(f"- stop_the_line: {stop_count}")
-    print(f"- wrote: {REPORT_CSV}")
-    print(f"- wrote: {REPORT_MD}")
+    if args.refresh:
+        write_csv(rows, REPORT_CSV)
+        write_md(rows, REPORT_MD)
+        print(f"- wrote: {REPORT_CSV}")
+        print(f"- wrote: {REPORT_MD}")
+    else:
+        print("- mode: check-only; no files written")
+        print("- refresh reports with: make package-surface-audit-refresh")
     return 1 if stop_count else 0
 
 

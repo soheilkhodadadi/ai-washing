@@ -51,6 +51,13 @@ def rel(path: Path) -> str:
         return str(path)
 
 
+def repo_display(path: Path) -> str:
+    try:
+        return "$AIW_REPO_ROOT/" + str(path.resolve().relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def table_rows() -> list[dict[str, str]]:
     return read_csv("manifests/paper_table_workbench.csv")
 
@@ -88,20 +95,27 @@ def resolve_extension(extension_id: str) -> dict[str, str] | None:
     return None
 
 
-def list_tables() -> int:
-    print("asset_id,paper_label,asset_type,paper_section,caption")
-    for row in table_rows():
-        print(
-            ",".join(
-                [
-                    row["asset_id"],
-                    row["paper_label"],
-                    row["asset_type"],
-                    row["paper_section"],
-                    row["caption"].replace(",", ";"),
-                ]
+def list_tables(output_format: str = "markdown") -> int:
+    rows = table_rows()
+    if output_format == "csv":
+        print("asset_id,paper_label,asset_type,paper_section,caption")
+        for row in rows:
+            print(
+                ",".join(
+                    [
+                        row["asset_id"],
+                        row["paper_label"],
+                        row["asset_type"],
+                        row["paper_section"],
+                        row["caption"].replace(",", ";"),
+                    ]
+                )
             )
-        )
+        return 0
+    print("| Asset | Paper label | Section | Caption |")
+    print("|---|---|---|---|")
+    for row in rows:
+        print(f"| `{row['asset_id']}` | {row['paper_label']} | {row['paper_section']} | {row['caption']} |")
     return 0
 
 
@@ -194,7 +208,33 @@ def iter_example_files(path: Path, limit: int = 5, count_limit: int = 1000) -> t
     return label, examples
 
 
-def check_logical_private_paths(value: str) -> None:
+def preview_file_schema(path: Path) -> list[str]:
+    suffix = path.suffix.lower()
+    try:
+        if suffix == ".parquet":
+            import pyarrow.parquet as pq
+
+            metadata = pq.ParquetFile(path).metadata
+            schema = pq.ParquetFile(path).schema_arrow
+            columns = ", ".join(schema.names[:18])
+            if len(schema.names) > 18:
+                columns += f", ... ({len(schema.names)} columns)"
+            return [f"Rows: {metadata.num_rows}", f"Columns: {columns}"]
+        if suffix == ".csv":
+            with path.open(newline="", encoding="utf-8", errors="replace") as f:
+                reader = csv.reader(f)
+                header = next(reader, [])
+                row_count = sum(1 for _ in reader)
+            columns = ", ".join(header[:18])
+            if len(header) > 18:
+                columns += f", ... ({len(header)} columns)"
+            return [f"Rows: {row_count}", f"Columns: {columns}"]
+    except Exception as exc:  # pragma: no cover - defensive preview only
+        return [f"Preview status: unavailable ({exc})"]
+    return []
+
+
+def check_logical_private_paths(value: str, preview: bool = False) -> None:
     root = private_data_root()
     if not root:
         print("Private data check: AIW_DATA_ROOT is not set.")
@@ -214,6 +254,9 @@ def check_logical_private_paths(value: str) -> None:
             print("Type: file")
             print(f"Suffix: {mounted.suffix or 'none'}")
             print(f"Size: {format_size(mounted.stat().st_size)}")
+            if preview:
+                for line in preview_file_schema(mounted):
+                    print(line)
         elif mounted.is_dir():
             count, examples = iter_example_files(mounted)
             print("Status: present")
@@ -225,12 +268,21 @@ def check_logical_private_paths(value: str) -> None:
                     print(f"- {mounted_display(example, root)}")
             else:
                 print("Example files: none found")
+            if preview:
+                preview_targets = [p for p in examples if p.suffix.lower() in {".parquet", ".csv"}]
+                if preview_targets:
+                    print("Schema preview:")
+                    print(f"- File: {mounted_display(preview_targets[0], root)}")
+                    for line in preview_file_schema(preview_targets[0]):
+                        print(f"  {line}")
+                else:
+                    print("Schema preview: no parquet/csv example found in shallow sample")
         else:
             print("Status: missing")
             print("Type: not found")
 
 
-def data_products(product_id: str | None = None, check_files: bool = False) -> int:
+def data_products(product_id: str | None = None, check_files: bool = False, preview: bool = False) -> int:
     rows = read_csv("manifests/data_product_catalog.csv")
     if product_id:
         rows = [row for row in rows if row["product_id"].lower() == product_id.lower()]
@@ -249,7 +301,7 @@ def data_products(product_id: str | None = None, check_files: bool = False) -> i
         print_kv("Validation scripts", row["producing_or_validation_scripts"])
         print_kv("Overwrite rule", row["overwrite_rule"])
         if check_files:
-            check_logical_private_paths(row["logical_private_path"])
+            check_logical_private_paths(row["logical_private_path"], preview=preview)
     return 0
 
 
@@ -528,6 +580,21 @@ def list_existing_files(path: Path) -> list[str]:
     return [rel(p) for p in sorted(path.rglob("*")) if p.is_file()]
 
 
+def extension_extra_note(row: dict[str, str]) -> str:
+    if row["extension_id"] != "washing_pays_proxy":
+        return ""
+    return """
+## Related Table Bundle
+
+This proxy lane is backed by Main Table 7 (`T30`). The table artifacts, review-first file, CSV/TeX evidence, and modification notes are exported here:
+
+- `outputs/workbench/T30/OPEN_FIRST.md`
+- `outputs/workbench/T30/README.md`
+
+Run `make export-table-workbench TABLE_ID=T30` if the table bundle is missing.
+"""
+
+
 def export_extension(extension_id: str, rerun: bool = False) -> int:
     row = resolve_extension(extension_id)
     if not row:
@@ -588,10 +655,14 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ## Documentation
 
 {row['docs']}
+{extension_extra_note(row)}
 """,
     )
     write_text(output_dir / "extension_info.json", json.dumps(row, indent=2, sort_keys=True))
     existing = list_existing_files(output_dir)
+    if row["extension_id"] == "washing_pays_proxy":
+        existing.extend(["outputs/workbench/T30/OPEN_FIRST.md", "outputs/workbench/T30/README.md"])
+        existing = sorted(dict.fromkeys(existing))
     write_text(
         output_dir / "available_outputs.md",
         "# Available Outputs\n\n" + ("\n".join(f"- `{item}`" for item in existing) if existing else "No generated outputs are present yet."),
@@ -604,7 +675,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="AI Washing empirical workbench helper")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("list-tables", help="List all paper assets in workbench order")
+    p_list = sub.add_parser("list-tables", help="List all paper assets in workbench order")
+    p_list.add_argument("--format", choices=["markdown", "csv"], default="markdown", help="Output format")
 
     p_table = sub.add_parser("table-info", help="Show the script, data product, and reference outputs for a paper asset")
     p_table.add_argument("--table-id", required=True, help="Asset ID such as T29, C7, F1, or paper label")
@@ -622,6 +694,7 @@ def main() -> int:
     p_data = sub.add_parser("data-products", help="List data products or show one product")
     p_data.add_argument("--product-id", help="Optional product ID")
     p_data.add_argument("--check-files", action="store_true", help="Check mounted AIW_DATA_ROOT paths for this product")
+    p_data.add_argument("--preview", action="store_true", help="Print safe row-count/schema previews for parquet/csv files")
 
     p_construct = sub.add_parser("construct-info", help="Show the playbook for a construct")
     p_construct.add_argument("--construct", required=True, help="Construct alias such as patent_mismatch or crsp_compustat")
@@ -635,7 +708,7 @@ def main() -> int:
 
     args = parser.parse_args()
     if args.command == "list-tables":
-        return list_tables()
+        return list_tables(args.format)
     if args.command == "table-info":
         return table_info(args.table_id)
     if args.command == "show-table":
@@ -645,7 +718,7 @@ def main() -> int:
     if args.command == "export-table":
         return export_table(args.table, args.rerun)
     if args.command == "data-products":
-        return data_products(args.product_id, args.check_files)
+        return data_products(args.product_id, args.check_files, args.preview)
     if args.command == "construct-info":
         return construct_info(args.construct)
     if args.command == "extension-info":

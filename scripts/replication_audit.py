@@ -9,16 +9,23 @@ REPORT = ROOT / "docs" / "replication_audit_report.md"
 REPORT_DIR = ROOT / "reports" / "replication_audit"
 
 SCRIPTS = [
-    ("package_surface", "scripts/package_surface_audit.py"),
-    ("data_sanity", "scripts/data_sanity_audit.py"),
-    ("textual_construct", "scripts/textual_construct_audit.py"),
-    ("patent_construct", "scripts/patent_construct_audit.py"),
-    ("journal_reproducibility", "scripts/journal_reproducibility_audit.py"),
+    ("package_surface", ["scripts/package_surface_audit.py", "--refresh"]),
+    ("data_sanity", ["scripts/data_sanity_audit.py"]),
+    ("textual_construct", ["scripts/textual_construct_audit.py"]),
+    ("patent_construct", ["scripts/patent_construct_audit.py"]),
+    ("journal_reproducibility", ["scripts/journal_reproducibility_audit.py"]),
 ]
 
 
-def run_script(name: str, rel: str) -> tuple[str, int, str]:
-    result = subprocess.run([sys.executable, rel], cwd=ROOT, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+def run_script(name: str, command: list[str]) -> tuple[str, int, str]:
+    result = subprocess.run(
+        [sys.executable, *command],
+        cwd=ROOT,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
     return name, result.returncode, result.stdout.strip()
 
 

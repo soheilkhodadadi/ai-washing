@@ -15,8 +15,9 @@ else
 DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR)
 endif
 
-.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness table-info table-script data-products locate-data construct-info
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit package-surface-audit-refresh data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness table-info table-script data-products locate-data construct-info
 .PHONY: workbench-index show-table export-table-workbench extension-info extension-builder-hides extension-builder-hides-ai-talk-only extension-washing-pays-proxy
+.PHONY: dashboard dashboard-check dashboard-app-install dashboard-app docker-dashboard-app
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -63,7 +64,7 @@ table-script:
 	@PYTHONPATH=src $(PYTHON) scripts/workbench.py table-script --table "$(or $(TABLE_ID),$(TABLE))"
 
 workbench-index:
-	@PYTHONPATH=src $(PYTHON) scripts/workbench.py list-tables
+	@PYTHONPATH=src $(PYTHON) scripts/workbench.py list-tables --format "$(or $(FORMAT),markdown)"
 
 export-table-workbench:
 	@test -n "$(or $(TABLE_ID),$(TABLE))" || (echo "Set TABLE_ID=T30 or TABLE=T30"; exit 2)
@@ -74,7 +75,7 @@ data-products:
 
 locate-data:
 	@test -n "$(PRODUCT_ID)" || (echo "Set PRODUCT_ID=final_hybrid_classifier_outputs"; exit 2)
-	@PYTHONPATH=src $(PYTHON) scripts/workbench.py data-products --product-id "$(PRODUCT_ID)" --check-files
+	@PYTHONPATH=src $(PYTHON) scripts/workbench.py data-products --product-id "$(PRODUCT_ID)" --check-files $(if $(PREVIEW),--preview,)
 
 construct-info:
 	@PYTHONPATH=src $(PYTHON) scripts/workbench.py construct-info --construct "$(CONSTRUCT)"
@@ -142,6 +143,9 @@ c7-format-delta:
 package-surface-audit:
 	$(PYTHON) scripts/package_surface_audit.py
 
+package-surface-audit-refresh:
+	$(PYTHON) scripts/package_surface_audit.py --refresh
+
 data-sanity-audit:
 	$(PYTHON) scripts/data_sanity_audit.py
 
@@ -182,3 +186,19 @@ docker-shell:
 
 share-readiness:
 	AIW_DOCKER_IMAGE=$(DOCKER_IMAGE) AIW_DATA_ROOT="$(AIW_DATA_ROOT)" $(PYTHON) scripts/share_readiness.py
+
+dashboard:
+	$(PYTHON) scripts/build_dashboard.py
+
+dashboard-check:
+	$(PYTHON) scripts/check_dashboard.py
+
+dashboard-app-install:
+	$(PYTHON) -m pip install -r requirements-dashboard.txt
+
+dashboard-app:
+	PYTHONPATH=src $(PYTHON) -c "import streamlit, plotly" || (echo "Run make dashboard-app-install first"; exit 2)
+	PYTHONPATH=src $(PYTHON) -m streamlit run apps/workstation_dashboard/app.py --server.address 127.0.0.1 --server.port 8501
+
+docker-dashboard-app:
+	docker run -it -p 8501:8501 $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) /bin/bash -lc 'python -m pip install -r requirements-dashboard.txt && python -m streamlit run apps/workstation_dashboard/app.py --server.address 0.0.0.0 --server.port 8501'

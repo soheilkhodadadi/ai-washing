@@ -22,6 +22,7 @@ This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables
 - [docs/panel_and_data_catalog.md](docs/panel_and_data_catalog.md): catalog of cleaned panels, classifier outputs, patent match artifacts, and WRDS/market data products.
 - [docs/construct_playbooks/](docs/construct_playbooks/): concise guides for changing central constructs safely.
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
+- [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day commands and detailed validation path.
 
 ## Fastest Setup
@@ -70,6 +71,13 @@ make data-products
 make construct-info CONSTRUCT=patent_mismatch
 ```
 
+Optional static dashboard:
+
+```bash
+make dashboard
+open outputs/dashboard/index.html
+```
+
 Then run the table command:
 
 ```bash
@@ -105,6 +113,25 @@ make extension-washing-pays-proxy
 ```
 
 The washing-pays command is a proxy screen based on Test 30's share-growth logic. The stronger SEO/offering-terms extension should use [templates/seo_offering_terms_schema.csv](templates/seo_offering_terms_schema.csv) before any manuscript claim is promoted.
+
+## Dashboard Interfaces
+
+The default dashboard is a static HTML browser generated from manifests. It is safe to share because it does not run commands or expose private data values.
+
+```bash
+make dashboard
+make dashboard-check
+open outputs/dashboard/index.html
+```
+
+An optional Streamlit/Plotly app is available for a richer local demo:
+
+```bash
+make dashboard-app-install
+make dashboard-app
+```
+
+See [docs/dashboard_guide.md](docs/dashboard_guide.md).
 
 ## Documentation Map
 

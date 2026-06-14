@@ -72,6 +72,12 @@ def default_output_dir() -> Path:
     return REPO_ROOT / "outputs" / DEFAULT_OUTPUT_RELATIVE
 
 
+def _display_path(path: Path) -> str:
+    try:
+        return "$AIW_REPO_ROOT/" + str(path.resolve().relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
 
 def _ensure_construct_inputs(panel: pd.DataFrame) -> pd.DataFrame:
     out = panel.copy()
@@ -411,7 +417,7 @@ def main() -> int:
     )
     print("Builder-hides first-pass extension written:")
     for label, path in outputs.items():
-        print(f"- {label}: {path}")
+        print(f"- {label}: {_display_path(path)}")
     return 0
 
 

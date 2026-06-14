@@ -23,6 +23,13 @@ make export-table-workbench TABLE_ID=T30
 make extension-info EXTENSION=builder_hides
 ```
 
+Optional browser index:
+
+```bash
+make dashboard
+open outputs/dashboard/index.html
+```
+
 After private data are mounted, run the first extension:
 
 ```bash
@@ -36,9 +43,10 @@ make extension-builder-hides
 2. `docs/paper_table_workbench.md`: where each manuscript table or figure comes from and how to rerun or modify it.
 3. `docs/panel_and_data_catalog.md`: what the cleaned panels, classifier outputs, patent files, and WRDS/market products are.
 4. `docs/construct_playbooks/`: how central constructs are built and safely updated.
-5. `docs/docker_quickstart.md`: lowest-friction setup path.
-6. `docs/private_data_contract.md`: how to mount the private data room.
-7. `docs/coauthor_runbook.md`: complete first-day command sequence.
+5. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
+6. `docs/docker_quickstart.md`: lowest-friction setup path.
+7. `docs/private_data_contract.md`: how to mount the private data room.
+8. `docs/coauthor_runbook.md`: complete first-day command sequence.
 
 The full documentation map is `docs/index.md`.
 
@@ -90,6 +98,7 @@ make workbench-index
 make table-info TABLE_ID=T29
 make export-table-workbench TABLE_ID=T30
 make data-products
+make dashboard
 make construct-info CONSTRUCT=patent_mismatch
 ```
 

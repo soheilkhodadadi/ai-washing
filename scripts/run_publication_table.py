@@ -39,6 +39,29 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def display_path(path: Path) -> str:
+    resolved = path.resolve()
+    for root, label in [(DATA_ROOT, "$AIW_DATA_ROOT"), (ROOT, "$AIW_REPO_ROOT")]:
+        try:
+            return label + "/" + str(resolved.relative_to(root))
+        except ValueError:
+            continue
+    return str(path)
+
+
+def display_command(cmd: list[str]) -> str:
+    shown: list[str] = []
+    for item in cmd:
+        if item == sys.executable:
+            shown.append("python")
+            continue
+        if item.startswith(str(DATA_ROOT)) or item.startswith(str(ROOT)):
+            shown.append(display_path(Path(item)))
+        else:
+            shown.append(item)
+    return " ".join(shown)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run one v4.3 publication table or figure with explicit workstation paths.")
     parser.add_argument("table_id", help="Crosswalk asset id, e.g. T00, T16, F1, or FC1")
@@ -66,7 +89,7 @@ def main() -> int:
     for dep in dep_rows:
         path = DATA_ROOT / Path(dep["expected_capsule_path"]).relative_to("data")
         if not path.exists():
-            missing.append(f"{dep['dependency_id']} -> {path}")
+            missing.append(f"{dep['dependency_id']} -> {display_path(path)}")
         arg_name = ARG_BY_TEST_AND_DEP.get((row["test_id"], dep["dependency_id"]), ARG_BY_DEP[dep["dependency_id"]])
         cmd.extend([arg_name, str(path)])
     run_output = OUTPUT_ROOT / row["test_id"] / row["run_id"]
@@ -78,16 +101,16 @@ def main() -> int:
             print(f"- {item}")
         print("Stage these files under AIW_DATA_ROOT using the paths in manifests/data_dependency_manifest.csv.")
         print("Command that will run after staging:")
-        print(" ".join(cmd))
+        print(display_command(cmd))
         return 0 if args.dry_run else 3
     print("Command:")
-    print(" ".join(cmd))
+    print(display_command(cmd))
     if args.dry_run:
         return 0
     env = os.environ.copy()
     env["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
     result = subprocess.run(cmd, cwd=ROOT, env=env, check=False)
-    print(f"Output root: {run_output}")
+    print(f"Output root: {display_path(run_output)}")
     return result.returncode
 
 

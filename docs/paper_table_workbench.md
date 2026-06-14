@@ -13,6 +13,13 @@ Use this document with `manifests/paper_table_workbench.csv` when changing a tab
 
 For setup, start with `README_START_HERE.md` or `docs/docker_quickstart.md`. For private data paths, use `docs/private_data_contract.md`.
 
+For a searchable browser version of the table/data/extension map, run:
+
+```bash
+make dashboard
+open outputs/dashboard/index.html
+```
+
 ## Export A Table Workbench Bundle
 
 For a compact inspection folder, export any table or figure by asset ID:

@@ -244,6 +244,15 @@ make export-table-workbench TABLE_ID=T30
 
 The bundle is written under ignored `outputs/workbench/T30/` and includes a short README, input-artifact notes, the rerun command, frozen reference outputs where available, generated public outputs where available, and safe-modification notes. It does not copy private panels or licensed data.
 
+For a browser-based manifest index, run:
+
+```bash
+make dashboard
+open outputs/dashboard/index.html
+```
+
+This static dashboard is a navigation layer only. It does not run commands or expose private data values.
+
 To rerun the table first and then refresh the bundle:
 
 ```bash

@@ -77,6 +77,24 @@ make check-private-data
 make TABLE_ID=T16 reproduce-table
 ```
 
+## Optional Dashboard App
+
+The static dashboard does not require Docker:
+
+```bash
+make dashboard
+open outputs/dashboard/index.html
+```
+
+For the optional Streamlit/Plotly app inside Docker:
+
+```bash
+make docker-build
+make docker-dashboard-app
+```
+
+The app reads repository manifests only. It does not display private data values or execute empirical commands from the browser.
+
 ## Platform Notes
 
 - macOS: Docker Desktop is the simplest route. Keep the repository outside OneDrive/Dropbox and mount only the private data mirror.
