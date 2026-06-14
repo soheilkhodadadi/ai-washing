@@ -14,10 +14,10 @@ This index is organized by coauthor task. Internal development reports and email
 - `../manifests/data_product_catalog.csv`: machine-readable data product catalog.
 - `../manifests/table_to_script_crosswalk.csv`: reproduction-oriented table/script crosswalk.
 - Terminal helpers: `make workbench-index`, `make table-info TABLE_ID=T30`, and `make export-table-workbench TABLE_ID=T30`.
-- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review, technical drill-down, data-quality cockpit, Portfolio Demo Mode, and controlled Command Center views.
-- `portfolio_demo_deployment.md`: static one-click portfolio demo path for nonprivate presentation review.
+- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review, technical drill-down, data-quality cockpit, Public Demo Mode, and controlled Command Center views.
+- `public_demo_deployment.md`: static one-click public demo path for nonprivate presentation review.
 - `dashboard_sharing_options.md`: why generated dashboard HTML is local/ignored and how to share a Dropbox preview, static hosted site, or future hosted Streamlit demo.
-- Dashboard helpers: `make dashboard`, `make dashboard-check`, `make portfolio-demo`, `make portfolio-demo-check`, optional `make dashboard-app`, and `make dashboard-screenshots`. Command Center runs only the approved local Make targets registered in `../manifests/dashboard_command_registry.csv`.
+- Dashboard helpers: `make dashboard`, `make dashboard-check`, `make public-demo`, `make public-demo-check`, optional `make dashboard-app`, and `make dashboard-screenshots`. Command Center runs only the approved local Make targets registered in `../manifests/dashboard_command_registry.csv`.
 
 ## First-Day Setup
 
@@ -91,7 +91,7 @@ This index is organized by coauthor task. Internal development reports and email
 ## Dashboard
 
 - [Dashboard guide](dashboard_guide.md)
-- [Portfolio demo deployment](portfolio_demo_deployment.md)
+- [Public demo deployment](public_demo_deployment.md)
 - [Dashboard sharing options](dashboard_sharing_options.md)
 - [Dashboard product spec](dashboard_product_spec.md)
 - [Dashboard user stories](dashboard_user_stories.md)

@@ -137,7 +137,7 @@ def test_dashboard_screenshot_target_script_writes_ignored_guide(tmp_path: Path)
 
     guide = (tmp_path / "README.md").read_text(encoding="utf-8")
     target_map = (tmp_path / "screenshot_targets.csv").read_text(encoding="utf-8")
-    assert "Portfolio Demo Mode" in guide
+    assert "Public Demo Mode" in guide
     assert "Command Center" in target_map
     assert dashboard_text_is_safe(guide + target_map)
 

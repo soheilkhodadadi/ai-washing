@@ -32,12 +32,12 @@ make dashboard
 open outputs/dashboard/index.html
 ```
 
-Optional portfolio-safe one-click demo:
+Optional one-click public demo:
 
 ```bash
-make portfolio-demo
-make portfolio-demo-check
-open outputs/portfolio_demo/index.html
+make public-demo
+make public-demo-check
+open outputs/public_demo/index.html
 ```
 
 Optional local app:
@@ -64,7 +64,7 @@ make extension-builder-hides
 5. `docs/v5_editorial_alignment.md`: how the v5.0 editorial source relates to the v4.3 numerical freeze.
 6. `docs/construct_playbooks/`: how central constructs are built and safely updated.
 7. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
-8. `docs/portfolio_demo_deployment.md`: portfolio-safe static demo path.
+8. `docs/public_demo_deployment.md`: static public demo path without private data.
 9. `docs/dashboard_sharing_options.md`: why generated dashboard files are local/ignored and how to share Dropbox, static, or hosted previews.
 10. `docs/docker_quickstart.md`: lowest-friction setup path.
 11. `docs/private_data_contract.md`: how to mount the private data room.
@@ -132,7 +132,7 @@ AIW_DATA_ROOT=/path/to/ai-washing-private-data make TABLE_ID=T30 reproduce-table
 
 For a richer local interface, run `make dashboard-app`. Use **Table Explorer** for table review and technical drill-down. Use **Data Room** and **Construct Audits** to inspect classifier evidence, patent-match confidence, textual acronym-risk status, WRDS/CRSP/Compustat lane checks, and metadata-only private-data schema/status summaries.
 
-Use **Portfolio Demo Mode** when preparing screenshots or showing the dashboard outside the private research team. It is nonprivate by design and disables command execution.
+Use **Public Demo Mode** when showing the dashboard outside the private data room. It is nonprivate by design and disables command execution.
 
 If the result changes numerically, keep the original v4.3 output as the reference and document whether the change is intended for a future release.
 

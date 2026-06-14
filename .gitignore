@@ -22,7 +22,9 @@ outputs/extensions/**
 outputs/workbench/**
 outputs/dashboard/**
 outputs/dashboard_runs/**
+outputs/public_demo/**
 outputs/portfolio_demo/**
+outputs/public_demo_screenshots/**
 outputs/portfolio_screenshots/**
 !outputs/reproduced/README.md
 !outputs/fixture/.gitkeep

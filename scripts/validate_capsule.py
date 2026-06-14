@@ -35,7 +35,7 @@ def main() -> int:
         if row["match_status"] not in {"exact_match", "format_only_delta", "content_delta", "unknown"}:
             failures.append(f"Invalid match status for {row['table_id']}: {row['match_status']}")
 
-    # Dependencies may be missing_private_input in Phase 1, but the manifest should not be empty.
+    # Dependencies may be marked missing_private_input during early staging, but the manifest should not be empty.
     if not deps:
         failures.append("Data dependency manifest is empty")
 

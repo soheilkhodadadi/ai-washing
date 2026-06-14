@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT_DIR = ROOT / "outputs" / "portfolio_demo"
+OUT_DIR = ROOT / "outputs" / "public_demo"
 OUT_HTML = OUT_DIR / "index.html"
 
 MANIFESTS = {
@@ -149,7 +149,7 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Washing Analytics Workstation - Portfolio Demo</title>
+  <title>AI Washing Analytics Workstation - Public Demo</title>
   <style>
     :root {{
       --ink: #10222b;
@@ -222,7 +222,7 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
   </div>
 </nav>
 <header>
-  <div class="eyebrow">Portfolio-safe research overview</div>
+  <div class="eyebrow">Public-review safe research overview</div>
   <h1>A reproducible evidence map for the AI Washing paper.</h1>
   <p class="hero-copy">This static overview shows how the AI Washing workstation connects paper results, construct validation, table navigation, extension lanes, and reproducibility checks. It is generated from repository manifests and contains no private research data values, local machine paths, access details, or browser command execution.</p>
   <div class="hero-actions">
@@ -252,7 +252,7 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
       </div>
     </div>
     <aside class="panel">
-      <h3>What makes this portfolio-safe?</h3>
+      <h3>What makes this public-review safe?</h3>
       <ul>
         <li>No private data values or row-level text are displayed.</li>
         <li>No local machine paths or private storage locations are embedded.</li>
@@ -265,7 +265,7 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
 
   <section id="tables">
     <h2>Results a reviewer can understand first.</h2>
-    <p class="section-copy">The table layer is organized by paper labels, not internal filenames. Main Table 7 is the current nontechnical gate case: a reviewer can open the app, select the table by label, inspect readable artifacts, and download a compact review packet.</p>
+    <p class="section-copy">The table layer is organized by paper labels, not internal filenames. Main Table 7 is the current table-review gate case: a reviewer can open the app, select the table by label, inspect readable artifacts, and download a compact review packet.</p>
     <div class="grid">{table_showcase(tables)}</div>
     <div class="safe"><strong>Status cue:</strong> {e(status_line)}. Frozen v4.3 evidence remains canonical; exploratory outputs stay separate until deliberately promoted.</div>
   </section>
@@ -290,11 +290,11 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
     <aside class="panel">
       <h3>Suggested next commands</h3>
       <p>Generate this page locally:</p>
-      <p><code>make portfolio-demo</code></p>
+      <p><code>make public-demo</code></p>
       <p>Validate that it is safe to share:</p>
-      <p><code>make portfolio-demo-check</code></p>
+      <p><code>make public-demo-check</code></p>
       <p>Open the one-click demo:</p>
-      <p><code>open outputs/portfolio_demo/index.html</code></p>
+      <p><code>open outputs/public_demo/index.html</code></p>
     </aside>
   </section>
 </main>
@@ -310,7 +310,7 @@ def validate_public_html(text: str) -> None:
     lower = text.lower()
     leaked = [pattern for pattern in FORBIDDEN_PATTERNS if pattern.lower() in lower]
     if leaked:
-        raise PortfolioBuildError(f"Portfolio demo contains forbidden pattern(s): {', '.join(leaked)}")
+        raise PortfolioBuildError(f"Public demo contains forbidden pattern(s): {', '.join(leaked)}")
 
 
 def build_portfolio_demo(output_path: Path = OUT_HTML) -> Path:
@@ -328,12 +328,12 @@ def build_portfolio_demo(output_path: Path = OUT_HTML) -> Path:
 def main() -> int:
     path = build_portfolio_demo()
     payload = {
-        "portfolio_demo": str(path.relative_to(ROOT)),
+        "public_demo": str(path.relative_to(ROOT)),
         "tables": len(read_csv(MANIFESTS["tables"])),
         "data_products": len(read_csv(MANIFESTS["data_products"])),
         "extensions": len(read_csv(MANIFESTS["extensions"])),
     }
-    print("AI Washing portfolio demo generated")
+    print("AI Washing public demo generated")
     print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
 

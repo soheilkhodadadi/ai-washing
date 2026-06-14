@@ -28,17 +28,17 @@ The dashboard includes searchable cards for paper assets, data products, constru
 
 ## Streamlit App Product Layer
 
-The Streamlit app is the richer coauthor/client interface. It is organized as a multipage dashboard with Coauthor Mode and Demo Mode. The product contract is documented in:
+The Streamlit app is the richer coauthor/reviewer interface. It is organized as a multipage dashboard with Coauthor Mode and Demo Mode. The product contract is documented in:
 
 - `docs/dashboard_product_spec.md`
 - `docs/dashboard_user_stories.md`
 - `docs/dashboard_information_architecture.md`
 
-The app is read-mostly in Phase 9. Review, data, construct, and extension pages display copy-ready commands; **Command Center** is the only page that can execute approved local Make targets.
+The app is read-mostly in the current dashboard release. Review, data, construct, and extension pages display copy-ready commands; **Command Center** is the only page that can execute approved local Make targets.
 
 ## Review Main Table 7 In The App
 
-For a nontechnical table review, open the Streamlit app and go to **Table Explorer**. The page opens around paper labels rather than internal asset IDs. Use **Review Main Table 7** or select:
+For a paper table review, open the Streamlit app and go to **Table Explorer**. The page opens around paper labels rather than internal asset IDs. Use **Review Main Table 7** or select:
 
 ```text
 Main Table 7 - Capital-raising timing and low-credibility AI disclosure
@@ -91,7 +91,7 @@ Full-table reproduction and replication-audit execution are not exposed in Comma
 
 ## Optional Streamlit App
 
-The Streamlit app is an optional richer interface for coauthor demonstrations or portfolio presentation. It reads the same manifests as the static dashboard.
+The Streamlit app is an optional richer interface for coauthor demonstrations or research presentation. It reads the same manifests as the static dashboard.
 
 Native setup:
 
@@ -109,19 +109,19 @@ make docker-dashboard-app
 
 Then open the local URL printed by Streamlit. If private data are mounted, the app still does not display private values. Use Data Room for metadata-only data checks or Command Center for approved local Make targets.
 
-## Portfolio Demo And Screenshots
+## Public Demo And Screenshots
 
-Use **Portfolio Demo Mode** when showing the dashboard outside the private research team. It presents a nonprivate case-study overview of the workstation: the research problem, manifest-first workflow, evidence surfaces, reusable methodology, and the information hidden in Demo Mode.
+Use **Public Demo Mode** when showing the dashboard outside the private research team. It presents a nonprivate case-study overview of the workstation: the research problem, manifest-first workflow, evidence surfaces, reusable methodology, and the information hidden in Demo Mode.
 
-For a simpler one-click static presentation that does not require Streamlit, generate the portfolio demo:
+For a simpler one-click static presentation that does not require Streamlit, generate the public demo:
 
 ```bash
-make portfolio-demo
-make portfolio-demo-check
-open outputs/portfolio_demo/index.html
+make public-demo
+make public-demo-check
+open outputs/public_demo/index.html
 ```
 
-This page is generated from manifests, executes no commands, and is designed for nontechnical review or public-safe demonstration. See `docs/portfolio_demo_deployment.md` and `docs/dashboard_sharing_options.md`.
+This page is generated from manifests, executes no commands, and is designed for paper review or public-safe demonstration. See `docs/public_demo_deployment.md` and `docs/dashboard_sharing_options.md`.
 
 To prepare a local screenshot checklist, run:
 
@@ -129,7 +129,7 @@ To prepare a local screenshot checklist, run:
 make dashboard-screenshots
 ```
 
-This writes an ignored guide under `outputs/portfolio_screenshots/`. Capture external screenshots in Demo Mode unless a coauthor explicitly requests an internal view.
+This writes an ignored guide under `outputs/public_demo_screenshots/`. Capture external screenshots in Demo Mode unless a coauthor explicitly requests an internal view.
 
 ## Scope Boundary
 

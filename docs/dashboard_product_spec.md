@@ -7,16 +7,16 @@ The AI Washing dashboard is a coauthor-facing interface for navigating the empir
 The dashboard has three jobs:
 
 1. Help a technical coauthor locate tables, scripts, panels, construct definitions, classifier evidence, patent evidence, and extension lanes quickly.
-2. Help a nontechnical supervisor or research client inspect results, understand the paper narrative, and review polished outputs without starting from terminal commands.
+2. Help a supervisor or coauthor reviewer inspect results, understand the paper narrative, and review polished outputs without starting from terminal commands.
 3. Provide a public-safe demonstration of a reproducible finance, NLP, and data-science workstation.
 
 ## Audiences
 
 - **Technical coauthor:** validates table outputs, inspects data products, modifies scripts, and develops follow-on tests.
-- **Supervisor / nontechnical reviewer:** reviews the paper map, table meaning, figures, and extension outputs without needing to understand the repository internals.
+- **Supervisor / coauthor reviewer:** reviews the paper map, table meaning, figures, and extension outputs without needing to understand the repository internals.
 - **Journal data editor:** verifies that the package has reproducible scripts, documented data boundaries, and no hidden local-machine dependency.
 - **External reviewer:** sees a polished nonprivate demonstration of the project workflow and technical depth.
-- **Nontechnical external viewer:** opens a static one-click portfolio page without installing Python, Docker, or Streamlit.
+- **External reader:** opens a static one-click public demo page without installing Python, Docker, or Streamlit.
 
 ## Dashboard Modes
 
@@ -28,11 +28,11 @@ Coauthor Mode is the default. It may show real manifest metadata, paper labels, 
 
 Demo Mode is public-safe. It should emphasize the project narrative, dashboard capabilities, static summary metrics, nonprivate manifest metadata, and case-study screenshots. It should hide private-data-root instructions, disable command execution, and avoid copy-ready commands that imply access to private data.
 
-The separate static portfolio demo is the simplest public-facing surface. It is generated with `make portfolio-demo`, checked with `make portfolio-demo-check`, and can be opened as `outputs/portfolio_demo/index.html` or hosted later as a static site. It is presentation-only and does not replace the Streamlit coauthor workstation.
+The separate static public demo is the simplest public-facing research overview. It is generated with `make public-demo`, checked with `make public-demo-check`, and can be opened as `outputs/public_demo/index.html` or hosted later as a static site. It is presentation-only and does not replace the Streamlit coauthor workstation.
 
 ### Supervisor-Facing Table Review
 
-The Table Explorer should support a nontechnical table review path. A supervisor or research client can select a result by paper label, for example `Main Table 7`, see the empirical question and review priority first, preview a safe CSV table, and download available DOCX, PDF, PNG, CSV, TeX, and notes artifacts from the canonical repository. Technical asset IDs such as `T30` remain visible, but they should not be the primary entry point for nontechnical review.
+The Table Explorer should support a paper table review path. A supervisor or coauthor reviewer can select a result by paper label, for example `Main Table 7`, see the empirical question and review priority first, preview a safe CSV table, and download available DOCX, PDF, PNG, CSV, TeX, and notes artifacts from the canonical repository. Technical asset IDs such as `T30` remain visible, but they should not be the primary entry point for paper review.
 
 ### Technical Coauthor Drill-Down
 
@@ -75,8 +75,8 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - **Reproduction Status:** validation posture, table/figure status links, and audit commands.
 - **Command Center:** approved local Make targets, confirmation gates, environment summary, exit code, duration, and sanitized log tail.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
-- **Portfolio Demo Mode:** nonprivate, presentation-oriented case study of the workstation structure and reusable methodology.
-- **Static Portfolio Demo:** one-click HTML landing page for nontechnical or public-safe review, generated from manifests and safe narrative content.
+- **Public Demo Mode:** nonprivate, presentation-oriented case study of the workstation structure and reusable methodology.
+- **Static Public Demo:** one-click HTML landing page for external review, generated from manifests and safe narrative content.
 
 ## Success Criteria
 
@@ -88,4 +88,4 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - The dashboard works through both native Streamlit and Docker.
 - The app remains read-only outside Command Center and never exposes private data values.
 - Command Center can run approved local Make targets, but not arbitrary shell commands or full reproduction/audit targets.
-- Portfolio Demo Mode and the static portfolio demo can be shown in screenshots or public-safe demonstrations without private data roots, row-level research data, command logs, or local machine paths.
+- Public Demo Mode and the static public demo can be shown in screenshots or public-safe demonstrations without private data roots, row-level research data, command logs, or local machine paths.

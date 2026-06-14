@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PORTFOLIO_DEMO = ROOT / "outputs" / "portfolio_demo" / "index.html"
+PUBLIC_DEMO = ROOT / "outputs" / "public_demo" / "index.html"
 FORBIDDEN = [
     "/Users/soheilkhodadadi",
     "DataWork/semantic-patterns",
@@ -16,12 +16,12 @@ FORBIDDEN = [
     "secret",
 ]
 REQUIRED_TEXT = [
-    "Portfolio-safe research overview",
+    "Public-review safe research overview",
     "Main Table 7",
     "final_hybrid_classifier_outputs",
     "patent_match_artifacts",
     "Builder Hides",
-    "make portfolio-demo-check",
+    "make public-demo-check",
 ]
 
 
@@ -31,10 +31,10 @@ def read_csv(rel: str) -> list[dict[str, str]]:
 
 
 def main() -> int:
-    if not PORTFOLIO_DEMO.is_file():
-        print(f"Portfolio demo not found: {PORTFOLIO_DEMO.relative_to(ROOT)}", file=sys.stderr)
+    if not PUBLIC_DEMO.is_file():
+        print(f"Public demo not found: {PUBLIC_DEMO.relative_to(ROOT)}", file=sys.stderr)
         return 2
-    text = PORTFOLIO_DEMO.read_text(encoding="utf-8")
+    text = PUBLIC_DEMO.read_text(encoding="utf-8")
     lower = text.lower()
     errors: list[str] = []
     for pattern in FORBIDDEN:
@@ -58,13 +58,13 @@ def main() -> int:
         if asset_id not in text:
             errors.append(f"missing showcase asset: {asset_id}")
     if errors:
-        print("AI Washing portfolio demo check failed")
+        print("AI Washing public demo check failed")
         for error in errors:
             print(f"- {error}")
         return 1
-    print("AI Washing portfolio demo check passed")
-    print(f"- portfolio_demo: {PORTFOLIO_DEMO.relative_to(ROOT)}")
-    print("- mode: static, non-executing, portfolio-safe")
+    print("AI Washing public demo check passed")
+    print(f"- public_demo: {PUBLIC_DEMO.relative_to(ROOT)}")
+    print("- mode: static, non-executing, public-review safe")
     return 0
 
 

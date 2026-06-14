@@ -26,4 +26,4 @@ Then inspect a few source examples, extracted AI sentences, and classified outpu
 
 ## Known Boundary
 
-The package currently demonstrates extraction/classification mechanics through representative samples and staged outputs. It does not yet provide a one-command full-corpus raw SEC rebuild. That is by design for Phase 4F. If the paper moves to a journal replication package, we can either document public source download instructions or add a private full raw-source mirror depending on the journal and coauthor requirements.
+The package currently demonstrates extraction/classification mechanics through representative samples and staged outputs. It does not yet provide a one-command full-corpus raw SEC rebuild. That is by design for the current coauthor handoff. If the paper moves to a journal replication package, we can either document public source download instructions or add a private full raw-source mirror depending on the journal and coauthor requirements.

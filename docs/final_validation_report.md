@@ -7,8 +7,8 @@ This report summarizes the current validation state for the coauthor workstation
 ## Commands Run In This Pass
 
 ```bash
-make portfolio-demo
-make portfolio-demo-check
+make public-demo
+make public-demo-check
 make dashboard-check
 make package-surface-audit
 .venv/bin/python -m pytest -q
@@ -22,7 +22,7 @@ git diff --check
 
 ## Results
 
-- Portfolio-safe static overview: passed; generated `outputs/portfolio_demo/index.html` and passed leakage/content checks.
+- Public-review safe static overview: passed; generated `outputs/public_demo/index.html` and passed leakage/content checks.
 - Static dashboard: passed; 26 paper assets, 16 data products, and 4 extension lanes are represented.
 - Package surface audit: passed with 0 stop-the-line tracked leakage issues.
 - Pytest suite: passed, 68 tests.

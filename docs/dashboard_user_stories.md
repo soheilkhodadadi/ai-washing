@@ -14,7 +14,7 @@
 - As a coauthor, I want extension lanes separated from frozen v4.3 evidence so exploratory outputs are not confused with manuscript results.
 - As a coauthor, I want most pages to stay read-only, with approved execution available only through a narrow Command Center allowlist.
 
-## Supervisor Or Research Client
+## Supervisor Or Coauthor Reviewer
 
 - As a supervisor, I want a paper-order results page so I can understand which table supports which part of the manuscript.
 - As a supervisor, I want the dashboard to explain what a table asks and why it matters before showing technical implementation details.
@@ -35,13 +35,13 @@
 - As an external reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
 - As an external reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and a clear review interface.
 - As an external reviewer, I want a case-study page and screenshots that explain the reusable methodology without private research data.
-- As a nontechnical viewer, I want a one-click static page that opens locally or from a hosted link without installing Python, Docker, or Streamlit.
+- As a external reader, I want a one-click static page that opens locally or from a hosted link without installing Python, Docker, or Streamlit.
 
-## Out Of Scope For Phase 9
+## Out Of Scope For the current dashboard release
 
 - Arbitrary shell commands or user-entered Make targets from the browser.
 - Full-table reproduction or replication-audit execution from the browser.
 - Editing data, panels, scripts, or manifests from the app.
 - Displaying private row-level values.
 - Replacing the static dashboard, Make commands, or Docker workflow.
-- Treating the static portfolio demo as empirical evidence rather than as a presentation layer.
+- Treating the static public demo as empirical evidence rather than as a presentation layer.

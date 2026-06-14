@@ -15,7 +15,7 @@ Example: manifest path `data/processed/panel/file.parquet` should be staged at `
 - Dependency rows: 44
 - Unique expected paths: 15
 - Unique inputs staged in the current private root: 15/15
-- Current Phase 3F result: table-rerun private inputs are staged, and lane-specific coverage is enforced separately by `make audit-artifact-coverage`.
+- Current result: table-rerun private inputs are staged, and lane-specific coverage is enforced separately by `make audit-artifact-coverage`.
 - Important distinction: annual NLP/patent artifacts cover 2016-2025; event/market-return artifacts cover 2016-2024 because v4.3 CRSP/event-return inputs stop at 2024-12-31.
 
 ## Unique Inputs

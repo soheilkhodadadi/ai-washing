@@ -38,12 +38,12 @@ def _workflow_timeline() -> None:
 
 def render(data: DashboardData, mode: str) -> None:
     hero(
-        "Portfolio Demo Mode",
+        "Public Demo Mode",
         "A nonprivate case-study view of the AI Washing workstation as a reproducible finance and NLP "
         "research package.",
     )
     safety_banner(mode)
-    badges(["portfolio-safe", "manifest metadata", "no private row values", "command execution disabled in Demo Mode"])
+    badges(["public-review safe", "manifest metadata", "no private row values", "command execution disabled in Demo Mode"])
 
     metrics = portfolio_summary_metrics(data)
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -110,7 +110,7 @@ def render(data: DashboardData, mode: str) -> None:
         )
 
     with hidden:
-        st.markdown('<div class="aiw-section-kicker">Portfolio-safe boundary</div>', unsafe_allow_html=True)
+        st.markdown('<div class="aiw-section-kicker">Public-review safe boundary</div>', unsafe_allow_html=True)
         for point in DEMO_SAFETY_POINTS:
             st.markdown(f"- {point}")
         st.warning(

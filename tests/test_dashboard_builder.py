@@ -59,7 +59,7 @@ def test_portfolio_demo_contains_showcase_ids_and_product_story(tmp_path: Path) 
         assert product_id in text
     for row in _rows("manifests/extension_workbench.csv"):
         assert row["extension_id"] in text
-    assert "Portfolio-safe research overview" in text
+    assert "Public-review safe research overview" in text
     assert "Research workflow and evidence map." in text
 
 

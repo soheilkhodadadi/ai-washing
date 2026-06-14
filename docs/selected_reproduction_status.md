@@ -1,6 +1,6 @@
 # Selected Table Reproduction Status
 
-This report records the Phase 2D selected rerun gate for `T00`, `T16`, `T17`, `T09`, and `T30`. Generated outputs are intentionally ignored by Git; this report preserves the comparison result.
+This report records the selected-table rerun gate for `T00`, `T16`, `T17`, `T09`, and `T30`. Generated outputs are intentionally ignored by Git; this report preserves the comparison result.
 
 ## Summary
 
@@ -21,4 +21,4 @@ This report records the Phase 2D selected rerun gate for `T00`, `T16`, `T17`, `T
 
 ## Gate Result
 
-Phase 2D selected-table numerical gate: **passed**. No selected table has an unexplained numerical difference at the CSV payload level.
+Selected-table numerical gate: **passed**. No selected table has an unexplained numerical difference at the CSV payload level.

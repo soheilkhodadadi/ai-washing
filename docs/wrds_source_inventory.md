@@ -9,7 +9,7 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 make validate-wrds-data
 ```
 
-Expected Phase 4D result: all 16 manifest rows are present.
+Expected current result: all 16 manifest rows are present.
 
 ## Private Data Tree
 

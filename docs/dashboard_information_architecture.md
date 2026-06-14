@@ -6,8 +6,8 @@ The app uses Streamlit multipage navigation with grouped pages.
 
 - **Start**
   - Home / Project Overview
-  - Portfolio Demo Mode
-  - Static Portfolio Demo (`outputs/portfolio_demo/index.html`)
+  - Public Demo Mode
+  - Static Public Demo (`outputs/public_demo/index.html`)
 - **Paper Review**
   - Paper Results
   - Table Explorer
@@ -36,16 +36,16 @@ The sidebar should contain:
 | Page | Primary user | Main task | Inputs | Outputs | Safety rule |
 | --- | --- | --- | --- | --- | --- |
 | Home / Project Overview | all users | understand the project and first actions | table, data, extension manifests | metrics, paper story, first commands | no private data inspection |
-| Paper Results | supervisor/client | review tables and figures in paper order | paper table workbench | paper sections, result cards, bundle commands | do not imply exploratory outputs are frozen evidence |
-| Table Explorer | supervisor/client and technical coauthor | review one table by paper label, then inspect technical continuation details | paper table workbench, table crosswalk, data catalog, constructs, extensions, repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, source script, data products, metadata-only schema/status, construct links, extension relevance, copy-ready commands | preview only repo-contained artifacts; show private-data metadata only; copy commands only |
+| Paper Results | supervisor/coauthor | review tables and figures in paper order | paper table workbench | paper sections, result cards, bundle commands | do not imply exploratory outputs are frozen evidence |
+| Table Explorer | supervisor/coauthor and technical coauthor | review one table by paper label, then inspect technical continuation details | paper table workbench, table crosswalk, data catalog, constructs, extensions, repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, source script, data products, metadata-only schema/status, construct links, extension relevance, copy-ready commands | preview only repo-contained artifacts; show private-data metadata only; copy commands only |
 | Data Room | technical coauthor / data editor | locate data products and inspect audit status | data product catalog, source manifests, audit CSVs | data product cards, evidence panels, coverage, keys, validation status, metadata-only schema checks, locate-data commands | hide private path commands in demo mode; never display row-level values |
 | Construct Audits | coauthor / data editor | inspect construct definitions, confidence, and limitations | construct playbooks, audit CSVs, data catalog | playbook links, construct commands, classifier/patent/WRDS evidence, acronym-risk status | summarize audit counts only; no private row examples |
 | Extension Lab | coauthor | inspect extension lanes and future data readiness | extension workbench, ignored aggregate outputs, SEO/offering schema template | maturity badges, generated output viewer, copy-ready commands, interpretation limits, and schema-only checks | label extensions as not manuscript-ready unless promoted; never display private row-level values |
 | Reproduction Status | data editor | verify reproducibility posture | status docs and manifests | audit commands and status links | no command execution |
 | Command Center | trusted local coauthor | run approved Make targets safely | dashboard command registry and local environment | fixed command, confirmation gate, duration, exit code, sanitized log tail, ignored raw log path | allowlisted Make targets only; disabled in Demo Mode |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
-| Portfolio Demo Mode | external reviewer | see nonprivate case-study overview | manifests and static portfolio narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
-| Static Portfolio Demo | nontechnical external reviewer | open a one-click public-safe landing page | manifests, reproduction-status ledger, and safe narrative content | static HTML case study, metrics, showcase tables, evidence spine, extension roadmap | no private paths, no row-level values, no command execution |
+| Public Demo Mode | external reviewer | see nonprivate case-study overview | manifests and static public demo narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
+| Static Public Demo | external reviewer | open a one-click public-review landing page | manifests, reproduction-status ledger, and safe narrative content | static HTML case study, metrics, showcase tables, evidence spine, extension roadmap | no private paths, no row-level values, no command execution |
 
 ## Manifest Mapping
 
@@ -56,7 +56,7 @@ The sidebar should contain:
 - `manifests/extension_workbench.csv` feeds Extension Lab.
 - Construct pages link to `docs/construct_playbooks/` and use registered construct IDs.
 - Reproduction pages link to existing status documents and Make targets rather than duplicating table results.
-- `outputs/portfolio_demo/index.html` is generated from manifests and safe narrative content for portfolio or nontechnical review.
+- `outputs/public_demo/index.html` is generated from manifests and safe narrative content for paper review.
 
 ## State Model
 
@@ -74,7 +74,7 @@ No private file contents, access details, or raw command logs should be stored i
 
 ## Table Review Flow
 
-The nontechnical review flow starts from paper labels rather than internal asset IDs:
+The paper review flow starts from paper labels rather than internal asset IDs:
 
 1. Open **Paper Results** or **Table Explorer**.
 2. Choose a result such as `Main Table 7 - Capital-raising timing and low-credibility AI disclosure`.

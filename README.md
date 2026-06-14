@@ -27,7 +27,7 @@ The repository also preserves the v5.0 editorial source as the current manuscrip
 - [docs/v5_editorial_alignment.md](docs/v5_editorial_alignment.md): how to use the v5.0 editorial source while keeping v4.3 as the computational freeze.
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
 - [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces, including table review and technical drill-down.
-- [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md): one-click static demo path for nonprivate portfolio or presentation review.
+- [docs/public_demo_deployment.md](docs/public_demo_deployment.md): one-click static demo path for nonprivate research presentation review.
 - [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md): why generated dashboard HTML is local/ignored and how to share a hosted or Dropbox preview.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day commands and detailed validation path.
 
@@ -86,12 +86,12 @@ make dashboard
 open outputs/dashboard/index.html
 ```
 
-Optional one-click portfolio demo:
+Optional one-click public demo:
 
 ```bash
-make portfolio-demo
-make portfolio-demo-check
-open outputs/portfolio_demo/index.html
+make public-demo
+make public-demo-check
+open outputs/public_demo/index.html
 ```
 
 Then run the table command:
@@ -157,20 +157,20 @@ Use **Data Room** and **Construct Audits** for the data-quality cockpit: classif
 
 Use **Command Center** only on a trusted local workstation when you want the app to run approved Make targets. It executes a fixed allowlist, requires confirmation for private-data or output-writing commands, disables execution in Demo Mode, and writes logs under ignored `outputs/dashboard_runs/`.
 
-Use **Portfolio Demo Mode** for external screenshots or capability walkthroughs. It presents a nonprivate case study of the workflow and hides private-data instructions. To prepare a local screenshot checklist, run:
+Use **Public Demo Mode** for presentation review outside the private data room. It presents a nonprivate case study of the workflow and hides private-data instructions. To prepare a local screenshot checklist, run:
 
 ```bash
 make dashboard-screenshots
 ```
 
-For an even simpler nontechnical view, generate the static portfolio landing page:
+For a browser-only presentation view, generate the static public demo landing page:
 
 ```bash
-make portfolio-demo
-open outputs/portfolio_demo/index.html
+make public-demo
+open outputs/public_demo/index.html
 ```
 
-See [docs/dashboard_guide.md](docs/dashboard_guide.md), [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md), and [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md).
+See [docs/dashboard_guide.md](docs/dashboard_guide.md), [docs/public_demo_deployment.md](docs/public_demo_deployment.md), and [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md).
 
 ## Documentation Map
 

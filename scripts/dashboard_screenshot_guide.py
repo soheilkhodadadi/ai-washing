@@ -4,21 +4,21 @@ import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT_DIR = ROOT / "outputs" / "portfolio_screenshots"
+OUT_DIR = ROOT / "outputs" / "public_demo_screenshots"
 TARGETS = [
     {
         "view": "Home / Project Overview",
         "url_path": "open root, then select Home / Project Overview",
         "mode": "Demo Mode",
-        "purpose": "Portfolio-safe first impression and project metrics.",
+        "purpose": "Public-review safe first impression and project metrics.",
         "suggested_file": "01_home_demo.png",
     },
     {
-        "view": "Portfolio Demo Mode",
-        "url_path": "open root, then select Portfolio Demo Mode",
+        "view": "Public Demo Mode",
+        "url_path": "open root, then select Public Demo Mode",
         "mode": "Demo Mode",
         "purpose": "Case-study overview and reusable methodology narrative.",
-        "suggested_file": "02_portfolio_case_study.png",
+        "suggested_file": "02_public_demo_case_study.png",
     },
     {
         "view": "Table Explorer - Main Table 7",
@@ -74,16 +74,16 @@ def write_targets() -> None:
         writer.writerows(TARGETS)
 
     lines = [
-        "# Portfolio Screenshot Targets",
+        "# Public Demo Screenshot Targets",
         "",
         "This ignored folder is for local screenshot capture only. Do not commit generated screenshots unless a later "
-        "portfolio release explicitly asks for them.",
+        "public demo release explicitly asks for them.",
         "",
         "## How to capture",
         "",
         "1. Start the app with `make dashboard-app` or `make docker-dashboard-app`.",
-        "2. Switch to Demo Mode in the sidebar before capturing portfolio screenshots.",
-        "3. Capture the views listed below. Suggested filenames are stable so a future portfolio package can refer "
+        "2. Switch to Demo Mode in the sidebar before capturing public demo screenshots.",
+        "3. Capture the views listed below. Suggested filenames are stable so a future public demo package can refer "
         "to them.",
         "",
         "| View | Navigation | Mode | Suggested file | Purpose |",
@@ -94,7 +94,7 @@ def write_targets() -> None:
     lines.extend(
         [
             "",
-            "Safety rule: screenshots for external portfolio use should not show private data roots, row-level data, "
+            "Safety rule: screenshots for external research review should not show private data roots, row-level data, "
             "command logs, or Coauthor Mode private-data instructions.",
         ]
     )

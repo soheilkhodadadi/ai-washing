@@ -43,7 +43,7 @@ STOP_PREFIXES = (
 ALLOWED_TRACKED_OUTPUTS = {"outputs/reproduced/README.md", "outputs/fixture/.gitkeep"}
 JOURNAL_EXCLUDE_PREFIXES = (
     "docs/phase",
-    "docs/onedrive_",
+    "docs/cloud_share_",
 )
 JOURNAL_EXCLUDE_EXACT: set[str] = set()
 JOURNAL_OPTIONAL_EXACT = {

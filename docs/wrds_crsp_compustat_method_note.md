@@ -36,7 +36,7 @@ make validate-wrds-data
 
 The validator reads `manifests/wrds_data_manifest.csv` and checks row counts, required columns, date ranges, and year ranges for the staged WRDS artifacts.
 
-The current Phase 4D private data room stages:
+The current private data room stages:
 
 | Artifact group | Logical path | Purpose |
 |---|---|---|

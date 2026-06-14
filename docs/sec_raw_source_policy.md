@@ -1,6 +1,6 @@
 # SEC Raw-Source Policy
 
-Phase 4F makes the SEC source boundary explicit. The coauthor workstation does not mirror the full raw SEC or full Notre Dame Stage-One 10-X corpus by default. It ships a smaller audit surface that is enough for v4.3 reproduction, coauthor inspection, and extraction/classification method review.
+The coauthor workstation does not mirror the full raw SEC or full Notre Dame Stage-One 10-X corpus by default. It ships a smaller audit surface that is enough for v4.3 reproduction, coauthor inspection, and extraction/classification method review.
 
 ## Policy
 
