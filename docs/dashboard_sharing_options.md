@@ -40,7 +40,7 @@ Use three coordinated channels:
 2. Private Dropbox data room: private data mirror used as `AIW_DATA_ROOT`.
 3. Optional local dashboard: coauthors generate the static dashboard or run the Streamlit app after cloning the repository.
 
-Do not place this Git repository inside Dropbox. Keep `.git` local and use Dropbox only for the external private data root.
+Do not place this Git repository inside Dropbox. Keep `.git` local and use Dropbox only for the external private data root. Share the live Dropbox folder URL through a private message or email, not in the Git repository.
 
 ## Quick Nontechnical Preview
 

@@ -121,4 +121,4 @@ Share the package as two coordinated pieces:
 1. Private GitHub repository for code, documentation, manifests, dashboards, and versioned evidence.
 2. Private Dropbox data room for restricted data and large artifacts.
 
-Do not put the Git repository inside Dropbox or any other sync folder. Keep `.git` local and use Dropbox only for the external data mirror.
+Do not put the Git repository inside Dropbox or any other sync folder. Keep `.git` local and use Dropbox only for the external data mirror. Share the live Dropbox URL privately; do not commit the access link to Git.

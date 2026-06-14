@@ -18,6 +18,16 @@ $AIW_DATA_ROOT/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api
 
 Do not put the Git repository itself inside Dropbox or another sync folder. Clone the GitHub repository locally, then set `AIW_DATA_ROOT` to a local mirror of the shared Dropbox private-data folder.
 
+## Dropbox Link Policy
+
+Dropbox is the canonical sharing channel for the private data room. Do not commit the Dropbox shared-folder URL to Git because access links can change and may carry permissions. Share the live Dropbox URL through email or another private channel, then have each coauthor sync or download that folder and set:
+
+```bash
+export AIW_DATA_ROOT=/path/to/local/dropbox/ai-washing-private-data
+```
+
+The repository should document the path contract and validation commands, not the access-bearing Dropbox URL itself.
+
 ## Validation Command
 
 From the repository root:
