@@ -15,7 +15,7 @@ else
 DOCKER_DATA_ARGS := -e AIW_DATA_ROOT=$(DOCKER_DATA_DIR)
 endif
 
-.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness
+.PHONY: doctor coauthor-preflight validate compare-tables import-smoke path-leak-scan smoke-fixture reproduce-selected reproduce-table compare-selected-reproduction git-hygiene check-private-data audit-artifact-coverage reproduce-all-tables-dry-run reproduce-all-tables reproduction-status reproduce-figures figure-reproduction-status validate-data-room validate-patent-data patent-example-audit validate-wrds-data builder-hides-first-pass validate-sec-source c7-format-delta package-surface-audit data-sanity-audit textual-construct-audit patent-construct-audit journal-reproducibility-audit replication-audit referee-audit docker-build docker-preflight docker-private-check docker-reproduce-selected docker-replication-audit docker-shell share-readiness table-info data-products construct-info
 
 doctor:
 	$(PYTHON) scripts/doctor.py
@@ -49,6 +49,16 @@ reproduce-table:
 
 check-private-data:
 	$(PYTHON) scripts/check_private_data.py
+
+
+table-info:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py table-info --table-id "$(or $(TABLE_ID),$(TABLE))"
+
+data-products:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py data-products $(if $(PRODUCT_ID),--product-id "$(PRODUCT_ID)",)
+
+construct-info:
+	PYTHONPATH=src $(PYTHON) scripts/workbench.py construct-info --construct "$(CONSTRUCT)"
 
 reproduce-all-tables-dry-run:
 	PYTHONPATH=src $(PYTHON) scripts/reproduce_assets.py --batch all --dry-run --include-figures

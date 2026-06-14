@@ -1,6 +1,21 @@
 # Coauthor Runbook
 
-This runbook is the first-day path for working on AI Washing without relying on Soheil's older `semantic-patterns` workspace.
+This runbook is the first-day path for working on AI Washing without relying on the older `semantic-patterns` workspace.
+
+## 0. Understand The Paper Workstation
+
+Before running or modifying tables, open these two files:
+
+```text
+docs/empirical_workstation.md
+docs/paper_table_workbench.md
+docs/panel_and_data_catalog.md
+docs/construct_playbooks/README.md
+```
+
+The empirical workstation guide explains how SEC text, classifier outputs, patent data, WRDS/market data, and annual/event panels fit together. The paper table workbench maps each v4.3 manuscript table and figure to its empirical question, data product, script module, rerun command, and safe modification path. The panel/data catalog explains the private data products, and the construct playbooks explain how to update central variables without disturbing v4.3 evidence.
+
+If the goal is to revise a specific table, start from the workbench rather than searching through scripts by filename.
 
 ## 1. Clone The Code Repository
 

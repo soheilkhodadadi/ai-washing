@@ -8,8 +8,4 @@ Private and licensed data are not stored here. Stage private inputs under an ext
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
-On Soheil's current machine, the local mirror is:
-
-```bash
-export AIW_DATA_ROOT=/Users/soheilkhodadadi/DataWork/ai-washing-private-data
-```
+Use `docs/private_data_contract.md` and `docs/coauthor_data_room.md` for the private data mirror contract. Keep the Git repository outside Dropbox, OneDrive, and other sync folders.

@@ -1,26 +1,85 @@
 # AI Washing Research Workstation
 
-This private repository is the computational workstation for the **AI Washing** project. It preserves **AI Washing v4.3** as the frozen computational reference while supporting coauthor verification, extension work, and future journal replication preparation.
+This repository is the active empirical workstation for the **AI Washing** paper. It preserves **AI Washing v4.3** as the frozen computational reference while making it easier for coauthors to inspect the paper logic, rerun tables, and add new tests.
 
 The repository is intentionally curated. It is not a wholesale copy of the older `semantic-patterns` workspace.
 
-## Documentation Map
+## Recommended Reading Order
 
-Start with `docs/index.md` for the full document map. The main operational documents are:
+1. `docs/empirical_workstation.md`: how the data, constructs, panels, tables, and extension lanes fit together.
+2. `docs/paper_table_workbench.md`: where each manuscript table or figure comes from and how to rerun or modify it.
+3. `docs/panel_and_data_catalog.md`: what the cleaned panels, classifier outputs, patent files, and WRDS/market products are.
+4. `docs/construct_playbooks/`: how central constructs are built and safely updated.
+5. `docs/docker_quickstart.md`: lowest-friction setup path.
+6. `docs/private_data_contract.md`: how to mount the private data room.
+7. `docs/coauthor_runbook.md`: complete first-day command sequence.
 
-- `docs/coauthor_runbook.md`: first-day setup, validation, and reproduction commands.
-- `docs/private_data_contract.md`: private data mirror and path contract.
-- `docs/full_reproduction_status.md`: full v4.3 table and figure reproduction status.
-- `docs/known_limitations.md`: documented limitations and future robustness layers.
-- `docs/replication_audit_report.md`: current strict replication and data-integrity audit summary.
+The full documentation map is `docs/index.md`.
+
+## Five-Minute Docker Path
+
+From a fresh clone:
+
+```bash
+cd ai-washing
+make docker-build
+make docker-preflight
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make docker-private-check
+make docker-reproduce-selected
+```
+
+Docker Desktop on macOS/Windows or Docker Engine on Linux is enough for this route. Private data are mounted read-only and are not copied into the image. See `docs/docker_quickstart.md` for Mac, Linux, and Windows/WSL2 notes.
+
+## Native Python Path
+
+Use this if you plan to edit code directly:
+
+```bash
+cd ai-washing
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+make coauthor-preflight
+```
+
+Set the path contract for data-dependent work:
+
+```bash
+export AIW_REPO_ROOT="$PWD"
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+export AIW_OUTPUT_ROOT="$PWD/outputs/reproduced"
+export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
+```
+
+The direct runtime dependencies are pinned to the v4.3-validated environment because some table scripts are sensitive to floating-point and string-representation changes across package versions.
+
+## Find Or Modify A Paper Table
+
+Use `docs/paper_table_workbench.md` first. It maps each table and figure to the empirical question, primary data product, constructs, script module, rerun command, reference outputs, and safe modifications. For a terminal view, run:
+
+```bash
+make table-info TABLE_ID=T29
+make data-products
+make construct-info CONSTRUCT=patent_mismatch
+```
+
+Example rerun:
+
+```bash
+AIW_DATA_ROOT=/path/to/ai-washing-private-data make TABLE_ID=T30 reproduce-table
+```
+
+If the result changes numerically, keep the original v4.3 output as the reference and document whether the change is intended for a future release.
 
 ## What Git Tracks
 
 - Frozen v4.3 manuscript assets and generated comparison evidence.
 - Source code required by publication-table scripts and validation utilities.
-- Manifests for table scripts, data dependencies, source closure, and artifact provenance.
+- Manifests for paper-table ownership, table scripts, data dependencies, source closure, and artifact provenance.
 - Small non-sensitive fixtures for smoke tests.
-- Formal setup, data, method, reproduction, and audit documentation.
+- Formal setup, data, method, reproduction, extension, and audit documentation.
 
 ## What Stays Outside Git
 
@@ -34,60 +93,14 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 
 The expected private paths are listed in `manifests/data_dependency_manifest.csv`, `manifests/coauthor_data_room_manifest.csv`, and `docs/private_data_contract.md`.
 
-## Environment Setup
-
-Recommended Docker setup from a fresh clone:
-
-```bash
-cd ai-washing
-make docker-build
-make docker-preflight
-export AIW_DATA_ROOT=/path/to/ai-washing-private-data
-make docker-private-check
-```
-
-Docker Desktop on macOS/Windows or Docker Engine on Linux is enough for this path. Private data are mounted read-only and are not copied into the image. See `docs/docker_quickstart.md` for platform notes.
-
-Native Python setup remains available for technical users:
-
-```bash
-cd ai-washing
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e .
-```
-
-Set the path contract:
-
-```bash
-export AIW_REPO_ROOT="$PWD"
-export AIW_DATA_ROOT=/path/to/ai-washing-private-data
-export AIW_OUTPUT_ROOT="$PWD/outputs/reproduced"
-export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
-```
-
-The direct runtime dependencies are pinned to the v4.3-validated environment because some table scripts are sensitive to floating-point and string-representation changes across package versions.
-
-## Platform, Runtime, And Storage Notes
-
-- Native reruns are validated on macOS with Python 3.11 and the pinned package set.
-- Linux should work natively or through Docker/devcontainer because the commands use the same environment contract.
-- Windows users should prefer WSL2 or Docker Desktop and mount the private data room as a normal filesystem path before setting `AIW_DATA_ROOT`.
-- Docker is optional for coauthor work but useful for isolated validation. Private data are mounted from outside the image and are not bundled into it.
-- Keep several GB of free disk space for generated table/figure outputs. Larger optional source corpora require more storage in the private data room.
-- The code-only preflight usually takes a few minutes. Full private-data table and figure reproduction should be run after the private mirror validates.
-
 ## First Validation
 
-Run the code-only checks first:
+Run code-only checks first:
 
 ```bash
 make doctor
 make coauthor-preflight
 ```
-
-`make coauthor-preflight` runs environment, manifest, path-leak, import-smoke, fixture, and Git hygiene checks. These should pass even before private data are mounted.
 
 After private data are staged, validate the data mirror:
 
@@ -102,7 +115,7 @@ make audit-artifact-coverage
 
 ## Reproduce v4.3 Outputs
 
-The selected numerical reproduction gate covers `T00`, `T16`, `T17`, `T09`, and `T30`:
+Selected numerical reproduction gate:
 
 ```bash
 make reproduce-selected
@@ -124,23 +137,6 @@ Current expected status: 23 table CSVs match exactly, one table has a documented
 ## Known Data-Lane Boundary
 
 The v4.3 target has lane-specific coverage. The annual NLP/patent lane covers 2016-2025. The event/market-return lane covers 2016-2024 because the staged CRSP/event-return inputs stop at 2024-12-31. See `docs/artifact_coverage_policy.md` before replacing or promoting private artifacts.
-
-## Strict Replication And Data-Integrity Audit
-
-Before sharing or preparing a journal-facing archive, run the Docker audit path when possible:
-
-```bash
-AIW_DATA_ROOT=/path/to/ai-washing-private-data make docker-replication-audit
-AIW_DATA_ROOT=/path/to/ai-washing-private-data make share-readiness
-```
-
-The native equivalent remains:
-
-```bash
-AIW_DATA_ROOT=/path/to/ai-washing-private-data make replication-audit
-```
-
-This writes `docs/replication_audit_report.md` and machine-readable evidence under `reports/replication_audit/`. The audit checks package surface, panel sanity, SEC text construct risks, patent keyword/assignee risks, environment reproducibility, and documented limitations.
 
 ## Collaboration Model
 
