@@ -4,6 +4,32 @@ This repository is the active empirical workstation for the **AI Washing** paper
 
 The repository is intentionally curated. It is not a wholesale copy of the older `semantic-patterns` workspace.
 
+## If You Only Do One Thing First
+
+Export one table bundle and open its `OPEN_FIRST.md` file. That gives the fastest view of how a manuscript result connects to the empirical question, data products, owning script, frozen v4.3 evidence, and safe modification path.
+
+```bash
+make export-table-workbench TABLE_ID=T30
+open outputs/workbench/T30/OPEN_FIRST.md
+```
+
+## Three-Command Empirical Path
+
+Use these commands after setup to move from the paper map to a concrete table and one extension lane:
+
+```bash
+make workbench-index
+make export-table-workbench TABLE_ID=T30
+make extension-info EXTENSION=builder_hides
+```
+
+After private data are mounted, run the first extension:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make extension-builder-hides
+```
+
 ## Recommended Reading Order
 
 1. `docs/empirical_workstation.md`: how the data, constructs, panels, tables, and extension lanes fit together.

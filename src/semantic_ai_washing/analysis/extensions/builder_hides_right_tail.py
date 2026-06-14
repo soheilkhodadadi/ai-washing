@@ -339,7 +339,7 @@ def write_interpretation(
             "",
             "## Interpretation Discipline",
             "",
-            "- Treat this as a screening exercise for Kuntara, not as a causal or manuscript-ready result.",
+        "- Treat this as a coauthor screening exercise, not as a causal or manuscript-ready result.",
             "- A negative coefficient on actionable or credible disclosure would be consistent with a builder-hides channel.",
             "- A positive coefficient would support the simpler validation channel that real AI builders also disclose more substantively.",
             "- If results are sensitive, inspect industry composition and the patent/application examples before rewriting the paper narrative.",

@@ -344,7 +344,7 @@ The bundle does not copy private panels or licensed data. It is a navigation and
 - Reference outputs: `data/curated/v4_3/generated_exports/paper/generated/tables/legacy_a1_mismatch_determinants_full_20260411_hybrid_api_a_conf49_main_v1.csv | data/curated/v4_3/generated_runs/legacy_a1_mismatch_determinants_full/20260411_hybrid_api_a_conf49_main_v1`
 - Coauthor use: Use to inspect full determinant specification before adding new channels.
 - Safe modifications: Add governance, institutional ownership, labor, or industry-salience variables as extension inputs.
-- Extension relevance: Natural staging point for Kuntara-led channel tests.
+- Extension relevance: Natural staging point for coauthor-led channel tests.
 - Notes: Generated CSV/MD artifacts are the lineage source.
 
 ### Appendix Table C3: Full-baseline determinants of PatentMismatch intensity

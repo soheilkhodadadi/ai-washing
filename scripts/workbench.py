@@ -128,7 +128,109 @@ def table_info(table_id: str) -> int:
     return 0
 
 
-def data_products(product_id: str | None = None) -> int:
+def module_to_source_path(module: str) -> Path | None:
+    if not module.startswith("semantic_ai_washing."):
+        return None
+    return ROOT / "src" / Path(*module.split(".")).with_suffix(".py")
+
+
+def table_script(table_id: str) -> int:
+    row = resolve_table(table_id)
+    if not row:
+        valid = ", ".join(r["asset_id"] for r in table_rows())
+        print(f"Unknown table or figure: {table_id}", file=sys.stderr)
+        print(f"Valid asset IDs: {valid}", file=sys.stderr)
+        return 2
+    module = row["script_module"]
+    path = module_to_source_path(module)
+    print(f"# {row['paper_label']} ({row['asset_id']}) script")
+    print_kv("Owning module", module)
+    if path:
+        status = "present" if path.is_file() else "missing"
+        print_kv("Repo source path", rel(path))
+        print_kv("Source status", status)
+    else:
+        print_kv("Repo source path", "not a semantic_ai_washing module")
+    print_kv("Rerun command", row["make_command"])
+    return 0
+
+
+def private_data_root() -> Path | None:
+    raw = os.environ.get("AIW_DATA_ROOT")
+    return Path(raw).expanduser().resolve() if raw else None
+
+
+def mounted_display(path: Path, root: Path) -> str:
+    try:
+        return "$AIW_DATA_ROOT/" + str(path.resolve().relative_to(root.resolve()))
+    except ValueError:
+        return str(path)
+
+
+def format_size(size: int) -> str:
+    units = ["B", "KB", "MB", "GB", "TB"]
+    value = float(size)
+    for unit in units:
+        if value < 1024 or unit == units[-1]:
+            return f"{value:.1f} {unit}" if unit != "B" else f"{int(value)} B"
+        value /= 1024
+    return f"{size} B"
+
+
+def iter_example_files(path: Path, limit: int = 5, count_limit: int = 1000) -> tuple[str, list[Path]]:
+    examples: list[Path] = []
+    count = 0
+    capped = False
+    for child in path.rglob("*"):
+        if not child.is_file():
+            continue
+        count += 1
+        if len(examples) < limit:
+            examples.append(child)
+        if count >= count_limit:
+            capped = True
+            break
+    label = f">={count_limit}" if capped else str(count)
+    return label, examples
+
+
+def check_logical_private_paths(value: str) -> None:
+    root = private_data_root()
+    if not root:
+        print("Private data check: AIW_DATA_ROOT is not set.")
+        print("Set AIW_DATA_ROOT=/path/to/ai-washing-private-data and rerun this command.")
+        return
+    for raw in split_paths(value):
+        print()
+        print(f"Logical path: {raw}")
+        if not raw.startswith("data/"):
+            print("Status: reference-only or non-private path")
+            print("Note: this entry is documented in the catalog but is not resolved through AIW_DATA_ROOT.")
+            continue
+        mounted = root / raw.removeprefix("data/")
+        print(f"Mounted path: {mounted_display(mounted, root)}")
+        if mounted.is_file():
+            print("Status: present")
+            print("Type: file")
+            print(f"Suffix: {mounted.suffix or 'none'}")
+            print(f"Size: {format_size(mounted.stat().st_size)}")
+        elif mounted.is_dir():
+            count, examples = iter_example_files(mounted)
+            print("Status: present")
+            print("Type: directory")
+            print(f"File count: {count}")
+            if examples:
+                print("Example files:")
+                for example in examples:
+                    print(f"- {mounted_display(example, root)}")
+            else:
+                print("Example files: none found")
+        else:
+            print("Status: missing")
+            print("Type: not found")
+
+
+def data_products(product_id: str | None = None, check_files: bool = False) -> int:
     rows = read_csv("manifests/data_product_catalog.csv")
     if product_id:
         rows = [row for row in rows if row["product_id"].lower() == product_id.lower()]
@@ -146,6 +248,8 @@ def data_products(product_id: str | None = None) -> int:
         print_kv("Tables using it", row["tables_using_it"])
         print_kv("Validation scripts", row["producing_or_validation_scripts"])
         print_kv("Overwrite rule", row["overwrite_rule"])
+        if check_files:
+            check_logical_private_paths(row["logical_private_path"])
     return 0
 
 
@@ -269,12 +373,43 @@ def export_table(table_id: str, rerun: bool = False) -> int:
     reference_copies = copy_reference_outputs(row, bundle / "reference_outputs")
     generated_copies = copy_generated_outputs(crosswalk, bundle / "generated_outputs")
     rerun_command = row["make_command"].replace("AIW_DATA_ROOT=/path/to/ai-washing-private-data ", "")
+    open_first = f"""# Open First: {row['paper_label']} ({asset_id})
 
+Use this file as the first stop when reviewing the exported table bundle.
+
+## Recommended First Files
+
+- Table review: open any `.docx`, `.png`, or `.pdf` file in `generated_outputs/` first if present.
+- Numeric audit: open the copied `.csv` files in `reference_outputs/` and `generated_outputs/`.
+- Manuscript integration: open copied `.tex` files in `reference_outputs/` or `generated_outputs/`.
+- Narrative or interpretation notes: open `notes_for_modification.md` and any writer packet or result-note file in `generated_outputs/`.
+
+## Canonical Versus Generated
+
+- `reference_outputs/` contains frozen v4.3 evidence copied from the curated repository where practical.
+- Frozen run directories are referenced in `table_info.json` and `input_artifacts.md` but are not copied into this bundle, to keep exports compact.
+- `generated_outputs/` contains current rerun artifacts if they already exist or if this bundle was exported with `RERUN=1`.
+- Private panels and licensed data are never copied into this bundle; reruns read them through `AIW_DATA_ROOT`.
+"""
+
+    write_text(
+        bundle / "OPEN_FIRST.md",
+        open_first,
+    )
     write_text(
         bundle / "README.md",
         f"""# {row['paper_label']} ({asset_id}) Workbench Bundle
 
 This ignored bundle summarizes the paper asset, the owning script, the safe modification path, and the available public evidence files. It does not include private panels or licensed data.
+
+## Open First
+
+- Reviewer/table read: open `.docx`, `.png`, or `.pdf` files in `generated_outputs/` first when present.
+- Numeric audit: open `.csv` files in `reference_outputs/` and `generated_outputs/`.
+- Manuscript integration: open `.tex` files in `reference_outputs/` or `generated_outputs/`.
+- Narrative notes: open `notes_for_modification.md` and any writer packet or result-note file in `generated_outputs/`.
+
+See `OPEN_FIRST.md` for the compact reviewer guide.
 
 ## Empirical Question
 
@@ -295,10 +430,12 @@ export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 
 - `input_artifacts.md`: data products and construct inputs to inspect before editing.
 - `run_command.sh`: a shell command template for rerunning and refreshing this bundle.
-- `reference_outputs/`: copied frozen v4.3 evidence files where available.
+- `reference_outputs/`: copied frozen v4.3 CSV/TeX/PDF evidence files where practical.
 - `generated_outputs/`: copied current generated outputs where available.
 - `notes_for_modification.md`: safe edits and extension notes.
 - `table_info.json`: machine-readable metadata for this bundle.
+
+Frozen run directories are referenced rather than copied, so the bundle stays compact.
 """,
     )
     write_text(
@@ -475,12 +612,16 @@ def main() -> int:
     p_show = sub.add_parser("show-table", help="Alias for table-info")
     p_show.add_argument("--table", required=True, help="Asset ID such as T29, C7, F1, or paper label")
 
+    p_script = sub.add_parser("table-script", help="Show the owning source file for a paper asset")
+    p_script.add_argument("--table", required=True, help="Asset ID such as T30")
+
     p_export = sub.add_parser("export-table", help="Export an ignored coauthor workbench bundle for one table or figure")
     p_export.add_argument("--table", required=True, help="Asset ID such as T30")
     p_export.add_argument("--rerun", action="store_true", help="Run the existing publication-table command before exporting")
 
     p_data = sub.add_parser("data-products", help="List data products or show one product")
     p_data.add_argument("--product-id", help="Optional product ID")
+    p_data.add_argument("--check-files", action="store_true", help="Check mounted AIW_DATA_ROOT paths for this product")
 
     p_construct = sub.add_parser("construct-info", help="Show the playbook for a construct")
     p_construct.add_argument("--construct", required=True, help="Construct alias such as patent_mismatch or crsp_compustat")
@@ -499,10 +640,12 @@ def main() -> int:
         return table_info(args.table_id)
     if args.command == "show-table":
         return table_info(args.table)
+    if args.command == "table-script":
+        return table_script(args.table)
     if args.command == "export-table":
         return export_table(args.table, args.rerun)
     if args.command == "data-products":
-        return data_products(args.product_id)
+        return data_products(args.product_id, args.check_files)
     if args.command == "construct-info":
         return construct_info(args.construct)
     if args.command == "extension-info":

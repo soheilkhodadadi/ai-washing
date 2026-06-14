@@ -10,6 +10,33 @@ The machine-readable version is `manifests/data_product_catalog.csv`. Private da
 - To inspect the panel or source data behind a table, find the relevant product below.
 - To change a construct, read the matching file in `docs/construct_playbooks/` before editing scripts or data.
 - To validate private files, run `make check-private-data validate-data-room validate-sec-source validate-wrds-data validate-patent-data audit-artifact-coverage`.
+- To verify that a mounted private product exists, run `make locate-data PRODUCT_ID=<product_id>`.
+
+## Where Is The Classifier Or Patent Evidence?
+
+For a quick artifact check after mounting the private data room:
+
+```bash
+export AIW_DATA_ROOT=/path/to/ai-washing-private-data
+make locate-data PRODUCT_ID=final_hybrid_classifier_outputs
+make locate-data PRODUCT_ID=extracted_ai_sentences
+make locate-data PRODUCT_ID=patent_match_artifacts
+make locate-data PRODUCT_ID=patent_keyword_metadata
+```
+
+The final classifier output is a partitioned directory. A typical 2025 file is staged as:
+
+```text
+$AIW_DATA_ROOT/processed/classifications/classifications_shadow_hybrid_api_a_conf49_v1/year=2025/model=layered_binary_relevance_logreg_as_shadow_api_a_conf49_v1/classified_sentences.parquet
+```
+
+The patent evidence is split between final match/count artifacts and keyword metadata:
+
+- `patent_match_artifacts`: final grant/pregrant counts, examples, diagnostics, and audit samples.
+- `patent_keyword_metadata`: base and sensitivity keyword lists used to classify AI-related patents and applications.
+- `company_identity_patent_lookup`: company aliases and normalized identity files used for firm-to-assignee matching.
+
+For construct-level context, use `make construct-info CONSTRUCT=classifier`, `make construct-info CONSTRUCT=patent_mismatch`, or `make construct-info CONSTRUCT=patent_matching`.
 
 ## `annual_nlp_patent_panel`
 
