@@ -25,7 +25,7 @@ Coauthor Mode is the default. It may show real manifest metadata, paper labels, 
 
 ### Demo Mode
 
-Demo Mode is portfolio-safe. It should emphasize the project narrative, dashboard capabilities, static summary metrics, and nonprivate manifest metadata. It should hide private-data-root instructions and avoid copy-ready commands that imply access to private data.
+Demo Mode is portfolio-safe. It should emphasize the project narrative, dashboard capabilities, static summary metrics, nonprivate manifest metadata, and case-study screenshots. It should hide private-data-root instructions, disable command execution, and avoid copy-ready commands that imply access to private data.
 
 ### Thomas-Facing Table Review
 
@@ -72,7 +72,7 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - **Reproduction Status:** validation posture, table/figure status links, and audit commands.
 - **Command Center:** approved local Make targets, confirmation gates, environment summary, exit code, duration, and sanitized log tail.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
-- **Portfolio Demo Mode:** nonprivate, presentation-oriented view of the workstation capability.
+- **Portfolio Demo Mode:** nonprivate, presentation-oriented case study of the workstation capability and reusable methodology.
 
 ## Success Criteria
 
@@ -84,3 +84,4 @@ Most dashboard pages display copy-ready commands only. **Command Center** is the
 - The dashboard works through both native Streamlit and Docker.
 - The app remains read-only outside Command Center and never exposes private data values.
 - Command Center can run approved local Make targets, but not arbitrary shell commands or full reproduction/audit targets.
+- Portfolio Demo Mode can be shown in screenshots or a portfolio without private data roots, row-level research data, command logs, or local machine paths.

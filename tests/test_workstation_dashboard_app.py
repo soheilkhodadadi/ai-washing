@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import configparser
 from io import BytesIO
 import subprocess
 import sys
@@ -33,6 +34,7 @@ from services.audit_data import (  # noqa: E402
     report_inventory,
     wrds_evidence_panel,
 )
+from services.portfolio_content import portfolio_content_is_safe, portfolio_summary_metrics  # noqa: E402
 from services.extension_outputs import (  # noqa: E402
     HIDDEN_VALUE,
     check_seo_schema,
@@ -86,6 +88,19 @@ def test_dashboard_page_specs_are_complete() -> None:
         assert all(str(spec[field]).strip() for field in required)
 
 
+def test_dashboard_visual_identity_assets_and_theme_are_public_safe() -> None:
+    logo = APP_DIR / "assets" / "aiw_mark.svg"
+    theme = ROOT / ".streamlit" / "config.toml"
+    parser = configparser.ConfigParser()
+    parser.read(theme)
+
+    assert logo.is_file()
+    assert theme.is_file()
+    assert parser.get("theme", "primaryColor").strip('"') == "#0d5c63"
+    assert parser.get("theme", "backgroundColor").strip('"') == "#fbf7ee"
+    assert dashboard_text_is_safe(logo.read_text(encoding="utf-8"))
+
+
 def test_dashboard_manifests_load_from_canonical_contract() -> None:
     data = load_dashboard_data()
     assert len(data.tables) == 26
@@ -96,6 +111,34 @@ def test_dashboard_manifests_load_from_canonical_contract() -> None:
     assert {"extension_id", "make_command", "interpretation_limits", "maturity_status", "manuscript_status"} <= set(
         data.extensions.columns
     )
+
+
+def test_portfolio_demo_content_is_safe_and_manifest_derived() -> None:
+    data = load_dashboard_data()
+    metrics = portfolio_summary_metrics(data)
+
+    assert portfolio_content_is_safe()
+    assert metrics["manuscript_assets"] == len(data.tables)
+    assert metrics["paper_tables"] + metrics["figures"] == len(data.tables)
+    assert metrics["data_products"] == len(data.data_products)
+    assert metrics["extension_lanes"] == len(data.extensions)
+
+
+def test_dashboard_screenshot_target_script_writes_ignored_guide(tmp_path: Path) -> None:
+    import scripts.dashboard_screenshot_guide as screenshot_guide
+
+    original = screenshot_guide.OUT_DIR
+    screenshot_guide.OUT_DIR = tmp_path
+    try:
+        screenshot_guide.write_targets()
+    finally:
+        screenshot_guide.OUT_DIR = original
+
+    guide = (tmp_path / "README.md").read_text(encoding="utf-8")
+    target_map = (tmp_path / "screenshot_targets.csv").read_text(encoding="utf-8")
+    assert "Portfolio Demo Mode" in guide
+    assert "Command Center" in target_map
+    assert dashboard_text_is_safe(guide + target_map)
 
 
 def test_manifest_text_used_by_dashboard_is_public_safe() -> None:

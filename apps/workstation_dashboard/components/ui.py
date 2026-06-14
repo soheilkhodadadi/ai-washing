@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 from state import DEMO_MODE
+
+ASSET_DIR = Path(__file__).resolve().parents[1] / "assets"
 
 
 def hero(title: str, subtitle: str) -> None:
@@ -18,6 +21,17 @@ def hero(title: str, subtitle: str) -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def brand_header() -> None:
+    logo = ASSET_DIR / "aiw_mark.svg"
+    if logo.is_file():
+        st.sidebar.markdown(
+            f'<div class="aiw-sidebar-brand">{logo.read_text(encoding="utf-8")}</div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.sidebar.title("AI Washing")
 
 
 def badges(items: Iterable[object]) -> None:
@@ -72,7 +86,7 @@ def dataframe_or_info(df: pd.DataFrame, columns: list[str], *, empty_message: st
 
 def safety_banner(mode: str) -> None:
     if mode == DEMO_MODE:
-        st.info("Demo Mode is portfolio-safe: private-data-root instructions are hidden and command execution is disabled.")
+        st.info("Demo Mode is portfolio-safe: private-data instructions are hidden and command execution is disabled.")
     else:
         st.success(
             "Coauthor Mode: most pages are read-only; Command Center can run approved local Make targets with confirmation and logs."

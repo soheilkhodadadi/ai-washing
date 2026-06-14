@@ -23,7 +23,7 @@ Open:
 open outputs/dashboard/index.html
 ```
 
-The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. It prints copy-ready terminal commands and does not execute anything.
+The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. The static dashboard is non-executing and prints copy-ready terminal commands only.
 
 
 ## Streamlit App Product Layer
@@ -108,6 +108,18 @@ make docker-dashboard-app
 ```
 
 Then open the local URL printed by Streamlit. If private data are mounted, the app still does not display private values. Use Data Room for metadata-only data checks or Command Center for approved local Make targets.
+
+## Portfolio Demo And Screenshots
+
+Use **Portfolio Demo Mode** when showing the dashboard outside the private research team. It presents a nonprivate case study of the workstation: the research problem, manifest-first workflow, evidence surfaces, reusable methodology, and the information hidden in Demo Mode.
+
+To prepare a local screenshot checklist, run:
+
+```bash
+make dashboard-screenshots
+```
+
+This writes an ignored guide under `outputs/portfolio_screenshots/`. Capture external screenshots in Demo Mode unless a coauthor explicitly requests an internal view.
 
 ## Scope Boundary
 

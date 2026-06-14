@@ -29,4 +29,4 @@ Do not overwrite v4.3 evidence with extension outputs. If an extension becomes p
 
 ## Streamlit Extension Lab
 
-The optional Streamlit app has an **Extension Lab** page that presents the same registry with a more readable interface. It can preview generated aggregate extension outputs under `outputs/extensions/` and run an in-memory schema-only check for a candidate SEO/offering-terms CSV. The app does not execute commands, does not save uploads, and does not display private row-level values.
+The optional Streamlit app has an **Extension Lab** page that presents the same registry with a more readable interface. It can preview generated aggregate extension outputs under `outputs/extensions/` and run an in-memory schema-only check for a candidate SEO/offering-terms CSV. Extension Lab itself is read-only; approved extension commands can run only through Command Center. The app does not save uploads or display private row-level values.

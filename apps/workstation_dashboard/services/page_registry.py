@@ -18,10 +18,10 @@ PAGE_SPECS = [
         "title": "Portfolio Demo Mode",
         "icon": "✨",
         "primary_user": "portfolio reviewer",
-        "task": "See the nonprivate capability showcase.",
-        "inputs": "manifests only",
-        "outputs": "safe project narrative and capability summary",
-        "safety_rule": "Hide private-data-root instructions.",
+        "task": "See the nonprivate capability showcase and reusable methodology.",
+        "inputs": "manifests and static portfolio narrative",
+        "outputs": "safe case study, workflow, capability summary, and demo boundary",
+        "safety_rule": "Hide private-data-root instructions and disable command execution.",
     },
     {
         "group": "Paper Review",
@@ -43,7 +43,7 @@ PAGE_SPECS = [
         "task": "Review one table by paper label, then inspect implementation details if needed.",
         "inputs": "paper table workbench and repo-contained artifacts",
         "outputs": "Open First panel, safe previews, downloads, script, commands, and safe modification notes",
-        "safety_rule": "Preview repo-contained artifacts only; display commands without executing them.",
+        "safety_rule": "Preview repo-contained artifacts only; route approved execution to Command Center.",
     },
     {
         "group": "Data And Constructs",

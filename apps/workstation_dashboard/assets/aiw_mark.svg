@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="220" viewBox="0 0 640 220" role="img" aria-label="AI Washing Workstation">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102729"/>
+      <stop offset="0.62" stop-color="#0d5c63"/>
+      <stop offset="1" stop-color="#d99a2b"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#102729" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="172" height="172" rx="42" fill="url(#ink)" filter="url(#soft)"/>
+  <path d="M68 143c22-58 40-80 62-80 19 0 30 16 44 60" fill="none" stroke="#fffdf8" stroke-width="14" stroke-linecap="round"/>
+  <path d="M86 116h58" stroke="#fffdf8" stroke-width="12" stroke-linecap="round" opacity="0.92"/>
+  <circle cx="148" cy="70" r="7" fill="#f3c568"/>
+  <circle cx="164" cy="88" r="5" fill="#f3c568" opacity="0.88"/>
+  <circle cx="61" cy="153" r="5" fill="#f3c568" opacity="0.9"/>
+  <text x="228" y="90" font-family="Avenir Next, Gill Sans, Segoe UI, sans-serif" font-size="44" font-weight="760" fill="#102729">AI Washing</text>
+  <text x="229" y="132" font-family="Avenir Next, Gill Sans, Segoe UI, sans-serif" font-size="25" font-weight="520" fill="#486367">Empirical Workstation</text>
+  <text x="230" y="166" font-family="Avenir Next, Gill Sans, Segoe UI, sans-serif" font-size="17" font-weight="500" fill="#7a6a4d">NLP | Patents | Finance | Reproducibility</text>
+</svg>

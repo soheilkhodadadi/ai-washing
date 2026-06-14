@@ -141,6 +141,12 @@ Use **Data Room** and **Construct Audits** for the data-quality cockpit: classif
 
 Use **Command Center** only on a trusted local workstation when you want the app to run approved Make targets. It executes a fixed allowlist, requires confirmation for private-data or output-writing commands, disables execution in Demo Mode, and writes logs under ignored `outputs/dashboard_runs/`.
 
+Use **Portfolio Demo Mode** for external screenshots or capability walkthroughs. It presents a nonprivate case study of the workflow and hides private-data instructions. To prepare a local screenshot checklist, run:
+
+```bash
+make dashboard-screenshots
+```
+
 See [docs/dashboard_guide.md](docs/dashboard_guide.md).
 
 ## Documentation Map

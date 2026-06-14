@@ -225,7 +225,7 @@ def _render_technical_drilldown(row: pd.Series, data: DashboardData, mode: str) 
 
     st.markdown("### Technical Drill-Down")
     st.caption(
-        "Read-only continuation map for coauthors. The dashboard displays copy-ready commands and metadata only; it does not execute empirical scripts."
+        "Read-only continuation map for coauthors. Approved in-app execution is limited to Command Center."
     )
 
     summary_left, summary_right = st.columns([1, 1])
@@ -364,7 +364,9 @@ def render(data: DashboardData, mode: str) -> None:
             st.markdown(f"**Extension relevance:** {row['extension_relevance']}")
         with right:
             st.markdown("#### Review commands")
-            st.caption("The browser does not run these commands. They are provided for copying into a terminal.")
+            st.caption(
+                "These commands are provided for copying into a terminal. Command Center runs only a narrow allowlist inside the app."
+            )
             command_box(
                 f"make export-table-workbench TABLE_ID={row['asset_id']}",
                 mode=mode,

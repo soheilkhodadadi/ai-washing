@@ -24,6 +24,7 @@ The app uses Streamlit multipage navigation with grouped pages.
 The sidebar should contain:
 
 - dashboard title;
+- repo-local visual identity;
 - mode selector: `Coauthor Mode` or `Demo Mode`;
 - safety note: manifest-first, read-only outside Command Center, and allowlisted command execution only;
 - navigation pages grouped by task;
@@ -42,7 +43,7 @@ The sidebar should contain:
 | Reproduction Status | data editor | verify reproducibility posture | status docs and manifests | audit commands and status links | no command execution |
 | Command Center | trusted local coauthor | run approved Make targets safely | dashboard command registry and local environment | fixed command, confirmation gate, duration, exit code, sanitized log tail, ignored raw log path | allowlisted Make targets only; disabled in Demo Mode |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
-| Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests only | capability summary and demo-safe story | hide private-data-root instructions |
+| Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests and static portfolio narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
 
 ## Manifest Mapping
 

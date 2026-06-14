@@ -12,7 +12,7 @@
 - As a coauthor, I want metadata-only schema and row-count checks from `AIW_DATA_ROOT` without exposing sentence text, patent abstracts, or row-level private data.
 - As a coauthor, I want textual acronym-risk and patent short-keyword-risk status summarized directly in the app so I know which construct-validity issues are already documented.
 - As a coauthor, I want extension lanes separated from frozen v4.3 evidence so exploratory outputs are not confused with manuscript results.
-- As a coauthor, I want copy-ready commands and links to workbench bundles, but I do not need the browser to execute code in this phase.
+- As a coauthor, I want most pages to stay read-only, with approved execution available only through a narrow Command Center allowlist.
 
 ## Supervisor Or Research Client
 
@@ -34,10 +34,12 @@
 
 - As a portfolio reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
 - As a portfolio reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and client-facing analytics.
+- As a portfolio reviewer, I want a case-study page and screenshots that explain the reusable methodology without private research data.
 
 ## Out Of Scope For Phase 9
 
-- Running empirical commands from the browser.
+- Arbitrary shell commands or user-entered Make targets from the browser.
+- Full-table reproduction or replication-audit execution from the browser.
 - Editing data, panels, scripts, or manifests from the app.
 - Displaying private row-level values.
 - Replacing the static dashboard, Make commands, or Docker workflow.

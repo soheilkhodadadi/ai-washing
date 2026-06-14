@@ -177,7 +177,7 @@ def _render_commands(row: pd.Series, mode: str) -> None:
         allow_demo=False if str(row.get("maturity_status", "")) != "future_data_required" else True,
         label="Primary command",
         tags=["manual", "writes ignored outputs" if "extension-" in str(row["make_command"]) else "metadata check"],
-        note="The dashboard displays commands only. It does not execute empirical scripts from the browser.",
+        note="Extension Lab is a read-only review page. Use Command Center for approved extension commands that can run inside the app.",
     )
     command_box(
         f"make extension-info EXTENSION={row['extension_id']}",
