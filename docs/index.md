@@ -80,3 +80,10 @@ This index is organized by coauthor task. Internal development reports and email
 
 - `known_limitations.md`: current limitations and non-blockers.
 - `journal_replication_archive_policy.md`: difference between this private coauthor workstation and a future journal archive.
+
+## Dashboard
+
+- [Dashboard guide](dashboard_guide.md)
+- [Dashboard product spec](dashboard_product_spec.md)
+- [Dashboard user stories](dashboard_user_stories.md)
+- [Dashboard information architecture](dashboard_information_architecture.md)

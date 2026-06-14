@@ -201,4 +201,4 @@ dashboard-app:
 	PYTHONPATH=src $(PYTHON) -m streamlit run apps/workstation_dashboard/app.py --server.address 127.0.0.1 --server.port 8501
 
 docker-dashboard-app:
-	docker run -it -p 8501:8501 $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) /bin/bash -lc 'python -m pip install -r requirements-dashboard.txt && python -m streamlit run apps/workstation_dashboard/app.py --server.address 0.0.0.0 --server.port 8501'
+	docker run -it -p 8501:8501 $(DOCKER_COMMON_ARGS) $(DOCKER_DATA_ARGS) $(DOCKER_IMAGE) /bin/bash -lc 'python -m streamlit run apps/workstation_dashboard/app.py --server.address 0.0.0.0 --server.port 8501'

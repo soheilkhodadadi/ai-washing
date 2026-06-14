@@ -16,9 +16,10 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspaces/ai-washing
-COPY requirements-lock.txt pyproject.toml ./
+COPY requirements-lock.txt requirements-dashboard.txt pyproject.toml ./
 RUN python -m pip install --upgrade pip \
     && python -m pip install -r requirements-lock.txt \
+    && python -m pip install -r requirements-dashboard.txt \
     && python -m pip check
 
 COPY . .

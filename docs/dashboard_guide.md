@@ -25,6 +25,17 @@ open outputs/dashboard/index.html
 
 The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. It prints copy-ready terminal commands, but the browser does not run them.
 
+
+## Streamlit App Product Layer
+
+The Streamlit app is the richer coauthor/client interface. It is organized as a multipage dashboard with Coauthor Mode and Demo Mode. The product contract is documented in:
+
+- `docs/dashboard_product_spec.md`
+- `docs/dashboard_user_stories.md`
+- `docs/dashboard_information_architecture.md`
+
+The app remains read-only in Phase 9A/B. It displays copy-ready commands but does not execute empirical scripts from the browser.
+
 ## Optional Streamlit App
 
 The Streamlit app is an optional richer interface for coauthor demonstrations or portfolio presentation. It reads the same manifests as the static dashboard.
