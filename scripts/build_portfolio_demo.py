@@ -222,9 +222,9 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
   </div>
 </nav>
 <header>
-  <div class="eyebrow">Portfolio-safe static demo</div>
-  <h1>A research paper, a data room, and a reproducible analytics product in one workstation.</h1>
-  <p class="hero-copy">This demo presents the public-facing shape of the AI Washing workstation: paper results, construct validation, table navigation, extension lanes, and a dashboard-ready workflow. It is generated from repository manifests and contains no private research data values, local machine paths, access details, or browser command execution.</p>
+  <div class="eyebrow">Portfolio-safe research overview</div>
+  <h1>A reproducible evidence map for the AI Washing paper.</h1>
+  <p class="hero-copy">This static overview shows how the AI Washing workstation connects paper results, construct validation, table navigation, extension lanes, and reproducibility checks. It is generated from repository manifests and contains no private research data values, local machine paths, access details, or browser command execution.</p>
   <div class="hero-actions">
     <a class="button primary" href="#tables">Review the paper results</a>
     <a class="button" href="../dashboard/index.html">Open the manifest dashboard</a>
@@ -241,8 +241,8 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
 <main>
   <section id="workflow" class="wide">
     <div>
-      <h2>The workflow is the product.</h2>
-      <p class="section-copy">The app is not just a prettier README. It turns an empirical finance project into a navigable workstation where a reviewer can move from paper result to data product, construct definition, script, validation status, and future test lane.</p>
+      <h2>Research workflow and evidence map.</h2>
+      <p class="section-copy">The workstation gives reviewers a direct path from a paper result to the relevant data product, construct definition, script, validation status, and extension lane.</p>
       <div class="timeline">
         <div class="step"><b>1</b><div><strong>Paper question.</strong> Identify firms whose AI disclosure appears stronger than observable AI capability.</div></div>
         <div class="step"><b>2</b><div><strong>Data spine.</strong> Connect SEC disclosure text, classifier outputs, patent evidence, WRDS/market data, and annual/event panels.</div></div>
@@ -271,8 +271,8 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
   </section>
 
   <section id="evidence">
-    <h2>Evidence spine, without exposing the data room.</h2>
-    <p class="section-copy">A strong research workstation should answer basic audit questions quickly: where is the classifier evidence, how is the patent match supported, which market data lane ends in 2024, and which products are safe to modify for the next release?</p>
+    <h2>Data and construct evidence, summarized safely.</h2>
+    <p class="section-copy">The overview answers core audit questions quickly: where the classifier evidence lives, how the patent match is supported, which market data lane ends in 2024, and which products can be modified safely for a future release.</p>
     <div class="grid">{data_showcase(data_products)}</div>
   </section>
 
@@ -284,8 +284,8 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
 
   <section id="roadmap" class="wide">
     <div>
-      <h2>Next development cycles.</h2>
-      <p class="section-copy">The current one-click layer is static and safe. The richer local Streamlit app already supports technical drill-down, metadata-only data checks, extension inspection, and approved command execution. Future cycles can add hosted demo deployment, automated screenshot capture, and narrowly scoped AI assistants for documentation search or table triage.</p>
+    <h2>Future development options.</h2>
+      <p class="section-copy">The current one-click layer is static and safe. The richer local Streamlit app supports technical drill-down, metadata-only data checks, extension inspection, and approved command execution. Future work can add hosted demo deployment, automated screenshot capture, and narrowly scoped AI assistants for documentation search or table triage.</p>
     </div>
     <aside class="panel">
       <h3>Suggested next commands</h3>
@@ -299,7 +299,7 @@ def html_document(tables: list[dict[str, str]], data_products: list[dict[str, st
   </section>
 </main>
 <footer>
-  Generated from AI Washing workstation manifests. The coauthor workstation remains the source of truth for reproduction, private data validation, and empirical extensions.
+  Generated from AI Washing workstation manifests. The Git repository and private data room remain authoritative for reproduction, data validation, and empirical extensions.
 </footer>
 </body>
 </html>

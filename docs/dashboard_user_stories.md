@@ -30,11 +30,11 @@
 - As a data editor, I want to see that private, restricted, and derived data are separated from Git-tracked code and documentation.
 - As a data editor, I want visible reproduction status and audit commands without hidden dependencies on the old `semantic-patterns` workspace.
 
-## Portfolio Reviewer
+## External / Public-Safe Reviewer
 
-- As a portfolio reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
-- As a portfolio reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and client-facing analytics.
-- As a portfolio reviewer, I want a case-study page and screenshots that explain the reusable methodology without private research data.
+- As an external reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
+- As an external reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and a clear review interface.
+- As an external reviewer, I want a case-study page and screenshots that explain the reusable methodology without private research data.
 - As a nontechnical viewer, I want a one-click static page that opens locally or from a hosted link without installing Python, Docker, or Streamlit.
 
 ## Out Of Scope For Phase 9

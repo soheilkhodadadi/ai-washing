@@ -48,7 +48,7 @@ AIW_DATA_ROOT=/path/to/ai-washing-private-data make journal-reproducibility-audi
 - SEC text construct: Are `AI` and `ML` hits actually artificial-intelligence content, or are short-acronym false positives contaminating the measure?
 - Patent construct: Are AI patent hits supported by title/abstract context, and are short-acronym-only matches flagged for review?
 - WRDS/licensed data: Are source extracts, credentials, and redistribution boundaries handled cleanly?
-- Coauthor versus journal archive: Is the package generous enough for Kuntara/Thomas but clean enough to later become a journal replication archive?
+- Coauthor versus journal archive: Is the package generous enough for coauthor continuation work but clean enough to later become a journal replication archive?
 
 ## Outputs
 

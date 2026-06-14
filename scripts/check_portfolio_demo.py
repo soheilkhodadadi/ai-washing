@@ -16,7 +16,7 @@ FORBIDDEN = [
     "secret",
 ]
 REQUIRED_TEXT = [
-    "Portfolio-safe static demo",
+    "Portfolio-safe research overview",
     "Main Table 7",
     "final_hybrid_classifier_outputs",
     "patent_match_artifacts",

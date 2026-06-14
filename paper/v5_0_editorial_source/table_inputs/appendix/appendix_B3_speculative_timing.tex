@@ -1,0 +1,35 @@
+\begin{table}[H]
+\centering
+\caption{Speculative-only disclosure and AI patent timing}
+\label{tab:appendix_speculative_timing}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}cccc}
+\hline
+Variable & \multicolumn{4}{c}{Dependent variable: Speculative-only disclosure} \\
+ & Firm + year FE & Industry + year FE & Firm + year FE, non-fin. & Firm + year FE, non-fin./non-util. \\
+ & (1) & (2) & (3) & (4) \\
+\hline
+log(1 + AI patents) at $t{-}2$ & -0.031*** & -0.022** & -0.030*** & -0.030*** \\
+ & (0.011) & (0.009) & (0.011) & (0.011) \\
+log(1 + AI patents) at $t{-}1$ & -0.012 & -0.005 & -0.012 & -0.012 \\
+ & (0.010) & (0.010) & (0.010) & (0.010) \\
+log(1 + AI patents) at t & 0.000 & 0.002 & 0.001 & 0.001 \\
+ & (0.010) & (0.010) & (0.010) & (0.010) \\
+log(1 + AI patents) at $t{+}1$ & 0.004 & 0.005 & 0.002 & 0.002 \\
+ & (0.007) & (0.007) & (0.007) & (0.007) \\
+log(1 + AI patents) at $t{+}2$ & 0.001 & 0.012* & 0.002 & 0.002 \\
+ & (0.007) & (0.007) & (0.007) & (0.007) \\
+Controls & Y & Y & Y & Y \\
+Firm FE & Y & N & Y & Y \\
+Industry FE & N & Y & N & N \\
+Year FE & Y & Y & Y & Y \\
+Non-fin. & N & N & Y & Y \\
+No util. & N & N & N & Y \\
+Adj. R\textsuperscript{2} & -0.170 & -0.002 & -0.172 & -0.172 \\
+Observations & 14,968 & 14,968 & 13,759 & 13,737 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table relates speculative-only disclosure to AI patenting across event times $t-2$ through $t+2$ (the table rows). The four columns differ in fixed effects and sample: column~(1) uses firm and year fixed effects; column~(2) uses industry and year fixed effects; column~(3) repeats column~(1) excluding financial firms; and column~(4) further excludes utilities. *, **, and *** denote significance at the 10\%, 5\%, and 1\% levels, respectively.}
+\end{table}

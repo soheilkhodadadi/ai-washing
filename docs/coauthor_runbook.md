@@ -7,13 +7,15 @@ This runbook is the first-day path for working on AI Washing without relying on 
 Before running or modifying tables, open these two files:
 
 ```text
+docs/coauthor_delivery_overview.md
 docs/empirical_workstation.md
 docs/paper_table_workbench.md
 docs/panel_and_data_catalog.md
 docs/construct_playbooks/README.md
+docs/v5_editorial_alignment.md
 ```
 
-The empirical workstation guide explains how SEC text, classifier outputs, patent data, WRDS/market data, and annual/event panels fit together. The paper table workbench maps each v4.3 manuscript table and figure to its empirical question, data product, script module, rerun command, and safe modification path. The panel/data catalog explains the private data products, and the construct playbooks explain how to update central variables without disturbing v4.3 evidence.
+The delivery overview explains what is in Git, what is in the private data room, and how the package answers the coauthor handoff request. The empirical workstation guide explains how SEC text, classifier outputs, patent data, WRDS/market data, and annual/event panels fit together. The paper table workbench maps each v4.3 manuscript table and figure to its empirical question, data product, script module, rerun command, and safe modification path. The panel/data catalog explains the private data products, and the construct playbooks explain how to update central variables without disturbing v4.3 evidence. The v5.0 alignment note explains how to use the editorial source without treating it as a new numerical freeze.
 
 If the goal is to revise a specific table, start from the workbench rather than searching through scripts by filename.
 

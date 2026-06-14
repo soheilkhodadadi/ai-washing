@@ -6,7 +6,9 @@ This release freezes AI Washing v4.3 as the current computational reference targ
 
 - The v4.3 PDF and LaTeX source under `paper/` are the reference manuscript assets.
 - The v4.3 generated-run evidence under `data/curated/v4_3/generated_runs/` is the reference output evidence where safe to track.
-- Kuntara's v5.0 edits are editorial and should not drive code reproduction unless a future release explicitly promotes them.
+- The v5.0 editorial source is preserved under `paper/v5_0_editorial_source/` and should guide manuscript presentation. It should not drive code reproduction unless a future release explicitly promotes v5.0 as a numerical freeze.
+
+See `docs/v5_editorial_alignment.md` for the v4.3/v5.0 boundary.
 
 ## Validated Numerical Gate
 

@@ -96,7 +96,7 @@ pg_applicant_not_disambiguated.tsv
 pg_granted_pgpubs_crosswalk.tsv
 ```
 
-A full raw mirror can be added under `$AIW_DATA_ROOT/raw/patentsview/granted` and `$AIW_DATA_ROOT/raw/patentsview/pregrant` if Kuntara or Thomas asks for bottom-up raw-source rebuilds. It should not be committed to Git.
+A full raw mirror can be added under `$AIW_DATA_ROOT/raw/patentsview/granted` and `$AIW_DATA_ROOT/raw/patentsview/pregrant` if coauthors ask for bottom-up raw-source rebuilds. It should not be committed to Git.
 
 ## Repo Code Surface
 

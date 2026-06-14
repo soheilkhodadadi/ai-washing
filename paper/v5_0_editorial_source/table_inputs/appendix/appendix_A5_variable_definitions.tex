@@ -1,0 +1,87 @@
+% Variable definitions split into three appendix tables for readability.
+
+\begin{table}[p]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{Variable definitions: disclosure and credibility measures}
+\label{tab:appendix_var_defs}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}X}
+\hline
+Group & Variable & Definition \\
+\hline
+Disclosure counts & Total AI sentences & Count of classified AI-related sentences in the firm's annual filing for year $t$. \\
+Disclosure counts & Actionable AI sentences & Count of AI sentences labeled actionable in year $t$. \\
+Disclosure counts & Speculative AI sentences & Count of AI sentences labeled speculative in year $t$. \\
+Disclosure counts & Irrelevant AI sentences & Count of AI sentences labeled irrelevant in year $t$. \\
+Disclosure composition & AI Focus & Broad AI-disclosure intensity, measured as $\log(1 + \text{total AI sentences})$. \\
+Disclosure composition & Actionable share & Actionable AI sentences divided by the sum of actionable and speculative AI sentences in the firm-year. \\
+Disclosure composition & Speculative share & Speculative AI sentences divided by the sum of actionable and speculative AI sentences in the firm-year. \\
+Disclosure composition & CredAI & Credibility score that rises with actionable content and falls with speculative content, computed as the standardized actionable count minus the standardized speculative count. \\
+Disclosure composition & AS ratio & $\log(1 + A/(1+S))$, where $A$ and $S$ are actionable and speculative counts; higher values mean more actionable relative to speculative disclosure. \\
+Credibility construct & PatentMismatch & Indicator equal to one for AI-talking firm-years that are both low-credibility in disclosure and weak in contemporaneous AI patent grants relative to the industry-year mean. \\
+Credibility construct & LowCredibility & Indicator equal to one for AI-talking firm-years with low disclosure credibility, defined as bottom yearly quartile of the AS ratio or top yearly quartile of speculative share. \\
+Credibility construct & ApplicationMismatch & Indicator equal to one for AI-talking firm-years that satisfy the low-credibility disclosure condition and are weak in contemporaneous AI patent applications relative to the industry-year benchmark. \\
+Credibility construct & Strict patent mismatch & Indicator equal to one for AI-talking firm-years that satisfy both language-side low-credibility conditions and are weak in contemporaneous AI patent grants relative to the industry-year benchmark. \\
+Credibility construct & Weak patent only & Indicator equal to one for firm-years with contemporaneous AI patent grants below the industry-year benchmark, before imposing the disclosure-credibility condition. \\
+\hline
+\end{tabularx}
+\caption*{\footnotesize \textit{Note.} This table defines the disclosure-count, disclosure-composition, and credibility-construct variables used in the analysis. All variables are measured on the annual sample of firms that mention AI at least once during 2016--2025.}
+\end{table}
+
+\begin{table}[p]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{Variable definitions: patents and accounting controls}
+\label{tab:appendix_var_defs_controls}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}X}
+\hline
+Group & Variable & Definition \\
+\hline
+Patents & AI patent grants & Count of AI-related granted patents linked to the firm-year. \\
+Patents & Total patents & Count of all patents linked to the firm-year. \\
+Patents & Future AI patent grants $t{+}1$ & $\log(1 + \text{AI patent grants})$ measured one year after the disclosure year. \\
+Patents & Future AI patent grants $t{+}2$ & $\log(1 + \text{AI patent grants})$ measured two years after the disclosure year. \\
+Controls & Log assets & Natural log of total assets. \\
+Controls & Leverage & Debt scaled by assets. \\
+Controls & Cash/assets & Cash holdings scaled by assets. \\
+Controls & R\&D/assets & Research and development expense scaled by assets. \\
+Controls & CAPX/assets & Capital expenditures scaled by assets. \\
+Controls & ROA & Return on assets. \\
+Controls & Sales growth & Year-over-year sales growth rate. \\
+Controls & Employees & Employee count from Compustat. \\
+\hline
+\end{tabularx}
+\caption*{\footnotesize \textit{Note.} This table defines the patent variables and accounting controls used across the annual-panel specifications. All variables are measured on the annual sample of firms that mention AI at least once during 2016--2025.}
+\end{table}
+
+\begin{table}[p]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{Variable definitions: event, valuation, financing, and treatment variables}
+\label{tab:appendix_var_defs_market}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}X}
+\hline
+Group & Variable & Definition \\
+\hline
+Event-study outcomes & CAR[-1,+1] & Cumulative abnormal return over the one-day-before to one-day-after filing window. \\
+Event-study outcomes & BHAR[+2,+21] & Buy-and-hold abnormal return from trading day +2 through +21 after the filing date. \\
+Event-study outcomes & BHAR[+2,+63] & Buy-and-hold abnormal return from trading day +2 through +63 after the filing date. \\
+Event-study outcomes & BHAR[+2,+126] & Buy-and-hold abnormal return from trading day +2 through +126 after the filing date. \\
+Event-study outcomes & BHAR[+2,+252] & Buy-and-hold abnormal return from trading day +2 through +252 after the filing date. \\
+Valuation and financing & Log MktCap/assets & $\log(1 + \text{market capitalization}/\text{assets})$, using CRSP year-end market cap and Compustat assets. \\
+Valuation and financing & Log Q proxy & $\log(1 + \text{market cap}/\text{assets} + \text{leverage})$, used when full book-equity fields are unavailable. \\
+Valuation and financing & Delta log Q $t{+}1$ & One-year-ahead change in the log Q proxy. \\
+Valuation and financing & Delta shares $t{+}1$ & Next-year growth in CRSP shares outstanding. \\
+Valuation and financing & Issue $>5\%$ $t{+}1$ & Indicator equal to one when next-year shares outstanding grow by more than 5\%. \\
+Treatment and screens & PostChatGPT & Indicator for fiscal years 2023 onward in the ChatGPT-shock designs. \\
+Treatment and screens & Non-big screen & Indicator equal to one when a firm's market capitalization is at or below the matched-sample yearly median. \\
+\hline
+\end{tabularx}
+\caption*{\footnotesize \textit{Note.} This table defines the filing-event outcomes, valuation and financing variables, and treatment or sample screens used in the market, financing, and post-ChatGPT diagnostics. Event-study outcomes are measured on the filing-event sample; valuation and financing variables on the annual sample merged with CRSP.}
+\end{table}

@@ -48,9 +48,12 @@ JOURNAL_EXCLUDE_PREFIXES = (
 JOURNAL_EXCLUDE_EXACT: set[str] = set()
 JOURNAL_OPTIONAL_EXACT = {
     "paper/ai_washing_v4.3.pdf",
+    "paper/v5_0_editorial_source/README.md",
     "docs/coauthor_runbook.md",
     "docs/coauthor_quickstart.md",
+    "docs/coauthor_delivery_overview.md",
     "docs/coauthor_data_room.md",
+    "docs/v5_editorial_alignment.md",
     "docs/extension_playbook.md",
     "docs/extension_notes_future_data.md",
     "docs/extensions/builder_hides_first_pass.md",
@@ -120,6 +123,11 @@ def classify_tracked(path: str) -> dict[str, str]:
         coauthor_profile = "include"
         journal_profile = "exclude"
         reason = "useful coauthor/process document but not suitable for a cold journal archive"
+    elif path.startswith("paper/v5_0_editorial_source/"):
+        severity = "info"
+        coauthor_profile = "include_editorial_source"
+        journal_profile = "optional_include_editorial_source"
+        reason = "v5.0 editorial source is useful for coauthor presentation review; journal archive inclusion depends on release policy"
     elif path in JOURNAL_OPTIONAL_EXACT:
         severity = "info"
         coauthor_profile = "include"

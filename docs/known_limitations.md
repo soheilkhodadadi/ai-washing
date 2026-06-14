@@ -1,12 +1,13 @@
 # Known Limitations
 
-- v4.3 is the current frozen computational target. Kuntara's v5.0 edits are editorial and are not treated as code-reproduction targets unless a later release explicitly promotes them.
+- v4.3 is the current frozen computational target. The v5.0 editorial source is preserved under `paper/v5_0_editorial_source/` as the current presentation benchmark, but it is not treated as a new numerical reproduction target unless a later release explicitly promotes it.
 - Private, licensed, large, and machine-local data are not tracked in Git. Use an external `AIW_DATA_ROOT`, such as `/path/to/ai-washing-private-data` on a local or shared private-data mirror.
 - v4.3 has lane-specific data coverage. The annual NLP/patent panel covers 2016-2025, while event/market-return tables use 2016-2024 because the staged CRSP return extracts stop at 2024-12-31. This is a reproduction boundary, not an older-file mistake.
 - Filing-spine and filing AI-measure files cover 2016-2025, but they are disclosure lineage/bridge inputs and are not a completed 2025 return-event panel.
 - Selected numerical reruns pass for `T00`, `T16`, `T17`, `T09`, and `T30`: fresh CSV outputs exactly match frozen v4.3 generated CSV evidence.
 - Many v4.3 manuscript table inputs add manuscript-facing captions, notes, resizing, or table wrappers around generated numeric content. These are separated from generated CSV evidence so numerical reproduction is not confused with manuscript layout.
 - Several appendix tables were generated as CSV/MD/DOCX artifacts rather than paper-ready TeX exports. Their lineage is preserved through run directories and generated CSV files.
+- v5.0 fixes several appendix presentation issues, including controls/fixed-effect rows, standard-error placement, column-separation notes, raw internal labels in A1, and variable-definition presentation in A5. These changes are presentation-layer improvements; they do not replace the v4.3 generated CSV evidence.
 - Figure regeneration is available as an audit layer. v4.3 figure PDFs remain frozen manuscript assets, while regenerated figure-series CSV evidence and candidate PDFs are recorded in `docs/figure_reproduction_status.md`.
 - Test 25 now uses a staged private ExecuComp cache for normal reproduction. WRDS refresh remains local-only and explicit; credentials are not shared or committed.
 - Test 30 is reproducible and complete for v4.3. It uses next-year CRSP `shrout` growth above 5 percent as a large-equity-issuance proxy. The deferred future extension is actual SEO/offering terms: proceeds, offer price, discount, valuation base, offering type, and timing.

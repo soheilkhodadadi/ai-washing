@@ -8,7 +8,7 @@ The portfolio demo is a static, non-executing presentation layer for the AI Wash
 - Nonprivate manifest-derived counts for paper assets, data products, and extension lanes.
 - A Main Table 7 spotlight and other representative manuscript assets.
 - The evidence spine for classifier outputs, patent matching, annual/event panels, and market-data boundaries.
-- A clear future-development roadmap for hosted demos, screenshot automation, and narrow AI assistants.
+- A clear future-development path for hosted demos, screenshot automation, and narrow AI assistants.
 
 ## What It Does Not Show
 

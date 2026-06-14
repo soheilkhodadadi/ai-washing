@@ -4,6 +4,8 @@ Private coauthor workstation for the **AI Washing** paper.
 
 This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables and figures, and start new tests from the same data spine. The older `semantic-patterns` repository is provenance only; this repository is the active project workspace.
 
+The repository also preserves the v5.0 editorial source as the current manuscript-presentation benchmark. v4.3 remains the numerical reproduction target until a later release is explicitly promoted.
+
 ## What You Can Do Here
 
 - Understand how the paper's SEC text, classifier outputs, patent data, WRDS/Compustat/CRSP data, and event panels fit together.
@@ -17,10 +19,12 @@ This repository lets coauthors inspect the empirical pipeline, rerun v4.3 tables
 ## Start With The Paper Workbench
 
 - [README_START_HERE.md](README_START_HERE.md): fastest setup and first validation path.
+- [docs/coauthor_delivery_overview.md](docs/coauthor_delivery_overview.md): what is included in Git, what is in the private data room, and how the package answers the coauthor handoff request.
 - [docs/empirical_workstation.md](docs/empirical_workstation.md): empirical map of data, constructs, panels, and extension lanes.
 - [docs/paper_table_workbench.md](docs/paper_table_workbench.md): table-by-table guide for rerunning or modifying manuscript results.
 - [docs/panel_and_data_catalog.md](docs/panel_and_data_catalog.md): catalog of cleaned panels, classifier outputs, patent match artifacts, and WRDS/market data products.
 - [docs/construct_playbooks/](docs/construct_playbooks/): concise guides for changing central constructs safely.
+- [docs/v5_editorial_alignment.md](docs/v5_editorial_alignment.md): how to use the v5.0 editorial source while keeping v4.3 as the computational freeze.
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
 - [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces, including table review and technical drill-down.
 - [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md): one-click static demo path for nonprivate portfolio or presentation review.
@@ -51,6 +55,8 @@ make coauthor-preflight
 ## Private Data Boundary
 
 Git tracks code, documentation, manifests, fixtures, and frozen v4.3 manuscript assets. It does not track private or licensed data, WRDS/CRSP/Compustat extracts, full raw SEC corpora, derived panels, access details, local environments, caches, or generated outputs.
+
+Git also tracks the v5.0 editorial LaTeX source under `paper/v5_0_editorial_source/` because it is part of the manuscript presentation record, not a private data artifact.
 
 Set the private data root before running data-dependent checks:
 

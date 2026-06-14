@@ -4,6 +4,8 @@ This repository is the active empirical workstation for the **AI Washing** paper
 
 The repository is intentionally curated. It is not a wholesale copy of the older `semantic-patterns` workspace.
 
+The package also includes the v5.0 editorial LaTeX source as the current manuscript-presentation benchmark. Use v5.0 for wording, captions, appendix wrappers, and table-note presentation; use v4.3 for numerical reproduction until a later release is promoted.
+
 ## If You Only Do One Thing First
 
 Export one table bundle and open its `OPEN_FIRST.md` file. That gives the fastest view of how a manuscript result connects to the empirical question, data products, owning script, frozen v4.3 evidence, and safe modification path.
@@ -56,14 +58,16 @@ make extension-builder-hides
 ## Recommended Reading Order
 
 1. `docs/empirical_workstation.md`: how the data, constructs, panels, tables, and extension lanes fit together.
-2. `docs/paper_table_workbench.md`: where each manuscript table or figure comes from and how to rerun or modify it.
-3. `docs/panel_and_data_catalog.md`: what the cleaned panels, classifier outputs, patent files, and WRDS/market products are.
-4. `docs/construct_playbooks/`: how central constructs are built and safely updated.
-5. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
-6. `docs/portfolio_demo_deployment.md`: portfolio-safe static demo path.
-7. `docs/docker_quickstart.md`: lowest-friction setup path.
-8. `docs/private_data_contract.md`: how to mount the private data room.
-9. `docs/coauthor_runbook.md`: complete first-day command sequence.
+2. `docs/coauthor_delivery_overview.md`: what the package contains and how it answers the coauthor handoff request.
+3. `docs/paper_table_workbench.md`: where each manuscript table or figure comes from and how to rerun or modify it.
+4. `docs/panel_and_data_catalog.md`: what the cleaned panels, classifier outputs, patent files, and WRDS/market products are.
+5. `docs/v5_editorial_alignment.md`: how the v5.0 editorial source relates to the v4.3 numerical freeze.
+6. `docs/construct_playbooks/`: how central constructs are built and safely updated.
+7. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
+8. `docs/portfolio_demo_deployment.md`: portfolio-safe static demo path.
+9. `docs/docker_quickstart.md`: lowest-friction setup path.
+10. `docs/private_data_contract.md`: how to mount the private data room.
+11. `docs/coauthor_runbook.md`: complete first-day command sequence.
 
 The full documentation map is `docs/index.md`.
 
@@ -150,6 +154,7 @@ Use `docs/extensions/README.md` and `manifests/extension_workbench.csv` to see t
 ## What Git Tracks
 
 - Frozen v4.3 manuscript assets and generated comparison evidence.
+- v5.0 editorial LaTeX source, preserved separately from the v4.3 computational freeze.
 - Source code required by publication-table scripts and validation utilities.
 - Manifests for paper-table ownership, table scripts, data dependencies, source closure, and artifact provenance.
 - Small non-sensitive fixtures for smoke tests.
@@ -211,6 +216,10 @@ Current expected status: 23 table CSVs match exactly, one table has a documented
 ## Known Data-Lane Boundary
 
 The v4.3 target has lane-specific coverage. The annual NLP/patent lane covers 2016-2025. The event/market-return lane covers 2016-2024 because the staged CRSP/event-return inputs stop at 2024-12-31. See `docs/artifact_coverage_policy.md` before replacing or promoting private artifacts.
+
+## v5.0 Editorial Boundary
+
+The v5.0 editorial source is tracked under `paper/v5_0_editorial_source/`. It preserves coauthor edits to prose, captions, appendix wrappers, controls/fixed-effect rows, standard-error placement, and table notes. It does not replace the v4.3 numerical evidence. See `docs/v5_editorial_alignment.md`.
 
 ## Collaboration Model
 

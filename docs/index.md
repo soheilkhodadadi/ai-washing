@@ -5,8 +5,10 @@ This index is organized by coauthor task. Internal development reports and email
 ## Empirical Orientation
 
 - `empirical_workstation.md`: project-level map of the data flow, constructs, panels, and extension lanes.
+- `coauthor_delivery_overview.md`: concise map of what is in Git, what is in the private data room, and how the package answers the coauthor handoff request.
 - `paper_table_workbench.md`: table-by-table guide for rerunning, inspecting, or modifying manuscript assets.
 - `panel_and_data_catalog.md`: catalog of the major panels, classifier outputs, patent match, WRDS/market products, and frozen evidence.
+- `v5_editorial_alignment.md`: policy for using the v5.0 editorial source while preserving v4.3 as the numerical freeze.
 - `construct_playbooks/`: construct-level guides for safe modification and coauthor review.
 - `../manifests/paper_table_workbench.csv`: machine-readable paper table workbench.
 - `../manifests/data_product_catalog.csv`: machine-readable data product catalog.
@@ -20,6 +22,7 @@ This index is organized by coauthor task. Internal development reports and email
 
 - `../README.md`: repository overview and shortest path.
 - `../README_START_HERE.md`: setup, validation, and table-workbench entry point.
+- `coauthor_delivery_overview.md`: handoff contents and recommended first review path.
 - `docker_quickstart.md`: lowest-friction container path.
 - `dashboard_guide.md`: browser-based navigation layer for tables, data products, construct audits, classifier evidence, patent evidence, and extensions.
 - `coauthor_quickstart.md`: compact first-run checklist.
@@ -52,6 +55,7 @@ This index is organized by coauthor task. Internal development reports and email
 - `figure_reproduction_status.md`: figure-series evidence and frozen figure policy.
 - `c7_format_delta_explanation.md`: documented format-only C7 delta.
 - `releases/v4_3_defense_freeze.md`: frozen v4.3 computational target.
+- `v5_editorial_alignment.md`: v5.0 presentation benchmark and release-promotion boundary.
 
 ## Source And Construct Audits
 

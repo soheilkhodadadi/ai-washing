@@ -24,7 +24,7 @@ TARGETS = [
         "view": "Table Explorer - Main Table 7",
         "url_path": "open root, then select Table Explorer",
         "mode": "Demo Mode",
-        "purpose": "Thomas-facing table review flow with Open First guidance.",
+        "purpose": "Supervisor-facing table review flow with Open First guidance.",
         "suggested_file": "03_table_explorer_main_table_7.png",
     },
     {

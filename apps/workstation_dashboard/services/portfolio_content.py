@@ -32,12 +32,12 @@ CASE_STUDY_SECTIONS: tuple[CaseStudySection, ...] = (
         (
             "Coauthors need fast access to tables, scripts, and data lineage.",
             "Supervisors need readable outputs without navigating source code first.",
-            "Portfolio viewers need a safe view of the technical system without private research data.",
+            "External reviewers need a safe view of the research system without private research data.",
         ),
     ),
     CaseStudySection(
         "Workflow",
-        "The dashboard wraps the validated Make/Docker workstation with a manifest-driven product layer.",
+        "The dashboard adds a manifest-driven navigation layer on top of the validated Make/Docker workstation.",
         tuple(f"{label}: {description}" for label, description in WORKFLOW_STEPS),
     ),
     CaseStudySection(
@@ -52,7 +52,7 @@ CASE_STUDY_SECTIONS: tuple[CaseStudySection, ...] = (
     CaseStudySection(
         "Reusable Methodology",
         "The same pattern can be reused for finance, NLP, and research-software handoffs that need a clean "
-        "client-facing interface.",
+        "review interface.",
         (
             "Use manifests as the public contract between scripts, data, outputs, and documentation.",
             "Keep private data outside Git and preview only metadata in the app.",

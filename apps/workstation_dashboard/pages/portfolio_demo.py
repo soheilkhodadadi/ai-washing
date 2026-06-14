@@ -39,8 +39,8 @@ def _workflow_timeline() -> None:
 def render(data: DashboardData, mode: str) -> None:
     hero(
         "Portfolio Demo Mode",
-        "A nonprivate case-study view of the AI Washing workstation as a reproducible finance, NLP, "
-        "and analytics product.",
+        "A nonprivate case-study view of the AI Washing workstation as a reproducible finance and NLP "
+        "research package.",
     )
     safety_banner(mode)
     badges(["portfolio-safe", "manifest metadata", "no private row values", "command execution disabled in Demo Mode"])
@@ -58,13 +58,13 @@ def render(data: DashboardData, mode: str) -> None:
     )
 
     with overview:
-        st.markdown('<div class="aiw-section-kicker">Client-facing research software</div>', unsafe_allow_html=True)
+        st.markdown('<div class="aiw-section-kicker">Research workstation overview</div>', unsafe_allow_html=True)
         _section_card(CASE_STUDY_SECTIONS[0].title, CASE_STUDY_SECTIONS[0].body, CASE_STUDY_SECTIONS[0].bullets)
         st.markdown(
             """
             This dashboard is designed to make a complex empirical project legible to three audiences at once:
             a technical coauthor who wants scripts and data lineage, a supervisor who wants readable tables,
-            and a portfolio reviewer who wants to see the system design without private research data.
+            and an external reviewer who wants to see the system design without private research data.
             """
         )
 
@@ -106,7 +106,7 @@ def render(data: DashboardData, mode: str) -> None:
         _section_card(CASE_STUDY_SECTIONS[3].title, CASE_STUDY_SECTIONS[3].body, CASE_STUDY_SECTIONS[3].bullets)
         st.info(
             "The reusable pattern is manifest-first: define the public contract, keep private data external, "
-            "map every result to code and evidence, then add a client-facing review layer on top."
+            "map every result to code and evidence, then add a review layer on top."
         )
 
     with hidden:

@@ -59,8 +59,8 @@ def test_portfolio_demo_contains_showcase_ids_and_product_story(tmp_path: Path) 
         assert product_id in text
     for row in _rows("manifests/extension_workbench.csv"):
         assert row["extension_id"] in text
-    assert "Portfolio-safe static demo" in text
-    assert "The workflow is the product." in text
+    assert "Portfolio-safe research overview" in text
+    assert "Research workflow and evidence map." in text
 
 
 def test_portfolio_demo_excludes_private_or_local_leakage(tmp_path: Path) -> None:

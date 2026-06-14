@@ -1,6 +1,6 @@
 # WRDS, CRSP, Compustat, And Linkage Method Note
 
-This note explains the market/accounting data lane used in the AI Washing v4.3 workstation. It is written for coauthors who want to inspect the CRSP, Compustat, and linking artifacts behind the final panels without relying on Soheil's old `semantic-patterns` workspace.
+This note explains the market/accounting data lane used in the AI Washing v4.3 workstation. It is written for coauthors who want to inspect the CRSP, Compustat, and linking artifacts behind the final panels without relying on the older `semantic-patterns` workspace.
 
 ## What This Lane Does
 

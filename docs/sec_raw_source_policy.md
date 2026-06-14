@@ -8,7 +8,7 @@ Phase 4F makes the SEC source boundary explicit. The coauthor workstation does n
 - The private data room includes representative SEC full-submission samples and representative Notre Dame Stage-One cleaned samples.
 - The private data room includes extracted AI sentence outputs and final hybrid classifier outputs because these are the practical audit layer used by v4.3 and extension work.
 - Source links and documentation point coauthors to the full Stage-One corpus if they want a bottom-up rebuild.
-- The full raw SEC corpus should be mirrored only if Thomas or Kuntara specifically asks for it, and only in the private data room, not Git.
+- The full raw SEC corpus should be mirrored only if coauthors specifically ask for it, and only in the private data room, not Git.
 
 ## Why This Is Not A Missing-Data Gap
 

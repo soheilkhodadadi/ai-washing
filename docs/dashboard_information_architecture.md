@@ -44,7 +44,7 @@ The sidebar should contain:
 | Reproduction Status | data editor | verify reproducibility posture | status docs and manifests | audit commands and status links | no command execution |
 | Command Center | trusted local coauthor | run approved Make targets safely | dashboard command registry and local environment | fixed command, confirmation gate, duration, exit code, sanitized log tail, ignored raw log path | allowlisted Make targets only; disabled in Demo Mode |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
-| Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests and static portfolio narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
+| Portfolio Demo Mode | external reviewer | see nonprivate case-study overview | manifests and static portfolio narrative | case-study story, workflow, evidence surfaces, reusable methodology, and demo-safe boundary | hide private-data-root instructions and disable command execution |
 | Static Portfolio Demo | nontechnical external reviewer | open a one-click public-safe landing page | manifests, reproduction-status ledger, and safe narrative content | static HTML case study, metrics, showcase tables, evidence spine, extension roadmap | no private paths, no row-level values, no command execution |
 
 ## Manifest Mapping

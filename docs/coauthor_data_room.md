@@ -30,7 +30,7 @@ The coauthor data-room manifest is `manifests/coauthor_data_room_manifest.csv`. 
 Roles:
 
 - `required_reproduction`: needed to reproduce v4.3 tables.
-- `required_extension`: not always needed for v4.3 reruns but needed for Kuntara/Thomas extension work or deeper audit.
+- `required_extension`: not always needed for v4.3 reruns but needed for coauthor extension work or deeper audit.
 - `support_only`: useful for documentation, quality checks, or validation reports.
 - `raw_source`: raw or near-raw source files for bottom-up rebuilds.
 - `deferred_with_reason`: intentionally not yet staged; the manifest names what to stage next.
@@ -56,17 +56,17 @@ make validate-sec-source
 
 This reads `manifests/sec_source_manifest.csv` and checks the representative SEC source samples, Stage-One source links, extracted AI sentence support, and final hybrid classifier outputs. The expected current anchors are 5 SEC full-submission samples, 4 Stage-One 2025 samples, 106,977 extracted AI sentences for 2016-2024, 40,902 extracted AI sentences for 2025, and 147,879 final hybrid classified AI sentences for 2016-2025.
 
-The policy is intentional: the full raw SEC corpus is not bundled unless Thomas or Kuntara specifically requests a bottom-up raw rebuild. The practical coauthor audit surface is source samples plus extracted sentences plus final classifier outputs. See `docs/sec_raw_source_policy.md` and `docs/sec_extraction_classification_audit.md`.
+The policy is intentional: the full raw SEC corpus is not bundled unless coauthors specifically request a bottom-up raw rebuild. The practical coauthor audit surface is source samples plus extracted sentences plus final classifier outputs. See `docs/sec_raw_source_policy.md` and `docs/sec_extraction_classification_audit.md`.
 
 ## Coauthor Request Coverage
 
-Kuntara requested the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, Compustat fundamentals extract, CRSP monthly/index and daily return inputs, CIK-GVKEY-PERMNO bridge files, WRDS build reports, and core provenance files. The visible remaining queue is now limited to future extension data such as actual SEO/offering terms and optional job-posting data.
+The coauthor handoff request asked for the full data and code: cleaned panel, patent match, classifier outputs, CRSP and Compustat merges, and table-building scripts. The current repository tracks the publication scripts and staged table-rerun inputs. The data-room manifest now stages the final classifier outputs, patent-match lineage, keyword/identity metadata, Compustat fundamentals extract, CRSP monthly/index and daily return inputs, CIK-GVKEY-PERMNO bridge files, WRDS build reports, and core provenance files. The visible remaining queue is now limited to future extension data such as actual SEO/offering terms and optional job-posting data.
 
 
 
 ## Extension Starter Layer
 
-The extension layer helps Kuntara begin testing without changing the v4.3 freeze.
+The extension layer helps coauthors begin testing without changing the v4.3 freeze.
 
 ```bash
 make builder-hides-first-pass
