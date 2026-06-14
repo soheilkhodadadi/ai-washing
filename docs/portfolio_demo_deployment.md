@@ -32,11 +32,11 @@ Open it locally:
 open outputs/portfolio_demo/index.html
 ```
 
-The output folder is ignored by Git. Regenerate it whenever manifests or dashboard narratives change.
+The output folder is ignored by Git, so it will not appear on GitHub after a push. Regenerate it whenever manifests or dashboard narratives change.
 
 ## Static Hosting Options
 
-The generated `outputs/portfolio_demo/index.html` can later be hosted as a static page through GitHub Pages, Vercel, Netlify, or an internal university/project site. Before hosting, run:
+The generated `outputs/portfolio_demo/index.html` can be copied to Dropbox for a quick private preview or later hosted as a static page through GitHub Pages, Vercel, Netlify, or an internal university/project site. Before hosting, run:
 
 ```bash
 make portfolio-demo

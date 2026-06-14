@@ -23,7 +23,7 @@ This builds the image and runs the code-only validation suite inside Docker. It 
 
 ## Connect The Private Data Room
 
-Set `AIW_DATA_ROOT` to the local OneDrive/Dropbox/private-data mirror:
+Set `AIW_DATA_ROOT` to the local Dropbox/private-data mirror:
 
 ```bash
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
@@ -97,6 +97,6 @@ The app reads repository manifests only. It does not display private data values
 
 ## Platform Notes
 
-- macOS: Docker Desktop is the simplest route. Keep the repository outside OneDrive/Dropbox and mount only the private data mirror.
+- macOS: Docker Desktop is the simplest route. Keep the repository outside Dropbox and mount only the private data mirror.
 - Linux: Docker Engine is sufficient. If generated files appear with unexpected ownership, rerun from the Make targets, which pass the host user ID into the container.
 - Windows: use WSL2 paths where possible. Avoid mixing Windows paths and WSL paths in `AIW_DATA_ROOT`; set the variable from the same shell used to run Make.

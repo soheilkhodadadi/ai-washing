@@ -23,7 +23,7 @@ Open:
 open outputs/dashboard/index.html
 ```
 
-The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. The static dashboard is non-executing and prints copy-ready terminal commands only.
+The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. The static dashboard is non-executing and prints copy-ready terminal commands only. Its generated HTML lives under ignored `outputs/dashboard/`, so it is local until copied to Dropbox or published through a deliberate static-site release.
 
 
 ## Streamlit App Product Layer
@@ -121,7 +121,7 @@ make portfolio-demo-check
 open outputs/portfolio_demo/index.html
 ```
 
-This page is generated from manifests, executes no commands, and is designed for nontechnical review or public-safe demonstration. See `docs/portfolio_demo_deployment.md`.
+This page is generated from manifests, executes no commands, and is designed for nontechnical review or public-safe demonstration. See `docs/portfolio_demo_deployment.md` and `docs/dashboard_sharing_options.md`.
 
 To prepare a local screenshot checklist, run:
 

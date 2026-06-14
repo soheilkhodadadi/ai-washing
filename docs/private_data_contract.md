@@ -16,7 +16,7 @@ must be staged as:
 $AIW_DATA_ROOT/processed/panel/canonical/ever_speaker_panel_2016_2025_hybrid_api_a_conf49_v1.parquet
 ```
 
-Do not put the Git repository itself inside Dropbox, OneDrive, or another sync folder. Clone the GitHub repository locally, then set `AIW_DATA_ROOT` to a local mirror of the shared private-data folder.
+Do not put the Git repository itself inside Dropbox or another sync folder. Clone the GitHub repository locally, then set `AIW_DATA_ROOT` to a local mirror of the shared Dropbox private-data folder.
 
 ## Validation Command
 
@@ -105,7 +105,7 @@ Run `make validate-sec-source` before interpreting NLP measurement changes. See 
 
 ## Read-Only Mirrors
 
-The main validation and v4.3 reproduction path should work with `AIW_DATA_ROOT` mounted read-only, provided the staged caches are complete. This is useful for Dropbox/OneDrive mirrors where coauthors should not accidentally mutate the shared data room.
+The main validation and v4.3 reproduction path should work with `AIW_DATA_ROOT` mounted read-only, provided the staged caches are complete. This is useful for Dropbox mirrors where coauthors should not accidentally mutate the shared data room.
 
 Artifact-refresh commands are different. For example, `make patent-example-audit` writes a refreshed CSV by default under `$AIW_DATA_ROOT/reports/patents/`. If the private mirror is read-only, provide an explicit output path:
 
@@ -136,7 +136,7 @@ $AIW_DATA_ROOT/private_data_checksum_report.csv
 $AIW_DATA_ROOT/private_data_staging_copy_log.csv
 ```
 
-A coauthor should first run `make check-private-data`, then compare any private checksum report shared through Dropbox/OneDrive. If a checksum differs, do not patch table code first; resolve the staged input mismatch.
+A coauthor should first run `make check-private-data`, then compare any private checksum report shared through Dropbox. If a checksum differs, do not patch table code first; resolve the staged input mismatch.
 
 ## Status Labels
 

@@ -6,7 +6,7 @@ This repository is designed for coauthor collaboration through GitHub while keep
 
 1. Clone the private GitHub repository into a normal local development folder.
 2. Create a local `.venv` and install the package with `python -m pip install -e .`.
-3. Obtain the private data root separately through Dropbox, OneDrive, or a local mirror.
+3. Obtain the private data root separately through Dropbox or a local mirror.
 4. Set `AIW_DATA_ROOT` to that external folder.
 5. Run the validation commands in `README_START_HERE.md`.
 
@@ -24,4 +24,4 @@ This repository is designed for coauthor collaboration through GitHub while keep
 
 ## Avoiding Sync Conflicts
 
-Do not clone this Git repository inside Dropbox or OneDrive. Sync tools can corrupt `.git` metadata or create conflicting copies. Instead, keep the repository local and point `AIW_DATA_ROOT` to a cloud-synced data folder or to a local mirror of that folder.
+Do not clone this Git repository inside Dropbox or another sync folder. Sync tools can corrupt `.git` metadata or create conflicting copies. Instead, keep the repository local and point `AIW_DATA_ROOT` to a Dropbox-synced data folder or to a local mirror of that folder.

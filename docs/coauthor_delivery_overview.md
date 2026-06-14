@@ -19,7 +19,7 @@ For a browser-based view, run the dashboard locally:
 make dashboard-app
 ```
 
-The dashboard includes a table explorer, data room, construct audit browser, extension lab, reproduction status page, and a controlled command center for approved local Make targets.
+The dashboard includes a table explorer, data room, construct audit browser, extension lab, reproduction status page, and a controlled command center for approved local Make targets. Generated dashboard HTML is local and ignored by Git unless the team deliberately publishes a sanitized static or hosted release; see `docs/dashboard_sharing_options.md`.
 
 ## What Is In Git
 
@@ -119,6 +119,6 @@ make check-seo-schema SEO_FILE=/path/to/seo_offering_terms.csv
 Share the package as two coordinated pieces:
 
 1. Private GitHub repository for code, documentation, manifests, dashboards, and versioned evidence.
-2. Private OneDrive or Dropbox data room for restricted data and large artifacts.
+2. Private Dropbox data room for restricted data and large artifacts.
 
-Do not put the Git repository inside OneDrive or Dropbox. Keep `.git` local and use cloud storage only for the external data mirror.
+Do not put the Git repository inside Dropbox or any other sync folder. Keep `.git` local and use Dropbox only for the external data mirror.

@@ -65,9 +65,10 @@ make extension-builder-hides
 6. `docs/construct_playbooks/`: how central constructs are built and safely updated.
 7. `docs/dashboard_guide.md`: optional static and Streamlit navigation interfaces.
 8. `docs/portfolio_demo_deployment.md`: portfolio-safe static demo path.
-9. `docs/docker_quickstart.md`: lowest-friction setup path.
-10. `docs/private_data_contract.md`: how to mount the private data room.
-11. `docs/coauthor_runbook.md`: complete first-day command sequence.
+9. `docs/dashboard_sharing_options.md`: why generated dashboard files are local/ignored and how to share Dropbox, static, or hosted previews.
+10. `docs/docker_quickstart.md`: lowest-friction setup path.
+11. `docs/private_data_contract.md`: how to mount the private data room.
+12. `docs/coauthor_runbook.md`: complete first-day command sequence.
 
 The full documentation map is `docs/index.md`.
 
@@ -224,6 +225,6 @@ The v5.0 editorial source is tracked under `paper/v5_0_editorial_source/`. It pr
 ## Collaboration Model
 
 - GitHub tracks code, docs, fixtures, manifests, and frozen manuscript assets.
-- Dropbox/OneDrive can share the external private data root.
-- Do not put this Git repository inside Dropbox or OneDrive.
+- Dropbox is the canonical channel for sharing the external private data root.
+- Do not put this Git repository inside Dropbox or any other sync folder.
 - Keep future table changes documented in manifests and release notes before treating them as replacements for v4.3 evidence.

@@ -28,6 +28,7 @@ The repository also preserves the v5.0 editorial source as the current manuscrip
 - [manifests/paper_table_workbench.csv](manifests/paper_table_workbench.csv): machine-readable version of the paper workbench.
 - [docs/dashboard_guide.md](docs/dashboard_guide.md): optional static and Streamlit dashboard interfaces, including table review and technical drill-down.
 - [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md): one-click static demo path for nonprivate portfolio or presentation review.
+- [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md): why generated dashboard HTML is local/ignored and how to share a hosted or Dropbox preview.
 - [docs/coauthor_runbook.md](docs/coauthor_runbook.md): first-day commands and detailed validation path.
 
 ## Fastest Setup
@@ -64,7 +65,7 @@ Set the private data root before running data-dependent checks:
 export AIW_DATA_ROOT=/path/to/ai-washing-private-data
 ```
 
-Keep this Git repository outside Dropbox, OneDrive, and other sync folders. Use cloud storage only for the external private data mirror. See [docs/private_data_contract.md](docs/private_data_contract.md) and [docs/coauthor_data_room.md](docs/coauthor_data_room.md).
+Keep this Git repository outside Dropbox or any other sync folder. Use Dropbox only for the external private data mirror. See [docs/private_data_contract.md](docs/private_data_contract.md), [docs/coauthor_data_room.md](docs/coauthor_data_room.md), and [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md).
 
 ## Table Reruns
 
@@ -169,7 +170,7 @@ make portfolio-demo
 open outputs/portfolio_demo/index.html
 ```
 
-See [docs/dashboard_guide.md](docs/dashboard_guide.md) and [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md).
+See [docs/dashboard_guide.md](docs/dashboard_guide.md), [docs/portfolio_demo_deployment.md](docs/portfolio_demo_deployment.md), and [docs/dashboard_sharing_options.md](docs/dashboard_sharing_options.md).
 
 ## Documentation Map
 

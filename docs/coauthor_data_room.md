@@ -4,7 +4,7 @@ This document defines the private data room that accompanies the `ai-washing` Gi
 
 ## Operating Rule
 
-Clone the GitHub repository into a normal local folder. Keep Dropbox, OneDrive, or another shared drive for `AIW_DATA_ROOT` only.
+Clone the GitHub repository into a normal local folder. Keep Dropbox for `AIW_DATA_ROOT` only; do not sync the Git repository itself.
 
 ```bash
 cd /path/to/ai-washing

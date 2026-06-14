@@ -44,7 +44,7 @@ Should exclude:
 
 ## Practical Rule
 
-For coauthors, share the private GitHub repo plus the OneDrive private-data room.
+For coauthors, share the private GitHub repo plus the Dropbox private-data room.
 
 For a journal, create a clean release archive from Git and run `make package-surface-audit` before deposit. Do not zip the raw working directory because ignored local folders such as `.venv`, `.pytest_cache`, and generated `outputs/` may be present.
 

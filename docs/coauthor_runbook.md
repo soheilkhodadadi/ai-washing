@@ -21,7 +21,7 @@ If the goal is to revise a specific table, start from the workbench rather than 
 
 ## 1. Clone The Code Repository
 
-Clone the private GitHub repository into a normal local folder, not into Dropbox or OneDrive:
+Clone the private GitHub repository into a normal local folder, not into Dropbox or another sync folder:
 
 ```bash
 git clone git@github.com:soheilkhodadadi/ai-washing.git
@@ -59,7 +59,7 @@ export AIW_OUTPUT_ROOT="$PWD/outputs/reproduced"
 export AIW_PAPER_ROOT="$PWD/outputs/paper_exports"
 ```
 
-`AIW_DATA_ROOT` should point to a local mirror of the private Dropbox/OneDrive data folder. The Git repository should remain outside the synced data folder.
+`AIW_DATA_ROOT` should point to a local mirror of the private Dropbox data folder. The Git repository should remain outside the synced data folder.
 
 ## 4. Run Non-Private Validation
 
