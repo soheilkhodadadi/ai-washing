@@ -1,6 +1,6 @@
 # Dashboard Guide
 
-The dashboard layer is a navigation aid for the AI Washing workstation. It does not replace the Make/Docker workflow, does not execute commands from the browser, and does not expose private data values.
+The dashboard layer is a navigation aid for the AI Washing workstation. It does not replace the Make/Docker workflow and does not expose private data values. Most pages are read-only; the Streamlit **Command Center** can run a small allowlist of local Make targets with confirmation gates and ignored logs.
 
 ## Static Dashboard
 
@@ -23,7 +23,7 @@ Open:
 open outputs/dashboard/index.html
 ```
 
-The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. It prints copy-ready terminal commands, but the browser does not run them.
+The dashboard includes searchable cards for paper assets, data products, construct playbooks, extension lanes, and share-readiness commands. It prints copy-ready terminal commands and does not execute anything.
 
 
 ## Streamlit App Product Layer
@@ -34,7 +34,7 @@ The Streamlit app is the richer coauthor/client interface. It is organized as a 
 - `docs/dashboard_user_stories.md`
 - `docs/dashboard_information_architecture.md`
 
-The app remains read-only in Phase 9. It displays copy-ready commands but does not execute empirical scripts from the browser.
+The app is read-mostly in Phase 9. Review, data, construct, and extension pages display copy-ready commands; **Command Center** is the only page that can execute approved local Make targets.
 
 ## Review Main Table 7 In The App
 
@@ -44,7 +44,7 @@ For a nontechnical table review, open the Streamlit app and go to **Table Explor
 Main Table 7 - Capital-raising timing and low-credibility AI disclosure
 ```
 
-The page shows an **Open First** panel, safe CSV preview, available PNG/PDF/DOCX/CSV/TeX/notes artifacts, and a downloadable table-review packet. The browser does not rerun the table or inspect private panels; it only reads repo-contained review artifacts.
+The page shows an **Open First** panel, safe CSV preview, available PNG/PDF/DOCX/CSV/TeX/notes artifacts, and a downloadable table-review packet. Table Explorer does not rerun the table or inspect private panels; it only reads repo-contained review artifacts.
 
 ## Inspect A Table Technically
 
@@ -67,7 +67,7 @@ Use **Data Room** when the question is, “where is this data product and what i
 - WRDS/CRSP/Compustat lane checks, including the 2016-2025 annual panel lane and the 2016-2024 event/market-return lane;
 - metadata-only schema/status checks from `AIW_DATA_ROOT`, limited to existence, file count, row count, column names, and file type.
 
-Use **Construct Audits** when the question is, “how confident are we in this construct?” The page links each construct to its playbook, relevant data products, audit checks, and copy-ready validation commands. The browser still does not display private row-level values or execute commands.
+Use **Construct Audits** when the question is, “how confident are we in this construct?” The page links each construct to its playbook, relevant data products, audit checks, and copy-ready validation commands. It does not display private row-level values.
 
 
 ## Inspect Extension Lanes In The App
@@ -75,6 +75,19 @@ Use **Construct Audits** when the question is, “how confident are we in this c
 Open **Extension Lab** to review follow-on tests without mixing them into frozen v4.3 evidence. The page shows Builder Hides, Builder Hides AI-talk-only, Washing Pays Proxy, and the future SEO/offering-terms placeholder with status badges, purpose, inputs, generated aggregate outputs where present, interpretation limits, and copy-ready commands.
 
 Every lane is marked as exploratory, proxy, or future-data-required, and as not manuscript-ready unless a later release explicitly promotes it. The strong washing-pays placeholder includes a schema-only CSV checker for future SEO/offering-terms data. The checker reports column coverage and row count only; it does not save uploaded files or display row values.
+
+## Controlled Command Center
+
+Open **Command Center** when a trusted local coauthor wants to run a routine workstation command from the app. The page is deliberately narrow:
+
+- commands are selected from `manifests/dashboard_command_registry.csv`;
+- every command maps to fixed `make ...` argv and runs with `shell=False`;
+- data-dependent or output-writing commands require explicit confirmation;
+- execution is disabled in Demo Mode;
+- raw logs and metadata are written under ignored `outputs/dashboard_runs/`;
+- the app shows exit code, duration, sanitized log tail, and a readable failure hint.
+
+Full-table reproduction and replication-audit execution are not exposed in Command Center v1. Run those manually from a terminal or Docker after the allowlisted runner has been proven stable.
 
 ## Optional Streamlit App
 
@@ -94,10 +107,10 @@ make docker-build
 make docker-dashboard-app
 ```
 
-Then open the local URL printed by Streamlit. If private data are mounted, the app still does not display private values; use terminal commands such as `make locate-data PRODUCT_ID=... PREVIEW=1` for safe data-location checks.
+Then open the local URL printed by Streamlit. If private data are mounted, the app still does not display private values. Use Data Room for metadata-only data checks or Command Center for approved local Make targets.
 
 ## Scope Boundary
 
-- Safe: browsing table/data/extension metadata, copying commands, locating documentation.
-- Not included: executing empirical scripts from the browser, editing panels, rendering manuscript PDFs, or previewing private data rows.
-- Future option: a controlled local command runner can be added later, but only after the static navigation layer is stable.
+- Safe: browsing table/data/extension metadata, copying commands, locating documentation, and running approved Command Center targets locally.
+- Not included: arbitrary shell commands, editing panels, rendering manuscript PDFs, full-table reproduction from the browser, replication-audit execution from the browser, or previewing private data rows.
+- Future option: broader command execution can be considered only after the narrow allowlisted runner remains stable.

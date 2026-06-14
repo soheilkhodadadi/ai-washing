@@ -125,7 +125,7 @@ make dashboard-check
 open outputs/dashboard/index.html
 ```
 
-An optional Streamlit/Plotly app is available for a richer local demo:
+An optional Streamlit/Plotly app is available for a richer local demo and local coauthor review:
 
 ```bash
 make dashboard-app-install
@@ -138,6 +138,8 @@ In the Streamlit app, use **Table Explorer** for two workflows:
 - **Technical Drill-Down:** inspect the owning script, data products, metadata-only schema/status checks, construct playbooks, rerun commands, and extension relevance.
 
 Use **Data Room** and **Construct Audits** for the data-quality cockpit: classifier evidence, patent-match confidence, textual acronym-risk status, WRDS/CRSP/Compustat lane checks, and metadata-only private-data schema/status summaries.
+
+Use **Command Center** only on a trusted local workstation when you want the app to run approved Make targets. It executes a fixed allowlist, requires confirmation for private-data or output-writing commands, disables execution in Demo Mode, and writes logs under ignored `outputs/dashboard_runs/`.
 
 See [docs/dashboard_guide.md](docs/dashboard_guide.md).
 

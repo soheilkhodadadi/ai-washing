@@ -12,8 +12,8 @@ This index is organized by coauthor task. Internal development reports and email
 - `../manifests/data_product_catalog.csv`: machine-readable data product catalog.
 - `../manifests/table_to_script_crosswalk.csv`: reproduction-oriented table/script crosswalk.
 - Terminal helpers: `make workbench-index`, `make table-info TABLE_ID=T30`, and `make export-table-workbench TABLE_ID=T30`.
-- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review, technical drill-down, and data-quality cockpit views.
-- Dashboard helpers: `make dashboard`, `make dashboard-check`, and optional `make dashboard-app`.
+- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review, technical drill-down, data-quality cockpit, and controlled Command Center views.
+- Dashboard helpers: `make dashboard`, `make dashboard-check`, and optional `make dashboard-app`. Command Center runs only the approved local Make targets registered in `../manifests/dashboard_command_registry.csv`.
 
 ## First-Day Setup
 

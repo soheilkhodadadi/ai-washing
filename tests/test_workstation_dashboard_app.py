@@ -1,14 +1,24 @@
 from __future__ import annotations
 
 from io import BytesIO
+import subprocess
 import sys
 from pathlib import Path
 import zipfile
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 APP_DIR = ROOT / "apps" / "workstation_dashboard"
 sys.path.insert(0, str(APP_DIR))
 
+from services.command_runner import (  # noqa: E402
+    CommandRegistryError,
+    command_is_enabled,
+    load_command_registry,
+    run_dashboard_command,
+    sanitize_log_text,
+)
 from services.manifest_store import dashboard_text_is_safe, load_dashboard_data, public_frame  # noqa: E402
 from services.page_registry import PAGE_SPECS  # noqa: E402
 from services.audit_data import (  # noqa: E402
@@ -64,6 +74,7 @@ def test_dashboard_page_specs_are_complete() -> None:
         "construct_audits",
         "extension_lab",
         "reproduction_status",
+        "command_center",
         "share_export",
         "portfolio_demo",
     }
@@ -97,6 +108,125 @@ def test_manifest_text_used_by_dashboard_is_public_safe() -> None:
         ]
     )
     assert dashboard_text_is_safe(text)
+
+
+def test_dashboard_command_registry_is_allowlisted_and_fixed_make_only() -> None:
+    commands = load_command_registry()
+    ids = {command.command_id for command in commands}
+
+    assert {"dashboard_check", "export_t30_bundle", "extension_washing_pays_proxy"} <= ids
+    assert len(ids) == len(commands)
+    for command in commands:
+        assert command.argv[0] == "make"
+        assert command.enabled_in_demo_mode is False
+        assert command.display_command.startswith("make ")
+        assert "\n" not in command.display_command
+        assert ";" not in command.display_command
+
+
+def test_dashboard_command_runner_rejects_unknown_or_unconfirmed_commands(tmp_path: Path) -> None:
+    commands = load_command_registry()
+    with pytest.raises(CommandRegistryError):
+        run_dashboard_command("rm_rf", mode="Coauthor Mode", registry=commands, log_root=tmp_path)
+
+    result = run_dashboard_command("export_t30_bundle", mode="Coauthor Mode", registry=commands, log_root=tmp_path)
+    assert result.status == "blocked"
+    assert "confirmation" in result.error_message.lower()
+    assert result.log_path is None
+
+
+def test_dashboard_command_runner_blocks_demo_and_missing_private_data(monkeypatch, tmp_path: Path) -> None:
+    commands = load_command_registry()
+    command = {item.command_id: item for item in commands}["check_private_data"]
+    monkeypatch.delenv("AIW_DATA_ROOT", raising=False)
+
+    enabled, reason = command_is_enabled(command, mode="Coauthor Mode", env={})
+    assert not enabled
+    assert "AIW_DATA_ROOT" in reason
+
+    demo = run_dashboard_command("dashboard_check", mode="Demo Mode", registry=commands, log_root=tmp_path)
+    missing_private = run_dashboard_command("check_private_data", mode="Coauthor Mode", confirmed=True, registry=commands, log_root=tmp_path)
+    assert demo.status == "blocked"
+    assert "Demo Mode" in demo.error_message
+    assert missing_private.status == "blocked"
+    assert "AIW_DATA_ROOT" in missing_private.error_message
+
+
+def test_dashboard_command_runner_uses_subprocess_safely_and_writes_sanitized_logs(tmp_path: Path) -> None:
+    commands = load_command_registry()
+    captured: dict[str, object] = {}
+
+    def fake_runner(argv: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        captured["argv"] = argv
+        captured["shell"] = kwargs["shell"]
+        captured["cwd"] = kwargs["cwd"]
+        captured["timeout"] = kwargs["timeout"]
+        return subprocess.CompletedProcess(argv, 0, stdout=f"ok from {ROOT}\n", stderr="")
+
+    result = run_dashboard_command(
+        "dashboard_check",
+        mode="Coauthor Mode",
+        registry=commands,
+        log_root=tmp_path,
+        runner=fake_runner,
+    )
+
+    assert captured["argv"] == ["make", "dashboard-check"]
+    assert captured["shell"] is False
+    assert captured["cwd"] == ROOT
+    assert captured["timeout"] == 120
+    assert result.status == "passed"
+    assert result.exit_code == 0
+    assert result.log_path is not None and result.log_path.is_file()
+    assert "$AIW_REPO_ROOT" in result.log_tail
+    assert str(ROOT) not in result.log_tail
+
+
+def test_dashboard_command_runner_reports_failures_and_timeouts(tmp_path: Path) -> None:
+    commands = load_command_registry()
+
+    def failing_runner(argv: list[str], **_: object) -> subprocess.CompletedProcess[str]:
+        return subprocess.CompletedProcess(argv, 2, stdout="", stderr=f"failed inside {ROOT}\n")
+
+    failed = run_dashboard_command(
+        "dashboard_check",
+        mode="Coauthor Mode",
+        registry=commands,
+        log_root=tmp_path / "failed",
+        runner=failing_runner,
+    )
+    assert failed.status == "failed"
+    assert failed.exit_code == 2
+    assert "$AIW_REPO_ROOT" in failed.log_tail
+    assert str(ROOT) not in failed.log_tail
+
+    def timeout_runner(argv: list[str], **_: object) -> subprocess.CompletedProcess[str]:
+        raise subprocess.TimeoutExpired(argv, 1, output="", stderr=f"timeout at {ROOT}")
+
+    timed_out = run_dashboard_command(
+        "dashboard_check",
+        mode="Coauthor Mode",
+        registry=commands,
+        log_root=tmp_path / "timeout",
+        runner=timeout_runner,
+    )
+    assert timed_out.status == "timeout"
+    assert timed_out.timed_out
+    assert "$AIW_REPO_ROOT" in timed_out.log_tail
+
+
+def test_dashboard_log_sanitizer_hides_private_and_home_paths(monkeypatch, tmp_path: Path) -> None:
+    private_root = tmp_path / "ai-washing-private-data"
+    private_root.mkdir()
+    monkeypatch.setenv("AIW_DATA_ROOT", str(private_root))
+    text = f"repo={ROOT}\nprivate={private_root}\nhome={Path.home()}\n"
+    sanitized = sanitize_log_text(text)
+
+    assert "$AIW_REPO_ROOT" in sanitized
+    assert "$AIW_DATA_ROOT" in sanitized
+    assert "$HOME" in sanitized
+    assert str(ROOT) not in sanitized
+    assert str(private_root) not in sanitized
 
 
 def test_main_table_7_maps_to_t30_and_paper_label_display() -> None:

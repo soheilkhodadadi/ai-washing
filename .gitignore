@@ -20,6 +20,7 @@ outputs/fixture/**
 outputs/extensions/**
 outputs/workbench/**
 outputs/dashboard/**
+outputs/dashboard_runs/**
 !outputs/reproduced/README.md
 !outputs/fixture/.gitkeep
 *.log

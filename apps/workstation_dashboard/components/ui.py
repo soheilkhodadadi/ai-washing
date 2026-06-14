@@ -72,6 +72,8 @@ def dataframe_or_info(df: pd.DataFrame, columns: list[str], *, empty_message: st
 
 def safety_banner(mode: str) -> None:
     if mode == DEMO_MODE:
-        st.info("Demo Mode is portfolio-safe: private-data-root instructions and data-dependent commands are hidden.")
+        st.info("Demo Mode is portfolio-safe: private-data-root instructions are hidden and command execution is disabled.")
     else:
-        st.success("Coauthor Mode: read-only navigation with copy-ready commands. The browser does not execute empirical scripts.")
+        st.success(
+            "Coauthor Mode: most pages are read-only; Command Center can run approved local Make targets with confirmation and logs."
+        )

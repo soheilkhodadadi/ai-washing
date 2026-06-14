@@ -91,6 +91,17 @@ PAGE_SPECS = [
     },
     {
         "group": "Extensions And Reproduction",
+        "key": "command_center",
+        "title": "Command Center",
+        "icon": "▶️",
+        "primary_user": "trusted local coauthor",
+        "task": "Run approved Make targets with confirmation gates and ignored logs.",
+        "inputs": "dashboard command registry and local workstation environment",
+        "outputs": "exit code, duration, sanitized log tail, and ignored raw log path",
+        "safety_rule": "Allowlisted Make targets only; disabled in Demo Mode.",
+    },
+    {
+        "group": "Extensions And Reproduction",
         "key": "share_export",
         "title": "Share / Export Center",
         "icon": "📦",

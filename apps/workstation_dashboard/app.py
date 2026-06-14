@@ -3,6 +3,7 @@ from __future__ import annotations
 import streamlit as st
 
 from pages import (
+    command_center,
     construct_audits,
     data_room,
     extension_lab,
@@ -30,7 +31,9 @@ def main() -> None:
 
     st.sidebar.title("AI Washing")
     mode = render_mode_selector()
-    st.sidebar.caption("Read-only dashboard. Commands are displayed for copying; the browser does not execute empirical scripts.")
+    st.sidebar.caption(
+        "Manifest-first dashboard. Most pages are read-only; Command Center runs approved local Make targets only."
+    )
     st.sidebar.markdown("[Dashboard guide](docs/dashboard_guide.md) · [Table workbench](docs/paper_table_workbench.md)")
 
     pages = {
@@ -49,6 +52,7 @@ def main() -> None:
         "Extensions And Reproduction": [
             st.Page(lambda: extension_lab.render(data, mode), title=_spec("extension_lab")["title"], icon=_spec("extension_lab")["icon"], url_path="extension-lab"),
             st.Page(lambda: reproduction_status.render(data, mode), title=_spec("reproduction_status")["title"], icon=_spec("reproduction_status")["icon"], url_path="reproduction-status"),
+            st.Page(lambda: command_center.render(mode), title=_spec("command_center")["title"], icon=_spec("command_center")["icon"], url_path="command-center"),
             st.Page(lambda: share_export.render(mode), title=_spec("share_export")["title"], icon=_spec("share_export")["icon"], url_path="share-export"),
         ],
     }

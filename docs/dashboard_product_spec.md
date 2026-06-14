@@ -46,7 +46,7 @@ The Extension Lab is a follow-on research cockpit, not a frozen-results page. It
 
 ### Command Execution Policy
 
-Phase 9 does not execute commands from the browser. The dashboard may display copy-ready commands only. Future command execution requires a separate design pass with an allowlist, explicit confirmation, run logs, output isolation, and disabled behavior in Demo Mode.
+Most dashboard pages display copy-ready commands only. **Command Center** is the controlled exception: it may execute approved local Make targets from `manifests/dashboard_command_registry.csv`. It must not accept arbitrary shell text or user-entered Make targets. It must show the fixed command, require confirmation for data-dependent or output-writing commands, write raw logs under ignored `outputs/dashboard_runs/`, show a sanitized log tail, and disable execution in Demo Mode.
 
 ## Safety Model
 
@@ -57,6 +57,8 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 - Preview only repo-contained review artifacts, such as frozen v4.3 CSV outputs; never preview `$AIW_DATA_ROOT`.
 - Never mutate v4.3 frozen evidence from the app.
 - Keep generated dashboard outputs under ignored folders.
+- Keep Command Center logs under ignored `outputs/dashboard_runs/`.
+- Run only fixed allowlisted Make targets with `shell=False`; do not expose arbitrary shell execution.
 - Keep static HTML and Make/Docker commands as the reproducibility backbone.
 
 ## Page Set
@@ -68,6 +70,7 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 - **Construct Audits:** construct playbook index, validation/audit orientation, acronym-risk status, patent-match confidence, and WRDS lane checks.
 - **Extension Lab:** registered follow-on tests, maturity badges, generated aggregate output previews, interpretation limits, copy-ready commands, and schema-only checks for future SEO/offering-terms data.
 - **Reproduction Status:** validation posture, table/figure status links, and audit commands.
+- **Command Center:** approved local Make targets, confirmation gates, environment summary, exit code, duration, and sanitized log tail.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
 - **Portfolio Demo Mode:** nonprivate, presentation-oriented view of the workstation capability.
 
@@ -79,4 +82,5 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 - A supervisor can start with paper results, open Main Table 7, inspect readable artifacts, and download a compact review packet without needing command-line literacy.
 - A journal-style reviewer can find reproduction status, data boundaries, and audit materials.
 - The dashboard works through both native Streamlit and Docker.
-- The app remains read-only and does not expose private data values.
+- The app remains read-only outside Command Center and never exposes private data values.
+- Command Center can run approved local Make targets, but not arbitrary shell commands or full reproduction/audit targets.

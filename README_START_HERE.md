@@ -30,6 +30,14 @@ make dashboard
 open outputs/dashboard/index.html
 ```
 
+Optional local app:
+
+```bash
+make dashboard-app
+```
+
+In the Streamlit app, use **Command Center** only for approved local Make targets. It is disabled in Demo Mode, requires confirmation for private-data or output-writing commands, and stores raw logs under ignored `outputs/dashboard_runs/`.
+
 After private data are mounted, run the first extension:
 
 ```bash

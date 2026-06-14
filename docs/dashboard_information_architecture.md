@@ -16,6 +16,7 @@ The app uses Streamlit multipage navigation with grouped pages.
 - **Extensions And Reproduction**
   - Extension Lab
   - Reproduction Status
+  - Command Center
   - Share / Export Center
 
 ## Global Sidebar
@@ -24,7 +25,7 @@ The sidebar should contain:
 
 - dashboard title;
 - mode selector: `Coauthor Mode` or `Demo Mode`;
-- safety note: read-only, manifest-first, no browser command execution;
+- safety note: manifest-first, read-only outside Command Center, and allowlisted command execution only;
 - navigation pages grouped by task;
 - quick links to static dashboard, README, dashboard guide, and table workbench docs.
 
@@ -39,6 +40,7 @@ The sidebar should contain:
 | Construct Audits | coauthor / data editor | inspect construct definitions, confidence, and limitations | construct playbooks, audit CSVs, data catalog | playbook links, construct commands, classifier/patent/WRDS evidence, acronym-risk status | summarize audit counts only; no private row examples |
 | Extension Lab | coauthor | inspect extension lanes and future data readiness | extension workbench, ignored aggregate outputs, SEO/offering schema template | maturity badges, generated output viewer, copy-ready commands, interpretation limits, and schema-only checks | label extensions as not manuscript-ready unless promoted; never display private row-level values |
 | Reproduction Status | data editor | verify reproducibility posture | status docs and manifests | audit commands and status links | no command execution |
+| Command Center | trusted local coauthor | run approved Make targets safely | dashboard command registry and local environment | fixed command, confirmation gate, duration, exit code, sanitized log tail, ignored raw log path | allowlisted Make targets only; disabled in Demo Mode |
 | Share / Export Center | all users | export bundles or run setup checks | workbench commands | copy-ready setup/export commands | commands are displayed, not executed |
 | Portfolio Demo Mode | portfolio reviewer | see nonprivate capability showcase | manifests only | capability summary and demo-safe story | hide private-data-root instructions |
 
@@ -61,9 +63,10 @@ The app stores only nonprivate UI state:
 - selected table asset;
 - selected data product;
 - selected extension lane;
-- search/filter strings.
+- search/filter strings;
+- last Command Center run result objects for the current browser session.
 
-No private file contents, access details, or command outputs should be stored in session state.
+No private file contents, access details, or raw command logs should be stored in session state. Command Center may keep sanitized run summaries for display; raw logs live under ignored `outputs/dashboard_runs/`.
 
 ## Table Review Flow
 
@@ -84,7 +87,7 @@ The technical coauthor flow starts from the same table selection but opens the *
 3. Inspect candidate data products, coverage, keys, overwrite rules, and metadata-only schema/status checks.
 4. Open construct playbook links for variables that might be changed.
 5. Review extension relevance and copy the relevant Make commands.
-6. Run commands manually in a terminal; the browser does not execute them.
+6. Run commands manually in a terminal, or use **Command Center** for the small approved command allowlist.
 
 ## Data Quality Cockpit Flow
 
@@ -96,11 +99,18 @@ The data-quality cockpit starts from **Data Room** or **Construct Audits**:
 4. Open a product card to inspect coverage, keys, overwrite rules, logical private-data path, and metadata-only schema/status checks.
 5. Open **Construct Audits** to answer “how confident are we in this construct?” using playbook links, audit counts, and copy-ready validation commands.
 
-## Future Command Execution Boundary
+## Controlled Command Center Flow
 
-A later command-execution phase may add an allowlisted runner for safe Make targets. That future runner must show the command, require confirmation, write logs to ignored outputs, and disable itself in Demo Mode. Phase 9A/B deliberately stops before this boundary.
+Command Center is for trusted local coauthors who want to run routine workstation commands without leaving the app:
 
+1. Open **Command Center** in Coauthor Mode.
+2. Filter approved commands by Health, Workbench, Data, or Extensions.
+3. Inspect the fixed `make ...` command, environment summary, expected output, and documentation link.
+4. Confirm execution for private-data or output-writing commands.
+5. Run the command and inspect duration, exit code, sanitized log tail, and ignored raw log path.
+
+The page never accepts arbitrary shell text, does not expose full-table reproduction or replication-audit targets in v1, and disables execution in Demo Mode.
 
 ## Extension Lab Safety Boundary
 
-Extension Lab reads `outputs/extensions/` only for repo-contained aggregate artifacts. It may render summary JSON, Markdown notes, and capped CSV previews after path-safety checks. It does not read `$AIW_DATA_ROOT`, does not execute Make commands, and does not treat extension outputs as manuscript evidence. The SEO/offering-terms checker validates headers and row count only; uploaded row values are not displayed or stored.
+Extension Lab reads `outputs/extensions/` only for repo-contained aggregate artifacts. It may render summary JSON, Markdown notes, and capped CSV previews after path-safety checks. It does not read `$AIW_DATA_ROOT`, does not execute Make commands directly, and does not treat extension outputs as manuscript evidence. Use Command Center for the approved extension Make targets. The SEO/offering-terms checker validates headers and row count only; uploaded row values are not displayed or stored.
