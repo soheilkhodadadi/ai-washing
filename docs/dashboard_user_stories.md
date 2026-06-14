@@ -8,6 +8,9 @@
 - As a coauthor, I want copy-ready commands labeled by risk, such as read-only, requires private data, or writes ignored outputs.
 - As a coauthor, I want schema and row-count checks to summarize private data products without printing private row-level values.
 - As a coauthor, I want to locate classifier outputs, patent match artifacts, WRDS/CRSP/Compustat data, and annual/event panels without depending on old local paths.
+- As a coauthor, I want a data-quality cockpit that answers where the classifier evidence lives, how patent matching was validated, and which WRDS lane each test uses.
+- As a coauthor, I want metadata-only schema and row-count checks from `AIW_DATA_ROOT` without exposing sentence text, patent abstracts, or row-level private data.
+- As a coauthor, I want textual acronym-risk and patent short-keyword-risk status summarized directly in the app so I know which construct-validity issues are already documented.
 - As a coauthor, I want extension lanes separated from frozen v4.3 evidence so exploratory outputs are not confused with manuscript results.
 - As a coauthor, I want copy-ready commands and links to workbench bundles, but I do not need the browser to execute code in this phase.
 

@@ -136,6 +136,8 @@ In the Streamlit app, use **Table Explorer** for two workflows:
 - **Review:** select a table by paper label, inspect readable artifacts first, preview frozen CSV output, and download a review packet.
 - **Technical Drill-Down:** inspect the owning script, data products, metadata-only schema/status checks, construct playbooks, rerun commands, and extension relevance.
 
+Use **Data Room** and **Construct Audits** for the data-quality cockpit: classifier evidence, patent-match confidence, textual acronym-risk status, WRDS/CRSP/Compustat lane checks, and metadata-only private-data schema/status summaries.
+
 See [docs/dashboard_guide.md](docs/dashboard_guide.md).
 
 ## Documentation Map

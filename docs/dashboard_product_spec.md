@@ -35,6 +35,10 @@ The Table Explorer should support a nontechnical table review path. A supervisor
 
 The Table Explorer should also support a technical continuation path. A coauthor can select any table or figure and open a **Technical Drill-Down** view that shows the owning script, source path, table-to-script crosswalk status, candidate data products, metadata-only source schema/status checks, construct playbooks, registered extension lanes, and copy-ready rerun/export/location commands. The drill-down may inspect file metadata under `AIW_DATA_ROOT` when the root is set, but it must not display private row-level values.
 
+### Data Product And Construct Audit Browser
+
+The Data Room and Construct Audits pages should support a data-quality cockpit view. A coauthor can inspect data product cards, coverage lanes, keys, logical private-data paths, validation status, classifier evidence, patent-match evidence, textual acronym-risk status, and WRDS/CRSP/Compustat lane checks. Metadata previews may report file existence, file count, size, row count, and column names from `AIW_DATA_ROOT`; they must not display private row-level values, sentence text, patent titles, abstracts, credentials, or local absolute paths.
+
 ### Command Execution Policy
 
 Phase 9 does not execute commands from the browser. The dashboard may display copy-ready commands only. Future command execution requires a separate design pass with an allowlist, explicit confirmation, run logs, output isolation, and disabled behavior in Demo Mode.
@@ -55,8 +59,8 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 - **Home / Project Overview:** paper story, dashboard modes, quick metrics, and recommended first actions.
 - **Paper Results:** paper-order map of tables and figures with plain-language purpose and review affordances.
 - **Table Explorer:** paper-label table review with an Open First panel, safe CSV preview, artifact downloads, technical drill-down, source schema/status metadata, and export/rerun commands.
-- **Data Room:** data product catalog, logical paths, coverage, keys, and private-data boundary.
-- **Construct Audits:** construct playbook index and validation/audit orientation.
+- **Data Room:** data product catalog, logical paths, coverage, keys, validation status, classifier/patent/WRDS evidence panels, and private-data boundary.
+- **Construct Audits:** construct playbook index, validation/audit orientation, acronym-risk status, patent-match confidence, and WRDS lane checks.
 - **Extension Lab:** registered extension lanes, status, interpretation limits, and commands.
 - **Reproduction Status:** validation posture, table/figure status links, and audit commands.
 - **Share / Export Center:** export bundles, dashboard generation, Docker instructions, and share-readiness commands.
@@ -66,6 +70,7 @@ Phase 9 does not execute commands from the browser. The dashboard may display co
 
 - A coauthor can identify the owning script and data products for any table without reading the whole README.
 - A technical coauthor can move from a table to source script, data dependencies, construct guidance, and extension relevance in under one minute.
+- A coauthor can answer where the classifier evidence lives and how confident the patent match is without reading the full documentation set.
 - A supervisor can start with paper results, open Main Table 7, inspect readable artifacts, and download a compact review packet without needing command-line literacy.
 - A journal-style reviewer can find reproduction status, data boundaries, and audit materials.
 - The dashboard works through both native Streamlit and Docker.

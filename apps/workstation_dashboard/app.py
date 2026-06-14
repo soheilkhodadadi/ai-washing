@@ -44,7 +44,7 @@ def main() -> None:
         ],
         "Data And Constructs": [
             st.Page(lambda: data_room.render(data, mode), title=_spec("data_room")["title"], icon=_spec("data_room")["icon"], url_path="data-room"),
-            st.Page(lambda: construct_audits.render(mode), title=_spec("construct_audits")["title"], icon=_spec("construct_audits")["icon"], url_path="construct-audits"),
+            st.Page(lambda: construct_audits.render(data, mode), title=_spec("construct_audits")["title"], icon=_spec("construct_audits")["icon"], url_path="construct-audits"),
         ],
         "Extensions And Reproduction": [
             st.Page(lambda: extension_lab.render(data, mode), title=_spec("extension_lab")["title"], icon=_spec("extension_lab")["icon"], url_path="extension-lab"),

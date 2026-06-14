@@ -11,6 +11,18 @@ sys.path.insert(0, str(APP_DIR))
 
 from services.manifest_store import dashboard_text_is_safe, load_dashboard_data, public_frame  # noqa: E402
 from services.page_registry import PAGE_SPECS  # noqa: E402
+from services.audit_data import (  # noqa: E402
+    classifier_evidence_panel,
+    compact_metrics,
+    construct_evidence,
+    data_product_cards,
+    load_all_audit_reports,
+    patent_evidence_panel,
+    product_status_rows,
+    product_validation_status,
+    report_inventory,
+    wrds_evidence_panel,
+)
 from services.table_artifacts import (  # noqa: E402
     REFERENCE_STATUS,
     build_review_packet,
@@ -185,3 +197,82 @@ def test_data_product_status_rejects_unsafe_paths(monkeypatch, tmp_path: Path) -
     statuses = data_product_path_statuses({"logical_private_path": "/tmp/private.csv; ../outside.csv"})
     assert [status.status for status in statuses] == ["not_resolved", "not_resolved"]
     assert all(status.kind == "reference" for status in statuses)
+
+
+def test_audit_reports_load_and_degrade_to_public_inventory() -> None:
+    reports = load_all_audit_reports()
+    inventory = report_inventory(reports)
+    assert {"data_sanity", "textual_construct", "patent_construct", "journal_reproducibility"} <= set(inventory["report"])
+    assert {"report", "status", "path", "rows", "note"} <= set(inventory.columns)
+    assert "/Users/soheilkhodadadi" not in inventory.astype(str).to_csv(index=False)
+
+
+def test_data_product_cards_add_family_and_validation_status() -> None:
+    data = load_dashboard_data()
+    reports = load_all_audit_reports()
+    cards = data_product_cards(data.data_products, reports)
+    classifier = cards.loc[cards["product_id"] == "final_hybrid_classifier_outputs"].iloc[0]
+    patent = cards.loc[cards["product_id"] == "patent_match_artifacts"].iloc[0]
+    annual = cards.loc[cards["product_id"] == "annual_nlp_patent_panel"].iloc[0]
+
+    assert classifier["family"] == "classifier"
+    assert classifier["contract_status"] == "present"
+    assert classifier["validation_status"] == "validated"
+    assert patent["family"] == "patents"
+    assert patent["validation_status"] in {"validated", "not_audited", "review_needed"}
+    assert annual["validation_status"] == "validated"
+    assert product_validation_status("missing_product", reports) == "not_audited"
+
+
+def test_classifier_evidence_panel_resolves_counts_and_risks() -> None:
+    data = load_dashboard_data()
+    panel = classifier_evidence_panel(data.data_products, load_all_audit_reports())
+    metrics = compact_metrics(panel.metrics)
+    assert "final_hybrid_classifier_outputs" in panel.products
+    assert "extracted_ai_sentences" in panel.products
+    assert "classifier_validation_labels" in panel.products
+    assert set(metrics["label"]) >= {"row_count", "year_coverage", "short_acronym_only_sentence_rate"}
+    assert "147879" in set(metrics["value"])
+    assert panel.status == "review_needed"
+
+
+def test_patent_evidence_panel_resolves_audit_surface_without_examples() -> None:
+    data = load_dashboard_data()
+    panel = patent_evidence_panel(data.data_products, load_all_audit_reports())
+    text = "\n".join([panel.summary, *panel.products, *panel.docs, compact_metrics(panel.metrics).astype(str).to_csv(index=False)])
+    assert "patent_match_artifacts" in panel.products
+    assert "patent_keyword_metadata" in panel.products
+    assert "company_identity_patent_lookup" in panel.products
+    assert "short_acronym_only_keyword_examples" in text
+    assert "Compounded surface treated" not in text
+
+
+def test_wrds_and_construct_evidence_map_to_expected_surfaces() -> None:
+    data = load_dashboard_data()
+    reports = load_all_audit_reports()
+    wrds = wrds_evidence_panel(data.data_products, reports)
+    patent_construct = construct_evidence("patent_mismatch", data.data_products, reports)
+    disclosure_construct = construct_evidence("ai_disclosure", data.data_products, reports)
+
+    assert "annual_nlp_patent_panel" in wrds.products
+    assert "filing_event_estimation_sample" in wrds.products
+    assert wrds.status == "validated"
+    assert patent_construct.title == "Patent Match Evidence"
+    assert disclosure_construct.title == "Classifier Evidence"
+
+
+def test_product_status_rows_are_metadata_only(monkeypatch, tmp_path: Path) -> None:
+    private_root = tmp_path / "private"
+    path = private_root / "processed" / "classifications" / "classified_sentences.parquet"
+    path.parent.mkdir(parents=True)
+    import pandas as pd
+
+    pd.DataFrame({"sentence": ["private text"], "label": ["Actionable"]}).to_parquet(path)
+    monkeypatch.setenv("AIW_DATA_ROOT", str(private_root))
+    status = product_status_rows({"logical_private_path": "data/processed/classifications/classified_sentences.parquet"})
+    payload = status.astype(str).to_csv(index=False)
+
+    assert "present" in payload
+    assert "sentence" in payload
+    assert "private text" not in payload
+    assert str(tmp_path) not in payload

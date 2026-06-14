@@ -58,6 +58,17 @@ For technical continuation work, open the same **Table Explorer** page and switc
 
 If `AIW_DATA_ROOT` is set before launching the app, the drill-down can report file existence, row counts, file counts, and column names for private data products. It does not display row-level private values, credentials, or old local workspace paths.
 
+## Inspect Data Quality And Construct Evidence
+
+Use **Data Room** when the question is, “where is this data product and what is its validation status?” The page now shows:
+
+- classifier evidence, including final classifier coverage, row count, label inventory, held-out support, and acronym-risk status;
+- patent-match evidence, including grant/pregrant example counts, keyword ambiguity counts, company identity metadata, and patent audit links;
+- WRDS/CRSP/Compustat lane checks, including the 2016-2025 annual panel lane and the 2016-2024 event/market-return lane;
+- metadata-only schema/status checks from `AIW_DATA_ROOT`, limited to existence, file count, row count, column names, and file type.
+
+Use **Construct Audits** when the question is, “how confident are we in this construct?” The page links each construct to its playbook, relevant data products, audit checks, and copy-ready validation commands. The browser still does not display private row-level values or execute commands.
+
 ## Optional Streamlit App
 
 The Streamlit app is an optional richer interface for coauthor demonstrations or portfolio presentation. It reads the same manifests as the static dashboard.

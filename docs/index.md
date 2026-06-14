@@ -12,7 +12,7 @@ This index is organized by coauthor task. Internal development reports and email
 - `../manifests/data_product_catalog.csv`: machine-readable data product catalog.
 - `../manifests/table_to_script_crosswalk.csv`: reproduction-oriented table/script crosswalk.
 - Terminal helpers: `make workbench-index`, `make table-info TABLE_ID=T30`, and `make export-table-workbench TABLE_ID=T30`.
-- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review and technical drill-down.
+- `dashboard_guide.md`: optional static HTML dashboard and Streamlit/Plotly app, including table review, technical drill-down, and data-quality cockpit views.
 - Dashboard helpers: `make dashboard`, `make dashboard-check`, and optional `make dashboard-app`.
 
 ## First-Day Setup
@@ -20,7 +20,7 @@ This index is organized by coauthor task. Internal development reports and email
 - `../README.md`: repository overview and shortest path.
 - `../README_START_HERE.md`: setup, validation, and table-workbench entry point.
 - `docker_quickstart.md`: lowest-friction container path.
-- `dashboard_guide.md`: browser-based navigation layer for tables, data products, constructs, and extensions.
+- `dashboard_guide.md`: browser-based navigation layer for tables, data products, construct audits, classifier evidence, patent evidence, and extensions.
 - `coauthor_quickstart.md`: compact first-run checklist.
 - `coauthor_runbook.md`: detailed first-day runbook for setup, data validation, reruns, and extensions.
 
