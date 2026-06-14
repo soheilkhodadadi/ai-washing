@@ -12,6 +12,9 @@
 
 - As a supervisor, I want a paper-order results page so I can understand which table supports which part of the manuscript.
 - As a supervisor, I want the dashboard to explain what a table asks and why it matters before showing technical implementation details.
+- As a supervisor, I want to choose a table by paper label, such as `Main Table 7`, rather than by an internal asset ID.
+- As a supervisor, I want an Open First panel that tells me whether to inspect DOCX, PNG, PDF, CSV, TeX, or notes first.
+- As a supervisor, I want safe CSV previews and downloadable table-review packets when the files are already part of the canonical repository.
 - As a supervisor, I want easy links to readable outputs such as table bundles, figures, and status summaries.
 - As a supervisor, I want the dashboard to avoid repository jargon unless it is necessary for reviewing the work.
 
@@ -26,7 +29,7 @@
 - As a portfolio reviewer, I want a safe demo mode that communicates the technical scope, reproducibility design, and dashboard capability without exposing private data.
 - As a portfolio reviewer, I want evidence that the system combines NLP, finance, patent matching, reproducible data products, Docker, and client-facing analytics.
 
-## Out Of Scope For Phase 9A/B
+## Out Of Scope For Phase 9
 
 - Running empirical commands from the browser.
 - Editing data, panels, scripts, or manifests from the app.

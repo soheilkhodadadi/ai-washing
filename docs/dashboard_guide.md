@@ -34,7 +34,17 @@ The Streamlit app is the richer coauthor/client interface. It is organized as a 
 - `docs/dashboard_user_stories.md`
 - `docs/dashboard_information_architecture.md`
 
-The app remains read-only in Phase 9A/B. It displays copy-ready commands but does not execute empirical scripts from the browser.
+The app remains read-only in Phase 9. It displays copy-ready commands but does not execute empirical scripts from the browser.
+
+## Review Main Table 7 In The App
+
+For a nontechnical table review, open the Streamlit app and go to **Table Explorer**. The page opens around paper labels rather than internal asset IDs. Use **Review Main Table 7** or select:
+
+```text
+Main Table 7 - Capital-raising timing and low-credibility AI disclosure
+```
+
+The page shows an **Open First** panel, safe CSV preview, available PNG/PDF/DOCX/CSV/TeX/notes artifacts, and a downloadable table-review packet. The browser does not rerun the table or inspect private panels; it only reads repo-contained review artifacts.
 
 ## Optional Streamlit App
 

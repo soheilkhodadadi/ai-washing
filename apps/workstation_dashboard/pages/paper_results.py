@@ -5,13 +5,19 @@ import streamlit as st
 from components.ui import badges, command_box, hero
 from services.manifest_store import DashboardData, filter_frame
 
+TABLE_SELECTION_KEY = "selected_table_asset"
+
 
 def _asset_card(row, mode: str) -> None:
     with st.container(border=True):
-        st.markdown(f"### {row['paper_label']} · `{row['asset_id']}`")
+        st.markdown(f"### {row['paper_label']}: {row['caption']}")
         st.write(row["empirical_question"])
         badges([row["asset_type"], row["paper_section"], row["primary_data_product"]])
-        st.caption(row["caption"])
+        st.caption(f"Technical ID: {row['asset_id']}")
+        if st.button("Prepare review in Table Explorer", key=f"prepare_{row['asset_id']}"):
+            st.session_state[TABLE_SELECTION_KEY] = row["asset_id"]
+            st.query_params["asset"] = row["asset_id"]
+            st.success("Selection saved. Open Table Explorer from the sidebar to review this table.")
         command_box(f"make export-table-workbench TABLE_ID={row['asset_id']}", mode=mode)
 
 

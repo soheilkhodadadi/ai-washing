@@ -34,7 +34,7 @@ The sidebar should contain:
 | --- | --- | --- | --- | --- | --- |
 | Home / Project Overview | all users | understand the project and first actions | table, data, extension manifests | metrics, paper story, first commands | no private data inspection |
 | Paper Results | supervisor/client | review tables and figures in paper order | paper table workbench | paper sections, result cards, bundle commands | do not imply exploratory outputs are frozen evidence |
-| Table Explorer | technical coauthor | inspect one asset deeply | paper table workbench | script, command, data products, outputs, safe modifications | copy commands only |
+| Table Explorer | supervisor/client and technical coauthor | review one table by paper label, then inspect script details if needed | paper table workbench and repo-contained artifacts | Open First panel, artifact downloads, safe CSV preview, script, command, data products, safe modifications | preview only repo-contained artifacts; copy commands only |
 | Data Room | technical coauthor / data editor | locate data products and boundaries | data product catalog | coverage, keys, logical paths, locate-data commands | hide private path commands in demo mode |
 | Construct Audits | coauthor / data editor | inspect construct definitions and limitations | construct playbooks | playbook links, construct commands, audit orientation | no private row examples |
 | Extension Lab | coauthor | inspect extension lanes | extension workbench | status, commands, interpretation limits | label extensions as exploratory unless promoted |
@@ -45,6 +45,7 @@ The sidebar should contain:
 ## Manifest Mapping
 
 - `manifests/paper_table_workbench.csv` feeds Paper Results and Table Explorer.
+- Repo-contained frozen/generated artifacts under `data/curated/v4_3/...` feed Table Explorer artifact previews and downloads.
 - `manifests/data_product_catalog.csv` feeds Data Room and table data-product cross-references.
 - `manifests/extension_workbench.csv` feeds Extension Lab.
 - Construct pages link to `docs/construct_playbooks/` and use registered construct IDs.
@@ -62,6 +63,16 @@ The app stores only nonprivate UI state:
 - search/filter strings.
 
 No private file contents, access details, or command outputs should be stored in session state.
+
+## Table Review Flow
+
+The nontechnical review flow starts from paper labels rather than internal asset IDs:
+
+1. Open **Paper Results** or **Table Explorer**.
+2. Choose a result such as `Main Table 7 - Capital-raising timing and low-credibility AI disclosure`.
+3. Read the **Open First** panel for the empirical question, relevance, canonical status, and first file to inspect.
+4. Use the artifact sections to preview CSV evidence, view PNGs, and download DOCX/PDF/CSV/TeX/notes.
+5. Use the technical details and copy-ready commands only if a rerun or modification is needed.
 
 ## Future Command Execution Boundary
 
