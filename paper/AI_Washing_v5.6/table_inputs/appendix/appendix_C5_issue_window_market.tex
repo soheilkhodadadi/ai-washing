@@ -1,0 +1,24 @@
+\begin{table}[p]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\caption{Market reactions in capital-raising windows}
+\label{tab:appendix_issue_window_market}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccrrr}
+\hline
+Panel & Outcome & PM $\times$ Issue & LowCred. $\times$ Issue & AppMismatch $\times$ Issue & Baseline PM & IssueWindow & Mean & Obs. \\
+\hline
+\multicolumn{9}{l}{\textit{Panel A. Filing-year market reactions in all issue-eligible firms}} \\
+ & CAR[-1,+1] & 0.0058 (0.0089) & 0.0074 (0.0085) & 0.0046 (0.0088) & -0.0009 (0.0039) & -0.0055 (0.0055) & 0.000 & 4,378 \\
+ & BHAR[+2,+63] & 0.0716** (0.0346) & 0.0577* (0.0313) & 0.0526 (0.0341) & -0.0272*** (0.0095) & 0.0279 (0.0174) & -0.029 & 4,376 \\
+ & BHAR[+2,+252] & 0.3885 (0.2433) & 0.2496 (0.1922) & 0.3498 (0.2353) & 0.0094 (0.0242) & 0.1729*** (0.0548) & -0.024 & 4,360 \\
+\multicolumn{9}{l}{\textit{Panel B. Filing-year market reactions in non-big firms}} \\
+ & CAR[-1,+1] & 0.0090 (0.0136) & 0.0163 (0.0134) & 0.0095 (0.0134) & -0.0014 (0.0080) & -0.0054 (0.0086) & -0.008 & 2,024 \\
+ & BHAR[+2,+63] & 0.0918* (0.0504) & 0.1139** (0.0456) & 0.0823* (0.0487) & -0.0353** (0.0176) & 0.0282 (0.0241) & -0.068 & 2,023 \\
+ & BHAR[+2,+252] & 0.4976 (0.3488) & 0.3805 (0.2888) & 0.4766 (0.3324) & 0.0398 (0.0427) & 0.1883** (0.0747) & -0.119 & 2,009 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table reports filing-year return regressions that interact low-credibility AI disclosure measures with the capital-raising window used in Table~\ref{tab:capital_raising_timing_v32}. IssueWindow equals one when next-year CRSP shares outstanding growth exceeds 5\%. The three interaction columns report coefficients for the interaction between the listed disclosure measure and IssueWindow. Baseline PM is the PatentMismatch coefficient outside issue windows, and IssueWindow is the level effect in the canonical PatentMismatch specification. Return outcomes are in decimal units. All regressions include filing-year fixed effects, annual controls, and firm-clustered standard errors. *, **, and *** denote significance at the 10\%, 5\%, and 1\% level, respectively.}
+\end{table}

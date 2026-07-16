@@ -1,0 +1,26 @@
+\begin{table}[!htbp]
+\centering
+\caption{SEC AI-washing enforcement salience and disclosure cleanup}
+\label{tab:sec_enforcement_did_v32}
+\small
+\begin{tabular}{llccc}
+\hline
+\multicolumn{5}{l}{\textit{Panel A. Enforcement-salience DID using mismatch exposure in 2022}} \\
+ & Outcome & Post-2024 DID & 2023 placebo & Mean / treated \\
+\hline
+ & Speculative share & -0.0839*** (0.0184) & -0.1224*** (0.0187) & 0.160 \\
+ & AS ratio & 0.2907*** (0.0345) & 0.3314*** (0.0315) & 0.939 \\
+ & PatentMismatch & -0.3121*** (0.0288) & -0.4305*** (0.0284) & 0.261 \\
+ & AI Focus & -0.1044 (0.0653) & 0.0118 (0.0495) & 1.850 \\
+\hline
+\multicolumn{5}{l}{\textit{Panel B. Alternative exposure definitions on core disclosure outcomes}} \\
+ & Treatment definition & SpecShare DID & AS ratio DID & PatentMismatch DID \\
+\hline
+ & LowCredibility in 2022 & -0.1215*** (0.0166) & 0.3368*** (0.0331) & -0.2606*** (0.0259) \\
+ & ApplicationMismatch in 2022 & -0.1042*** (0.0185) & 0.3155*** (0.0344) & -0.2634*** (0.0290) \\
+\hline
+\end{tabular}
+\begin{flushleft}
+\footnotesize \textit{Note.} Treatment is fixed using firms that mention AI in 2022 and satisfy the exposure condition listed in the table. The post period is 2024--2025, after the SEC's March 18, 2024 AI-washing enforcement actions (SEC, 2024). Panel A reports the main PatentMismatch-exposure DID estimates and the 2023 placebo coefficient from the event-time specification. Panel B reports post-2024 DID coefficients for alternative exposure definitions on speculative share, AS ratio, and PatentMismatch, respectively. All specifications absorb firm and year fixed effects, include lagged controls, and cluster standard errors by firm. *, **, and *** denote significance at the 10\%, 5\%, and 1\% level, respectively.
+\end{flushleft}
+\end{table}

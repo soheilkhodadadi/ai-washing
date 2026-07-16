@@ -1,0 +1,55 @@
+\subsection{The scale of low-credibility AI disclosure}
+
+Figure~\ref{fig:mismatch_surge} documents the central descriptive pattern. Low-credibility AI disclosure rises sharply after 2022. The number of AI-talking firm-years flagged as PatentMismatch rises sharply after that date, and the mismatch share among AI-talking firm-years reaches 41.48\% in 2024 and 42.12\% in 2025. The expansion of AI language is not limited to disclosure volume. It also reflects a rise in firm-years where disclosure composition is inconsistent with contemporaneous AI patenting.
+
+Table~\ref{tab:summary_stats} describes the annual sample that underlies the main tests. The panel contains 50,840 firm-year observations across 5,084 firms, of which 13,777 are AI-talking firm-years, and the classified corpus contains 147,879 AI-related sentences. AI-related disclosure is highly skewed, while AI patenting remains concentrated in a much smaller subset of firms. The surge in AI-related disclosure occurs while visible implementation remains uneven.
+
+\input{table_inputs/test_00_summary_stats.tex}
+
+\subsection{Validation against later AI realization}
+
+ Validation begins with later AI realization. Table~\ref{tab:construct_variant_screen} compares alternative construct definitions. The canonical grant-based mismatch measure predicts weaker subsequent AI patent grants at $t+1$ with a coefficient of $-0.0435$ ($p<0.01$), whereas a stricter mismatch variant is weaker and unstable. A weak-patent-only indicator is stronger for near-term grants by construction, but it is not a substitute for PatentMismatch because it removes the disclosure side of the construct. Canonical mismatch is associated with stronger AI application activity at $t+2$, consistent with delayed realization or experimentation despite weak near-term patent grants. The construct-variant screen supports the canonical disclosure-plus-implementation measure and clarifies the limits of looser alternatives.
+
+\input{table_inputs/test_16_construct_variant_screen.tex}
+
+\subsection{Real-outcome dynamics}
+
+Operating outcomes provide a second validation check. Table~\ref{tab:real_outcome_dynamics_v31} links PatentMismatch to future ROA, R\&D intensity, and related outcomes. In the AI-talking sample, PatentMismatch predicts weaker profitability at the two-year horizon and stronger later R\&D intensity. The coefficient on ROA at $t+2$ is $-0.0672$ ($p<0.05$), while the coefficient on R\&D-to-assets at $t+2$ is $0.0178$ ($p<0.05$). LowCredibility and ApplicationMismatch show similar patterns. The estimates imply a clear pattern: low-credibility AI disclosure is followed by weaker near-term performance and higher subsequent R\&D.
+
+\input{table_inputs/test_17_real_outcome_dynamics.tex}
+
+\subsection{Scrutiny without silence}
+
+External scrutiny provides the first organizational-response test. Table~\ref{tab:comment_letter_cleanup_v32} studies within-firm changes around each firm's first SEC comment-letter year, restricting the main sample to active AI disclosers that mention AI in both $t-1$ and $t+1$. The key pattern is disclosure cleanup without silence. In the main sample, the AS ratio rises by $0.1796$ at $t+1$ ($p=0.007$), SpecShare falls by $0.1051$ at $t+2$ ($p=0.025$), and PatentMismatch declines by $0.1143$ at $t+1$ ($p=0.073$). AI Focus also rises after scrutiny rather than falling. The effect is not driven by firms dropping AI language from their filings. Continuing AI disclosers rebalance toward more credible composition after scrutiny. The AI-specific comment subset is small, so the broader sample drives the estimates.
+
+\input{table_inputs/test_20_comment_letter_cleanup.tex}
+
+\subsection{Regulatory salience and disclosure cleanup}
+
+A second scrutiny test centers on the SEC's March 18, 2024 AI-washing enforcement actions (SEC, 2024). Table~\ref{tab:sec_enforcement_did_v32} fixes treatment using firms that were already exposed in 2022. Pre-exposed firms become less speculative and less likely to be flagged as mismatch after 2024. The post-2024 coefficient is $-0.0839$ for SpecShare, $0.2907$ for the AS ratio, and $-0.3121$ for PatentMismatch, all with $p<0.001$. The same pattern appears under alternative exposure definitions based on LowCredibility and ApplicationMismatch. The 2023 placebo estimates are already directionally similar for the composition outcomes, limiting a sharp enforcement interpretation. The post-2024 estimates are better read as regulatory salience or acceleration in disclosure cleanup. Substantively, disclosure composition becomes more credible after the SEC AI-washing salience event without a comparable collapse in AI Focus.
+
+\input{table_inputs/test_29_sec_ai_washing_enforcement_did.tex}
+
+\subsection{Managerial incentives and financing-window opportunism}
+
+Managerial incentives show a related pattern. Table~\ref{tab:exec_incentive_mismatch_v32} links the AI-talking annual panel to lagged CEO observations from ExecuComp. In the post-ChatGPT sample, PatentMismatch is positively associated with lagged CEO equity-award share and CEO ownership, with coefficients of $0.1787$ ($p=0.041$) and $0.0170$ ($p=0.036$), respectively. In the big-firm sample, PatentMismatch is also positively associated with CEO ownership, with a coefficient of $0.1038$ ($p<0.001$). The estimates are not causal, but PatentMismatch is more prevalent when CEO incentives are more equity-oriented and managerial ownership is higher.
+
+\input{table_inputs/test_25_exec_incentive_mismatch.tex}
+
+Financing windows provide a sharper timing test. Table~\ref{tab:capital_raising_timing_v32} aligns disclosure dynamics around each firm's first large equity-issuance event and focuses on active AI issuers that continue discussing AI in the event year and the following year. Credibility deteriorates before the financing event and partly reverses afterward. Among all active AI issuers, LowCredibility rises by $0.2334$ and PatentMismatch rises by $0.1787$ into the issue year, then both decline in the following year. AI Focus, by contrast, continues to rise through and after the issue year. The non-big subsample shows the same timing shape. The timing is hard to attribute to silence or noise alone. The evidence is more consistent with AI promotion around financing events followed by partial cleanup.
+
+\input{table_inputs/test_30_capital_raising_timing.tex}
+
+\FloatBarrier
+
+\subsection{Mixed and benchmark-sensitive market evidence}
+
+The market-pricing evidence is more limited than the validation, scrutiny, and incentive evidence. Filing-date abnormal returns remain muted, so the data do not support a clean immediate pricing response at the annual 10-K filing date. Table~\ref{tab:factor_adjusted_alpha_v31} reports the benchmark-adjusted portfolio results. The strongest return result is the equal-weight three-month long-credible, short-mismatch portfolio, which delivers a FF5+momentum alpha of $0.976$ percentage points per month ($p=0.026$). The corresponding value-weight specification is effectively zero. The return result is narrow and concentrated outside the largest firms.
+
+Appendix results show that the short-run return relation depends on financing state. In those specifications, mismatch BHAR is materially less negative inside financing windows than outside them. Market pricing remains mixed and sensitive to benchmarks. The evidence is consistent with limited and state-dependent pricing of disclosure credibility, but it does not support a broad anomaly interpretation.
+
+\input{table_inputs/test_09_factor_adjusted_alpha.tex}
+
+\FloatBarrier
+
+The appendix reports fuller market checks, issue-window refinements, additional governance and intermediary tests, and measurement and sample-construction diagnostics.

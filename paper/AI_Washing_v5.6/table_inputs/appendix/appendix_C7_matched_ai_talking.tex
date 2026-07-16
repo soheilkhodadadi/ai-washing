@@ -1,0 +1,18 @@
+\begin{table}[p]
+\centering
+\small
+\caption{Matched AI-talking comparison sample}
+\label{tab:appendix_matched_ai_talking}
+\begin{tabular}{lccccc}
+\hline
+Outcome & Treated mean & Control mean & Difference & $p$-value & Matched pairs \\
+\hline
+CAR[-1,+1] & 0.0016 & 0.0006 & 0.0010 & 0.812 & 1,294 \\
+BHAR[+2,+21] & -0.0307 & -0.0258 & -0.0049 & 0.484 & 1,270 \\
+BHAR[+2,+63] & -0.0513 & -0.0477 & -0.0036 & 0.755 & 1,213 \\
+BHAR[+2,+126] & -0.0715 & -0.0814 & 0.0099 & 0.564 & 1,121 \\
+BHAR[+2,+252] & -0.0648 & -0.0840 & 0.0191 & 0.523 & 692 \\
+\hline
+\end{tabular}
+\caption*{\footnotesize \textit{Note.} This table compares PatentMismatch filing events with matched AI-talking filing events that are not flagged as PatentMismatch. AI-talking events are filings with at least one AI-related sentence. Matches are exact on filing year and SIC2 industry and nearest on lagged market capitalization, lagged annual BHAR, lagged annual return, log assets, leverage, cash/assets, and ROA, subject to a standardized-distance caliper of 1.50. The matched sample contains 1,297 pairs, with a median match distance of 0.857 and a maximum absolute matched standardized mean difference of 0.025 across the matching covariates. Return outcomes are in decimal units.}
+\end{table}

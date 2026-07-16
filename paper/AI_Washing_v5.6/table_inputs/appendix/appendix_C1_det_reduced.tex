@@ -1,0 +1,32 @@
+\begin{table}[H]
+\centering
+\caption{Reduced-baseline determinants of PatentMismatch}
+\label{tab:appendix_det_reduced}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}cccccc}
+\hline
+Variable & \multicolumn{6}{c}{Dependent variable: any PatentMismatch incident, 2016--2025} \\
+ & Log assets & Cash/assets & Leverage & CAPX/assets & ROA & Multivar. \\
+ & (1) & (2) & (3) & (4) & (5) & (6) \\
+\hline
+Log assets & 0.012*** &  &  &  &  & 0.012*** \\
+ & (0.004) &  &  &  &  & (0.004) \\
+Cash/assets &  & -0.024 &  &  &  & 0.033 \\
+ &  & (0.034) &  &  &  & (0.033) \\
+Leverage &  &  & 0.041 &  &  & 0.028 \\
+ &  &  & (0.036) &  &  & (0.037) \\
+CAPX/assets &  &  &  & 0.016 &  & -0.008 \\
+ &  &  &  & (0.263) &  & (0.281) \\
+ROA &  &  &  &  & 0.013 & 0.001 \\
+ &  &  &  &  & (0.009) & (0.009) \\
+Industry FE & Y & Y & Y & Y & Y & Y \\
+All baseline covars. & N & N & N & N & N & Y \\
+Baseline year & 2016 & 2016 & 2016 & 2016 & 2016 & 2016 \\
+Adj. $R^2$ & 0.287 & 0.283 & 0.283 & 0.285 & 0.285 & 0.287 \\
+Observations & 2,680 & 2,680 & 2,666 & 2,666 & 2,676 & 2,652 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table revisits the firm-level PatentMismatch determinants specification using the reduced baseline characteristic set. The dependent variable is an indicator for whether the firm records at least one PatentMismatch incident during the period 2016--2025. Baseline characteristics are measured in 2016 and include log assets, cash/assets, leverage, CAPX/assets, and ROA. This reduced specification preserves sample size relative to the fuller baseline set. *, **, and *** denote significance at the 10\%, 5\%, and 1\% level, respectively.}
+\end{table}

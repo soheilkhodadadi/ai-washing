@@ -1,0 +1,36 @@
+\begin{table}[H]
+\centering
+\caption{Full-baseline determinants of PatentMismatch}
+\label{tab:appendix_det_full}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}cccccccc}
+\hline
+Variable & \multicolumn{8}{c}{Dependent variable: any PatentMismatch incident, 2016--2025} \\
+ & Log assets & Cash/assets & Leverage & R\&D/assets & CAPX/assets & ROA & Employees (k) & Multivar. \\
+ & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) \\
+\hline
+Log assets & 0.012*** &  &  &  &  &  &  & 0.009** \\
+ & (0.004) &  &  &  &  &  &  & (0.003) \\
+Cash/assets &  & -0.024 &  &  &  &  &  & 0.037 \\
+ &  & (0.034) &  &  &  &  &  & (0.046) \\
+Leverage &  &  & 0.041 &  &  &  &  & 0.028 \\
+ &  &  & (0.036) &  &  &  &  & (0.059) \\
+R\&D/assets &  &  &  & -0.029 &  &  &  & -0.025 \\
+ &  &  &  & (0.033) &  &  &  & (0.050) \\
+CAPX/assets &  &  &  &  & 0.016 &  &  & -0.497 \\
+ &  &  &  &  & (0.263) &  &  & (0.376) \\
+ROA &  &  &  &  &  & 0.013 &  & -0.001 \\
+ &  &  &  &  &  & (0.009) &  & (0.017) \\
+Employees (k) &  &  &  &  &  &  & 0.000 & 0.000 \\
+ &  &  &  &  &  &  & (0.000) & (0.000) \\
+Industry FE & Y & Y & Y & Y & Y & Y & Y & Y \\
+All baseline covars. & N & N & N & N & N & N & N & Y \\
+Baseline year & 2016 & 2016 & 2016 & 2016 & 2016 & 2016 & 2016 & 2016 \\
+Adj. $R^2$ & 0.287 & 0.283 & 0.283 & 0.132 & 0.285 & 0.285 & 0.278 & 0.133 \\
+Observations & 2,680 & 2,680 & 2,666 & 1,466 & 2,666 & 2,676 & 2,479 & 1,331 \\
+\hline
+\end{tabular}%
+}
+\caption*{\footnotesize \textit{Note.} This table presents the fuller cross-sectional determinants specification for whether a firm records at least one PatentMismatch incident during the period 2016--2025. Baseline characteristics are measured in 2016 and include log assets, cash/assets, leverage, R\&D/assets, CAPX/assets, ROA, and the number of employees. *, **, and *** denote significance at the 10\%, 5\%, and 1\% level, respectively.}
+\end{table}

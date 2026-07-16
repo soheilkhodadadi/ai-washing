@@ -1,0 +1,153 @@
+\subsection{Sample construction and data sources}
+
+We combine annual 10-K filings, AI-related patents, CRSP market data, and Compustat controls. Annual 10-K filings provide the sentence-level corpus for the AI-disclosure measures. The innovation outcomes are constructed from AI-related patent grants drawn from USPTO/PatentsView and matched to public firms through a procedure that links CIK, ticker, GVKEY, and patent-assignee identifiers. Market outcomes are drawn from CRSP and are used for filing-date abnormal-return tests and post-filing return analyses. Firm characteristics and annual controls come from Compustat.
+
+For the filing-text layer, we use the Notre Dame Software Repository for Accounting and Finance post-Stage One 10-X files as the upstream source for annual filing text (McDonald, 2022; Software Repository for Accounting and Finance, 2026). The Stage One parse removes major non-text artifacts from EDGAR filings, including markup, XBRL/XML content, ASCII-encoded segments, tables, and excess linefeeds. We then apply filing-level filters, reconstruct sentences, screen for AI terms, remove duplicates, and classify sentences.
+
+The main annual sample covers 2016--2025 and includes every firm that mentions AI at least once during that period. We begin in 2016 because AI references in 10-K filings are sparse before then, whereas the broader expansion of AI-related disclosure becomes economically visible only later in the sample. Once a firm enters the sample, we retain all of its available annual observations, including years with zero AI-related disclosure, that is, the years in which the firm's filing contains no AI-related language at all. Keeping these zero-disclosure years lets us line up prior, contemporaneous, and later outcomes on a common annual timeline. The resulting panel contains 50,840 firm-year observations across 5,084 firms.
+
+Within this sample, 13,777 firm-years contain at least one classified AI sentence, and the linked filing-event sample contains 7,355 annual filing events across 2,753 firms, of which 7,342 have usable CAR[$-1,+1$] returns and 7,098 have usable BHAR[$+2,+63$] outcomes.
+
+The sample also supports several linked outcome blocks. One block validates the disclosure construct against later AI-related realization, including patent grants and applications. Other blocks study filing-date and post-filing returns, annual valuation and financing outcomes, real outcomes, and organizational responses around scrutiny, incentives, and issuance windows. The market tests use CRSP-linked filing-event samples and monthly return panels, while the innovation tests use the annual firm-year panel. Not every empirical block uses exactly the same observations. Sample sizes change mechanically because some specifications require AI-talking firm-years, some require lead or lag patent outcomes, and some require complete cases on the annual control set. The filing-date event-study tests also impose CRSP availability and event-window requirements. Appendix Table~\ref{tab:appendix_attrition} reports the resulting attrition across the main empirical blocks.
+
+The analysis does not rely on a single estimation sample. We construct one common filing-based disclosure layer and then link it to separate annual and event-time outcomes. The common disclosure layer lets us ask whether the same disclosure-credibility construct predicts later realization, organizational response, and market outcomes.
+
+We use AI-talking firm-year to refer to any firm-year with at least one classified AI sentence. Event-study tables sometimes impose stronger activity screens; in those cases, active AI disclosers are firms that continue mentioning AI in the relevant pre- and post-event windows, and AI issuers are active AI disclosers around large equity-issuance windows.
+
+\subsection{Sentence extraction and AI-language classification}
+
+We segment each filing into sentences and remove duplicate blocks, tables, headers, and other clearly non-narrative content. We identify AI-related sentences using a fixed keyword list that we update as new AI terms enter common use. The list includes terms such as ``artificial intelligence,'' ``machine learning,'' ``deep learning,'' ``neural network,'' ``natural language processing,'' ``computer vision,'' ``robotic process automation,'' ``large language model,'' and ``generative AI.'' Each retained sentence is keyed to the firm and fiscal year of the filing.
+
+The core measurement step is a three-way sentence classification. Actionable sentences describe concrete AI deployments, embedded workflows, internal tools, or productized uses. Speculative sentences refer to AI in aspirational, exploratory, or forward-looking terms without enough operational detail to verify current implementation. Irrelevant sentences contain generic or tangential AI references that do not speak to the firm's own capability or future plans.
+
+The scaling pipeline has three distinct validation layers. First, we build a human labeling rubric and conduct an inter-rater-reliability audit on a stratified validation subset. Second, we evaluate a tuned three-stage classifier against the adjudicated labels and use that model to scale the classification across the full sentence corpus. Third, we validate the resulting firm-year measures against independently constructed AI patent outcomes. Separating these layers keeps rubric reliability, classifier accuracy, and external validation conceptually distinct. In the expanded 2016--2025 sample, the classified corpus contains 147,879 AI-related sentences, including 67,080 actionable sentences, 17,900 speculative sentences, and 62,899 irrelevant sentences.
+
+Appendix Table~\ref{tab:appendix_audit} reports the measurement audit underlying the disclosure-classification layer. The audit includes 551 adjudicated labels, a leakage-safe training and calibration pool of 431 observations, and a 120-observation adjudicated held-out benchmark. In the human--human IRR rerun, Cohen's kappa is 0.850 after adjudication of 12 disagreements. On the held-out benchmark, the selected hybrid policy attains 85.0\% accuracy, 83.6\% macro-F1, 91.7\% binary relevance, and 86.5\% actionable-versus-speculative performance.
+
+\subsection{Firm-year disclosure measures}
+
+Write $A_{i,t}$, $S_{i,t}$, and $I_{i,t}$ for the number of actionable, speculative, and irrelevant AI sentences in firm $i$'s filing in year $t$. The total number of AI-related sentences is then
+\[
+N_{i,t} = A_{i,t} + S_{i,t} + I_{i,t}.
+\]
+
+The broad disclosure-intensity measure is
+\[
+\mathrm{AIFocus}_{i,t} = \log(1 + N_{i,t}).
+\]
+
+We also define disclosure-type indicators. $\mathrm{ActionableDisclosure}_{i,t}$ equals one if $A_{i,t} > 0$ and zero otherwise. $\mathrm{SpeculativeOnly}_{i,t}$ equals one if $S_{i,t} > 0$ and $A_{i,t} = 0$. These two indicators separate firm-years with any concrete AI implementation language from firm-years that mention AI only in speculative terms.
+
+For descriptive work and companion specifications, we also retain the sentence counts and their log transforms. To summarize credibility tilt, we define
+\[
+\mathrm{ActionableShare}_{i,t} = \frac{A_{i,t}}{A_{i,t} + S_{i,t}},
+\qquad
+\mathrm{SpecShare}_{i,t} = \frac{S_{i,t}}{A_{i,t} + S_{i,t}},
+\]
+for firm-years with $A_{i,t} + S_{i,t} > 0$, and zero otherwise. We also define a single credibility score that rises with concrete content and falls with speculative content,
+\[
+\mathrm{CredAI}_{i,t} = z(A_{i,t}) - z(S_{i,t}),
+\]
+where $z(\cdot)$ standardizes a variable to mean zero and unit standard deviation across the sample. A higher $\mathrm{CredAI}_{i,t}$ means the firm uses more actionable and less speculative AI language than the typical firm-year.
+
+The main metric used in the interaction specifications is the actionable-to-speculative (AS) ratio
+\[
+AS_{i,t} = \log\left(1 + \frac{A_{i,t}}{1 + S_{i,t}}\right).
+\]
+
+This stabilized ratio rises as AI language becomes more actionable and falls as speculative language becomes more prominent, while remaining defined when $S_{i,t} = 0$. In our empirical analysis, the AS ratio is the primary disclosure-credibility regressor, while $\mathrm{SpecShare}_{i,t}$ and $\mathrm{CredAI}_{i,t}$ are secondary companion measures.
+
+The sample retains many zero-disclosure years by construction. For those firm-years, the intensity and composition measures equal zero. This is a feature of the design, not a data error: keeping these zero years is what makes the timing comparisons interpretable.
+
+\subsection{Outcome families and organizational response settings}
+
+The empirical design evaluates the disclosure credibility construct across innovation, market, real outcome, scrutiny, incentive, and financing window evidence. Patent outcomes validate the construct against later AI-related realization. Market and capital market outcomes study filing-date reactions, post-filing returns, valuation, and financing. Organizational response tests examine settings in which disclosure credibility may change.
+
+The innovation outcomes are built from the matched AI patent series described above. The main patent outcome is $\log(1+\mathrm{AIPatents}_{i,t+h})$, where $h \in \{-2,-1,0,+1,+2\}$ indexes calendar-time horizons relative to the disclosure year. These outcomes validate the construct against later observable technological output and separate backward-looking, contemporaneous, and forward-looking timing patterns.
+
+The market-based outcomes are constructed from CRSP return data linked to annual 10-K filing dates. For short-window market reaction tests, we use filing-date cumulative abnormal returns computed from daily stock returns net of the value-weighted market return. The baseline filing-date window is $[-1,+1]$ trading days around the filing date, and the event-study diagnostics also plot returns over the daily window from trading day $-2$ to trading day $+2$. For post-filing abnormal-return regressions, we construct buy-and-hold abnormal returns beginning on trading day $+2$ so that the immediate filing window is excluded. These post-filing windows are evaluated over horizons of 1, 3, 6, and 12 months.
+
+To complement the event-level return tests, we also form calendar-time long--short portfolios using the latest available filing signal for each stock-month. In these portfolios, the long leg holds non-mismatch AI filers and the short leg holds mismatch AI filers. We evaluate both equal-weight and value-weight implementations over alternative holding windows. Monthly portfolio spreads are benchmarked using CAPM, Fama--French three-factor, Fama--French five-factor, and five-factor-plus-momentum models, with the main text emphasizing the richest benchmark. The portfolio tests show whether post-filing return differentials are concentrated in smaller firms and whether they survive standard factor adjustment.
+
+The valuation and financing tests use annual, cross-sectional outcomes rather than event-time returns. The outcomes are constructed from linked market features and accounting data. The valuation side includes log market-capitalization-to-assets and a log Tobin's-$Q$ proxy. The financing side includes the next-year change in shares outstanding and an indicator for substantial next-year share growth. Because the main-text valuation and financing tests focus on non-big firms, broader variants are reported as supporting material.
+
+\subsection{PatentMismatch construction and determinants}
+
+The central low-credibility disclosure construct is PatentMismatch. The indicator is defined at the firm-year level and can equal one only in AI-talking firm-years. PatentMismatch identifies AI-talking firm-years whose disclosure composition is weak relative to the firm's contemporaneous AI implementation record. The construct therefore combines a language-side signal with a same-year technology-side signal rather than relying on either one alone.
+
+Formally, $\mathrm{PatentMismatch}_{i,t}=1$ when three conditions hold: firm-year $(i,t)$ is an AI-talking year; $AS_{i,t}$ falls in the bottom quartile of the year-$t$ AI-talking distribution or $\mathrm{SpecShare}_{i,t}$ lies in the top quartile of that distribution; and contemporaneous $\log(1+\mathrm{AIPatents}_{i,t})$ is below the same-industry-year mean of $\log(1+\mathrm{AIPatents})$. Otherwise, $\mathrm{PatentMismatch}_{i,t}=0$. The disclosure-side gate uses an OR rule across the AS ratio and speculative share; the patent-weakness condition must also hold. Outside AI-talking firm-years, the indicator is coded as zero.
+
+AI-washing refers to the broader disclosure phenomenon in which AI-related narratives appear stronger than contemporaneous or subsequent implementation. PatentMismatch is the main empirical proxy for that phenomenon, constructed from filing language and contemporaneous patent weakness. Low-credibility disclosure refers to the language-side component of this proxy.
+
+We use two related variants in robustness and mechanism tables. LowCredibility is the language-only component of the mismatch rule: it flags AI-talking firm-years in which the AS ratio falls in the bottom quartile of the year-specific AI-talking distribution or SpecShare lies in the top quartile of that distribution, without imposing the patent-weakness condition. ApplicationMismatch applies the same low-credibility disclosure gate but replaces the patent-grant weakness condition with weakness in contemporaneous AI patent applications relative to the industry-year benchmark. These variants decompose the canonical construct by isolating the disclosure-only and application-based components.
+
+The timing is important for interpretation. PatentMismatch uses only year-$t$ information: the composition of disclosure in the filing year and contemporaneous patent weakness measured relative to the industry-year benchmark. It does not use future patent outcomes in its construction. Using only filing-year information avoids mechanical circularity when the construct is later related to post-filing returns or to future AI patenting. Because the patent component is based on grant timing rather than application timing, PatentMismatch should be interpreted as a filing-year disclosure-credibility construct rather than as a signal that is perfectly observable to investors at the exact filing date.
+
+PatentMismatch enters the empirical blocks in three ways. In the annual innovation-validation regressions, it enters either directly or interacted with the AS ratio to test whether lower-credibility AI disclosure predicts weaker subsequent AI patent realization. In the filing-date and post-filing market tests, it serves as the main low-credibility disclosure indicator used to distinguish firms whose AI language appears least aligned with contemporaneous implementation. In the annual valuation and financing tests, it is used to ask whether these same low-credibility firm-years are associated with different market valuation or financing outcomes.
+
+A set of appendix tests asks where mismatch concentrates across firms. In those specifications, the dependent variable is either an indicator for whether a firm records at least one PatentMismatch incident during 2016--2025 or the share of its AI-talking years flagged as mismatch over the same period. Baseline firm characteristics are measured in 2016, and these tests describe where mismatch is concentrated rather than establish a causal mechanism.
+
+\subsection{Empirical specifications}
+
+The core specifications cover innovation validation, filing-date returns, post-filing returns, valuation and financing outcomes, and organizational-response tests. All specifications use the same underlying disclosure layer, but the unit of observation and timing structure differ across blocks.
+
+First, to validate the disclosure measures against later technological output, we estimate annual panel regressions of the form
+\[
+\log(1+\mathrm{AIPatents}_{i,t+h})
+=
+\alpha_h + \beta_h \mathrm{Narrative}_{i,t} + X_{i,t}'\theta_h + \gamma_i + \gamma_t + \varepsilon_{i,t+h},
+\]
+where $h \in \{-2,-1,0,+1,+2\}$ and $\mathrm{Narrative}_{i,t}$ is alternatively $\mathrm{AIFocus}_{i,t}$, $\mathrm{ActionableDisclosure}_{i,t}$, $\mathrm{SpeculativeOnly}_{i,t}$, or the AS ratio interacted with $\mathrm{PatentMismatch}_{i,t}$. The baseline control set includes log assets, leverage, cash/assets, R\&D/assets, CAPX/assets, ROA, sales growth, and employees. The main specifications include firm and year fixed effects, with companion columns using industry$\times$year fixed effects and standard firm-level clustering. These regressions are predictive timing tests rather than causal designs. They show whether different forms of AI disclosure relate differently to prior, contemporaneous, and later AI patenting.
+
+Second, to study immediate market reaction, we estimate filing-level event regressions of the form
+\[
+CAR_{i,f,[a,b]}
+=
+\alpha + \beta_1 \mathrm{PatentMismatch}_{i,t}
++ \beta_2 AS_{i,t}
++ \beta_3 \mathrm{AIFocus}_{i,t}
++ X_{i,t-1}'\theta + \delta_{j} + \lambda_{\tau} + \varepsilon_{i,f},
+\]
+where $CAR_{i,f,[a,b]}$ is the market-adjusted cumulative abnormal return for firm $i$ around filing event $f$ over event window $[a,b]$, $\delta_{j}$ denotes industry fixed effects, and $\lambda_{\tau}$ denotes filing-year fixed effects. The baseline filing window is $[-1,+1]$. The event sample is restricted to AI-talking 10-K and 10-K/A filings with complete event-window returns and successful merges back to the annual disclosure panel. Standard errors are clustered at the firm level. These tests ask whether low-credibility AI disclosure is associated with different abnormal-return patterns at the filing date, conditional on lagged firm characteristics and common industry and filing-year effects.
+
+Third, we estimate post-filing abnormal-return regressions using buy-and-hold abnormal returns beginning on trading day $+2$:
+\[
+BHAR_{i,f,[+2,H]}
+=
+\alpha + \beta_1 \mathrm{PatentMismatch}_{i,t}
++ \beta_2 AS_{i,t}
++ \beta_3 \mathrm{AIFocus}_{i,t}
++ X_{i,t-1}'\theta + \delta_{j} + \lambda_{\tau} + \varepsilon_{i,f,H},
+\]
+where $H$ indexes the post-filing horizon. We evaluate horizons corresponding to approximately 1, 3, 6, and 12 months. We complement these regressions with calendar-time long--short portfolios that buy non-mismatch AI filers and short mismatch filers using the most recent filing signal for each stock-month. Equal-weight and value-weight portfolios are evaluated separately, and the portfolio spread is benchmarked under CAPM, Fama--French 3-factor, Fama--French 5-factor, and 5-factor-plus-momentum models. These tests assess whether return differentials emerge after filing, survive factor adjustment, and concentrate in smaller firms.
+
+Fourth, to examine annual capital-market consequences, we estimate firm-year regressions of the form
+\[
+Y_{i,t+h}
+=
+\alpha + \beta_1 \mathrm{PatentMismatch}_{i,t}
++ \beta_2 AS_{i,t}
++ \beta_3 \mathrm{AIFocus}_{i,t}
++ X_{i,t}'\theta + \gamma_i + \gamma_t + \varepsilon_{i,t+h},
+\]
+where $Y_{i,t+h}$ is alternatively a valuation or financing outcome. The valuation outcomes include log market-capitalization-to-assets and a log Tobin's-$Q$ proxy, and the financing outcomes include next-year share growth and an indicator for substantial next-year issuance. These specifications use firm- and year fixed effects with firm-clustered standard errors. The main-text versions report the non-big subsample, with broader variants retained as supporting evidence.
+
+The same disclosure layer also enters organizational-response specifications reported after the main validation tests. These specifications are descriptive event-window or panel designs rather than a primary identification strategy. The comment-letter tests compare disclosure-composition changes around each continuing AI discloser's first SEC comment-letter year. The capital-raising tests align disclosure dynamics around each firm's first large equity-issuance window, defined using next-year CRSP shares outstanding growth above 5\%. The executive-incentive tests link AI-talking firm-years to lagged CEO characteristics from ExecuComp. The SEC enforcement-salience tests use the March 18, 2024 AI-washing enforcement actions (SEC, 2024) as a public salience date and compare firms already exposed to AI-washing risk in 2022 with other AI-talking firms. These specifications characterize settings in which low-credibility AI disclosure becomes more or less prevalent; they are not designed to isolate a single causal mechanism.
+
+The disclosure variables keep the same interpretation across blocks. $\mathrm{AIFocus}_{i,t}$ captures the broad intensity of the AI narrative, the AS ratio captures the composition of the disclosure, and $\mathrm{PatentMismatch}_{i,t}$ identifies firm-years in which disclosure composition and contemporaneous implementation appear misaligned. The specifications are interpreted as linked evidence on disclosure credibility rather than as a single causal design.
+
+\subsection{Supporting post-ChatGPT diagnostic}
+
+A supporting diagnostic in Appendix Figure~\ref{fig:appendix_chatgpt_eventstudy} asks whether credibility patterns intensify after the public release of ChatGPT. We treat this exercise as exploratory. The release of ChatGPT sharply increased the salience of AI-related language and may have lowered the cost of inserting AI-related narrative into annual filings, but it also coincides with broader changes in implementation, attention, and experimentation. The diagnostic therefore serves as a sensitivity check on the post-2022 interpretation rather than as a primary identification strategy.
+
+The baseline implementation defines $\mathrm{PostChatGPT}_t=1$ for the years 2023 and later and constructs treatment status from the pre-period 2018--2022. The main treatment identifies low-capability firms: firms with zero pre-period AI patents and either a low pre-period AS ratio or no pre-period actionable AI disclosure. The intuition is that these firms have the weakest ex ante evidence of AI capability yet may be the most exposed to a fall in the cost of AI-related narrative production. We also consider two alternative treatment definitions in supporting specifications: firms with high pre-period speculative intensity relative to their industry and firms with low pre-period market capitalization.
+
+The exploratory specifications take the form of
+\[
+Y_{i,t}
+=
+\alpha_i + \lambda_t + \beta \big(\mathrm{PostChatGPT}_t \times \mathrm{Treated}_i\big) + X_{i,t-1}'\theta + \varepsilon_{i,t},
+\]
+where $Y_{i,t}$ is alternatively AI Focus, AS ratio, PatentMismatch, filing-date abnormal returns, or post-filing abnormal returns. The annual specifications use firm- and year fixed effects where appropriate, and the event-based outcome specifications inherit the corresponding event-study sample restrictions. These tests examine whether low-capability firms show sharper increases in low-credibility AI disclosure after late 2022.
+
+The post-ChatGPT specifications are reported as supporting diagnostics rather than as the main identification design. The corresponding table and appendix figure report outcome-specific pretrend diagnostics, which are important for interpreting whether the post-2022 patterns are more consistent with disclosure-composition shifts than with a parallel filing-date market response.
